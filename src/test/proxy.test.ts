@@ -1,5 +1,5 @@
 import { Services } from "../translationServices";
-import { onTranslated }  from "..";
+import { observe }  from "..";
 
 describe("Test proxy translations", () => {
   test("Can detect Google proxy translation", () => {
@@ -20,6 +20,6 @@ describe("Test proxy translations", () => {
       value: location
     });
       
-    onTranslated({ onClient: () => {}, onProxy: mockProxyCallback });
+    observe({ onClient: () => {}, onProxy: mockProxyCallback });
   });
 });

@@ -1,5 +1,5 @@
 import { Services } from "../translationServices";
-import { onTranslated } from "..";
+import { observe } from "..";
 
 describe('Test client translations', () => {
   test("Can detect Google client translation", () => {
@@ -12,7 +12,7 @@ describe('Test client translations', () => {
     document.documentElement.setAttribute("class", "");
     document.documentElement.lang = "en-us";
   
-    onTranslated({ onClient: mockClientCallback, onProxy: () => {} });
+    observe({ onClient: mockClientCallback, onProxy: () => {} });
   
     document.documentElement.setAttribute("class", "translated-ltr");
     document.documentElement.lang = lang;

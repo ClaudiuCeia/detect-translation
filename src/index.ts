@@ -8,7 +8,7 @@ export interface ObserverParams {
   onProxy: Callback;
 }
 
-export const onTranslated = ({ onClient, onProxy }: ObserverParams) => {
+export const observe = ({ onClient, onProxy }: ObserverParams) => {
   const mutationObserver = new MutationObserver(function() {
     const client = whichClientTranslation();
     if (client) {
