@@ -9,7 +9,8 @@
   "scripts": {
     "build": "tsc",
     "test": "jest --env=jsdom",
-    "prepublish": "tsc"
+    "prepublish": "tsc",
+    "analyze": "source-map-explorer ./dist/*.js{,.map}"
   },
   "husky": {
     "hooks": {
@@ -26,6 +27,7 @@
     "husky": "^4.2.3",
     "jest": "^25.2.3",
     "mutationobserver-shim": "^0.3.3",
+    "source-map-explorer": "^2.4.2",
     "ts-jest": "^25.2.1",
     "ts-node": "^8.8.1",
     "typescript": "^3.8.3"
