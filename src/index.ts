@@ -25,6 +25,5 @@ export const observe = ({ onClient, onProxy }: ObserverParams) => {
     attributes: true,
     attributeFilter: ["class", "_msttexthash"],
     childList: false,
-    // characterData: false
   });
 };
