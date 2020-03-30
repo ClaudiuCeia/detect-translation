@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:ClaudiuCeia/translated.git"
+    "url": "git@github.com:ClaudiuCeia/detect-translation.git"
   },
   "dependencies": {},
   "devDependencies": {
