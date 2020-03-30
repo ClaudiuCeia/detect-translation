@@ -4,6 +4,7 @@ This package attempts to detect when a website was translated on the client (usi
 or via a proxy (like using translate.google.com directly). 
 
 [![npm version](https://badge.fury.io/js/detect-translation.svg)](https://badge.fury.io/js/detect-translation)
+[![Build Status](https://travis-ci.org/ClaudiuCeia/detect-translation.svg?branch=master)](https://travis-ci.org/ClaudiuCeia/detect-translation)
 
 ## Installation
 
