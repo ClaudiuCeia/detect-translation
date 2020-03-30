@@ -9,7 +9,6 @@
   "scripts": {
     "build": "tsc",
     "test": "jest --env=jsdom",
-    "test:ci": "jest --ci",
     "prepublish": "tsc"
   },
   "husky": {
