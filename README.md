@@ -38,3 +38,9 @@ observe({
 - [Baidu Translate](https://fanyi.baidu.com/)
 - [Yandex Translate](https://translate.yandex.com/)
 - [Naver Papago](https://papago.naver.com/)
+
+`lang` is the value of the `<html>` [`lang` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) - this gets set by the translation service.
+
+----
+
+MIT @ [Claudiu Ceia](https://github.com/ClaudiuCeia)
