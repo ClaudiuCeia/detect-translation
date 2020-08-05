@@ -1,0 +1,332 @@
+# Translation sources:
+#
+# Bd : Baidu (https://fanyi.baidu.com)
+# Bg : Bing
+# G  : Google (https://translate.google.com or Chrome’s page translation)
+# P  : Papago.naver.com
+# Y  : Yandex.Translate
+
+source:
+    Skip to main content: en # English
+translations:
+  baidu:
+    # iaiMaoeɛnS’aɔ: ak # Akan (macrolanguage); Twi (tw) is the largest current member of this group
+    # نادرست الغرض للقيمة: arq # Algerian Arabic
+    # মূখ্য সমলে যাওক: as # Assamese
+    # κάκιστα δὴ μακρῷ κάτειμι: grc # Ancient Greek
+    # Brincar a lo conteniu prencipal: an # Aragonese
+    # Saltar al conteníu principal: ast # Asturian
+    # Mayïr qilqatanak jach'apta: ay # Aymara
+    # Marina le kukmai tru: bi # Bislama
+    # کلیک کنیت تا ای تنظیماتا اجباری مکنیت: bal # Baluchi
+    # Ukufisa muli computer ikalamba: bem # Bemba (Congo)
+    #
+    # ...... aaaand this is just the beginning of Baidu’s languages!
+    # Following is only the ones that webpages can be translated into
+    # by Baidu (or other translation engines, to improve lang recognition):
+    القفز إلى المحتوى الرئيسي: ar # Arabic
+    Преминаване към основното съдържание: bg # Bulgarian
+    惊到主要内容: yue-Hans # Cantonese
+    跳到主要内容: zh-CN # Chinese
+    投身: lzh # Classical (Literary) Chinese
+    跳到主要內容: zh-TW # Traditional Chinese
+    Přejít na hlavní obsah: cs # Czech
+    Gå til hovedindholdet: da # Danish
+    Ga naar de belangrijkste inhoud: nl # Dutch
+    Ülemine peamisele sisule: et # Estonian
+    Siirry pääasiaan: fi # Finnish (this is followed by “@ info: whatsthis” which is obviously not valid!)
+    Sauter sur le contenu principal: fr # French
+    Μετάβαση στο κύριο περιεχόμενο: el # Greek
+    Ugrás a fő tartalomra: hu # Hungarian
+    Passa al contenuto principale: it # Italian
+    メインコンテンツにスキップ: jp # Japanese
+    주요 내용 으로 건 너 뛰 기: ko # Korean
+    Hopp til hovedinnholdet: nb # Norwegian Bokmål (for other translators)
+    Przejdź do głównej zawartości: pl # Polish
+    Ir para o conteúdo principal: pt-PT # Portuguese
+    Saltar ao conteúdo principal: pt # Portuguese (Brazil)
+    Treci la conținutul principal: ro # Romanian
+    перейти к основному содержанию: ru # Russian
+    Preskoči na glavno vsebino: sl # Slovenian
+    Salto al fondo: es # Spanish
+    Gå över till huvudinnehållet: sv # Swedish
+    ข้ามไปยังเนื้อหาหลัก: th # Thai
+    Bỏ qua nội dung chính: vi # Vietnamese
+  bing:
+    Slaan oor na hoofinhoud: af # Afrikaans
+    التخطي إلى المحتوى الرئيسي: ar # Arabic
+    প্রধান বিষয়বস্তুতে এড়িয়ে যান: bn # Bangla/Bengali
+    Preskoči na glavni sadržaj: bs # Bosnian
+    Прескачане към основното съдържание: bg # Bulgarian
+    跳到主要內容。: yue-Hant # Cantonese
+    Salta al contingut principal: ca # Catalan
+    跳到主要内容: zh-CN # Chinese (simplified)
+    跳到主要內容。: zh-TW # Chinese (Traditional)
+    Preskoči na glavni sadržaj: hr # Croatian
+    Přeskočit na hlavní obsah: cs # Czech
+    Gå til hovedindhold: da # Danish
+    Doorgaan naar hoofdinhoud: nl # Dutch
+    Mine põhisisu juurde: et # Estonian
+    Levea na lewena levu: fj # Fijian
+    Lumaktaw sa pangunahing nilalaman: fil # Tagalog/Filipino
+    Siirry pääsisältöön: fi # Finnish
+    Passer au contenu principal: fr # French
+    Zum Hauptinhalt springen: de # German
+    Μετάβαση στο κύριο περιεχόμενο: el # Greek
+    મુખ્ય સામગ્રી પર અવગણો: gu # Gujurati
+    Sote kontni prensipal: ht # Haitian Creole
+    דילוג לתוכן הראשי: he # Hebrew
+    मुख्य सामग्री पर छोड़ें: hi # Hindi
+    Hla mus rau cov ntsiab lus: mww # Hmong Daw
+    Ugrás a fő tartalomra: hu # Hungarian
+    Sleppa í aðalefni: is # Icelandic
+    Loncat ke konten utama: id # Indonesian
+    Scipeáil chuig an bpríomhábhar: ga # Irish
+    Passare al contenuto principale: it # Italian
+    メイン コンテンツにスキップ: ja # Japanese
+    ಮುಖ್ಯ ವಿಷಯಕ್ಕೆ ಬಿಟ್ಟುಬಿಡು: kn # Kannada
+    Негізгі мазмұнға өткізіп жіберу: kk # Kazakh
+    Ruka kwa maudhui makuu: sw # Swahili
+    주요 콘텐츠로 건너뛰기: ko # Korean
+    Pāriet uz galveno saturu: lv # Latvian
+    Pereiti prie pagrindinio turinio: lt # Lithuanian
+    Azon amin' ny zavatra fototra: mg # Malagasy
+    Langkau ke kandungan utama: ms # Malay (Latin)
+    പ്രധാന ഉള്ളടക്കത്തിലേക്ക് പോകുക: ml # Malayalam
+    Aqbeż għall-kontenut ewlieni: mt # Maltese
+    Tīpoka ki te ihirangi matua: mi # Maori
+    मुख्य सामग्रीवगळा: mr # Marathi
+    Gå til hovedinnhold: nb # Norwegian Bokmål
+    پرش به محتوای اصلی: fa # Persian
+    Przejdź do głównej zawartości: pl # Polish
+    Pular para o conteúdo principal: pt # Portuguese (Brazil)
+    Saltar para o conteúdo principal: pt-PT # Portuguese (Portugal)
+    ਮੁੱਖ ਸਮੱਗਰੀ ਲਈ ਛੱਡ ਦਿਓ: pa # Punjabi (Gurmukhi)
+    Saltar ar contenido principal: otq # Querétaro Otomi
+    Salt la conținutul principal: ro # Romanian
+    Перейти к основному контенту: ru # Russian
+    Alu i le anotusi autu: sm # Samoan
+    Пређи на главни садржај: sr # Serbian (Cyrillic)
+    Pređi na glavni sadržaj: sr-Latn # Serbian (Latin)
+    Preskočiť na hlavný obsah: sk # Slovak
+    Preskoči na glavno vsebino: sl # Slovenian
+    Saltar al contenido principal: es # Spanish
+    Gå till huvudinnehållet: sv # Swedish
+    Haapae i te mau mea tumu: ty # Tahitian
+    முக்கிய உள்ளடக்கத்திற்கு ச்செல்ல: ta # Tamil
+    ప్రధాన విషయానికి వెళ్లండి: te # Telugu
+    ข้ามไปยังเนื้อหาหลัก: th # Thai
+    Hiki fakalaka ki he tefitoʻi meʻa: to # Tongan
+    Ana içeriğe atla: tr # Turkish
+    Перейти до основного вмісту: uk # Ukrainian
+    اہم مواد پر جائیں: ur # Urdu
+    Bỏ qua đến nội dung chính: vi # Vietnamese
+    Neidio i'r prif gynnwys: cy # Welsh
+    A puulkaba ichil le contenido noj bejo': yua # Yucatec Maya
+  google:
+    Slaan oor na inhoud: af # Afrikaans
+    Kalo tek përmbajtja kryesore: sq # Albanian
+    ወደ ዋናው ይዘት ዝለል: am # Amharic
+    تخطى إلى المحتوى الرئيسي: ar # Arabic
+    Անցնել հիմնական բովանդակությանը: hy # Armenian
+    Əsas məzmuna keçin: az # Azerbaijani
+    স্কিপ করে মূল কন্টেন্ট এ যাও: bn # Bangla/Bengali
+    Saltatu eduki nagusira: eu # Basque
+    Перайсці да асноўнага зместу: be # Belarusian
+    Prijeđite na glavni sadržaj: bs # Bosnian
+    Преминете към основното съдържание: bg # Bulgarian
+    Saltar al contingut principal: ca # Catalan
+    Laktaw sa panguna nga sulud: ceb # Cebuano
+    Pitani ku nkhani zazikuluzikulu: ny # Chichewa/Chewa/Nyanja
+    跳到主要内容: zh-CN # Chinese (simplified)
+    跳到主要內容: zh-TW # Chinese (traditional)
+    Saltà à u cuntenutu principale: co # Corsican
+    Prijeđite na glavni sadržaj: hr # Croatian
+    Přeskočit na hlavní obsah: cs # Czech
+    Gå til hovedindhold: da # Danish
+    Ga naar hoofdinhoud: nl # Dutch
+    Saltu al ĉefa enhavo: eo # Esperanto
+    Otse põhisisu juurde: et # Estonian
+    Laktawan sa pangunahing nilalaman: fil # Tagalog/Filipino
+    Hyppää pääsisältöön: fi # Finnish
+    Passer au contenu principal: fr # French
+    Gean nei haadynhâld: fy # (Western) Frisian
+    Ir ao contido principal: gl # Galician
+    მთავარ შინაარსზე გადასვლა: ka # Georgian
+    Zum Hauptinhalt springen: de # German
+    Μετάβαση στο κύριο περιεχόμενο: el # Greek
+    મુખ્ય વિષયવસ્તુ પર જાઓ: gu # Gujurati
+    Ale nan kontni prensipal la: ht # Haitian Creole
+    Tsallake zuwa babban abun cikin: ha # Hausa
+    E lele i ka ʻikepili nui: haw # Hawaiian
+    דלג לתוכן הראשי: he # Hebrew
+    मुख्य विषयवस्तु में जाएं: hi # Hindi
+    Hla mus rau cov ntsiab lus tseem ceeb: hmn # Hmong
+    Ugrás a tartalomra: hu # Hungarian
+    Fara í aðalefni: is # Icelandic
+    Gaa masịrị ọdịnaya: ig # Igbo
+    Lewati ke konten utama: id # Indonesian
+    Scipeáil chuig an bpríomhábhar: ga # Irish
+    Passa al contenuto principale: it # Italian
+    メインコンテンツにスキップ: ja # Japanese
+    Langsung menyang konten utama: jw # Javanese
+    ಮುಖ್ಯ ವಿಷಯಕ್ಕೆ ತೆರಳಿ: kn # Kannada
+    Негізгі мазмұнға өту: kk # Kazakh
+    រំលងទៅមាតិកាមេ: km # Khmer
+    Jya ku bintu nyamukuru: rw # Kinyarwanda
+    메인 컨텐츠로 가기: ko # Korean
+    Vegere naveroka sereke: ku # Kurdish
+    Негизги мазмунга өтүңүз: ky # Kyrgyz
+    ຂ້າມໄປຫາເນື້ອຫາຫຼັກ: lo # Lao
+    Pāriet uz galveno saturu: lv # Latvian
+    Pereiti prie pagrindinio turinio: lt # Lithuanian
+    Wiessel zum Haaptinhalt: lb # Luxembourgish
+    Оди до главната содржина: mk # Macedonian
+    Hanketo ny votoatiny lehibe: mg # Malagasy
+    Langkau ke kandungan utama: ms # Malay
+    പ്രധാന ഉള്ളടക്കത്തിലേക്ക് പോകുക: ml # Malayalam
+    Aqbeż għall-kontenut prinċipali: mt # Maltese
+    Haere ki te ihirangi matua: mi # Maori
+    मुख्य सामग्रीवर जा: mr # Marathi
+    Үндсэн агуулга руу шилжих: mn # Mongolian
+    मुख्य सामग्रीमा स्किप गर्नुहोस्: ne # Nepali
+    Hopp til hovedinnhold: 'no' # Norwegian
+    ମୁଖ୍ୟ ବିଷୟବସ୍ତୁକୁ ଯାଆନ୍ତୁ |: or # Odia/Oriya
+    اصلي مینځپانګې ته لاړشئ: ps # Pashto
+    رفتن به محتوای اصلی: fa # Persian/Farsi
+    Przejdź do głównej zawartości: pl # Polish
+    Ir para o conteúdo principal: pt # Portuguese
+    ਮੁੱਖ ਸਮੱਗਰੀ ਤੇ ਜਾਓ: pa # Punjabi
+    Salt la conținutul principal: ro # Romanian
+    Перейти к основному содержанию: ru # Russian
+    Skip to mea autu: sm # Samoan
+    Air adhart gu prìomh shusbaint: gd # Scots Gaelic
+    Пређи на главни садржај: sr # Serbian
+    Fetela ho litaba tsa sehlooho: st # Sesotho/(Southern) Sotho
+    Skip to main theme: sn # Shona
+    مواد کي ڇڏي ڏيو: sd # Sindhi
+    ප්‍රධාන අන්තර්ගතයට යන්න: si # Sinhala
+    Preskočiť na hlavný obsah: sk # Slovak
+    Preskočite na glavno vsebino: sl # Slovenian
+    U gudub nuxurka ugu muhiimsan: so # Somali
+    Saltar al contenido principal: es # Spanish
+    Luncat ka eusi utama: su # Sundanese
+    Skip kwa yaliyomo kuu: sw # Swahili
+    Hoppa till huvudinnehåll: sv # Swedish
+    Гузаштан ба мундариҷаи асосӣ: tg # Tajik
+    முக்கிய உள்ளடக்கத்திற்கு செல்க: ta # Tamil
+    Төп эчтәлеккә күчү: tt # Tatar
+    ప్రధాన కంటెంట్‌కు దాటవేయి: te # Telugu
+    ข้ามไปที่เนื้อหาหลัก: th # Thai
+    Ana içeriğe geç: tr # Turkish
+    Esasy mazmuna geçiň: tk # Turkmen
+    Перейти до основного вмісту: uk # Ukrainian
+    اہم مواد پر جائیں: ur # Urdu
+    ئاساسلىق مەزمۇنغا ئاتلاڭ: ug # Uyghur
+    Asosiy mundarijaga: uz # Uzbek
+    Bỏ qua nội dung chính: vi # Vietnamese
+    Neidio i'r prif gynnwys: cy # Welsh
+    Yiya kumxholo ophambili: xh # Xhosa
+    האָפּקען צו הויפּט אינהאַלט: yi # Yiddish
+    Rekọja si akọkọ akoonu: yo # Yoruba
+    Yeqela kokuqukethwe okuyinhloko: zu # Zulu
+  papago:
+    跳至主要内容: zh-CN # Chinese (simplified)
+    跳至主要內容: zh-TW # Chinese (Traditional)
+    メインコンテンツへスキップ: ja # Japanese
+    기본 컨텐츠로 이동: ko # Korean (P) - Page translation - M
+    기본 콘텐츠로 건너뛰기: ko # Korean (P:M/m)
+  sogou:
+    跳到主要内容: zh-CN
+    快速到主内容: zh-CN
+  yandex:
+    Slaan oor na inhoud: af
+    Kalo tek përmbajtja qendrore: sq
+    አዳዲስ ግምገማዎች አሁን ይዘት: am
+    اقفز إلى المحتوى الرئيسي: ar
+    Գնալ հիմնական բովանդակության: hy
+    Əsas məzmun gedin: az
+    Төп конт күсә: ba # Bashkir
+    Jauzi edukira joan: eu
+    Перайсці да асноўнага кантэнту: be
+    Preskoči na glavni sadržaj: bs
+    Отидете на основното съдържание: bg
+    အဓိကအကြောင်းအရာ: my
+    Salta al contingut principal: ca
+    Laktaw ngadto sa nag-unang mga sulod: ceb
+    跳到主要内容: zh-CN
+    Тӗп контент патне куҫ: cv
+    Idite na glavni sadržaj: hr
+    Přeskočit na hlavní obsah: cs
+    Spring til hovedindhold: da
+    Naar hoofdinhoud overslaan: nl
+    Iri rekte al ĉefa enhavo: eo
+    Siirry pääainesisältöön: fi
+    Passer au contenu principal: fr
+    Saltar ao contido principal: gl
+    მთავარი კონტენტის გამოტოვება: ka
+    Zum Hauptinhalt überspringen: de
+    Μετάβαση στο κύριο περιεχόμενο: el
+    મુખ્ય વિષયવસ્તુ પર જાઓ: gu
+    Sote ale nan kontni prensipal: ht
+    דלג לתוכן ראשי: he
+    Ванжаш тӹнг контент: mrj # Hill Mari / Western Mari
+    मुख्य सामग्री पर जाएं: hi
+    Ugrás a fő tartalomra: hu
+    Sleppa að aðalefni: is
+    Lewati ke isi utama: id
+    Léim go dtí an príomhábhar: ga
+    Vai al contenuto principale: it
+    メインコンテンツへ: ja
+    Skip kanggo isi utama: jv
+    ಮುಖ್ಯ ವಿಷಯಕ್ಕೆ ತೆರಳಿ: kn
+    Перейти к основному контентке: kk
+    Pereıtı k osnovnomý kontentke: kk-Latn
+    រំលងទៅមាតិកាមេ: km
+    주 내용으로 건너뛰기: ko
+    Негизги контентке өтүү: ky
+    ໃຫ້ຂ້າມໄປຫາເນື້ອໃນຕົ້ນຕໍ: lo
+    Pāriet uz galveno saturu: lv
+    Zum Hauptinhalt sprangen: lb
+    Скокни до главната содржина: mk
+    Hijery ny tena afa-po: mg
+    Skip untuk utama kandungan: ms
+    Aqbeż għall-kontenut prinċipali: mt
+    Tīpoka ki te ihirangi matua: mi
+    मुख्य घटकाला जा: mr
+    Куснаш основного контента: mhr # Mari / Eastern Mari
+    Үндсэн агуулга руу очих: mn # Mongolian
+    मुख्य सामग्री गर्न छोड्नुहोस्: ne
+    Hopp til hovedinnholdet: 'no'
+    Bula den kontenido prinsipal: pap # Papiamento
+    پرش به محتوای اصلی: fa
+    Przejdź do głównej treści: pl
+    Saltar para o conteúdo principal: pt
+    ਮੁੱਖ ਸਮੱਗਰੀ ਨੂੰ ਕਰਨ ਲਈ ਛੱਡੋ: pa
+    Treci la conținutul principal: ro
+    Перейти к основному контенту: ru
+    Иди на главни садржај: sr
+    යන්න ප්රධාන අන්තර්ගතයට යන්න: si # Sinhalese
+    Preskočiť na hlavný obsah: sk
+    Preskoči na glavno vsebino: sl
+    Saltar al contenido principal: es
+    Skip to eusi utama: su
+    Ruka kwa yaliyomo kuu: sw
+    Hoppa till huvudinnehåll: sv
+    Pumunta sa pangunahing nilalaman: fil
+    Гузаштан ба контенту асосӣ: tg
+    முக்கிய உள்ளடக்கத்திற்கு செல்க: ta
+    Төп контентка күчү: tt # Tatar
+    ప్రధాన కు దాటివెయ్యండి: te # Telugu
+    ข้ามไปตอนหลักขอเนื้อหา: th
+    Ana içeriğe atla: tr
+    Валтӥсь bildirmek доры выжиз: udm # Udmurt
+    Перейти до основного контенту: uk
+    کو چھوڑ کرنے کے لئے اہم مواد: ur
+    Asosiy tarkibga o'tish: uz
+    Асосий таркибга ўтиш: uz-Cyrl
+    Bỏ vào nội dung chính: vi
+    Neidio i'r prif gynnwys: cy
+    Tsibela engundoqo isiqulatho: xh # Xhosa
+    Сүрүн контреҥҥа көс: sah # Yakut
+    האָפּקען צו הויפּט צופרידן: yi
