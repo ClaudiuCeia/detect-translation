@@ -35,7 +35,7 @@ const detectTranslator = () => {
     document.querySelector('[_msthash]')
     || document.querySelector('[_msttexthash]')
   ) {
-    return 'msedge-browser'; // Microsoft Translate extension (legacy Edge and modern Edge)
+    return 'mstransl-browser'; // Microsoft Translate extension (legacy Edge and modern Edge)
   }
   if (
     document.querySelector('[class^="sg-trans"]')

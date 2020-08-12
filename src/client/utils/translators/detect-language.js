@@ -2,6 +2,7 @@
 import LangMetaString from './lang-meta-string';
 import isPageTranslated from './is-page-translated';
 import detectTranslator from './detect-translator';
+import langIdStrings from './lang-id-strings';
 import {
   SOURCE_LANGUAGE,
   SKIP_TO_MAIN_CONTENT_ID,
@@ -42,6 +43,7 @@ const getBaseTargetLang = (translator) => {
   const {
     documentLang,
     elementLang,
+    innerText,
   } = isPageTranslated();
 
   let targetLang = 'und';
@@ -55,20 +57,12 @@ const getBaseTargetLang = (translator) => {
     switch (translator) {
       case 'apertium': {
         // https://www.apertium.org/index.eng.html?dir=arg-cat&qP=https…Fwww.sciencedirect.com%2Ftopics%2Fneuroscience%2Fcoronavirus
-        const APERTIUM_LANGS = {
-          cat: 'ca',
-          cat_valencia: 'ca-u-sd-esvc',
-          eng: 'en',
-          epo: 'eo',
-          glg: 'gl',
-          spa: 'es',
-        };
         const [src, target] = getQueryParam('dir').split('-');
         if (
-          APERTIUM_LANGS[src] === SOURCE_LANGUAGE // must be set to eng-xxx to work
-          && APERTIUM_LANGS[target]
+          normaliseLangCode(src) === SOURCE_LANGUAGE // must be set to eng-xxx to work
+          && target
         ) {
-          targetLang = APERTIUM_LANGS[target];
+          targetLang = target; // will be normalised below
         }
         break;
       }
@@ -78,17 +72,6 @@ const getBaseTargetLang = (translator) => {
         break;
       }
       case 'gramtrans': {
-        const GRAMTRANS_LANGS = {
-          dan: 'da',
-          deu: 'de',
-          eng: 'en',
-          'eng/us': 'en-US',
-          'eng/uk': 'en-GB',
-          epo: 'eo',
-          nor: 'no',
-          swe: 'sw',
-          qax: 'eo',
-        };
         const [src, target] = GRAMTRANS_LANGS[getQueryParam('pair').split('2')[1]];
         if (src && target && src.startsWith('en')) {
           targetLang = target;
@@ -111,6 +94,18 @@ const getBaseTargetLang = (translator) => {
       }
       default:
     }
+  }
+
+  // Still we haven’t been able to detect the language; use our substring-to-language map
+  // (for Sogou browser, Microsoft Translate in Edge legacy and modern browser)
+  if (`${targetLang}` === 'und') {
+    (
+      [, targetLang] = langIdStrings.split(',')
+        .map(s => s.split(':'))
+        .map(([substrs, l]) => substrs.split('|').map(s => [s, l]))
+        .reduce((acc, val) => acc.concat(val), []) // .flat() is not supported by IE11
+        .find(([substr]) => innerText.includes(substr))
+    );
   }
 
   return normaliseLangCode(targetLang);
