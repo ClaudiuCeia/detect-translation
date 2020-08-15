@@ -39,28 +39,28 @@ const getQueryParam = (name) => {
  * @param {string} translator - the detected machine translation engine
  * @returns {string} the basic BCP47 code for the page’s target language
  */
-const getBaseTargetLang = (translator) => {
+export const getBaseTargetLang = ({ translator = 'und' } = {}) => {
   const {
     documentLang,
     elementLang,
-    innerText,
-  } = isPageTranslated();
+    text,
+  } = isPageTranslated().meta;
 
   let targetLang = 'und';
 
-  if (documentLang !== SOURCE_LANGUAGE) {
+  if (documentLang && (documentLang !== SOURCE_LANGUAGE)) {
     targetLang = documentLang;
-  } else if (elementLang && elementLang !== SOURCE_LANGUAGE) {
+  } else if (elementLang && (elementLang !== SOURCE_LANGUAGE)) {
     targetLang = elementLang;
-  } else {
+  } else {/*
     // heuristics, sigh
     switch (translator) {
       case 'apertium': {
         // https://www.apertium.org/index.eng.html?dir=arg-cat&qP=https…Fwww.sciencedirect.com%2Ftopics%2Fneuroscience%2Fcoronavirus
         const [src, target] = getQueryParam('dir').split('-');
         if (
-          normaliseLangCode(src) === SOURCE_LANGUAGE // must be set to eng-xxx to work
-          && target
+          src && target
+          && normaliseLangCode(src) === SOURCE_LANGUAGE // must be set to eng-xxx to work
         ) {
           targetLang = target; // will be normalised below
         }
@@ -69,11 +69,18 @@ const getBaseTargetLang = (translator) => {
       case 'baidu':
       case 'sogou-web': {
         targetLang = getQueryParam('to');
+        // special case: in Baidu, slo means Slovenian (sl)
+        // but the standard meaning is Slovakian (sk)
+        // so we just set it to Slovenian here to avoid confusion.
+        if (targetLang === 'slo') targetLang = 'sl';
         break;
       }
       case 'gramtrans': {
-        const [src, target] = GRAMTRANS_LANGS[getQueryParam('pair').split('2')[1]];
-        if (src && target && src.startsWith('en')) {
+        const [src, target] = getQueryParam('pair').split('2');
+        if (
+          src && target
+          && normaliseLangCode(src) === SOURCE_LANGUAGE
+        ) {
           targetLang = target;
         }
         break;
@@ -88,24 +95,40 @@ const getBaseTargetLang = (translator) => {
         }
         break;
       }
+      case 'youdao': {
+        const [src, target] = ['from', 'to'].map(p => getQueryParam(p));
+        if (
+          src && target
+          && (src === 'auto' || normaliseLangCode(src) === SOURCE_LANGUAGE)
+        ) {
+          targetLang = target;
+        }
+      }
       case '': {
         targetLang = getIbmWatsonTargetLang();
         break;
       }
       default:
-    }
+    } */
   }
 
   // Still we haven’t been able to detect the language; use our substring-to-language map
-  // (for Sogou browser, Microsoft Translate in Edge legacy and modern browser)
+  // (for Sogou browser, MS Edge legacy and Chromium, and any others inc. IBM Watson)
   if (`${targetLang}` === 'und') {
-    (
-      [, targetLang] = langIdStrings.split(',')
-        .map(s => s.split(':'))
-        .map(([substrs, l]) => substrs.split('|').map(s => [s, l]))
-        .reduce((acc, val) => acc.concat(val), []) // .flat() is not supported by IE11
-        .find(([substr]) => innerText.includes(substr))
-    );
+    const matches = langIdStrings.split(',')
+      .map(s => s.split(':'))
+      // .filter(([substrs, l]) => l !== 'or')
+      .map(([substrs, l]) => substrs.split('|').map(s => [s, l]))
+      .reduce((acc, val) => acc.concat(val), []) // .flat() is not supported by IE11 or Node 10
+      .filter(([substr]) => text.includes(substr));
+    if (matches && matches.length) {
+      if (matches.length > 1) {
+        console.log('Matched', matches);
+      }
+      (
+        [[, targetLang]] = matches
+      );
+    }
   }
 
   return normaliseLangCode(targetLang);
@@ -132,7 +155,21 @@ export const getFullyQualifiedPageLang = () => {
   const metadata = {};
 
   // We know that the doc has been translated. Now, let’s find out who translated it.
-  const translator = detectTranslator();
+  let translator = detectTranslator();
+
+  const { hostname } = window.location;
+  if (
+    translator === 'und'
+    && !hostname.includes('sciencedirect')
+  ) {
+    const host = hostname
+      .split('.')
+      .filter(portion => portion.length > 3) // filter out www, com, net, org, co, jp, etc
+      .join('.')
+      .slice(0, 8);
+    translator = host; // BCP-47 extension strings can only be 8 characters max
+    metadata.host = hostname;
+  }
 
   const targetLang = getBaseTargetLang();
 
@@ -154,31 +191,34 @@ export const getFullyQualifiedPageLang = () => {
 };
 
 export const listenForLanguageChange = async ({ timeout = Infinity } = {}) => {
-  let observer;
   if ('MutationObserver' in window) {
-    await Promise.race([
-      sleep(timeout),
-      new Promise((resolve, reject) => {
-        try {
-          observer = new MutationObserver(resolve);
-          observer.observe(
-            document.documentElement,
-            { attributes: true },
-          );
-          observer.observe(
-            document.getElementById(SKIP_TO_MAIN_CONTENT_ID),
-            { attributes: true, childList: true, characterData: true },
-          );
-        } catch (err) {
-          reject(err);
-        } finally {
-          observer.disconnect();
-          observer = null;
-        }
-      }).catch(() => { })
-        .then(sleep(100)) // to give the translator time to do other DOM updates
-        .then()
-    ]);
+    let observer;
+    try {
+      await Promise.race([
+        sleep(timeout),
+        new Promise((resolve, reject) => {
+          try {
+            observer = new MutationObserver(resolve);
+            observer.observe(
+              document.documentElement,
+              { attributes: true },
+            );
+            observer.observe(
+              document.getElementById(SKIP_TO_MAIN_CONTENT_ID),
+              { attributes: true, childList: true, characterData: true },
+            );
+          } catch (err) {
+            reject(err);
+          }
+        }),
+      ]);
+      await sleep(5); // to give the translator time to do other DOM updates
+    } finally {
+      if (observer) {
+        observer.disconnect();
+        observer = null;
+      }
+    }
   }
 };
 

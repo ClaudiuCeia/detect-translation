@@ -28,7 +28,7 @@ const isPageTranslated = () => {
   const { lang: contentLang, innerText } = document.getElementById(SKIP_TO_MAIN_CONTENT_ID);
 
   const translated = (
-    docLang !== SOURCE_LANGUAGE
+    (docLang && docLang !== SOURCE_LANGUAGE)
     || (contentLang && contentLang !== SOURCE_LANGUAGE)
     || innerText !== SKIP_TO_MAIN_CONTENT_TEXT
   );

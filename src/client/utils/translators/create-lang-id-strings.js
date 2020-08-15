@@ -3,33 +3,55 @@ const { safeLoad } = require('js-yaml');
 const cldr = require('cldr');
 const StringSet = require('../StringSet');
 
-const { translations: translationsFromYaml } = safeLoad(fs.readFileSync('./lang-sources.yml'));
+const {
+  source: sourceFromYaml,
+  translations: translationsFromYaml,
+} = safeLoad(fs.readFileSync(`${__dirname}/lang-sources.yml`));
 
-const getAllLangsByNumSpeakers = () => Object.values([ // efficiently extract ordered values from the sparse array
-  ...Object.values(cldr.extractTerritoryInfo())
-    .reduce((result, { literacyPercent = 100, population, languages }) => {
-      languages.forEach(({ id: lang, populationPercent = 100, writingPercent = 100 }) => {
-        lang = lang.replace(/_/g, '-');
-        let langPop = result.get(lang) || 0;
-        langPop += Math.floor(population * populationPercent * literacyPercent * writingPercent / 1000000);
-        result.set(lang, langPop);
-      });
-      return result;
-    }, new Map()),
-].reduce((arr, [l, p]) => {
-  arr[p] = l;
-  return arr;
-}, [])
-  .reverse());
+const getAllLangsByNumSpeakers = () => Object.values(
+  // efficiently extract ordered values from sparse array
+  [
+    ...Object.values(cldr.extractTerritoryInfo())
+      .reduce((result, { literacyPercent = 100, population, languages }) => {
+        languages.forEach(({ id: lang, populationPercent = 100, writingPercent = 100 }) => {
+          lang = lang.replace(/_/g, '-');
+          let langPop = result.get(lang) || 0;
+          langPop += Math.floor(
+            population
+            * populationPercent * literacyPercent * writingPercent
+            / 1000000, // divide the percentages by 100 each (100 * 100 * 100)
+          );
+          result.set(lang, langPop);
+        });
+        return result;
+      }, new Map()),
+  ].reduce((arr, [l, p]) => {
+    arr[p] = l;
+    return arr;
+  }, [])
+    .reverse(),
+);
 
-const getLangsFromYaml = () => {
+const getLangsFromYaml = () => { // eslint-disable-line import/prefer-default-export
   const langs = new Map();
+  const addTranslation = ([l, t]) => {
+    if (!langs.has(l)) langs.set(l, new StringSet());
+    langs.get(l).add(t);
+  };
+  Object.entries(sourceFromYaml).forEach(addTranslation);
   Object.values(translationsFromYaml)
-    .forEach(ts => Object.entries(ts).forEach(([l, t]) => {
-      if (!langs.has(l)) langs.set(l, new StringSet());
-      langs.get(l).add(t);
-    }));
-  return langs;
+    .forEach(ts => Object.entries(ts).forEach(addTranslation));
+  const langsOrderedByNumSpeakers = getAllLangsByNumSpeakers()
+    .reduce((newLs, l) => {
+      if (langs.has(l)) {
+        newLs.set(l, langs.get(l));
+      }
+      return newLs;
+    }, new Map());
+  const langsWithUnknownSpeakers = [...langs]
+    .filter(([l]) => !langsOrderedByNumSpeakers.has(l));
+
+  return new Map([...langsOrderedByNumSpeakers, ...langsWithUnknownSpeakers]);
 };
 
 const getLangIdSubstrings = (langs) => {
@@ -82,10 +104,6 @@ const getLangIdSubstrings = (langs) => {
           idSubstringsMap.get(lang).add(substr);
         }
       });
-      // LOGGING
-      if (allLangSubstrings.has('内')) {
-        console.log(`Lang: ${lang}, substrings:`, allLangSubstrings, `matching against:`, allLangSubstringsToMatchAgainst, ', lang id substrings:', idSubstringsMap.get(lang));
-      }
 
       if (!idSubstringsMap.has(lang)) {
         foundIdSubstringsForAllLangs = false;
@@ -127,39 +145,43 @@ const getLangIdSubstrings = (langs) => {
       }
     });
     if (foundIdSubstringsForAllLangs) {
-      console.log('Found substrings for all langs; breaking!');
       break;
     }
   }
-  return idSubstringsMap;
+  const allLangsByNumSpeakers = getAllLangsByNumSpeakers();
+  return new Map(
+    [...idSubstringsMap].sort(
+      ([l1], [l2]) => {
+        const [i1, i2] = [l1, l2].map((l) => {
+          let i = allLangsByNumSpeakers.indexOf(l);
+          if (i === -1) {
+            i = Infinity;
+          }
+          return i;
+        });
+        return i1 - i2 || 0; // if both are Infinity, i1 - i2 === NaN so return 0 instead.
+      },
+    ),
+  );
 };
 
 const stringifyMap = (stringMap, { separator = ':', or = '|', list = ',' } = {}) => [...stringMap]
   .map(([k, v]) => `${typeof v === 'string' ? v : [...v].join(or)}${separator}${k}`).join(list);
 
-const langs = getLangsFromYaml();
-const idSubstringsMap = getLangIdSubstrings(langs);
-const undetectedLangs = new Map([...langs].filter(([l]) => !idSubstringsMap.has(l)));
-const outputString = stringifyMap(new Map([...idSubstringsMap, ...undetectedLangs]));
+const writeLangIdSubstringMap = () => {
+  const langs = getLangsFromYaml();
+  const idSubstringsMap = getLangIdSubstrings(langs);
+  const undetectedLangs = new Map([...langs].filter(([l]) => !idSubstringsMap.has(l)));
+  const outputString = stringifyMap(new Map([...idSubstringsMap, ...undetectedLangs]));
 
-console.log(outputString);
+  if (outputString.includes("'")) throw new Error('Cannot serialise output string as it contains ')
+  fs.writeFileSync(`${__dirname}/lang-id-strings.js`, `export default '${outputString}';\n`);
+};
 
-fs.writeFileSync('./lang-id-strings.js', `export default '${outputString}';`);
+writeLangIdSubstringMap();
 
-/* const substrings = Object.entries(langs).reduce((allLangsMap, [lang, translations]) => {
-  // Find all the two- and three-character substrings
-
-  // First identify any strings that all the translations have in common before looking in other langs
-
-  return allLangsMap.set(lang, substrs);
-}, new Map());
-
-console.log(langs);
-console.log(substrings); */
-
-// console.log(idSubstringsMap);
-// console.log('Undetected languages:', undetectedLangs);
-// console.log('Output:', outputString);
-//console.log('Language-population map:', getAllLangsByNumSpeakers());
-
-module.exports = StringSet;
+module.exports = {
+  getLangsFromYaml,
+  writeLangIdSubstringMap,
+  translationsFromYaml,
+};

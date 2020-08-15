@@ -3,14 +3,19 @@ import getIbmWatsonTargetLang from './ibm-watson';
 
 const HOSTNAME_TRANSLATOR_MAP = {
   'www.apertium.org': 'apertium',
-  'www.translatoruser-int.com': 'bing',
+  'www.translatoruser-int.com': 'msft',
   'translate.baiducontent.com': 'baidu',
+  'interpreter.caiyunai.com': 'caiyun',
   'translate.googleusercontent.com': 'google-web',
   'gramtrans.com': 'gramtran',
   'papago.naver.net': 'papago',
   'translate.sogoucdn.com': 'sogou-web',
   'z5h64q92x9.net': 'yandex-web',
+  'webtrans.yodao.com': 'youdao',
 };
+
+// Used by is-page-translated, but exported from here as it’s a translator-specific quirk
+export const CAIYUN_TRANSLATION_CLASSNAME = 'cyxy-trs-target';
 
 /**
  * Returns a best guess at the translator which has translated the page.
@@ -35,7 +40,7 @@ const detectTranslator = () => {
     document.querySelector('[_msthash]')
     || document.querySelector('[_msttexthash]')
   ) {
-    return 'mstransl-browser'; // Microsoft Translate extension (legacy Edge and modern Edge)
+    return 'msft-browser'; // Microsoft Translate extension (legacy Edge and modern Edge)
   }
   if (
     document.querySelector('[class^="sg-trans"]')

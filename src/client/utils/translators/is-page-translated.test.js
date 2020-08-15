@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import isPageTranslated from './isPageTranslated';
+import isPageTranslated from './is-page-translated';
 
 describe(__filename, () => {
   afterEach(() => {
