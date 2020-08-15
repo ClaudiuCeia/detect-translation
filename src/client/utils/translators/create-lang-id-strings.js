@@ -39,8 +39,9 @@ const getLangsFromYaml = () => { // eslint-disable-line import/prefer-default-ex
     langs.get(l).add(t);
   };
   Object.entries(sourceFromYaml).forEach(addTranslation);
-  Object.values(translationsFromYaml)
-    .forEach(ts => Object.entries(ts).forEach(addTranslation));
+  Object.entries(translationsFromYaml)
+    .forEach(([l, ts]) => Object.keys(ts).forEach(t => addTranslation([l, t])));
+  console.log(langs);
   const langsOrderedByNumSpeakers = getAllLangsByNumSpeakers()
     .reduce((newLs, l) => {
       if (langs.has(l)) {
