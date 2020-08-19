@@ -15,6 +15,7 @@ const NORMALISE_LANG_MAPPING = {
   deu: 'de', // German (Gramtrans)
   'eng/us': 'en-US', // English (US) (Gramtrans)
   'eng/uk': 'en-GB', // English (UK) (Gramtrans)
+  jw: 'jv', // Javanese (Google)
   kor: 'ko', // Korean (Baidu)
   nor: 'no', // Norwegian (Gramtrans)
   rom: 'ro', // Romanian (Baidu)

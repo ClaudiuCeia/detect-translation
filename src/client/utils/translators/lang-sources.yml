@@ -1,587 +1,732 @@
 source:
   en: Skip to main content
 translations:
-  af:
-    Spring na hoof inhoud: [baidu]
-    Slaan oor na hoofinhoud: [bing, elan, itranslate, sogou, translate]
-    Slaan oor na inhoud: [google, yandex]
-  am:
-    አዲስ ዶሴ ፍጠር: [baidu]
-    ወደ ዋናው ይዘት ዝለል: [google]
-    አዳዲስ ግምገማዎች አሁን ይዘት: [yandex]
-  ar:
-    القفز إلى المحتوى الرئيسي: [baidu]
-    التخطي إلى المحتوى الرئيسي: [bing, elan, reverso, sogou, translate]
-    تخطي إلى المحتوى الرئيسي: [flitto, systran]
-    تخطى إلى المحتوى الرئيسي: [google]
-    التخطي للمحتويات الرئيسية: [ibmwatson]
-    تخطى المحتوى الرئيسي: [itranslate]
-    تخطي المحتوى الرئيسي: [promptone]
-    انتقل إلى المحتوى الرئيسي: [qq, youdao]
-    اقفز إلى المحتوى الرئيسي: [yandex]
-  az:
-    Baş məlumatına atla: [baidu]
-    Əsas məzmuna keçin: [google, itranslate]
-    Əsas məzmuna get: [promptone]
-    Əsas məzmun gedin: [yandex]
-  ba:
-    Беренсе донъя һуғышы ваҡытында ҡулланылған хәрби компас: [baidu]
-    Төп конт күсә: [yandex]
-  be:
-    Перайсці да галоўнага змесціва: [baidu]
-    Перайсці да асноўнага зместу: [google, itranslate]
-    Перайсці да асноўнага кантэнту: [yandex]
-  bg:
-    Преминаване към основното съдържание: [baidu]
-    Прескачане към основното съдържание: [bing, elan, sogou, translate]
-    Преминете към основното съдържание: [google]
-    Пропускане към основното съдържание: [ibmwatson]
-    Прескочи до главното съдържание: [itranslate]
-    Прескачане до основното съдържание: [systran]
-    Отидете на основното съдържание: [yandex]
-  bn:
-    প্রধান বিষয়বস্তুতে যাও: [baidu]
-    প্রধান বিষয়বস্তুতে এড়িয়ে যান: [bing, elan, sogou]
-    স্কিপ করে মূল কন্টেন্ট এ যাও: [google]
-    প্রধান বিষয়বস্তুতে স্কিপ করো: [ibmwatson]
-    মূল বিষয়বস্তুর স্কিপ।: [itranslate]
-    প্রধান বিষয়বস্তুতে যান: [systran]
-  bs:
-    Skoči na glavni sadržaj: [baidu]
-    Preskoči na glavni sadržaj: [bing, elan, ibmwatson, itranslate, sogou, translate, yandex]
-    Prijeđite na glavni sadržaj: [google]
-  ca:
-    Skip a contingut major: [apertium]
-    Passar al contingut principal: [baidu]
-    Salta al contingut principal: [bing, elan, promptone, sogou, translate, yandex]
-    Saltar al contingut principal: [google, itranslate]
-    Omet-ho al contingut principal: [systran]
-  ceb:
-    Tupad ngadto sa main content: [baidu]
-    Laktaw sa panguna nga sulud: [google, itranslate]
-    Laktaw ngadto sa nag-unang mga sulod: [yandex]
-  co:
-    Saltà à u cuntenutu principale: [google]
-  cs:
-    Přejít na hlavní obsah: [baidu]
-    Přeskočit na hlavní obsah: [bing, elan, google, ibmwatson, sogou, systran, translate, yandex]
-    Přeskočit na hlavní: [flitto]
-    Přeskočte na hlavní obsah: [itranslate]
-  cv:
-    Тӗп контент патне куҫ: [yandex]
-  cy:
-    Neidio i'r prif gynnwys: [baidu, bing, elan, google, itranslate, sogou, translate, yandex]
-    Hepgor y prif gynnwys: [ibmwatson]
-  da:
-    Gå til hovedindholdet: [baidu]
-    Gå til hovedindhold: [bing, elan, google, sogou, translate]
-    Sjip til hovedindhold: [gramtrans]
-    Spring til hovedindhold: [ibmwatson, yandex]
-    Skip til hovedindholdet: [itranslate]
-    Gå videre til hovedindholdet: [systran]
-  de:
-    Zum Inhalt überspringen: [baidu]
-    Zum Hauptinhalt springen: [bing, deepl, elan, flitto, google, ibmwatson, sogou, translate]
-    Hören Sie auf den Hauptinhalt: [itranslate]
-    Zum Standard-Inhalt überspringen: [papago]
-    Zum Hauptinhalt hüpfen: [promptone]
-    Zum Inhalt springen: [qq]
-    Direkt zum Inhalt: [reverso]
-    Zu Hauptinhalten springen: [systran]
-    Zum Hauptinhalt überspringen: [yandex]
-    Kommen wir zur hauptsache: [youdao]
-  el:
-    Μετάβαση στο κύριο περιεχόμενο: [baidu, bing, elan, google, ibmwatson, promptone, sogou, systran, translate, yandex]
-    Πηδήξτε το κύριο περιεχόμενο: [itranslate]
-  eo:
-    Preterpasas al ĉefa enhavo: [apertium]
-    Saltu al ĉefa enhavo: [google, itranslate]
-    Transsaltu al ĉefa enhavo: [gramtrans]
-    Iri rekte al ĉefa enhavo: [yandex]
-  es:
-    Skip A contenido principal: [apertium]
-    Salto al fondo: [baidu]
-    Saltar al contenido principal: [bing, deepl, elan, flitto, google, qq, sogou, systran, translate, yandex, youdao]
-    Saltar al contenido principal.: [caiyun]
-    Omitir el contenido principal: [ibmwatson]
-    Salta al contenido principal: [itranslate]
-    Saltarse al contenido principal: [promptone]
-    Pasar al contenido principal: [reverso]
-  et:
-    Ülemine peamisele sisule: [baidu]
-    Mine põhisisu juurde: [bing, elan, sogou, translate]
-    Otse põhisisu juurde: [google]
-    Jäta vahele põhisisu: [ibmwatson]
-    Skip to põhiline sisu: [itranslate]
-    Liigu põhisisu juurde: [systran]
-  eu:
-    Aldatu eduki nagusira: [baidu]
-    Saltatu eduki nagusira: [google, itranslate]
-    Jauzi edukira joan: [yandex]
-  fa:
-    پرت به محتوای اصلی: [baidu]
-    پرش به محتوای اصلی: [bing, elan, sogou, translate, yandex]
-    رفتن به محتوای اصلی: [google, systran]
-    به محتواي اصلي تسليم شو: [itranslate]
-  fi:
-    'Siirry pääasiaan@ info: whatsthis': [baidu]
-    Siirry pääsisältöön: [bing, elan, ibmwatson, sogou, systran, translate]
-    Hyppää pääsisältöön: [flitto, google, itranslate]
-    Siirry sisällön.: [promptone]
-    Siirry pääainesisältöön: [yandex]
-  fr:
-    Sauter sur le contenu principal: [baidu]
-    Passer au contenu principal: [bing, deepl, elan, flitto, google, ibmwatson, papago, qq, sogou, systran, translate, yandex, youdao]
-    Passer au contenu principal.: [caiyun]
-    Passez au contenu principal: [itranslate]
-    Sautiller au contenu principal: [promptone]
-    Aller au contenu principal: [reverso]
-  fil:
-    Maglakbay sa pangunahing nilalaman: [baidu]
-    Lumaktaw sa pangunahing nilalaman: [bing, elan, sogou, systran, translate]
-    Laktawan sa pangunahing nilalaman: [flitto, google, itranslate]
-    Pumunta sa pangunahing nilalaman: [yandex]
-  fj:
-    Levea na lewena levu: [bing, elan, sogou]
-  fy:
-    Nei haad ynhâld oerslaan: [baidu]
-    Gean nei haadynhâld: [google]
-  ga:
-    Léim go príomhábhar: [baidu]
-    Scipeáil chuig an bpríomhábhar: [bing, google, itranslate]
-    Scipeáil chuig an ábhar is mó: [ibmwatson]
-    Léim go dtí an príomhábhar: [yandex]
-  gd:
-    Gearr leum gun phrìomh susbaint: [baidu]
-    Air adhart gu prìomh shusbaint: [google]
-  gl:
-    Salta a contido principal: [apertium]
-    Saltar ao contido principal: [baidu, yandex]
-    Ir ao contido principal: [google, itranslate]
-  gu:
-    મુખ્ય સમાવિષ્ટોમાં છોડો: [baidu]
-    મુખ્ય સામગ્રી પર અવગણો: [bing]
-    મુખ્ય વિષયવસ્તુ પર જાઓ: [google, itranslate, yandex]
-    મુખ્ય સમાવિષ્ટને છોડી દો: [ibmwatson]
-  ha:
-    Ka Shiga zuwa kayan maɓallin: [baidu]
-    Tsallake zuwa babban abun cikin: [google]
-    Tsallake zuwa babban abun ciki: [itranslate]
-  haw:
-    port poiloaʻa moe ema: [baidu]
-    E lele i ka ʻikepili nui: [google]
-  he:
-    לעבור לתוכן העיקרי: [baidu]
-    דילוג לתוכן הראשי: [bing, elan, sogou, translate]
-    דלג לתוכן הראשי: [google, itranslate, systran]
-    דילוג לתוכן העיקרי: [ibmwatson]
-    התוכן העיקרי שסקיפ: [promptone]
-    דלג לתוכן ראשי: [reverso, yandex]
-  hi:
-    मुख्य सामग्री में छोड़ें: [baidu]
-    मुख्य सामग्री पर छोड़ें: [bing, elan, sogou, translate]
-    मुख्य विषयवस्तु में जाएं: [flitto, google]
-    मुख्य सामग्री के लिए छोड़ें: [ibmwatson]
-    स्किप को स्किप के लिए स्किप।: [itranslate]
-    छोड़ें मुख्य सामग्री: [papago]
-    मुख्य सामग्री पर जाएं: [promptone, yandex]
-    छोड़ें को मुख्य अंतर्वस्तु: [qq]
-    मुख्य सामग्री को छोड़ें: [systran]
-  hmn:
-    Hla mus rau cov ntsiab lus tseem ceeb: [baidu, google, itranslate]
-    Hla mus rau cov ntsiab lus: [bing, elan, sogou, translate]
-  hr:
-    Skoči na glavni sadržaj: [baidu]
-    Preskoči na glavni sadržaj: [bing, elan, ibmwatson, itranslate, sogou, systran, translate]
-    Prijeđite na glavni sadržaj: [google]
-    Idite na glavni sadržaj: [yandex]
-  hy:
-    Հիմնական պարունակությունը: [baidu]
-    Անցնել հիմնական բովանդակությանը: [google, itranslate]
-    Գնալ հիմնական բովանդակության: [yandex]
-  jv:
-    Langsung menyang konten utama: [itranslate]
-    Skip kanggo isi utama: [yandex]
-  jw:
-    Langsung menyang konten utama: [google]
-  id:
-    Langkah ke isi utama: [baidu]
-    Loncat ke konten utama: [bing, elan, sogou, translate]
-    Lewati konten utama: [flitto]
-    Lewati ke konten utama: [google, ibmwatson]
-    Melewati konten utama: [itranslate]
-    Merangkak konten dasar: [papago]
-    Melompat ke kandungan utama: [qq]
-    Lompati ke konten utama: [systran]
-    Lewati ke isi utama: [yandex]
-    Lompat ke yang utama: [youdao]
-  ht:
-    Sote kontni prensipal: [bing, elan, sogou, translate]
-    Ale nan kontni prensipal la: [google, itranslate]
-    Sote ale nan kontni prensipal: [yandex]
-  ig:
-    Debata na ndịna nkeisi: [baidu]
-    Gaa masịrị ọdịnaya: [google, itranslate]
-  hu:
-    Ugrás a fő tartalomra: [baidu, bing, elan, ibmwatson, sogou, systran, translate, yandex]
-    Ugrás a tartalomra: [google]
-    Térjünk a lényegre: [itranslate]
-  is:
-    Skipa yfir í aðal innihald: [baidu]
-    Sleppa í aðalefni: [bing, translate]
-    Fara í aðalefni: [google]
-    Skipta yfir ađalinnihaldiđ: [itranslate]
-    Sleppa að aðalefni: [yandex]
-  it:
-    Passa al contenuto principale: [baidu, deepl, google, systran]
-    Passare al contenuto principale: [bing, elan, sogou, translate]
-    Salta al contenuto principale: [flitto, qq, reverso]
-    Salta ai contenuti principali: [ibmwatson]
-    Saltare al contenuto principale: [itranslate]
-    salto al contenuto principale: [papago]
-    Saltare a contenuto principale: [promptone]
-    Vai al contenuto principale: [yandex]
-    Passiamo ora agli elementi principali: [youdao]
-  ja:
-    メインコンテンツにスキップ: [baidu, flitto, google, papago, systran]
-    メイン コンテンツにスキップ: [bing, elan, sogou, translate]
-    メインコンテンツへスキップ: [deepl]
-    メイン・コンテンツにスキップ: [ibmwatson]
-    メインコンテンツにスキップします。: [itranslate]
-    主な内容にスキップしてください: [promptone]
-    メイン　コンテンツにスキップ: [reverso]
-    メインコンテンツへ: [yandex]
-    メインにジャンプする: [youdao]
-  ka:
-    თავიდან შემდგომარებისთვის გადასვლა: [baidu]
-    მთავარ შინაარსზე გადასვლა: [google, itranslate]
-    მთავარი კონტენტის გამოტოვება: [yandex]
-  kk:
-    Негізгі мазмұнына өту: [baidu]
-    Негізгі мазмұнға өткізіп жіберу: [bing]
-    Негізгі мазмұнға өту: [google, itranslate]
-    Негізгі мазмұны өту: [promptone]
-    Перейти к основному контентке: [yandex]
-  vi:
-    Bỏ qua nội dung chính: [baidu, google, ibmwatson]
-    Bỏ qua đến nội dung chính: [bing, elan, sogou, translate]
-    Chuyển đến nội dung chính: [flitto]
-    Chuyển qua nội dung chính: [itranslate]
-    Nhảy qua nội dung chính: [papago]
-    Nhảy vào nội dung chính.: [qq]
-    Bỏ qua nội dung chính: [systran]
-    Bỏ vào nội dung chính: [yandex]
-    Chuyển sang chủ đề chính: [youdao]
-  mr:
-    मुख्य अनुक्रमणिकाकडे जा: [baidu]
-    मुख्य सामग्रीवगळा: [bing]
-    मुख्य सामग्रीवर जा: [google, itranslate]
-    मुख्य घटकाला जा: [yandex]
-  mhr:
-    Куснаш основного контента: [yandex]
-  kk-Latn:
-    Pereıtı k osnovnomý kontentke: [yandex]
-  kn:
-    ಮುಖ್ಯ ವಿಷಯಗಳಿಗೆ ಬದಲಾಯಿಸು: [baidu]
-    ಮುಖ್ಯ ವಿಷಯಕ್ಕೆ ಬಿಟ್ಟುಬಿಡು: [bing]
-    ಮುಖ್ಯ ವಿಷಯಕ್ಕೆ ತೆರಳಿ: [google, itranslate, yandex]
-  ko:
-    주요 내용 으로 건 너 뛰 기: [baidu]
-    주요 콘텐츠로 건너뛰기: [bing, elan, sogou, translate]
-    주요 내용으로 건너뛰기: [flitto]
-    메인 컨텐츠로 가기: [google]
-    기본 컨텐츠로 건너뜀: [ibmwatson]
-    메인 컨텐츠로 넘어가죠: [itranslate]
-    기본 콘텐츠로 건너뛰기: [papago]
-    주요 내용으로 건너띄기: [promptone]
-    주 콘텐츠로 건너뛰기: [systran]
-    주 내용으로 건너뛰기: [yandex]
-    주 내용으로 가기: [youdao]
-  mn:
-    Үндсэн агуулга руу шилжих: [google, itranslate]
-    Үндсэн агуулга руу очих: [yandex]
-  ml:
-    പ്രധാനപ്പെട്ട വസ്തുക്കളിലേക്ക് ഉപേക്ഷിക്കുക: [baidu]
-    പ്രധാന ഉള്ളടക്കത്തിലേക്ക് പോകുക: [bing, google, itranslate]
-    പ്രധാന ഉള്ളടക്കം ഉപേക്ഷിക്കുക Name: [ibmwatson]
-  lb:
-    Wiessel zum Haaptinhalt: [google]
-    Zum Hauptinhalt sprangen: [yandex]
-  ku:
-    Biçe naveroka hovedê: [baidu]
-    Vegere naveroka sereke: [google]
-  ky:
-    Башка мазмунуна өтүү: [baidu]
-    Негизги мазмунга өтүңүз: [google]
-    Негизги контентке өтүү: [yandex]
-  mi:
-    Tīpoka ki te ihirangi matua: [bing, yandex]
-    Haere ki te ihirangi matua: [google, itranslate]
-  lo:
-    ທ້າຍໄປບັນດ້ວຍຄວາມຄ່າຕ່າງຫລັກ: [baidu]
-    ຂ້າມໄປຫາເນື້ອຫາຫຼັກ: [google, itranslate]
-    ໃຫ້ຂ້າມໄປຫາເນື້ອໃນຕົ້ນຕໍ: [yandex]
-  mk:
-    Прескокни на главната содржина: [baidu]
-    Оди до главната содржина: [google]
-    Префрли на главната содржина: [itranslate]
-    Скокни до главната содржина: [yandex]
-  lt:
-    Perkelti prie pagrindinio turinio: [baidu]
-    Pereiti prie pagrindinio turinio: [bing, elan, google, ibmwatson, sogou, translate]
-    Skipas į pagrindinį turinį: [itranslate]
-  km:
-    រំលង​ទៅ​មាតិកា​មេ​: [baidu]
-    រំលងទៅមាតិកាមេ: [google, yandex]
-    រំលងទៅមាតិកាសំខាន់: [itranslate]
-  lv:
-    Pāriet uz galveno saturu: [baidu, bing, elan, google, sogou, systran, translate, yandex]
-    Izlaist galveno saturu: [ibmwatson]
-    Skip uz galveno saturu: [itranslate]
-  lzh:
-    投身: [baidu]
-  mg:
-    Alefa mankany amin'ny votoaty fototra: [baidu]
-    Azon amin' ny zavatra fototra: [bing, elan, sogou]
-    Hanketo ny votoatiny lehibe: [google, itranslate]
-    Hijery ny tena afa-po: [yandex]
-  ps:
-    اره منځپانګه ته ونجول: [baidu]
-    اصلي مینځپانګې ته لاړشئ: [google]
-  sah:
-    Сүрүн контреҥҥа көс: [yandex]
-  pap:
-    Bula den kontenido prinsipal: [yandex]
-  mt:
-    Għassal għall-kontenut ewlieni: [baidu]
-    Aqbeż għall-kontenut ewlieni: [bing, elan, ibmwatson, sogou, translate]
-    Aqbeż għall-kontenut prinċipali: [google, itranslate, yandex]
-  my:
-    အဓိက အကြောင်းအရာများကို သွားပါ: [baidu]
-    အဓိကအကြောင်းအရာ Skip: [itranslate]
-    အဓိကအကြောင်းအရာ: [yandex]
-  mrj:
-    Ванжаш тӹнг контент: [yandex]
-  nb:
-    Hopp til hovedinnholdet: [baidu]
-    Gå til hovedinnhold: [bing, elan]
-    Hopp til hovedinnhold: [ibmwatson]
-  nl:
-    Ga naar de belangrijkste inhoud: [baidu]
-    Doorgaan naar hoofdinhoud: [bing, elan, sogou, translate]
-    Ga naar de hoofdinhoud: [deepl, flitto]
-    Ga naar hoofdinhoud: [google]
-    Naar hoofdcontent gaan: [ibmwatson]
-    Sla over naar de hoofdinhoud: [itranslate]
-    Ga naar de inhoudelijke: [promptone]
-    Overslaan en naar de inhoud: [reverso]
-    Overslaan naar hoofdinhoud: [systran]
-    Naar hoofdinhoud overslaan: [yandex]
-  no:
-    Skip til hovedinnholdet: [baidu, itranslate]
-    Hopp til hovedinnhold: [google]
-    Hopp tau til hovedinnhold: [gramtrans]
-    Gå til hovedinnhold: [sogou, systran, translate]
-    Hopp til hovedinnholdet: [yandex]
-  ne:
-    मुख्य सामग्रीमा फड्काउनुहोस्: [baidu]
-    मुख्य सामग्रीमा स्किप गर्नुहोस्: [google, itranslate]
-    मुख्य विषयवस्तुमा फड्काउनुहोस्: [ibmwatson]
-    मुख्य सामग्री गर्न छोड्नुहोस्: [yandex]
-  or:
-    ମୂଖ୍ୟ ବିଷୟବସ୍ତୁକୁ ଯାଆନ୍ତୁ: [baidu]
-    ମୁଖ୍ୟ ବିଷୟବସ୍ତୁକୁ ଯାଆନ୍ତୁ |: [google]
-  rw:
-    Kuri Ibikubiyemo: [baidu]
-    Jya ku bintu nyamukuru: [google]
-  pa:
-    ਮੁੱਖ ਸਮੱਗਰੀ ਵਿੱਚ ਛੱਡੋ: [baidu]
-    ਮੁੱਖ ਸਮੱਗਰੀ ਲਈ ਛੱਡ ਦਿਓ: [bing]
-    ਮੁੱਖ ਸਮੱਗਰੀ ਤੇ ਜਾਓ: [google, itranslate]
-    ਮੁੱਖ ਸਮੱਗਰੀ ਨੂੰ ਕਰਨ ਲਈ ਛੱਡੋ: [yandex]
-  pl:
-    Przejdź do głównej zawartości: [baidu, bing, elan, flitto, google, reverso, sogou, systran, translate]
-    Przejdź do głównej treści: [deepl, ibmwatson, itranslate, yandex]
-  ny:
-    Pitani ku nkhani zazikuluzikulu: [google, itranslate]
-  otq:
-    Saltar ar contenido principal: [bing, elan, sogou]
-  pt:
-    Saltar ao conteúdo principal: [baidu]
-    Pular para o conteúdo principal: [bing, deepl, elan, sogou, translate]
-    Ir para o conteúdo principal: [flitto, google, ibmwatson, systran]
-    Pule para o conteúdo principal: [itranslate, papago]
-    Omitir ao conteúdo principal: [promptone]
-    Saltar para o Conteúdo Principal: [qq]
-    Passar para o conteúdo principal: [reverso]
-    Saltar para o conteúdo principal: [yandex, youdao]
-  ms:
-    Langkau ke kandungan utama: [baidu, bing, elan, flitto, google, ibmwatson, sogou, systran, translate]
-    Pergi ke kandungan utama: [itranslate]
-    Melompat ke kandungan utama: [qq]
-    Skip untuk utama kandungan: [yandex]
-  ro:
-    Treci la conținutul principal: [baidu, yandex]
-    Salt la conținutul principal: [bing, elan, google, sogou, translate]
-    Salt la conţinutul principal: [ibmwatson]
-    Treci la conţinutul principal: [itranslate]
-    Treceți la conținutul principal: [systran]
-  ru:
-    перейти к основному содержанию: [baidu, promptone, qq]
-    Перейти к основному контенту: [bing, elan, sogou, translate, yandex]
-    Перейти к основному содержанию.: [caiyun]
-    Перейти к основному содержанию: [deepl, flitto, google]
-    Перейти к основному содержимому: [ibmwatson, systran]
-    Пропустите основное содержание: [itranslate]
-    Пропустить к содержимому по умолчанию: [papago]
-    переходить к основному содержанию: [reverso]
-    Переходи к главному: [youdao]
-  sd:
-    مواد کي ڇڏيو: [baidu]
-    مواد کي ڇڏي ڏيو: [google]
-  si:
-    ප්‍රධාන අන්තර්ගතයට යන්න: [google, itranslate]
-    ප්රධාන අන්තර්ගතයට යන්න: [ibmwatson]
-    යන්න ප්රධාන අන්තර්ගතයට යන්න: [yandex]
-  sk:
-    Preskočiť k hlavnému obsahu: [baidu]
-    Preskočiť na hlavný obsah: [bing, elan, google, ibmwatson, sogou, systran, translate, yandex]
-    Preskoč na hlavný obsah: [itranslate]
-  sl:
-    Preskoči na glavno vsebino: [baidu, bing, elan, ibmwatson, itranslate, sogou, translate, yandex]
-    Preskočite na glavno vsebino: [google]
-  sm:
-    Alu i le anotusi autu: [bing, elan, sogou]
-    Skip to mea autu: [google]
-  sn:
-    Gadzirira kusvikira kumaguta amakuru: [baidu]
-    Skip to main theme: [google]
-  so:
-    Ku wareeji waxyaabaha muhiimka ah: [baidu]
-    U gudub nuxurka ugu muhiimsan: [google]
-    Ka bood waxyaabaha ugu muhiimsan: [itranslate]
-  sq:
-    Kalo tek përmbajtja kryesore: [baidu, google]
-    Kalo në përmbajtjen kryesore: [itranslate, systran]
-    Kalo tek përmbajtja qendrore: [yandex]
-  st:
-    Fetela ho litaba tsa sehlooho: [google, itranslate]
-  sr:
-    Прескочите на главни садржај: [baidu]
-    Пређи на главни садржај: [bing, elan, google, systran]
-    Прескочи на главни садржај: [ibmwatson, translate]
-    Пребаците на главни садржај: [itranslate]
-    Иди на главни садржај: [yandex]
-  sr-Latn:
-    Skoči na glavni sadržaj: [baidu]
-    Pređi na glavni sadržaj: [bing, elan, sogou, translate]
-  sv:
-    Gå över till huvudinnehållet: [baidu]
-    Gå till huvudinnehållet: [bing, elan, ibmwatson, sogou, translate]
-    Hoppa till huvudinnehåll: [flitto, google, yandex]
-    Sjippe till huvudinnehåll: [gramtrans]
-    Skippa till huvudinnehållet: [itranslate]
-    Hoppa till huvudinnehållet: [systran]
-  sw:
-    Kuacha kwenye maudhui makuu: [baidu]
-    Ruka kwa maudhui makuu: [bing, elan, sogou]
-    Skip kwa yaliyomo kuu: [flitto, google]
-    Ruka kwenye maudhui makuu: [itranslate]
-    Ruka kwa yaliyomo kuu: [yandex]
-  su:
-    Luncat ka eusi utama: [google, itranslate]
-    Skip to eusi utama: [yandex]
-  ta:
-    முக்கிய உள்ளடக்கத்திற்கு விடு: [baidu]
-    முக்கிய உள்ளடக்கத்திற்கு ச்செல்ல: [bing, translate]
-    முக்கிய உள்ளடக்கத்திற்கு செல்க: [google, yandex]
-    முக்கிய உள்ளடக்கத்துக்கு துடைக்க: [ibmwatson]
-    முக்கிய உள்ளடக்கத்திற்கு தவிர்: [itranslate]
-    முக்கிய உள்ளடக்கத்திற்குத் தவிர்: [systran]
-  th:
-    ข้ามไปยังเนื้อหาหลัก: [baidu, bing, elan, ibmwatson, papago, sogou, systran, translate]
-    ข้ามไปที่เนื้อหาหลัก: [flitto, google]
-    ข้ามไปหาเนื้อหาหลัก: [itranslate]
-    กระโดดไปยังเนื้อหาหลัก: [qq]
-    ข้ามไปตอนหลักขอเนื้อหา: [yandex]
-  tk:
-    Esasy Mazmunlar: [baidu]
-    Esasy mazmuna geçiň: [google]
-    Esasy mazmuna geçmek: [promptone]
-  tg:
-    Гузариш ба мӯҳтавои асосӣ: [baidu]
-    Гузаштан ба мундариҷаи асосӣ: [google, itranslate]
-    Гузаштан ба контенту асосӣ: [yandex]
-  te:
-    ముఖ్య సారములకు వెళ్ళుము: [baidu]
-    ప్రధాన విషయానికి వెళ్లండి: [bing]
-    ప్రధాన కంటెంట్‌కు దాటవేయి: [google, itranslate]
-    ముఖ్యమైన సారాంశమునకు చేర్చు: [ibmwatson]
-    ప్రధాన కు దాటివెయ్యండి: [yandex]
-  to:
-    Hiki fakalaka ki he tefitoʻi meʻa: [bing, elan, sogou]
-  tr:
-    Ana içeriğe geç: [baidu, flitto, google, itranslate]
-    Ana içeriğe atla: [bing, elan, ibmwatson, qq, reverso, sogou, systran, translate, yandex]
-    Ana içeriğe git: [promptone]
-  tt:
-    Төп эчтәлеккә күчү: [google, promptone]
-    Төп контентка күчү: [yandex]
-  ty:
-    Haapae i te mau mea tumu: [bing, elan, sogou]
-  udm:
-    Валтӥсь bildirmek доры выжиз: [yandex]
-  uk:
-    Перейти до головного вмісту: [baidu]
-    Перейти до основного вмісту: [bing, elan, google, ibmwatson, sogou, systran, translate]
-    Передайте информацию: [itranslate]
-    Перейти до основного змістом: [promptone]
-    Перейти до основного контенту: [yandex]
-  ug:
-    ئاساسلىق مەزمۇنغا ئاتلاڭ: [google]
-  ur:
-    منظم منصوبے پر چھوڑ دیں: [baidu]
-    اہم مواد پر جائیں: [bing, elan, google, ibmwatson, itranslate, sogou, translate]
-    مرکزی مشمول پر جائیں: [systran]
-    کو چھوڑ کرنے کے لئے اہم مواد: [yandex]
-  uz:
-    Asosiy tarkibga oʻtish: [baidu]
-    Asosiy mundarijaga: [google, itranslate]
-    Asosiy mazmunga o‘tish: [promptone]
-    Asosiy tarkibga o'tish: [yandex]
-  uz-Cyrl:
-    Асосий таркибга ўтиш: [yandex]
-  xh:
-    Tshintshela kwisiqulathi seefayili esikhulu: [baidu]
-    Yiya kumxholo ophambili: [google]
-    Tsibela engundoqo isiqulatho: [yandex]
-  yi:
-    היט אױף: [baidu]
-    האָפּקען צו הויפּט אינהאַלט: [google, itranslate]
-    האָפּקען צו הויפּט צופרידן: [yandex]
-  yo:
-    Yọ sí àkóónú gangan: [baidu]
-    Rekọja si akọkọ akoonu: [google, itranslate]
-  yua:
-    A puulkaba ichil le contenido noj bejo': [bing, elan, sogou, translate]
-  yue:
-    跳到主要內容。: [bing, elan, sogou]
-    跳到主體內容。: [itranslate]
-  yue-Hans:
-    惊到主要内容: [baidu]
-  zh:
-    跳到主要内容: [baidu, bing, deepl, elan, google, promptone, qihoo360, qq, sogou, translate, yandex]
-    跳转到主要内容: [caiyun]
-    跳转至主要内容: [flitto, ibmwatson, youdao]
-    跳到主体内容。: [itranslate]
-    跳至主要内容: [papago]
-    跳至主内容: [reverso, systran]
-  zh-Hant:
-    跳到主要內容: [baidu, flitto, google, ibmwatson]
-    跳到主要內容。: [bing, elan, sogou, translate]
-    跳到主體內容。: [itranslate]
-    跳至主要內容: [papago]
-    跳至主內容: [systran]
-  zu:
-    Yeqela ekuqukethweni okukhulu: [baidu]
-    Yeqela kokuqukethwe okuyinhloko: [google, itranslate]
+  page:
+    af: # Afrikaans
+      Spring na hoof inhoud: [baidu]
+      Slaan oor na hoofinhoud: [bing, elan, itranslate, sogou, translate]
+      Slaan oor na inhoud: [google, yandex]
+    am: # Amharic
+      አዲስ ዶሴ ፍጠር: [baidu]
+      ወደ ዋናው ይዘት ዝለል: [google]
+      አዳዲስ ግምገማዎች አሁን ይዘት: [yandex]
+    ar: # Arabic
+      القفز إلى المحتوى الرئيسي: [baidu]
+      التخطي إلى المحتوى الرئيسي: [bing, elan, reverso, sogou, translate]
+      تخطي إلى المحتوى الرئيسي: [flitto, systran]
+      تخطى إلى المحتوى الرئيسي: [google]
+      التخطي للمحتويات الرئيسية: [ibmwatson]
+      تخطى المحتوى الرئيسي: [itranslate]
+      تخطي المحتوى الرئيسي: [promptone]
+      انتقل إلى المحتوى الرئيسي: [qq, youdao]
+      اقفز إلى المحتوى الرئيسي: [yandex]
+    az: # Azerbaijani
+      Baş məlumatına atla: [baidu]
+      Əsas məzmuna keçin: [google, itranslate]
+      Əsas məzmuna get: [promptone]
+      Əsas məzmun gedin: [yandex]
+    ba: # Bashkir
+      Беренсе донъя һуғышы ваҡытында ҡулланылған хәрби компас: [baidu]
+      Төп конт күсә: [yandex]
+    be: # Belorusian
+      Перайсці да галоўнага змесціва: [baidu]
+      Перайсці да асноўнага зместу: [google, itranslate]
+      Перайсці да асноўнага кантэнту: [yandex]
+    bg: # Bulgarian
+      Преминаване към основното съдържание: [baidu]
+      Прескачане към основното съдържание: [bing, elan, sogou, translate]
+      Преминете към основното съдържание: [google]
+      Пропускане към основното съдържание: [ibmwatson]
+      Прескочи до главното съдържание: [itranslate]
+      Прескачане до основното съдържание: [systran]
+      Отидете на основното съдържание: [yandex]
+    bn: # Bangla, Bengali
+      প্রধান বিষয়বস্তুতে যাও: [baidu]
+      প্রধান বিষয়বস্তুতে এড়িয়ে যান: [bing, elan, sogou]
+      স্কিপ করে মূল কন্টেন্ট এ যাও: [google]
+      প্রধান বিষয়বস্তুতে স্কিপ করো: [ibmwatson]
+      মূল বিষয়বস্তুর স্কিপ।: [itranslate]
+      প্রধান বিষয়বস্তুতে যান: [systran]
+    bs: # Bosnian
+      Skoči na glavni sadržaj: [baidu]
+      Preskoči na glavni sadržaj: [bing, elan, ibmwatson, itranslate, sogou, translate, yandex]
+      Prijeđite na glavni sadržaj: [google]
+    ca: # Catalan
+      Skip a contingut major: [apertium]
+      Passar al contingut principal: [baidu]
+      Salta al contingut principal: [bing, elan, promptone, sogou, translate, yandex]
+      Saltar al contingut principal: [google, itranslate]
+      Omet-ho al contingut principal: [systran]
+    ceb: # Cebuano
+      Tupad ngadto sa main content: [baidu]
+      Laktaw sa panguna nga sulud: [google, itranslate]
+      Laktaw ngadto sa nag-unang mga sulod: [yandex]
+    co: # Corsican
+      Saltà à u cuntenutu principale: [google]
+    cs: # Czech
+      Přejít na hlavní obsah: [baidu]
+      Přeskočit na hlavní obsah: [bing, elan, google, ibmwatson, sogou, systran, translate, yandex]
+      Přeskočit na hlavní: [flitto]
+      Přeskočte na hlavní obsah: [itranslate]
+    cv: # Chuvash
+      Манӑҫла ҫӳлӗме упра: [baidu]
+      Тӗп контент патне куҫ: [yandex]
+    cy: # Welsh
+      Neidio i'r prif gynnwys: [baidu, bing, elan, google, itranslate, sogou, translate, yandex]
+      Hepgor y prif gynnwys: [ibmwatson]
+    da: # Danish
+      Gå til hovedindholdet: [baidu]
+      Gå til hovedindhold: [bing, elan, google, sogou, translate]
+      Sjip til hovedindhold: [gramtrans]
+      Spring til hovedindhold: [ibmwatson, yandex]
+      Skip til hovedindholdet: [itranslate]
+      Gå videre til hovedindholdet: [systran]
+    de: # German
+      Zum Inhalt überspringen: [baidu]
+      Zum Hauptinhalt springen: [bing, deepl, elan, flitto, google, ibmwatson, sogou, translate]
+      Hören Sie auf den Hauptinhalt: [itranslate]
+      Zum Standard-Inhalt überspringen: [papago]
+      Zum Hauptinhalt hüpfen: [promptone]
+      Zum Inhalt springen: [qq]
+      Direkt zum Inhalt: [reverso]
+      Zu Hauptinhalten springen: [systran]
+      Zum Hauptinhalt überspringen: [yandex]
+      Kommen wir zur hauptsache: [youdao]
+    el: # Greek
+      Μετάβαση στο κύριο περιεχόμενο: [baidu, bing, elan, google, ibmwatson, promptone, sogou, systran, translate, yandex]
+      Πηδήξτε το κύριο περιεχόμενο: [itranslate]
+    eo: # Esperanto
+      Preterpasas al ĉefa enhavo: [apertium]
+      Saltu al ĉefa enhavo: [google, itranslate]
+      Transsaltu al ĉefa enhavo: [gramtrans]
+      Iri rekte al ĉefa enhavo: [yandex]
+    es: # Spanish
+      Skip A contenido principal: [apertium]
+      Salto al fondo: [baidu]
+      Saltar al contenido principal: [bing, deepl, elan, flitto, google, qq, sogou, systran, translate, yandex, youdao]
+      Saltar al contenido principal.: [caiyun]
+      Omitir el contenido principal: [ibmwatson]
+      Salta al contenido principal: [itranslate]
+      Saltarse al contenido principal: [promptone]
+      Pasar al contenido principal: [reverso]
+    et: # Estonian
+      Ülemine peamisele sisule: [baidu]
+      Mine põhisisu juurde: [bing, elan, sogou, translate]
+      Otse põhisisu juurde: [google]
+      Jäta vahele põhisisu: [ibmwatson]
+      Skip to põhiline sisu: [itranslate]
+      Liigu põhisisu juurde: [systran]
+    eu: # Basque
+      Aldatu eduki nagusira: [baidu]
+      Saltatu eduki nagusira: [google, itranslate]
+      Jauzi edukira joan: [yandex]
+    fa: # Farsi/Persian
+      پرت به محتوای اصلی: [baidu]
+      پرش به محتوای اصلی: [bing, elan, sogou, translate, yandex]
+      رفتن به محتوای اصلی: [google, systran]
+      به محتواي اصلي تسليم شو: [itranslate]
+    fi: # Finnish
+      Siirry pääasiaan: [baidu] # followed by '@ info: whatsthis' (removed as clearly not Finnish)
+      Siirry pääsisältöön: [bing, elan, ibmwatson, sogou, systran, translate]
+      Hyppää pääsisältöön: [flitto, google, itranslate]
+      Siirry sisällön.: [promptone]
+      Siirry pääainesisältöön: [yandex]
+    fr: # French
+      Sauter sur le contenu principal: [baidu]
+      Passer au contenu principal: [bing, deepl, elan, flitto, google, ibmwatson, papago, qq, sogou, systran, translate, yandex, youdao]
+      Passer au contenu principal.: [caiyun]
+      Passez au contenu principal: [itranslate]
+      Sautiller au contenu principal: [promptone]
+      Aller au contenu principal: [reverso]
+    fil: # Filipino/Tagalog
+      Maglakbay sa pangunahing nilalaman: [baidu]
+      Lumaktaw sa pangunahing nilalaman: [bing, elan, sogou, systran, translate]
+      Laktawan sa pangunahing nilalaman: [flitto, google, itranslate]
+      Pumunta sa pangunahing nilalaman: [yandex]
+    fj: # Fijian
+      Levea na lewena levu: [bing, elan, sogou]
+    fy: # Western Frisian
+      Nei haad ynhâld oerslaan: [baidu]
+      Gean nei haadynhâld: [google]
+    ga: # Irish
+      Léim go príomhábhar: [baidu]
+      Scipeáil chuig an bpríomhábhar: [bing, google, itranslate]
+      Scipeáil chuig an ábhar is mó: [ibmwatson]
+      Léim go dtí an príomhábhar: [yandex]
+    gd: # Scottish Gaelic
+      Gearr leum gun phrìomh susbaint: [baidu]
+      Air adhart gu prìomh shusbaint: [google]
+    gl: # Galician
+      Salta a contido principal: [apertium]
+      Saltar ao contido principal: [baidu, yandex]
+      Ir ao contido principal: [google, itranslate]
+    gu: # Gujarati
+      મુખ્ય સમાવિષ્ટોમાં છોડો: [baidu]
+      મુખ્ય સામગ્રી પર અવગણો: [bing]
+      મુખ્ય વિષયવસ્તુ પર જાઓ: [google, itranslate, yandex]
+      મુખ્ય સમાવિષ્ટને છોડી દો: [ibmwatson]
+    ha: # Hausa
+      Ka Shiga zuwa kayan maɓallin: [baidu]
+      Tsallake zuwa babban abun cikin: [google]
+      Tsallake zuwa babban abun ciki: [itranslate]
+    haw: # Hawaiian
+      port poiloaʻa moe ema: [baidu]
+      E lele i ka ʻikepili nui: [google]
+    he: # Hebrew
+      לעבור לתוכן העיקרי: [baidu]
+      דילוג לתוכן הראשי: [bing, elan, sogou, translate]
+      דלג לתוכן הראשי: [google, itranslate, systran]
+      דילוג לתוכן העיקרי: [ibmwatson]
+      התוכן העיקרי שסקיפ: [promptone]
+      דלג לתוכן ראשי: [reverso, yandex]
+    hi: # Hindi
+      मुख्य सामग्री में छोड़ें: [baidu]
+      मुख्य सामग्री पर छोड़ें: [bing, elan, sogou, translate]
+      मुख्य विषयवस्तु में जाएं: [flitto, google]
+      मुख्य सामग्री के लिए छोड़ें: [ibmwatson]
+      स्किप को स्किप के लिए स्किप।: [itranslate]
+      छोड़ें मुख्य सामग्री: [papago]
+      मुख्य सामग्री पर जाएं: [promptone, yandex]
+      छोड़ें को मुख्य अंतर्वस्तु: [qq]
+      मुख्य सामग्री को छोड़ें: [systran]
+    hmn: # Hmong (use hmn instead of mww)
+      Hla mus rau cov ntsiab lus tseem ceeb: [baidu, google, itranslate]
+      Hla mus rau cov ntsiab lus: [bing, elan, sogou, translate]
+    hr: # Croatian
+      Skoči na glavni sadržaj: [baidu]
+      Preskoči na glavni sadržaj: [bing, elan, ibmwatson, itranslate, sogou, systran, translate]
+      Prijeđite na glavni sadržaj: [google]
+      Idite na glavni sadržaj: [yandex]
+    ht: # Haitian Creole
+      Sote kontni prensipal: [bing, elan, sogou, translate]
+      Ale nan kontni prensipal la: [google, itranslate]
+      Sote ale nan kontni prensipal: [yandex]
+    hu: # Hungarian
+      Ugrás a fő tartalomra: [baidu, bing, elan, ibmwatson, sogou, systran, translate, yandex]
+      Ugrás a tartalomra: [google]
+      Térjünk a lényegre: [itranslate]
+    hy: # Armenian
+      Հիմնական պարունակությունը: [baidu]
+      Անցնել հիմնական բովանդակությանը: [google, itranslate]
+      Գնալ հիմնական բովանդակության: [yandex]
+    id: # Indonesian
+      Langkah ke isi utama: [baidu]
+      Loncat ke konten utama: [bing, elan, sogou, translate]
+      Lewati konten utama: [flitto]
+      Lewati ke konten utama: [google, ibmwatson]
+      Melewati konten utama: [itranslate]
+      Merangkak konten dasar: [papago]
+      Melompat ke kandungan utama: [qq]
+      Lompati ke konten utama: [systran]
+      Lewati ke isi utama: [yandex]
+      Lompat ke yang utama: [youdao]
+    ig: # Igbo
+      Debata na ndịna nkeisi: [baidu]
+      Gaa masịrị ọdịnaya: [google, itranslate]
+    is: # Icelandic
+      Skipa yfir í aðal innihald: [baidu]
+      Sleppa í aðalefni: [bing, translate]
+      Fara í aðalefni: [google]
+      Skipta yfir ađalinnihaldiđ: [itranslate]
+      Sleppa að aðalefni: [yandex]
+    it: # Italian
+      Passa al contenuto principale: [baidu, deepl, google, systran]
+      Passare al contenuto principale: [bing, elan, sogou, translate]
+      Salta al contenuto principale: [flitto, qq, reverso]
+      Salta ai contenuti principali: [ibmwatson]
+      Saltare al contenuto principale: [itranslate]
+      salto al contenuto principale: [papago]
+      Saltare a contenuto principale: [promptone]
+      Vai al contenuto principale: [yandex]
+      Passiamo ora agli elementi principali: [youdao]
+    ja: # Japanese
+      メインコンテンツにスキップ: [baidu, flitto, google, papago, systran]
+      メイン コンテンツにスキップ: [bing, elan, sogou, translate]
+      メインコンテンツへスキップ: [deepl]
+      メイン・コンテンツにスキップ: [ibmwatson]
+      メインコンテンツにスキップします。: [itranslate]
+      主な内容にスキップしてください: [promptone]
+      メイン　コンテンツにスキップ: [reverso]
+      メインコンテンツへ: [yandex]
+      メインにジャンプする: [youdao]
+    jv: # Javanese
+      Langsung menyang konten utama: [google, itranslate]
+      Skip kanggo isi utama: [yandex]
+    ka: # Georgian
+      თავიდან შემდგომარებისთვის გადასვლა: [baidu]
+      მთავარ შინაარსზე გადასვლა: [google, itranslate]
+      მთავარი კონტენტის გამოტოვება: [yandex]
+    kk: # Kazakh
+      Негізгі мазмұнына өту: [baidu]
+      Негізгі мазмұнға өткізіп жіберу: [bing]
+      Негізгі мазмұнға өту: [google, itranslate]
+      Негізгі мазмұны өту: [promptone]
+      Перейти к основному контентке: [yandex]
+    kk-Latn: # Kazakh (Latin)
+      Pereıtı k osnovnomý kontentke: [yandex]
+    km:
+      រំលង​ទៅ​មាតិកា​មេ​: [baidu]
+      រំលងទៅមាតិកាមេ: [google, yandex]
+      រំលងទៅមាតិកាសំខាន់: [itranslate]
+    kn: # Kannada
+      ಮುಖ್ಯ ವಿಷಯಗಳಿಗೆ ಬದಲಾಯಿಸು: [baidu]
+      ಮುಖ್ಯ ವಿಷಯಕ್ಕೆ ಬಿಟ್ಟುಬಿಡು: [bing]
+      ಮುಖ್ಯ ವಿಷಯಕ್ಕೆ ತೆರಳಿ: [google, itranslate, yandex]
+    ko: # Korean
+      주요 내용 으로 건 너 뛰 기: [baidu]
+      주요 콘텐츠로 건너뛰기: [bing, elan, sogou, translate]
+      주요 내용으로 건너뛰기: [flitto]
+      메인 컨텐츠로 가기: [google]
+      기본 컨텐츠로 건너뜀: [ibmwatson]
+      메인 컨텐츠로 넘어가죠: [itranslate]
+      기본 콘텐츠로 건너뛰기: [papago]
+      주요 내용으로 건너띄기: [promptone]
+      주 콘텐츠로 건너뛰기: [systran]
+      주 내용으로 건너뛰기: [yandex]
+      주 내용으로 가기: [youdao]
+    ku:
+      Biçe naveroka hovedê: [baidu]
+      Vegere naveroka sereke: [google]
+    ky:
+      Башка мазмунуна өтүү: [baidu]
+      Негизги мазмунга өтүңүз: [google]
+      Негизги контентке өтүү: [yandex]
+    lb:
+      Wiessel zum Haaptinhalt: [google]
+      Zum Hauptinhalt sprangen: [yandex]
+    lo:
+      ທ້າຍໄປບັນດ້ວຍຄວາມຄ່າຕ່າງຫລັກ: [baidu]
+      ຂ້າມໄປຫາເນື້ອຫາຫຼັກ: [google, itranslate]
+      ໃຫ້ຂ້າມໄປຫາເນື້ອໃນຕົ້ນຕໍ: [yandex]
+    lt:
+      Perkelti prie pagrindinio turinio: [baidu]
+      Pereiti prie pagrindinio turinio: [bing, elan, google, ibmwatson, sogou, translate]
+      Skipas į pagrindinį turinį: [itranslate]
+    lv:
+      Pāriet uz galveno saturu: [baidu, bing, elan, google, sogou, systran, translate, yandex]
+      Izlaist galveno saturu: [ibmwatson]
+      Skip uz galveno saturu: [itranslate]
+    lzh:
+      投身: [baidu]
+    mg:
+      Alefa mankany amin'ny votoaty fototra: [baidu]
+      Azon amin' ny zavatra fototra: [bing, elan, sogou]
+      Hanketo ny votoatiny lehibe: [google, itranslate]
+      Hijery ny tena afa-po: [yandex]
+    mhr: # Eastern Mari
+      Куснаш основного контента: [yandex]
+    mi:
+      Tīpoka ki te ihirangi matua: [bing, yandex]
+      Haere ki te ihirangi matua: [google, itranslate]
+    mk:
+      Прескокни на главната содржина: [baidu]
+      Оди до главната содржина: [google]
+      Префрли на главната содржина: [itranslate]
+      Скокни до главната содржина: [yandex]
+    ml:
+      പ്രധാനപ്പെട്ട വസ്തുക്കളിലേക്ക് ഉപേക്ഷിക്കുക: [baidu]
+      പ്രധാന ഉള്ളടക്കത്തിലേക്ക് പോകുക: [bing, google, itranslate]
+      പ്രധാന ഉള്ളടക്കം ഉപേക്ഷിക്കുക Name: [ibmwatson]
+    mn:
+      Үндсэн агуулга руу шилжих: [google, itranslate]
+      Үндсэн агуулга руу очих: [yandex]
+    mr: # Marathi
+      मुख्य अनुक्रमणिकाकडे जा: [baidu]
+      मुख्य सामग्रीवगळा: [bing]
+      मुख्य सामग्रीवर जा: [google, itranslate]
+      मुख्य घटकाला जा: [yandex]
+    mrj:
+      Ванжаш тӹнг контент: [yandex]
+    ms:
+      Langkau ke kandungan utama: [baidu, bing, elan, flitto, google, ibmwatson, sogou, systran, translate]
+      Pergi ke kandungan utama: [itranslate]
+      Melompat ke kandungan utama: [qq]
+      Skip untuk utama kandungan: [yandex]
+    mt:
+      Għassal għall-kontenut ewlieni: [baidu]
+      Aqbeż għall-kontenut ewlieni: [bing, elan, ibmwatson, sogou, translate]
+      Aqbeż għall-kontenut prinċipali: [google, itranslate, yandex]
+    my:
+      အဓိက အကြောင်းအရာများကို သွားပါ: [baidu]
+      အဓိကအကြောင်းအရာ Skip: [itranslate]
+      အဓိကအကြောင်းအရာ: [yandex]
+    ne:
+      मुख्य सामग्रीमा फड्काउनुहोस्: [baidu]
+      मुख्य सामग्रीमा स्किप गर्नुहोस्: [google, itranslate]
+      मुख्य विषयवस्तुमा फड्काउनुहोस्: [ibmwatson]
+      मुख्य सामग्री गर्न छोड्नुहोस्: [yandex]
+    nl:
+      Ga naar de belangrijkste inhoud: [baidu]
+      Doorgaan naar hoofdinhoud: [bing, elan, sogou, translate]
+      Ga naar de hoofdinhoud: [deepl, flitto]
+      Ga naar hoofdinhoud: [google]
+      Naar hoofdcontent gaan: [ibmwatson]
+      Sla over naar de hoofdinhoud: [itranslate]
+      Ga naar de inhoudelijke: [promptone]
+      Overslaan en naar de inhoud: [reverso]
+      Overslaan naar hoofdinhoud: [systran]
+      Naar hoofdinhoud overslaan: [yandex]
+    no:
+      Hopp til hovudinnhald: [baidu] # Marked as nn (Nynorsk); no includes nn and nb
+      Skip til hovedinnholdet: [baidu, itranslate]
+      Hopp til hovedinnhold: [google, ibmwatson] # IBM Watson says nb (Bokmal); no includes nn and nb
+      Hopp tau til hovedinnhold: [gramtrans]
+      Gå til hovedinnhold: [bing, elan, sogou, systran, translate] # Bing says nb (Bokmal); no includes nn and nb
+      Hopp til hovedinnholdet: [baidu, yandex] # Baidu says nb (Bokmal); no includes nn and nb
+    ny:
+      Pitani ku nkhani zazikuluzikulu: [google, itranslate]
+    or:
+      ମୂଖ୍ୟ ବିଷୟବସ୍ତୁକୁ ଯାଆନ୍ତୁ: [baidu]
+      ମୁଖ୍ୟ ବିଷୟବସ୍ତୁକୁ ଯାଆନ୍ତୁ |: [google]
+    otq:
+      Saltar ar contenido principal: [bing, elan, sogou]
+    pap:
+      Bula den kontenido prinsipal: [yandex]
+    pa:
+      ਮੁੱਖ ਸਮੱਗਰੀ ਵਿੱਚ ਛੱਡੋ: [baidu]
+      ਮੁੱਖ ਸਮੱਗਰੀ ਲਈ ਛੱਡ ਦਿਓ: [bing]
+      ਮੁੱਖ ਸਮੱਗਰੀ ਤੇ ਜਾਓ: [google, itranslate]
+      ਮੁੱਖ ਸਮੱਗਰੀ ਨੂੰ ਕਰਨ ਲਈ ਛੱਡੋ: [yandex]
+    pl:
+      Przejdź do głównej zawartości: [baidu, bing, elan, flitto, google, reverso, sogou, systran, translate]
+      Przejdź do głównej treści: [deepl, ibmwatson, itranslate, yandex]
+    ps:
+      اره منځپانګه ته ونجول: [baidu]
+      اصلي مینځپانګې ته لاړشئ: [google]
+    pt:
+      Saltar ao conteúdo principal: [baidu]
+      Pular para o conteúdo principal: [bing, deepl, elan, sogou, translate]
+      Ir para o conteúdo principal: [flitto, google, ibmwatson, systran]
+      Pule para o conteúdo principal: [itranslate, papago]
+      Omitir ao conteúdo principal: [promptone]
+      Saltar para o Conteúdo Principal: [qq]
+      Passar para o conteúdo principal: [reverso]
+      Saltar para o conteúdo principal: [yandex, youdao]
+    ro:
+      Treci la conținutul principal: [baidu, yandex]
+      Salt la conținutul principal: [bing, elan, google, sogou, translate]
+      Salt la conţinutul principal: [ibmwatson]
+      Treci la conţinutul principal: [itranslate]
+      Treceți la conținutul principal: [systran]
+    ru:
+      перейти к основному содержанию: [baidu, promptone, qq]
+      Перейти к основному контенту: [bing, elan, sogou, translate, yandex]
+      Перейти к основному содержанию.: [caiyun]
+      Перейти к основному содержанию: [deepl, flitto, google]
+      Перейти к основному содержимому: [ibmwatson, systran]
+      Пропустите основное содержание: [itranslate]
+      Пропустить к содержимому по умолчанию: [papago]
+      переходить к основному содержанию: [reverso]
+      Переходи к главному: [youdao]
+    rw:
+      Kuri Ibikubiyemo: [baidu]
+      Jya ku bintu nyamukuru: [google]
+    sah:
+      Сүрүн контреҥҥа көс: [yandex]
+    sd:
+      مواد کي ڇڏيو: [baidu]
+      مواد کي ڇڏي ڏيو: [google]
+    si:
+      ප්‍රධාන අන්තර්ගතයට යන්න: [google, itranslate]
+      ප්රධාන අන්තර්ගතයට යන්න: [ibmwatson]
+      යන්න ප්රධාන අන්තර්ගතයට යන්න: [yandex]
+    sk:
+      Preskočiť k hlavnému obsahu: [baidu]
+      Preskočiť na hlavný obsah: [bing, elan, google, ibmwatson, sogou, systran, translate, yandex]
+      Preskoč na hlavný obsah: [itranslate]
+    sl:
+      Preskoči na glavno vsebino: [baidu, bing, elan, ibmwatson, itranslate, sogou, translate, yandex]
+      Preskočite na glavno vsebino: [google]
+    sm:
+      pe germanpou h ki: [baidu]
+      Alu i le anotusi autu: [bing, elan, sogou]
+      Skip to mea autu: [google]
+    sn:
+      Gadzirira kusvikira kumaguta amakuru: [baidu]
+      Skip to main theme: [google]
+    so:
+      Ku wareeji waxyaabaha muhiimka ah: [baidu]
+      U gudub nuxurka ugu muhiimsan: [google]
+      Ka bood waxyaabaha ugu muhiimsan: [itranslate]
+    sq:
+      Kalo tek përmbajtja kryesore: [baidu, google]
+      Kalo në përmbajtjen kryesore: [itranslate, systran]
+      Kalo tek përmbajtja qendrore: [yandex]
+    sr:
+      Прескочите на главни садржај: [baidu]
+      Пређи на главни садржај: [bing, elan, google, systran]
+      Прескочи на главни садржај: [ibmwatson, translate]
+      Пребаците на главни садржај: [itranslate]
+      Иди на главни садржај: [yandex]
+    sr-Latn:
+      Skoči na glavni sadržaj: [baidu]
+      Pređi na glavni sadržaj: [bing, elan, sogou, translate]
+    st:
+      Fetela ho litaba tsa sehlooho: [google, itranslate]
+    su:
+      Luncat ka eusi utama: [baidu, google, itranslate]
+      Skip to eusi utama: [yandex]
+    sv:
+      Gå över till huvudinnehållet: [baidu]
+      Gå till huvudinnehållet: [bing, elan, ibmwatson, sogou, translate]
+      Hoppa till huvudinnehåll: [flitto, google, yandex]
+      Sjippe till huvudinnehåll: [gramtrans]
+      Skippa till huvudinnehållet: [itranslate]
+      Hoppa till huvudinnehållet: [systran]
+    sw:
+      Kuacha kwenye maudhui makuu: [baidu]
+      Ruka kwa maudhui makuu: [bing, elan, sogou]
+      Skip kwa yaliyomo kuu: [flitto, google]
+      Ruka kwenye maudhui makuu: [itranslate]
+      Ruka kwa yaliyomo kuu: [yandex]
+    ta:
+      முக்கிய உள்ளடக்கத்திற்கு விடு: [baidu]
+      முக்கிய உள்ளடக்கத்திற்கு ச்செல்ல: [bing, translate]
+      முக்கிய உள்ளடக்கத்திற்கு செல்க: [google, yandex]
+      முக்கிய உள்ளடக்கத்துக்கு துடைக்க: [ibmwatson]
+      முக்கிய உள்ளடக்கத்திற்கு தவிர்: [itranslate]
+      முக்கிய உள்ளடக்கத்திற்குத் தவிர்: [systran]
+    te:
+      ముఖ్య సారములకు వెళ్ళుము: [baidu]
+      ప్రధాన విషయానికి వెళ్లండి: [bing]
+      ప్రధాన కంటెంట్‌కు దాటవేయి: [google, itranslate]
+      ముఖ్యమైన సారాంశమునకు చేర్చు: [ibmwatson]
+      ప్రధాన కు దాటివెయ్యండి: [yandex]
+    tg:
+      Гузариш ба мӯҳтавои асосӣ: [baidu]
+      Гузаштан ба мундариҷаи асосӣ: [google, itranslate]
+      Гузаштан ба контенту асосӣ: [yandex]
+    th:
+      ข้ามไปยังเนื้อหาหลัก: [baidu, bing, elan, ibmwatson, papago, sogou, systran, translate]
+      ข้ามไปที่เนื้อหาหลัก: [flitto, google]
+      ข้ามไปหาเนื้อหาหลัก: [itranslate]
+      กระโดดไปยังเนื้อหาหลัก: [qq]
+      ข้ามไปตอนหลักขอเนื้อหา: [yandex]
+    tk:
+      Esasy Mazmunlar: [baidu]
+      Esasy mazmuna geçiň: [google]
+      Esasy mazmuna geçmek: [promptone]
+    to:
+      Hiki fakalaka ki he tefitoʻi meʻa: [bing, elan, sogou]
+    tr:
+      Ana içeriğe geç: [baidu, flitto, google, itranslate]
+      Ana içeriğe atla: [bing, elan, ibmwatson, qq, reverso, sogou, systran, translate, yandex]
+      Ana içeriğe git: [promptone]
+    tt:
+      Төп эчтәлеккә күчү: [google, promptone]
+      Төп контентка күчү: [yandex]
+    ty:
+      Haapae i te mau mea tumu: [bing, elan, sogou]
+    udm:
+      Валтӥсь bildirmek доры выжиз: [yandex]
+    uk:
+      Перейти до головного вмісту: [baidu]
+      Перейти до основного вмісту: [bing, elan, google, ibmwatson, sogou, systran, translate]
+      Передайте информацию: [itranslate]
+      Перейти до основного змістом: [promptone]
+      Перейти до основного контенту: [yandex]
+    ug:
+      ئاساسلىق مەزمۇنغا ئاتلاڭ: [google]
+    ur:
+      منظم منصوبے پر چھوڑ دیں: [baidu]
+      اہم مواد پر جائیں: [bing, elan, google, ibmwatson, itranslate, sogou, translate]
+      مرکزی مشمول پر جائیں: [systran]
+      کو چھوڑ کرنے کے لئے اہم مواد: [yandex]
+    uz:
+      Asosiy tarkibga oʻtish: [baidu]
+      Asosiy mundarijaga: [google, itranslate]
+      Asosiy mazmunga o‘tish: [promptone]
+      Asosiy tarkibga o'tish: [yandex]
+    uz-Cyrl:
+      Асосий таркибга ўтиш: [yandex]
+    vi: # Vietnamese
+      Bỏ qua nội dung chính: [baidu, google, ibmwatson]
+      Bỏ qua đến nội dung chính: [bing, elan, sogou, translate]
+      Chuyển đến nội dung chính: [flitto]
+      Chuyển qua nội dung chính: [itranslate]
+      Nhảy qua nội dung chính: [papago]
+      Nhảy vào nội dung chính.: [qq]
+      Bỏ qua nội dung chính: [systran]
+      Bỏ vào nội dung chính: [yandex]
+      Chuyển sang chủ đề chính: [youdao]
+    xh:
+      Tshintshela kwisiqulathi seefayili esikhulu: [baidu]
+      Yiya kumxholo ophambili: [google]
+      Tsibela engundoqo isiqulatho: [yandex]
+    yi:
+      היט אױף: [baidu]
+      האָפּקען צו הויפּט אינהאַלט: [google, itranslate]
+      האָפּקען צו הויפּט צופרידן: [yandex]
+    yo:
+      Yọ sí àkóónú gangan: [baidu]
+      Rekọja si akọkọ akoonu: [google, itranslate]
+    yua:
+      A puulkaba ichil le contenido noj bejo': [bing, elan, sogou, translate]
+    yue:
+      跳到主要內容。: [bing, elan, sogou]
+      跳到主體內容。: [itranslate]
+    yue-Hans:
+      惊到主要内容: [baidu]
+    zh:
+      跳到主要内容: [baidu, bing, deepl, elan, google, promptone, qihoo360, qq, sogou, translate, yandex]
+      跳转到主要内容: [caiyun]
+      跳转至主要内容: [flitto, ibmwatson, youdao]
+      跳到主体内容。: [itranslate]
+      跳至主要内容: [papago]
+      跳至主内容: [reverso, systran]
+    zh-Hant:
+      跳到主要內容: [baidu, flitto, google, ibmwatson]
+      跳到主要內容。: [bing, elan, sogou, translate]
+      跳到主體內容。: [itranslate]
+      跳至主要內容: [papago]
+      跳至主內容: [systran]
+    zu:
+      Yeqela ekuqukethweni okukhulu: [baidu]
+      Yeqela kokuqukethwe okuyinhloko: [google, itranslate]
+  textonly:
+    aeb: # Tunisian Arabic
+      وقد تسبب الصيد الجائربانخفاض مخزون الأسماك.: [baidu]
+    ak: # Akan
+      iaiMaoeɛnS’aɔ: [baidu]
+    ang: # Old English
+      Þæt cynn þæs éagþyrles: [baidu]
+    arq: # Algerian Arabic
+      نادرست الغرض للقيمة: [baidu]
+    ast: # Asturian
+      Saltar al conteníu principal: [baidu]
+    an: # Aragonese
+      Brincar a lo conteniu prencipal: [baidu]
+    as: # Assamese
+      মূখ্য সমলে যাওক: [baidu]
+    ay: # Aymara
+      Mayïr qilqatanak jach'apta: [baidu]
+    bal: # Baluchi
+      کلیک کنیت تا ای تنظیماتا اجباری مکنیت: [baidu]
+    bem: # Bemba
+      Ukufisa muli computer ikalamba: [baidu]
+    bho: # Bhojpuri
+      शेल के बजाय जउन मनचाही कमाण्ड इस्तेमाल करै के होय: [baidu]
+    br: # Breton
+      Mont d'an endalc'had kentañ: [baidu]
+    byn: # Blin
+      ኛአኪሊንምዢአዋዊስ: [baidu]
+    bi: # Bislama
+      Marina le kukmai tru: [baidu]
+    chr: # Cherokee
+      ᎠᏯᏙᎯᏍᏗ: [baidu]
+    cnh: # Hakha Chin
+      Thihnak phaktertu Marburg rungrul hizawtnak hrampi asi kho ti hi a si.: [baidu]
+    crh: # Crimean Tatar
+      Baş mahallege atla: [baidu]
+    csb: # Kashubian
+      Skòknie do przédny zamkłoscë: [baidu]
+    dsb: # Lower Sorbian
+      ikiyl ziarku: [baidu]
+    dv: # Divehi
+      މެންމައިންޓްކުރަންވިއްޖެ: [baidu]
+    ff: # Fula, Fulani
+      yaljarden toree: [baidu]
+    fo: # Faroese
+      Skip til høvuðsorinnihald: [baidu]
+    fur: # Friulian
+      Salve a contignût principâl: [baidu]
+    frm: # Middle French
+      ors ser ixhonlain: [baidu]
+    gn: # Guarani
+      repiaengucd: [baidu]
+    grc: # Ancient Greek
+      κάκιστα δὴ μακρῷ κάτειμι: [baidu]
+    gv: # Manx
+      Goll dys cummal cadjin: [baidu]
+    hil: # Hiligaynon
+      Ang Misteryoso nga: [baidu]
+    hup: # Hupa
+      nyotsht ondol: [baidu]
+    inh: # Ingush
+      Зони» обун: [baidu]
+    ia: # Interlingua
+      Salveguardar le contento principal: [baidu]
+    io: # Ido
+      Saltez la precipua contento: [baidu]
+    iu: # Inuktitut (map to ike, Eastern Canadian Inuktitut?)
+      ᖃᐅᔨᒪᒻᒪᕆᑦᑐᓄᑦ: [baidu]
+    ks: # Kashmiri
+      मुख्यमस मंज गसिव: [baidu]
+    kab: # Kabyle
+      Ǧǧemt ɣer talqimt tameqqrant: [baidu]
+    kl: # Kalaallisut
+      naganuarussilrne: [baidu]
+    kng: # Koongo - part of kg, Kongo (macrolanguage)
+      bilala bia nta yi bu i songa bio nkatu: [baidu]
+    knn: # Konkani (individual language)
+      ारसकाोजरापंसोहाि: [baidu]
+    kr: # Kanuri
+      len mkoro haramk: [baidu]
+    kw: # Cornish
+      Skwych dhe endalcynn penn: [baidu]
+    lg: # Luganda
+      Nnemedwa okugenda mu tterekero: [baidu]
+    ln: # Lingala
+      hamChinéspastMba: [baidu]
+    ltg: # Latgalian
+      Izaruoda, kai jiusim tik viņkai vīnu mienesi kotru dīnu juopīroksta: [baidu]
+    mai: # Maithili
+      मुख्य विषय मे छोड़ू: [baidu]
+    mh: # Marshallese
+      MeriRutelabokIntroduction: [baidu]
+    mfe: # Morisyen, Mauritian Creole
+      Monn etone kouma kominote lokal inn reazir a sa lapintir la,: [baidu]
+    mus: # Creek
+      ke iye meEn yd: [baidu]
+    nap: # Neapolitan
+      nomollcdi occ: [baidu]
+    nds: # Low German
+      Na Hööftinhaud övergahn: [baidu]
+    nr: # Southern Ndebele
+      lo bukuko unliza: [baidu]
+    nso: # Northern Sotho
+      Tabogela go dikagare tša bogolo: [baidu]
+    nqo: # N’ko
+      ߊߛߌߌߏߡߊ ߊ ߲ߌߢ߬ߊߣ: [baidu]
+    oj: # Ojobwa
+      ᐁᔑᑭᐃᑫ ᔑᒡᐅᑫᑫ: [baidu]
+    om: # Oromo
+      souttfayyadammadyi: [baidu]
+    os: # Ossetian
+      Ауадзын сæйраг файлмӕ: [baidu]
+    rm: # Romansh
+      penamedvitamasop: [baidu]
+    rom: # Romany
+      Brincar pentru cumentări princi: [baidu]
+    rue: # Rusyn
+      Прецо стваряц условия яки су у: [baidu]
+    sa: # Sanskrit
+      प्रधानं सामग्रीयताम्: [baidu]
+    sc: # Sardinian
+      Brinca a su cuntenutu printzipale: [baidu]
+    sco: # Scots
+      Skip tae main content: [baidu]
+    sh: # Serbo-Croatian; macrolanguage; cs, hr or bs preferred
+      Skići na glavni sadržaj: [baidu]
+    shn: # Shan
+      နုြမပ့်ံီရကစပ: [baidu]
+    son: # Songhai languages
+      kaw>  Baaan hai: [baidu]
+    syr: # Syriac
+      ܠܰܦ݁ܪ̈ܟ݂ܢܺܝܫܽܘܬ݂ܳܐ ܕ݂ܒ݂ܺܝܠܕ݁ܳܐ: [baidu]
+    szl: # Silesian
+      że jak co nowego zaczinosz,to ci sie żywot tak nie mierznie,: [baidu]
+    tet: # Tetum
+      Tauka ba conteniu prinsipál: [baidu]
+    ti: # Tigrinya
+      ማእከርይ ስሊ: [baidu]
+    ts: # Tsonga
+      Tshelela eka ndhawu ya yena: [baidu]
+    tw: # Twi
+      sini Ɔkɔurmuniope: [baidu]
+    ve: # Venda
+      Bạn sẽ có một số suy luận, đó là xu hướng của vùng tự do. Chúng ta tưởng rằng tất cả rồi sẽ tự do: [baidu]
+    wa: # Walloon
+      Passer å mwaisse contnou: [baidu]
+    wo: # Wolof
+      jóbbaale ko ci néew bu mag: [baidu]

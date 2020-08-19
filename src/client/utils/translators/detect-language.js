@@ -10,6 +10,9 @@ import {
 import normaliseLangCode from './normalise-lang-codes';
 import getIbmWatsonTargetLang from './ibm-watson';
 
+// Special case: QQ Browser’s side-by-side comparison leaves the original, and adds Chinese
+export const QQ_BROWSER_SIDE_BY_SIDE_CLASSNAME = 'qbTrans-common-compair-dialog';
+
 /**
  * Sleeps for a given number of milliseconds
  * @param {number} ms
@@ -67,13 +70,21 @@ export const getBaseTargetLang = ({ translator = 'und' } = {}) => {
         break;
       }
       case 'baidu':
-      case 'sogou-web': {
         targetLang = getQueryParam('to');
         // special case: in Baidu, slo means Slovenian (sl)
         // but the standard meaning is Slovakian (sk)
         // so we just set it to Slovenian here to avoid confusion.
         if (targetLang === 'slo') targetLang = 'sl';
         break;
+      }
+      case 'sogou-web': {
+        const [src, target] = ['from', 'to'].map(getQueryParam);
+        if (
+          src && target
+          && (src === 'auto' || normaliseLangCode(src) === SOURCE_LANGUAGE)
+        ) {
+          targetLang = target;
+        }
       }
       case 'gramtrans': {
         const [src, target] = getQueryParam('pair').split('2');
@@ -96,7 +107,7 @@ export const getBaseTargetLang = ({ translator = 'und' } = {}) => {
         break;
       }
       case 'youdao': {
-        const [src, target] = ['from', 'to'].map(p => getQueryParam(p));
+        const [src, target] = ['from', 'to'].map(getQueryParam);
         if (
           src && target
           && (src === 'auto' || normaliseLangCode(src) === SOURCE_LANGUAGE)
@@ -115,19 +126,15 @@ export const getBaseTargetLang = ({ translator = 'und' } = {}) => {
   // Still we haven’t been able to detect the language; use our substring-to-language map
   // (for Sogou browser, MS Edge legacy and Chromium, and any others inc. IBM Watson)
   if (`${targetLang}` === 'und') {
-    const matches = langIdStrings.split(',')
+    const [firstResult] = langIdStrings.split(',')
       .map(s => s.split(':'))
       // .filter(([substrs, l]) => l !== 'or')
       .map(([substrs, l]) => substrs.split('|').map(s => [s, l]))
       .reduce((acc, val) => acc.concat(val), []) // .flat() is not supported by IE11 or Node 10
       .filter(([substr]) => text.includes(substr));
-    if (matches && matches.length) {
-      if (matches.length > 1) {
-        console.log('Matched', matches);
-      }
-      (
-        [[, targetLang]] = matches
-      );
+    if (firstResult) {
+      const [, matchedLang] = firstResult;
+      targetLang = matchedLang;
     }
   }
 

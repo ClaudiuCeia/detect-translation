@@ -34,6 +34,8 @@ const detectTranslator = () => {
     || document.querySelector('#goog-gt-tt')
     || document.querySelector('.goog-te-spinner-pos')
   ) {
+    // This is Google Translate inside a browser
+    // We can’t be sure which browser — could be Google Chrome, could be 360 Secure Browser
     return 'google-browser';
   }
   if (
@@ -41,6 +43,12 @@ const detectTranslator = () => {
     || document.querySelector('[_msttexthash]')
   ) {
     return 'msft-browser'; // Microsoft Translate extension (legacy Edge and modern Edge)
+  }
+  if (
+    document.querySelector('#qbTrans-pageTrans-dialog')
+    || document.querySelector('[class^=qbTrans-pageTrans-dialog]')
+  ) {
+    return 'qq-browser';
   }
   if (
     document.querySelector('[class^="sg-trans"]')

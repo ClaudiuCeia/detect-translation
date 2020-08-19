@@ -108,7 +108,7 @@ describe(__filename, sandbox(() => {
       });
 
       describe('lang strings', () => {
-        const { translations } = safeLoad(fs.readFileSync(`${__dirname}/lang-sources.yml`));
+        const { translations: { page: pageTranslations } } = safeLoad(fs.readFileSync(`${__dirname}/lang-sources.yml`));
 
         beforeEach(() => {
           global.window = {
@@ -127,9 +127,9 @@ describe(__filename, sandbox(() => {
           delete global.window;
         });
 
-        Object.entries(translations).reduce((allTs, [translator, ts]) => [
+        Object.entries(pageTranslations).reduce((allTs, [lang, ts]) => [
           ...allTs,
-          ...Object.entries(ts).map(([lang, t]) => [translator, lang, t]),
+          ...Object.entries(ts).map(([t, translators]) => [translators.join('/'), lang, t]),
         ], [])
           .sort(([tr1, l1], [tr2, l2]) => l1 > l2)
           .forEach(([translator, lang, t]) => {
