@@ -55,7 +55,7 @@ export const getBaseTargetLang = ({ translator = 'und' } = {}) => {
     targetLang = documentLang;
   } else if (elementLang && (elementLang !== SOURCE_LANGUAGE)) {
     targetLang = elementLang;
-  } else {/*
+  } else {
     // heuristics, sigh
     switch (translator) {
       case 'apertium': {
@@ -70,14 +70,8 @@ export const getBaseTargetLang = ({ translator = 'und' } = {}) => {
         break;
       }
       case 'baidu':
-        targetLang = getQueryParam('to');
-        // special case: in Baidu, slo means Slovenian (sl)
-        // but the standard meaning is Slovakian (sk)
-        // so we just set it to Slovenian here to avoid confusion.
-        if (targetLang === 'slo') targetLang = 'sl';
-        break;
-      }
-      case 'sogou-web': {
+      case 'sogou-web':
+      case 'youdao': {
         const [src, target] = ['from', 'to'].map(getQueryParam);
         if (
           src && target
@@ -85,6 +79,16 @@ export const getBaseTargetLang = ({ translator = 'und' } = {}) => {
         ) {
           targetLang = target;
         }
+        if (
+          translator === 'baidu'
+          && targetLang === 'slo'
+        ) {
+          // special case: in Baidu, slo means Slovenian (sl)
+          // but the standard meaning is Slovakian (sk)
+          // so we just set it to Slovenian here to avoid confusion.
+          targetLang = 'sl';
+        }
+        break;
       }
       case 'gramtrans': {
         const [src, target] = getQueryParam('pair').split('2');
@@ -106,21 +110,12 @@ export const getBaseTargetLang = ({ translator = 'und' } = {}) => {
         }
         break;
       }
-      case 'youdao': {
-        const [src, target] = ['from', 'to'].map(getQueryParam);
-        if (
-          src && target
-          && (src === 'auto' || normaliseLangCode(src) === SOURCE_LANGUAGE)
-        ) {
-          targetLang = target;
-        }
-      }
       case '': {
         targetLang = getIbmWatsonTargetLang();
         break;
       }
       default:
-    } */
+    }
   }
 
   // Still we haven’t been able to detect the language; use our substring-to-language map
@@ -128,13 +123,25 @@ export const getBaseTargetLang = ({ translator = 'und' } = {}) => {
   if (`${targetLang}` === 'und') {
     const [firstResult] = langIdStrings.split(',')
       .map(s => s.split(':'))
-      // .filter(([substrs, l]) => l !== 'or')
       .map(([substrs, l]) => substrs.split('|').map(s => [s, l]))
       .reduce((acc, val) => acc.concat(val), []) // .flat() is not supported by IE11 or Node 10
       .filter(([substr]) => text.includes(substr));
     if (firstResult) {
       const [, matchedLang] = firstResult;
       targetLang = matchedLang;
+      if (matchedLang === 'sh') { // Serbo-Croatian; this is a macrolanguage, so default
+        // to the user’s preferred country language (Bosnian, Croatian or Serbian)
+        const { language, languages } = window.navigator;
+        targetLang = (languages || [language])
+          .find(l => l.split('-')[0].match(/^(bs|hr|sr)$/))
+          || matchedLang;
+        // just in case the user’s preferred language includes Serbian
+        // - Serbian defaults to Cyrillic if a script is not specified,
+        // but we know (because it matched 'sh') that the translation is in Latin script
+        if (targetLang.startsWith('sr') && !targetLang.startsWith('sr-Latn')) {
+          targetLang = 'sr-Latn';
+        }
+      }
     }
   }
 

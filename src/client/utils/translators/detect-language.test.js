@@ -118,6 +118,9 @@ describe(__filename, sandbox(() => {
               },
               querySelector: sandbox.stub(),
             },
+            navigator: {
+              languages: [],
+            },
           };
           global.document = global.window.document;
         });
@@ -133,6 +136,9 @@ describe(__filename, sandbox(() => {
         ], [])
           .sort(([tr1, l1], [tr2, l2]) => l1 > l2)
           .forEach(([translator, lang, t]) => {
+            if (/sh/.test(lang)) { // Serbo-Croatian
+              lang = ['bs', 'hr', 'sr-Latn'][Math.floor(Math.random() * 3)];
+            }
             it(`detects ${translator}’s “${t}” as ${lang}`, () => {
               global.window.document.getElementById = sandbox.stub().callsFake((id) => {
                 if (id === 'skip') {
@@ -140,6 +146,7 @@ describe(__filename, sandbox(() => {
                 }
                 return null;
               });
+              global.window.navigator.languages = ['zxx', lang];
 
               const result = getBaseTargetLang();
 

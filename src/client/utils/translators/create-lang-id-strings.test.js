@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { getLangIdSubstrings2 } from './create-lang-id-strings';
+import { getLangIdSubstrings } from './create-lang-id-strings';
 import StringSet from '../StringSet';
 
 describe('getLangsFromYaml', () => {
@@ -15,7 +15,7 @@ describe('getLangsFromYaml', () => {
       ])],
     ]);
 
-    const result = getLangIdSubstrings2(langs);
+    const result = getLangIdSubstrings(langs);
 
     expect([...result.keys()]).to.include('ao');
   });
