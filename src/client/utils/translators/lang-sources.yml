@@ -468,7 +468,7 @@ translations:
     sd: # Sindhi
       مواد کي ڇڏيو: [baidu]
       مواد کي ڇڏي ڏيو: [google]
-    sh: # Serbo-Croatian - sr-Latn (Serbian), hr (Croatian), bs (Bosnian) normally preferred, but too similar
+    sh: # Serbo-Croatian (macrolanguage) - sr-Latn (Serbian), hr (Croatian), bs (Bosnian) normally preferred, but too similar
       Skoči na glavni sadržaj: [baidu] # Bosnian, Croatian, Serbian (Latin)
       Preskoči na glavni sadržaj: [amazon, bing, ibmwatson, itranslate, systran, translate, yandex] # Bosnian/Croatian (Serbian: Amazon)
       Prijeđite na glavni sadržaj: [google] # Bosnian/Croatian

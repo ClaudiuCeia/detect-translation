@@ -93,6 +93,7 @@ const getLangIdSubstrings = (langs) => {
   const MAX_SUBSTRING_LEN = 100;
   const substringsMap = new SubstringLanguagesMap();
   const langsRemaining = new Map([...langs]);
+  const allLangs = getLangsFromYaml(); // create another copy of the original so we can check against it later
 
   const translationsMultipleLangsMap = new Map(
     [
@@ -163,7 +164,12 @@ const getLangIdSubstrings = (langs) => {
       ) {
         if (!langIds.has(l)) langIds.set(l, new StringSet());
         if ([...langsRemaining.get(l)].find(t => ts.has(t))) {
-          langIds.get(l).add(ss);
+          const lTs = [...allLangs.get(l)];
+          if (lTs.every(t => t.includes(ss)) && langIds.get(l).size !== 0) {
+            langIds.set(l, new StringSet([ss]));
+          } else {
+            langIds.get(l).add(ss);
+          }
           [...ts].forEach(t => langsRemaining.get(l).delete(t));
           if (langsRemaining.get(l).size === 0) {
             langsRemaining.delete(l);
