@@ -98,6 +98,18 @@ export const getBaseTargetLang = ({ translator = 'und' } = {}) => {
         }
         break;
       }
+      case 'worldlingo': {
+        // these params are in UPPERCASE so need to be lowercased before comparison
+        const [src, target] = ['wl_srclang', 'wl_trglang']
+          .map(getQueryParam)
+          .map(lang => (lang ? lang.toLowerCase() : lang));
+        if (
+          src && target
+          && normaliseLangCode(src) === SOURCE_LANGUAGE
+        ) {
+          targetLang = target;
+        }
+      }
       default:
     }
   }

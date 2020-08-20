@@ -11,6 +11,7 @@ const HOSTNAME_TRANSLATOR_MAP = {
   'translate.sogoucdn.com': 'sogou-web',
   'z5h64q92x9.net': 'yandex-web',
   'webtrans.yodao.com': 'youdao',
+  'www.worldlingo.com': 'worldlingo',
 };
 
 // Used by is-page-translated, but exported from here as it’s a translator-specific quirk
