@@ -1,5 +1,4 @@
 import LangMetaString from './lang-meta-string';
-import getIbmWatsonTargetLang from './ibm-watson';
 
 const HOSTNAME_TRANSLATOR_MAP = {
   'www.apertium.org': 'apertium',
@@ -24,7 +23,7 @@ export const CAIYUN_TRANSLATION_CLASSNAME = 'cyxy-trs-target';
  * @returns {string | LangMetaString} - BCP47 token (two to eight characters)
  */
 const detectTranslator = () => {
-  const { hostname } = window.location;
+  const { hostname, pathname } = window.location;
 
   if (HOSTNAME_TRANSLATOR_MAP[hostname]) {
     return HOSTNAME_TRANSLATOR_MAP[hostname];
@@ -35,7 +34,7 @@ const detectTranslator = () => {
     || document.querySelector('.goog-te-spinner-pos')
   ) {
     // This is Google Translate inside a browser
-    // We can’t be sure which browser — could be Google Chrome, could be 360 Secure Browser
+    // We can’t be sure which browser — could be Google Chrome, could be 360 Secure Browser
     return 'google-browser';
   }
   if (
@@ -62,17 +61,21 @@ const detectTranslator = () => {
     return 'yandex-browser';
   }
   // Could be IBM Watson, could be translated saved webpage; let’s check
-  const ibmWatsonLang = getIbmWatsonTargetLang();
+  const filename = decodeURIComponent(pathname.split(/\\|\//).reverse()[0]);
+  // This regex is to be tested against the last pathname segment (“the filename”)
+  const IBM_WATSON_PATHNAME_LANGUAGE_REGEXP = /([A-Za-z ()]+)\.html$/;
   if (
     hostname === ''
-    && `${ibmWatsonLang}` !== 'und'
-  ) {
+    && filename.startsWith('https __www.sciencedirect.com_topics_')
+    && filename.endsWith('.html')
+    && filename.match(IBM_WATSON_PATHNAME_LANGUAGE_REGEXP)) {
+    // we only detect IBM Watson using the saved filename
     return 'ibmwatsn';
   }
 
   // We failed! :( Return 'und` (undetermined) along with a clue
   // If `getIbmWatsonTargetLang` returned a LangMetaString, this extends its meta object
-  return new LangMetaString(ibmWatsonLang, { host: hostname });
+  return new LangMetaString('und', { host: hostname });
 };
 
 export default detectTranslator;

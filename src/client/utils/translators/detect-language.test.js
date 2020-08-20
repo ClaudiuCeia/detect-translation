@@ -1,3 +1,4 @@
+/* eslint-disable max-len, no-unused-vars */
 import fs from 'fs';
 import { expect } from 'chai';
 import sandbox from 'sd-sandbox';
@@ -5,17 +6,18 @@ import { safeLoad } from 'js-yaml';
 import { getBaseTargetLang } from './detect-language';
 
 describe(__filename, sandbox(() => {
-  describe('HTML element lang attribute', () => {
-    it('should not add the target language to the html element if already there', () => {
-      // 
-    });
+  describe('getFullyQualifiedPageLang', () => {
+    describe('HTML element lang attribute', () => {
+      it('should not add the target language to the html element if already there', () => {
+      });
 
-    it('should correct the lang attribute if present but incorrect', () => {
+      it('should correct the lang attribute if present but incorrect', () => {
 
-    });
+      });
 
-    it('should add the target language to the html element if not there', () => {
-      // 
+      it('should add the target language to the html element if not there', () => {
+
+      });
     });
   });
 
@@ -150,9 +152,6 @@ describe(__filename, sandbox(() => {
 
               const result = getBaseTargetLang();
 
-              if (`${result}` !== lang) {
-                console.log(`Expected ${lang} but got ${result} for ${t}`);
-              }
               expect(`${result}`).to.equal(lang);
             });
           });

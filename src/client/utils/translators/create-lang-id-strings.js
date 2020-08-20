@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const fs = require('fs');
 const { safeLoad } = require('js-yaml');
 const cldr = require('cldr');
@@ -107,10 +108,10 @@ const getLangIdSubstrings = (langs) => {
         });
         return tsMulLangs;
       }, new Map()),
-    ].filter(([t, ls]) => ls.size > 1)
+    ].filter(([t, ls]) => ls.size > 1), // eslint-disable-line no-unused-vars
   );
   const langsWithSharedTranslations = [...translationsMultipleLangsMap]
-    .reduce((result, [t, ls]) => {
+    .reduce((result, [t, ls]) => { // eslint-disable-line no-unused-vars
       [...ls].forEach(l => result.add(l));
       return result;
     }, new StringSet());
@@ -190,9 +191,14 @@ const writeLangIdSubstringMap = () => {
   const idSubstringsMap = getLangIdSubstrings(langs);
   const outputString = stringifyMap(new Map(idSubstringsMap));
 
-  fs.writeFileSync(`${__dirname}/lang-id-strings.js`, `export default '${
-    outputString.replace(/'/gu, "\\'")
-    }';\n`);
+  fs.writeFileSync(
+    `${__dirname}/lang-id-strings.js`,
+    `// Run \`node ./create-lang-id-strings.js\` to update this file
+
+export default '${
+  outputString.replace(/'/gu, "\\'")
+}';\n`,
+  );
 };
 
 writeLangIdSubstringMap();

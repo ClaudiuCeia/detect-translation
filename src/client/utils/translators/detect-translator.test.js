@@ -65,13 +65,10 @@ describe('translator detector', () => {
 
   it('detects Youdao', () => {
     // if window.location.hostname === 'webtrans.yodao.com'
-  })
+  });
 
   it('detects unknown translators and provides some metadata about them', () => {
     // if window.location.origin === 'https://www.supertrans.com'
     //   then should return (LangMetaString) 'xxy-und-x-supertrans' {  }
-  })
+  });
 });
-
-
-// zxx-Zmth

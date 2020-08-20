@@ -1,24 +1,12 @@
-/* global MutationObserver */
 import LangMetaString from './lang-meta-string';
 import isPageTranslated from './is-page-translated';
 import detectTranslator from './detect-translator';
 import langIdStrings from './lang-id-strings';
-import {
-  SOURCE_LANGUAGE,
-  SKIP_TO_MAIN_CONTENT_ID,
-} from '../../../common/constants';
+import { SOURCE_LANGUAGE } from '../../../common/constants';
 import normaliseLangCode from './normalise-lang-codes';
-import getIbmWatsonTargetLang from './ibm-watson';
 
 // Special case: QQ Browser’s side-by-side comparison leaves the original, and adds Chinese
 export const QQ_BROWSER_SIDE_BY_SIDE_CLASSNAME = 'qbTrans-common-compair-dialog';
-
-/**
- * Sleeps for a given number of milliseconds
- * @param {number} ms
- * @returns {Promise<undefined>}
- */
-const sleep = ms => new Promise(resolve => (ms < Infinity) && setTimeout(resolve, ms));
 
 /**
  * Returns a named param from the string of query params in window.location.query.
@@ -110,10 +98,6 @@ export const getBaseTargetLang = ({ translator = 'und' } = {}) => {
         }
         break;
       }
-      case '': {
-        targetLang = getIbmWatsonTargetLang();
-        break;
-      }
       default:
     }
   }
@@ -202,38 +186,6 @@ export const getFullyQualifiedPageLang = () => {
   }
 
   return new LangMetaString(stdLangTag, metadata);
-};
-
-export const listenForLanguageChange = async ({ timeout = Infinity } = {}) => {
-  if ('MutationObserver' in window) {
-    let observer;
-    try {
-      await Promise.race([
-        sleep(timeout),
-        new Promise((resolve, reject) => {
-          try {
-            observer = new MutationObserver(resolve);
-            observer.observe(
-              document.documentElement,
-              { attributes: true },
-            );
-            observer.observe(
-              document.getElementById(SKIP_TO_MAIN_CONTENT_ID),
-              { attributes: true, childList: true, characterData: true },
-            );
-          } catch (err) {
-            reject(err);
-          }
-        }),
-      ]);
-      await sleep(5); // to give the translator time to do other DOM updates
-    } finally {
-      if (observer) {
-        observer.disconnect();
-        observer = null;
-      }
-    }
-  }
 };
 
 export default getFullyQualifiedPageLang;

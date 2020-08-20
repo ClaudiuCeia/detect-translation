@@ -23,7 +23,6 @@ const NORMALISE_LANG_MAPPING = {
   swe: 'sv', // Swedish (Baidu, Gramtrans)
   spa: 'es', // Spanish (Apertium, Baidu)
   qax: 'eo', // Esperanto (VISL) (Gramtrans)
-  'bs-Latn': 'bs', // Bosnian (Sogou)
   'zh-CHS': 'zh', // Simplified Chinese (Sogou, Youdao) (Hans does not need to be specified)
   'zh-CHT': 'zh-Hant', // Traditional Chinese (Sogou) (Hant should be specified)
   'zh-CN': 'zh',
@@ -35,12 +34,12 @@ const NORMALISE_LANG_MAPPING = {
   'sr-Cyrl': 'sr', // Serbian (Cyrillic is the default in Serbia)
   usbcyr: 'uz-Cyrl', // Uzbek (Cyrillic) (Yandex)
   vie: 'vi', // Vietnamese (Baidu)
-  wyw: 'lzh', // Classical/Literary Chinese (Baidu, from 文言文, Wényánwén)
+  wyw: 'lzh', // Classical/Literary Chinese (Baidu; wyw from 文言文, Wényánwén)
 };
 
 /**
  * Normalises language codes, modernising old ones etc
- * 
+ *
  * @param {string} lang - input language code
  * @returns {string} normalised language code
  */

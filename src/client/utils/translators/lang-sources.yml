@@ -1,3 +1,5 @@
+# If you update this file, run `node ./create-lang-id-strings.js` to update ./lang-id-strings.js
+
 source:
   en: Skip to main content
 translations:
@@ -280,6 +282,7 @@ translations:
     ku: # Kurdish
       Biçe naveroka hovedê: [baidu]
       Vegere naveroka sereke: [google]
+      Bireve ana naveroka: [tetran]
     ky: # Kyrgyz
       Башка мазмунуна өтүү: [baidu]
       Негизги мазмунга өтүңүз: [google]
@@ -386,6 +389,7 @@ translations:
     ps: # Pashto
       اره منځپانګه ته ونجول: [baidu]
       اصلي مینځپانګې ته لاړشئ: [google]
+      اصلی مطالبو ته سر وروړاندې کول: [tetran]
     pt: # Portuguese (Brazil) and Portuguese (Portugal)
       Saltar ao conteúdo principal: [baidu]
       Pular para o conteúdo principal: [bing, deepl, translate]
