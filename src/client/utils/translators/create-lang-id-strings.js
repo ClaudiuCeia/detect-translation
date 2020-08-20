@@ -85,14 +85,9 @@ const getLangIdSubstrings = (langs) => {
   /*
    * starting with short susbtrings,
    * create a Map { substrings => languages [Map] { lang => translations [Set] { <string> } } }
-   * sort substrings by languages matched (ascending), then by proportion of translations matched within each (descending)
-   * Consider combinations of substrings shorter than n-2 [TODO: refine this] that, combined,
-   * would be max n characters and would match the same language’s translations
-   * add any substrings that only match one language to the result (along with [number of] translations matched)
-   * remove those substrings from the map
-   * repeat until no new substrings are found
-   *
-   *  - we now have only languages that can’t easily be matched... look for more complex strategies
+   * sort substrings by languages matched (ascending) and translations matched within each (descending)
+   * add any substrings that only match one language to the result (keeping track of number of translations matched)
+   * repeat until all translations are matched
    */
 
   const MAX_SUBSTRING_LEN = 100;
