@@ -3,16 +3,21 @@
 translators:
   amazon: https://ai-service-demos.go-aws.com/translate # based on https://aws.amazon.com/translate/
   apertium: https://apertium.org/ # translates web pages
+  apple: # built in to iOS 14 and Safari 14
   baidu: https://fanyi.baidu.com/ # translates web pages
   bing: https://www.bing.com/translator # translates web pages
   caiyun: https://fanyi.caiyunapp.com/ # translates web pages
   deepl: https://www.deepl.com/translator
+  euskadi_g: http://www.itzultzailea.euskadi.net/traductor/portalExterno/text.do
+  euskadi_n: https://www.euskadi.eus/itzuli/
   flitto: https://www.flitto.com/crowd
   google: https://translate.google.com/ # translates web pages
   gramtrans: https://gramtrans.com/ # translates web pages
   ibmwatson: https://www.ibm.com/watson/services/language-translator/#demo # translates web pages
   iciba: http://fy.iciba.com/
   itranslate: https://www.itranslate.com/
+  mymemory: https://mymemory.translated.net/
+  opentrad: http://www.opentrad.com/
   papago: https://papago.naver.com/ # translates web pages
   prompsit: http://aplica.prompsit.com/en/
   promptone: https://www.online-translator.com/
@@ -23,6 +28,7 @@ translators:
   systran: https://translate.systran.net/
   tetran: http://tetran.ru/ # mostly duplicates bing; unique for Kurdish and Pashto
   translate: https://www.translate.com/ # duplicates bing in most cases (but not sr)
+  webforditas: http://www.webforditas.hu/
   worldlingo: http://www.worldlingo.com/en/products/instant_website_translator.html # translates web pages
   yandex: https://translate.yandex.com/ # translates web pages
   youdao: http://fanyi.youdao.com/
@@ -80,11 +86,14 @@ translations:
       প্রধান বিষয়বস্তুতে যান: [systran]
     # bs: # listed under sh (Serbo-Croatian) as Bosnian, Croatian and Serbian (Latin) too similar
     ca: # Catalan
+      Skip A contingut principal: [opentrad]
       Skip a contingut major: [apertium, prompsit]
       Passar al contingut principal: [baidu]
       Salta al contingut principal: [bing, promptone, translate, yandex]
       Saltar al contingut principal: [google, itranslate]
       Omet-ho al contingut principal: [systran]
+      Vés al contingut principal: [mymemory]
+      Anar al contingut principal: [mymemory]
     ceb: # Cebuano
       Tupad ngadto sa main content: [baidu]
       Laktaw sa panguna nga sulud: [google, itranslate]
@@ -93,9 +102,10 @@ translations:
       Saltà à u cuntenutu principale: [google]
     cs: # Czech
       Přejít na hlavní obsah: [baidu]
-      Přeskočit na hlavní obsah: [amazon, bing, google, ibmwatson, systran, translate, yandex]
+      Přeskočit na hlavní obsah: [amazon, bing, google, ibmwatson, mymemory, systran, translate, yandex]
       Přeskočit na hlavní: [flitto]
       Přeskočte na hlavní obsah: [itranslate]
+      Přejít k hlavnímu obsahu: [mymemory]
     cv: # Chuvash
       Манӑҫла ҫӳлӗме упра: [baidu]
       Тӗп контент патне куҫ: [yandex]
@@ -109,6 +119,7 @@ translations:
       Spring til hovedindhold: [amazon, ibmwatson, yandex]
       Skip til hovedindholdet: [itranslate]
       Gå videre til hovedindholdet: [systran]
+      Til hovedindhold: [mymemory]
     de: # German
       Zum Inhalt überspringen: [baidu]
       Zum Hauptinhalt springen: [amazon, bing, deepl, flitto, google, ibmwatson, iciba, translate]
@@ -116,7 +127,7 @@ translations:
       Zum Standard-Inhalt überspringen: [papago]
       Zum Hauptinhalt hüpfen: [promptone]
       Zum Inhalt springen: [qq]
-      Direkt zum Inhalt: [reverso]
+      Direkt zum Inhalt: [mymemory, reverso]
       Zu Hauptinhalten springen: [systran]
       Zum Hauptinhalt überspringen: [yandex]
       Kommen wir zur hauptsache: [youdao] # actually de-t-zh-t-en
@@ -132,16 +143,17 @@ translations:
       Transsaltu al ĉefa enhavo: [gramtrans]
       Iri rekte al ĉefa enhavo: [yandex]
     es: # Spanish
-      Skip A contenido principal: [apertium, prompsit]
+      Skip A contenido principal: [apertium, opentrad, prompsit]
       Salto al fondo: [baidu]
-      Saltar al contenido principal: [amazon, bing, deepl, flitto, google, qq, systran, translate, yandex, youdao] # youdao actually es-t-zh-t-en
+      Saltar al contenido principal: [amazon, bing, deepl, flitto, google, mymemory, qq, systran, translate, yandex, youdao] # youdao actually es-t-zh-t-en
       Saltar al contenido principal.: [caiyun]
       Omitir el contenido principal: [ibmwatson]
       Salta al contenido principal: [iciba, itranslate]
       Saltarse al contenido principal: [promptone]
-      Pasar al contenido principal: [reverso]
+      Pasar al contenido principal: [mymemory, reverso]
       Salto al contenido principal: [worldlingo]
-      Ir al contenido principal: [reverso]
+      Ir al contenido principal: [mymemory, reverso]
+      Ir a contenido principal: [mymemory]
     et: # Estonian
       Ülemine peamisele sisule: [baidu]
       Mine põhisisu juurde: [bing, translate]
@@ -149,10 +161,13 @@ translations:
       Jäta vahele põhisisu: [amazon, ibmwatson]
       Skip to põhiline sisu: [itranslate]
       Liigu põhisisu juurde: [systran]
+      Minge kohe põhiosa juurde: [mymemory]
     eu: # Basque
       Aldatu eduki nagusira: [baidu]
       Saltatu eduki nagusira: [google, itranslate]
       Jauzi edukira joan: [yandex]
+      Utz ezazu eduki nagusira: [euskadi_g]
+      Zoaz eduki nagusira.: [euskadi_n]
     fa: # Farsi/Persian
       پرت به محتوای اصلی: [baidu]
       پرش به محتوای اصلی: [amazon, bing, translate, yandex] # also Amazon, for Dari (prs)
@@ -170,8 +185,9 @@ translations:
       Passer au contenu principal.: [caiyun]
       Passez au contenu principal: [itranslate]
       Sautiller au contenu principal: [promptone]
-      Aller au contenu principal: [iciba, reverso]
+      Aller au contenu principal: [apple, iciba, reverso]
       Saut au contenu principal: [worldlingo]
+      Accéder au contenu: [mymemory]
     fil: # Filipino/Tagalog
       Maglakbay sa pangunahing nilalaman: [baidu]
       Lumaktaw sa pangunahing nilalaman: [bing, systran, translate]
@@ -194,6 +210,7 @@ translations:
       Salta a contido principal: [apertium, prompsit]
       Saltar ao contido principal: [baidu, yandex]
       Ir ao contido principal: [google, itranslate]
+      Saltar a contido principal: [opentrad]
     gu: # Gujarati
       મુખ્ય સમાવિષ્ટોમાં છોડો: [baidu]
       મુખ્ય સામગ્રી પર અવગણો: [bing]
@@ -236,6 +253,7 @@ translations:
       Ugrás a fő tartalomra: [baidu, bing, ibmwatson, systran, translate, yandex]
       Ugrás a tartalomra: [google]
       Térjünk a lényegre: [itranslate]
+      Hálózatra ugrik tartalom: [webforditas]
     hy: # Armenian
       Հիմնական պարունակությունը: [baidu]
       Անցնել հիմնական բովանդակությանը: [google, itranslate]
@@ -251,6 +269,7 @@ translations:
       Lompati ke konten utama: [systran]
       Lewati ke isi utama: [yandex]
       Lompat ke yang utama: [youdao] # actually id-t-zh-t-en
+      Langsung ke konten utama: [mymemory]
     ig: # Igbo
       Debata na ndịna nkeisi: [baidu]
       Gaa masịrị ọdịnaya: [google, itranslate]
@@ -261,14 +280,14 @@ translations:
       Skipta yfir ađalinnihaldiđ: [itranslate]
       Sleppa að aðalefni: [yandex]
     it: # Italian
-      Passa al contenuto principale: [amazon, baidu, deepl, google, systran]
+      Passa al contenuto principale: [amazon, baidu, deepl, google, mymemory, systran]
       Passare al contenuto principale: [bing, translate]
       Salta al contenuto principale: [flitto, qq, reverso]
       Salta ai contenuti principali: [ibmwatson]
       Saltare al contenuto principale: [itranslate]
       salto al contenuto principale: [papago]
       Saltare a contenuto principale: [promptone]
-      Vai al contenuto principale: [reverso, yandex]
+      Vai al contenuto principale: [mymemory, reverso, yandex]
       Passiamo ora agli elementi principali: [youdao] # actually it-t-zh-t-en
       Salto al soddisfare principale: [worldlingo]
     ja: # Japanese
@@ -283,6 +302,7 @@ translations:
       メインにジャンプする: [youdao] # actually ja-t-zh-t-en
       主要な内容へのスキップ: [worldlingo]
       プライマリコンテンツにジャンプ: [iciba]
+      本文へジャンプ: [mymemory]
     jv: # Javanese
       Langsung menyang konten utama: [google, itranslate]
       Skip kanggo isi utama: [yandex]
@@ -290,6 +310,7 @@ translations:
       თავიდან შემდგომარებისთვის გადასვლა: [baidu]
       მთავარ შინაარსზე გადასვლა: [amazon, google, itranslate]
       მთავარი კონტენტის გამოტოვება: [yandex]
+      გადასვლა მთავარ შინაარსზე: [mymemory]
     kk: # Kazakh
       Негізгі мазмұнына өту: [baidu]
       Негізгі мазмұнға өткізіп жіберу: [bing]
@@ -310,7 +331,7 @@ translations:
       주요 내용 으로 건 너 뛰 기: [baidu]
       주요 콘텐츠로 건너뛰기: [bing, translate]
       주요 내용으로 건너뛰기: [flitto]
-      메인 컨텐츠로 가기: [google]
+      메인 컨텐츠로 가기: [google, mymemory]
       기본 컨텐츠로 건너뜀: [ibmwatson]
       메인 컨텐츠로 넘어가죠: [itranslate]
       기본 콘텐츠로 건너뛰기: [amazon, papago]
@@ -404,6 +425,7 @@ translations:
       Overslaan naar hoofdinhoud: [systran]
       Naar hoofdinhoud overslaan: [yandex]
       Skip aan hoofdinhoud: [worldlingo]
+      Ga verder naar hoofdinhoud: [mymemory]
     no: # Norwegian (includes Bokmål nb and Nynorsk nn)
       Hopp til hovudinnhald: [baidu] # Baidu says nn (Nynorsk); no includes nn and nb
       Skip til hovedinnholdet: [baidu, itranslate]
@@ -411,6 +433,7 @@ translations:
       Hopp tau til hovedinnhold: [gramtrans]
       Gå til hovedinnhold: [bing, systran, translate] # Bing says nb (Bokmål); no includes nn and nb
       Hopp til hovedinnholdet: [baidu, yandex] # Baidu says nb (Bokmål); no includes nn and nb
+      Sidens hovedinnhold: [mymemory]
     ny: # Nyanja/Chichewa
       Pitani ku nkhani zazikuluzikulu: [google, itranslate]
     or: # Odia/Oriya
@@ -436,7 +459,7 @@ translations:
     pt: # Portuguese (Brazil) and Portuguese (Portugal)
       Saltar ao conteúdo principal: [baidu]
       Pular para o conteúdo principal: [bing, deepl, reverso, translate]
-      Ir para o conteúdo principal: [amazon, baidu, flitto, google, ibmwatson, reverso, systran] # baidu is for pt-PT
+      Ir para o conteúdo principal: [amazon, baidu, flitto, google, ibmwatson, mymemory, reverso, systran] # baidu is for pt-PT
       Pule para o conteúdo principal: [itranslate, papago]
       Omitir ao conteúdo principal: [promptone]
       Saltar para o Conteúdo Principal: [qq]
@@ -453,13 +476,14 @@ translations:
       перейти к основному содержанию: [baidu, promptone, qq]
       Перейти к основному контенту: [bing, translate, yandex]
       Перейти к основному содержанию.: [caiyun]
-      Перейти к основному содержанию: [deepl, flitto, google]
-      Перейти к основному содержимому: [amazon, ibmwatson, systran]
+      Перейти к основному содержанию: [deepl, flitto, google, mymemory]
+      Перейти к основному содержимому: [amazon, ibmwatson, mymemory, systran]
       Пропустите основное содержание: [itranslate]
       Пропустить к содержимому по умолчанию: [papago]
       переходить к основному содержанию: [reverso]
       Переходи к главному: [youdao] # actually ru-t-zh-t-en
       Скип к главным образом содержанию: [worldlingo]
+      К основному содержимому: [mymemory]
     rw: # Kinyarwanda
       Kuri Ibikubiyemo: [baidu]
       Jya ku bintu nyamukuru: [google]
@@ -562,6 +586,7 @@ translations:
       Ana içeriğe geç: [amazon, baidu, flitto, google, itranslate]
       Ana içeriğe atla: [bing, ibmwatson, qq, reverso, systran, translate, yandex]
       Ana içeriğe git: [promptone]
+      Ana metne geç: [mymemory]
     tt: # Tatar
       Төп эчтәлеккә күчү: [google, promptone]
       Төп контентка күчү: [yandex]
@@ -609,7 +634,7 @@ translations:
       האָפּקען צו הויפּט צופרידן: [yandex]
     yo: # Yoruba
       Yọ sí àkóónú gangan: [baidu]
-      Yọ sí àkóónú gangan: [baidu] # these two look the same but maybe some Unicode normalisation has taken place
+      Yọ sí àkóónú gangan: [baidu] # these look the same; maybe one has been Unicode-normalised
       Rekọja si akọkọ akoonu: [google, itranslate]
     yua: # Yucatec Maya
       A puulkaba ichil le contenido noj bejo': [bing, translate]
@@ -620,7 +645,7 @@ translations:
       惊到主要内容: [baidu]
     zh: # Chinese (simplified)
       跳到主要内容: [baidu, bing, deepl, google, promptone, qihoo360, qq, translate, yandex]
-      跳转到主要内容: [caiyun, iciba]
+      跳转到主要内容: [caiyun, iciba, mymemory]
       跳转至主要内容: [flitto, ibmwatson, youdao]
       跳到主体内容。: [itranslate]
       跳至主要内容: [amazon, papago]

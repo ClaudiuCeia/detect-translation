@@ -129,7 +129,7 @@ export const getBaseTargetLang = ({ translator = 'und' } = {}) => {
         // to the user’s preferred country language (Bosnian, Croatian or Serbian)
         const { language, languages } = window.navigator;
         targetLang = (languages || [language])
-          .find(l => l.split('-')[0].match(/^(bs|hr|sr)$/))
+          .find(l => l.split(/[-_]/)[0].match(/^(bs|hr|sr)$/))
           || matchedLang;
         // just in case the user’s preferred language includes Serbian
         // - Serbian defaults to Cyrillic if a script is not specified,

@@ -4,11 +4,38 @@ import { expect } from 'chai';
 import sandbox from 'sd-sandbox';
 import { safeLoad } from 'js-yaml';
 import { getBaseTargetLang } from './detect-language';
+import { SKIP_TO_MAIN_CONTENT_ID } from '../../../common/constants';
 
 describe(__filename, sandbox(() => {
+  let mockContentEl = {
+    title: 'Skip to main content',
+    innerText: 'Skip to main content',
+  };
+
+  beforeEach(() => {
+    global.window = {
+      document: {
+        documentElement: {},
+        getElementById: sandbox.stub(
+          sel => (sel === SKIP_TO_MAIN_CONTENT_ID ? mockContentEl : null),
+        );
+        querySelector: sandbox.stub(
+          sel => (sel === `#${SKIP_TO_MAIN_CONTENT_ID}` ? mockContentEl : null),
+        ),
+      },
+    };
+    global.document = global.window.document;
+  });
+
+  afterEach(() => {
+    delete global.document;
+    delete global.window;
+  });
+
   describe('getFullyQualifiedPageLang', () => {
     describe('HTML element lang attribute', () => {
-      it('should not add the target language to the html element if already there', () => {
+      it('should not add the target language to the html element if already set', () => {
+        window.document.documentElement.lang = ''
       });
 
       it('should correct the lang attribute if present but incorrect', () => {
@@ -16,6 +43,22 @@ describe(__filename, sandbox(() => {
       });
 
       it('should add the target language to the html element if not there', () => {
+
+      });
+
+      it('should not modify the HTML element’s lang attribute in QQ Browser’s side-by-side view', () => {
+
+      });
+
+      it('should add lang="zh" to QQ Browser’s side-by-side view container', () => {
+
+      });
+
+      it('should add lang="en" to QQ Browser’s side-by-side contents containers', () => {
+
+      });
+
+      it('should add lang="zh" to QQ Browser’s translated content container once translated', () => {
 
       });
     });

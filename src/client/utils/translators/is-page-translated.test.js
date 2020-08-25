@@ -128,7 +128,7 @@ describe(__filename, () => {
 
     const mockSkipLink = {
       title: 'Skip to main content',
-      innerText: 'Skip to main content mock inner text',
+      innerText: `Skip to main content ${MOCK_EL.innerText}`,
     };
 
     const CAIYUN_ORIGINAL_TEXT_CHILD_SELECTOR = '#skip > .cyxy-trs-target';

@@ -19,6 +19,7 @@ import {
  * IBM Watson Language Translator: https://www.ibm.com/watson/services/language-translator/#demo
  * Papago: https://papago.naver.com/
  * Sogou: https://fanyi.sogou.com/
+ * Worldlingo: http://www.worldlingo.com/en/products/instant_website_translator.html
  * Yandex.Translate: https://translate.yandex.com/ (also browser extension in Yandex Browser)
  * Youdao: http://fanyi.youdao.com/
  */
@@ -94,11 +95,22 @@ export const listenForLanguageChange = async ({ timeout = Infinity } = {}) => {
             });
             observer.observe(
               document.documentElement,
-              { attributes: true },
+              // we need to observe changes to the lang attribute
+              // and we need to observe nodes added to the HTML element (QQ Browser)
+              {
+                attributes: true,
+                childList: true,
+              },
             );
             observer.observe(
               document.getElementById(SKIP_TO_MAIN_CONTENT_ID),
-              { attributes: true, childList: true, characterData: true },
+              // we need to observe any and all changes made to our canary content element
+              {
+                attributes: true,
+                childList: true,
+                characterData: true,
+                subtree: true,
+              },
             );
           } catch (err) {
             console.error('MutationObserver error:', err);
