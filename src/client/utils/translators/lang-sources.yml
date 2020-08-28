@@ -46,6 +46,7 @@ translations:
       ወደ ዋናው ይዘት ዝለል: [google]
       አዳዲስ ግምገማዎች አሁን ይዘት: [yandex]
     ar: # Arabic
+      التسكع إلى المحتوى الرئيسي: [apple]
       القفز إلى المحتوى الرئيسي: [baidu]
       التخطي إلى المحتوى الرئيسي: [bing, reverso, translate]
       تخطي إلى المحتوى الرئيسي: [amazon, flitto, systran]
@@ -122,7 +123,7 @@ translations:
       Til hovedindhold: [mymemory]
     de: # German
       Zum Inhalt überspringen: [baidu]
-      Zum Hauptinhalt springen: [amazon, bing, deepl, flitto, google, ibmwatson, iciba, translate]
+      Zum Hauptinhalt springen: [amazon, apple, bing, deepl, flitto, google, ibmwatson, iciba, translate]
       Hören Sie auf den Hauptinhalt: [itranslate]
       Zum Standard-Inhalt überspringen: [papago]
       Zum Hauptinhalt hüpfen: [promptone]
@@ -150,7 +151,7 @@ translations:
       Omitir el contenido principal: [ibmwatson]
       Salta al contenido principal: [iciba, itranslate]
       Saltarse al contenido principal: [promptone]
-      Pasar al contenido principal: [mymemory, reverso]
+      Pasar al contenido principal: [apple, mymemory, reverso]
       Salto al contenido principal: [worldlingo]
       Ir al contenido principal: [mymemory, reverso]
       Ir a contenido principal: [mymemory]
@@ -282,7 +283,7 @@ translations:
     it: # Italian
       Passa al contenuto principale: [amazon, baidu, deepl, google, mymemory, systran]
       Passare al contenuto principale: [bing, translate]
-      Salta al contenuto principale: [flitto, qq, reverso]
+      Salta al contenuto principale: [apple, flitto, qq, reverso]
       Salta ai contenuti principali: [ibmwatson]
       Saltare al contenuto principale: [itranslate]
       salto al contenuto principale: [papago]
@@ -291,6 +292,7 @@ translations:
       Passiamo ora agli elementi principali: [youdao] # actually it-t-zh-t-en
       Salto al soddisfare principale: [worldlingo]
     ja: # Japanese
+      メインコンテンツにスキップする: [apple]
       メインコンテンツにスキップ: [amazon, baidu, flitto, google, papago, systran]
       メイン コンテンツにスキップ: [bing, translate]
       メインコンテンツへスキップ: [deepl]
@@ -328,6 +330,7 @@ translations:
       ಮುಖ್ಯ ವಿಷಯಕ್ಕೆ ಬಿಟ್ಟುಬಿಡು: [bing]
       ಮುಖ್ಯ ವಿಷಯಕ್ಕೆ ತೆರಳಿ: [google, itranslate, yandex]
     ko: # Korean
+      주요 콘텐츠에 넘어가다: [apple]
       주요 내용 으로 건 너 뛰 기: [baidu]
       주요 콘텐츠로 건너뛰기: [bing, translate]
       주요 내용으로 건너뛰기: [flitto]
@@ -458,7 +461,7 @@ translations:
       اصلی مطالبو ته سر وروړاندې کول: [tetran]
     pt: # Portuguese (Brazil) and Portuguese (Portugal)
       Saltar ao conteúdo principal: [baidu]
-      Pular para o conteúdo principal: [bing, deepl, reverso, translate]
+      Pular para o conteúdo principal: [apple, bing, deepl, reverso, translate]
       Ir para o conteúdo principal: [amazon, baidu, flitto, google, ibmwatson, mymemory, reverso, systran] # baidu is for pt-PT
       Pule para o conteúdo principal: [itranslate, papago]
       Omitir ao conteúdo principal: [promptone]
@@ -474,7 +477,7 @@ translations:
       Treceți la conținutul principal: [amazon, systran]
     ru: # Russian
       перейти к основному содержанию: [baidu, promptone, qq]
-      Перейти к основному контенту: [bing, translate, yandex]
+      Перейти к основному контенту: [apple, bing, translate, yandex]
       Перейти к основному содержанию.: [caiyun]
       Перейти к основному содержанию: [deepl, flitto, google, mymemory]
       Перейти к основному содержимому: [amazon, ibmwatson, mymemory, systran]
@@ -644,7 +647,7 @@ translations:
     yue-Hans: # Cantonese (simplified)
       惊到主要内容: [baidu]
     zh: # Chinese (simplified)
-      跳到主要内容: [baidu, bing, deepl, google, promptone, qihoo360, qq, translate, yandex]
+      跳到主要内容: [apple, baidu, bing, deepl, google, promptone, qihoo360, qq, translate, yandex]
       跳转到主要内容: [caiyun, iciba, mymemory]
       跳转至主要内容: [flitto, ibmwatson, youdao]
       跳到主体内容。: [itranslate]
