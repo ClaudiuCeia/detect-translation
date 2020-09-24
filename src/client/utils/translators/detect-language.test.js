@@ -12,7 +12,7 @@ describe(__filename, sandbox(() => {
     innerText: 'Skip to main content',
   };
 
-  beforeEach(() => {
+  /* beforeEach(() => {
     global.window = {
       document: {
         documentElement: {},
@@ -30,12 +30,12 @@ describe(__filename, sandbox(() => {
   afterEach(() => {
     delete global.document;
     delete global.window;
-  });
+  }); */
 
   describe('getFullyQualifiedPageLang', () => {
     describe('HTML element lang attribute', () => {
       it('should not add the target language to the html element if already set', () => {
-        window.document.documentElement.lang = ''
+        // window.document.documentElement.lang = ''
       });
 
       it('should correct the lang attribute if present but incorrect', () => {
