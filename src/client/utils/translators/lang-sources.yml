@@ -153,8 +153,8 @@ translations:
       Til hovedindhold: [mymemory]
     de: # German
       Zum Inhalt überspringen: [baidu]
-      Zum Hauptinhalt springen: [apple, asics, aws, bing, deepl, flitto, google, ibmwatson, iciba, mdn, translate]
-      Zum Hauptinhalt wechseln: [amazon]
+      Zum Hauptinhalt springen: [apple, asics, aws, bing, deepl, flitto, google, ibmwatson, iciba, mdn, reverso, translate]
+      Zum Hauptinhalt wechseln: [amazon, reverso]
       Hauptinhalt anzeigen: [ebay]
       Direkt zum Hauptinhalt: [eur-lex, uber]
       Weiter zum Inhalt: [ikea] # AT
@@ -172,6 +172,7 @@ translations:
       Kommen wir zur hauptsache: [youdao] # actually de-t-zh-t-en
       Zeilensprung zum Hauptinhalt: [worldlingo]
       Springe zum Hauptinhalt: [reverso]
+      Überspringen und weiter zum Hauptinhalt: [reverso]
       Zu den Hauptinhalten springen: [google-search]
     el: # Greek
       Μετάβαση στο κύριο περιεχόμενο: [aws, baidu, bing, eur-lex, google, ibmwatson, mdn, ms, promptone, systran, translate, uber, yandex]
@@ -190,19 +191,19 @@ translations:
       Saltar para ir al contenido principal: [asics]
       Omitir e ir al contenido principal: [amazon]
       Salto al fondo: [baidu]
-      Saltar al contenido principal: [aws, amazon, bing, deepl, flitto, google, google-search, ms, mymemory, qq, systran, translate, uber, yandex, youdao] # youdao actually es-t-zh-t-en; ms: AR, ES, VE
+      Saltar al contenido principal: [aws, amazon, bing, deepl, flitto, google, google-search, ms, mymemory, qq, reverso, systran, translate, uber, yandex, youdao] # youdao actually es-t-zh-t-en; ms: AR, ES, VE
       Saltar al contenido principal.: [caiyun]
-      Ir directamente al contenido principal: [ebay]
+      Ir directamente al contenido principal: [ebay, reverso]
       Omitir el contenido principal: [ibmwatson]
       Salta al contenido principal: [iciba, itranslate]
       # Saltar: [ikea] # Commented out as too similar to other Italian/Iberian languages
       Omitir al contenido principal: [ms] # es-419 except AR and VE
       Saltarse al contenido principal: [promptone]
-      Saltar a contenido principal: [ps] # ES
+      Saltar a contenido principal: [ps, reverso] # ES
       Pasar al contenido principal: [amd, apple, ec, eur-lex, mymemory, reverso]
       Salto al contenido principal: [worldlingo]
       Ir al contenido principal: [ebay, google-search, mdn, mymemory, ps, reverso, uber] # google-search is es-419 (Latin America); uber is es-ES
-      Ir a contenido principal: [mymemory]
+      Ir a contenido principal: [mymemory, reverso]
     et: # Estonian
       Ülemine peamisele sisule: [baidu]
       Mine põhisisu juurde: [bing, translate, uber]
@@ -236,7 +237,7 @@ translations:
       Siirry pääainesisältöön: [yandex]
     fr: # French
       Sauter sur le contenu principal: [baidu]
-      Passer au contenu principal: [asics, aws, bing, deepl, ebay, flitto, google, ibmwatson, mdn, papago, ps, qq, systran, translate, uber, yandex, youdao] # youdao: actually fr-t-zh-t-en
+      Passer au contenu principal: [asics, aws, bing, deepl, ebay, flitto, google, ibmwatson, mdn, papago, ps, qq, reverso, systran, translate, uber, yandex, youdao] # youdao: actually fr-t-zh-t-en
       Allez au contenu: [asics] # CA
       Passer au contenu principal.: [caiyun]
       Accéder au contenu principal: [ebay]
@@ -249,6 +250,9 @@ translations:
       Saut au contenu principal: [worldlingo]
       Accéder au contenu: [mymemory]
       Passer directement au contenu principal: [google-search, ms]
+      Accéder directement au contenu: [reverso]
+      Accédez au contenu principal: [reverso]
+      Sauter au contenu: [reverso]
     fil: # Filipino/Tagalog
       Maglakbay sa pangunahing nilalaman: [baidu]
       Lumaktaw sa pangunahing nilalaman: [bing, systran, translate]
@@ -588,12 +592,13 @@ translations:
       Faixa clara ao índice principal: [worldlingo]
     ro: # Romanian
       Treci la conținutul principal: [baidu, yandex]
-      Salt la conținutul principal: [bing, google, ms, ps, translate]
+      Salt la conținutul principal: [bing, google, ms, ps, reverso, translate]
       Mergi la conţinutul principal: [ec]
       Direct la conținutul principal: [eur-lex]
       Salt la conţinutul principal: [ibmwatson]
       Treci la conţinutul principal: [ikea, itranslate]
       Treceți la conținutul principal: [aws, google-search, systran]
+      Mergi la conținutul principal: [reverso]
       Accesează direct conținutul principal: [uber]
     ru: # Russian
       перейти к основному содержанию: [baidu, promptone, qq]
