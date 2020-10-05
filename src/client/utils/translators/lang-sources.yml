@@ -38,6 +38,7 @@ sources:
   cms:
     drupal: https://localize.drupal.org/translate/languages/<language code>/translate?sid=99798
   sites: # actual visually-hidden Skip links translated from the English source string
+    aalto: https://www.aalto.fi/ # Probably translated from Finnish in this case
     amazon: https://www.amazon.com/ # and .de, .ae, .tr, .jp etc
     amd: https://www.amd.com/
     asics: https://www.asics.com/ # https://www.asics.com/gb/en-gb/location-selector/
@@ -46,6 +47,7 @@ sources:
     ec: https://ec.europa.eu/
     eur-lex: https://eur-lex.europa.eu/
     google-search: https://www.google.com/search?q=%20
+    gov.wales: https://gov.wales/
     ico: https://ico.org.uk/
     ikea: https://www.ikea.com/
     mdn: https://developer.mozilla.org/
@@ -53,6 +55,9 @@ sources:
     nsw: https://www.nsw.gov.au/
     ps: https://www.playstation.com/ # https://www.playstation.com/country-selector
     skype: https://www.skype.com/hi/ # only listing hi (other locales same as Microsoft)
+    # pontoon.moz teams (languages list): https://pontoon.mozilla.org/teams/
+    pontoon.moz: https://pontoon.mozilla.org/<lang>/all-projects/all-resources/?search=Skip+to+main+content
+    support.moz: https://support.mozilla.org/
     uber: https://www.uber.com/
     ultipro: # Ultimate Software UltiPro; taken from an UltiPro job ad
     unesco: https://en.unesco.org/ # and localised versions
@@ -63,7 +68,7 @@ translations:
   page:
     af: # Afrikaans
       Spring na hoof inhoud: [baidu]
-      Slaan oor na hoofinhoud: [aws, bing, google-search, itranslate, nsw, translate]
+      Slaan oor na hoofinhoud: [aws, bing, google-search, itranslate, pontoon.moz, support.moz, nsw, translate]
       Slaan oor na inhoud: [google, yandex]
     am: # Amharic
       ወደ ዋናው ይዘት ይዝለሉ: [aws]
@@ -75,7 +80,7 @@ translations:
       التسكع إلى المحتوى الرئيسي: [apple]
       القفز إلى المحتوى الرئيسي: [baidu]
       التخطي إلى المحتوى الرئيسي: [bing, google-search, reverso, translate]
-      تخطي إلى المحتوى الرئيسي: [aws, amazon, flitto, ms, nsw, ps, systran]
+      تخطي إلى المحتوى الرئيسي: [aws, amazon, flitto, ms, nsw, pontoon.moz, ps, systran]
       الانتقال إلى المحتوى الرئيسي: [drupal]
       تخطى إلى المحتوى الرئيسي: [google, ikea] # ikea: EG, QA, BH
       التخطي للمحتويات الرئيسية: [ibmwatson]
@@ -84,12 +89,14 @@ translations:
       تخطي المحتوى الرئيسي: [promptone]
       تخطٍ للوصول إلى المحتوى الرئيسي: [uber] # BH, EG, JO, LB, MA, QA, SA, AE
       تجاوز إلى المحتوى الرئيسي: [drupal, unesco]
+      تخطَّ إلى المحتوى الأساسي: [pontoon.moz]
       انتقل إلى المحتوى الرئيسي: [qq, youdao] # youdao: actually ar-t-zh-t-en
       اقفز إلى المحتوى الرئيسي: [yandex]
       قفز إلى محتوى رئيسيّة: [worldlingo]
     az: # Azerbaijani
       Baş məlumatına atla: [baidu]
       Əsas məzmuna keçin: [aws, google, google-search, itranslate, nsw]
+      Əsas məzmuna keç: [pontoon.moz, support.moz]
       Əsas məzmuna get: [promptone]
       Əsas məzmun gedin: [yandex]
     ba: # Bashkir
@@ -108,6 +115,7 @@ translations:
       Преминете към основното съдържание: [google]
       Пропускане към основното съдържание: [ibmwatson]
       Прескочи до главното съдържание: [itranslate]
+      Към главното съдържание: [pontoon.moz]
       Прескачане до основното съдържание: [systran]
       Отидете на основното съдържание: [yandex]
     bn: # Bangla, Bengali
@@ -118,6 +126,8 @@ translations:
       সরাসরি আসল কন্টেন্টে যান: [google-search]
       প্রধান বিষয়বস্তুতে স্কিপ করো: [ibmwatson]
       মূল বিষয়বস্তুর স্কিপ।: [itranslate]
+      প্রধান বিষয়বস্তু স্কিপ করুন: [pontoon.moz]
+      প্রধান কন্টেন্টে ফিরে যান: [support.moz]
       প্রধান বিষয়বস্তুতে যান: [systran]
       বাদ দিয়ে প্রধান বিষয়সূচিতে যান: [uber]
     # bs: # listed under sh (Serbo-Croatian) as Bosnian, Croatian and Serbian (Latin) too similar
@@ -130,6 +140,7 @@ translations:
       Saltar al contingut principal: [google, itranslate]
       Passa al contingut principal: [google-search]
       Ves al contingut principal: [nsw]
+      Vés directament al contingut principal: [pontoon.moz]
       Omet-ho al contingut principal: [systran]
       Vés al contingut principal: [mymemory]
       Anar al contingut principal: [ikea, mymemory]
@@ -141,7 +152,7 @@ translations:
       Saltà à u cuntenutu principale: [google]
     cs: # Czech
       Přejít na hlavní obsah: [baidu, eur-lex, ikea, nsw]
-      Přeskočit na hlavní obsah: [aws, amazon, bing, google, google-search, ibmwatson, ms, mymemory, ps, systran, translate, uber, yandex]
+      Přeskočit na hlavní obsah: [aws, amazon, bing, google, google-search, ibmwatson, pontoon.moz, support.moz, ms, mymemory, ps, systran, translate, uber, yandex]
       Přeskočit k hlavnímu obsahu: [drupal]
       Přeskočit na hlavní: [flitto]
       Přeskočte na hlavní obsah: [itranslate]
@@ -153,6 +164,7 @@ translations:
       Neidio i'r prif gynnwys: [baidu, bing, google, itranslate, nsw, translate, yandex]
       Hepgor y prif gynnwys: [ibmwatson]
       Neidio i’r prif gynnwys: [ico]
+      Neidio i'r prif gynnwy: [gov.wales]
     da: # Danish
       Gå til hovedindholdet: [baidu, eur-lex, ms]
       Gå til hovedindhold: [bing, drupal, ec, google, ikea, translate, uber]
@@ -160,11 +172,12 @@ translations:
       Sjip til hovedindhold: [gramtrans]
       Spring til hovedindhold: [aws, ibmwatson, nsw, yandex]
       Skip til hovedindholdet: [itranslate]
+      Hop til hovedindholdet: [pontoon.moz, support.moz]
       Gå videre til hovedindholdet: [ps, systran]
       Til hovedindhold: [mymemory]
     de: # German
       Zum Inhalt überspringen: [baidu]
-      Zum Hauptinhalt springen: [apple, asics, aws, bing, deepl, flitto, google, ibmwatson, iciba, mdn, nsw, reverso, translate]
+      Zum Hauptinhalt springen: [apple, asics, aws, bing, deepl, flitto, google, ibmwatson, iciba, mdn, pontoon.moz, support.moz, nsw, reverso, translate]
       Zum Hauptinhalt wechseln: [amazon, reverso]
       # Zum Hauptinhalt: [battle] # Excluded as too similar to Luxembourgish
       Hauptinhalt anzeigen: [ebay]
@@ -188,7 +201,7 @@ translations:
       Zu den Hauptinhalten springen: [google-search]
       Überspringen zum Hauptinhalt: [ultipro]
     el: # Greek
-      Μετάβαση στο κύριο περιεχόμενο: [aws, baidu, bing, eur-lex, google, ibmwatson, mdn, ms, nsw, promptone, systran, translate, uber, yandex]
+      Μετάβαση στο κύριο περιεχόμενο: [aws, baidu, bing, eur-lex, google, ibmwatson, mdn, pontoon.moz, support.moz, ms, nsw, promptone, systran, translate, uber, yandex]
       Παράκαμψη προς το κυρίως περιεχόμενο: [drupal, ec]
       Παράβλεψη κύριου περιεχομένου: [google-search]
       Πηδήξτε το κύριο περιεχόμενο: [itranslate]
@@ -204,7 +217,7 @@ translations:
       Saltar para ir al contenido principal: [asics]
       Omitir e ir al contenido principal: [amazon]
       Salto al fondo: [baidu]
-      Saltar al contenido principal: [aws, amazon, battle, bing, deepl, drupal, flitto, google, google-search, ms, mymemory, nsw, qq, reverso, systran, translate, uber, ultipro, yandex, youdao] # youdao actually es-t-zh-t-en; ms: AR, ES, VE
+      Saltar al contenido principal: [aws, amazon, battle, bing, deepl, drupal, flitto, google, google-search, ms, mymemory, nsw, pontoon.moz, qq, reverso, systran, translate, uber, ultipro, yandex, youdao] # youdao actually es-t-zh-t-en; ms: AR, ES, VE
       Saltar al contenido principal.: [caiyun]
       Ir directamente al contenido principal: [ebay, reverso]
       Omitir el contenido principal: [ibmwatson]
@@ -215,7 +228,7 @@ translations:
       Saltar a contenido principal: [ps, reverso] # ES
       Pasar al contenido principal: [amd, apple, drupal, ec, eur-lex, mymemory, reverso]
       Salto al contenido principal: [worldlingo]
-      Ir al contenido principal: [drupal, ebay, google-search, mdn, mymemory, ps, reverso, uber] # google-search is es-419 (Latin America); uber is es-ES
+      Ir al contenido principal: [drupal, ebay, google-search, mdn, pontoon.moz, support.moz, mymemory, ps, reverso, uber] # google-search is es-419 (Latin America); uber is es-ES
       Ir a contenido principal: [mymemory, reverso]
     et: # Estonian
       Ülemine peamisele sisule: [baidu]
@@ -237,21 +250,22 @@ translations:
       Zoaz eduki nagusira.: [euskadi_n]
     fa: # Farsi/Persian
       پرت به محتوای اصلی: [baidu]
-      پرش به محتوای اصلی: [aws, bing, drupal, translate, yandex] # also Amazon, for Dari (prs)
+      پرش به محتوای اصلی: [aws, bing, drupal, pontoon.moz, translate, yandex] # also Amazon, for Dari (prs)
       رفتن به محتوای اصلی: [drupal, google, nsw, systran]
       گذر به محتوای اصلی: [drupal]
       رد شدن و رفتن به محتوای اصلی: [google-search]
       به محتواي اصلي تسليم شو: [itranslate]
     fi: # Finnish
+      Siirry sisältöön: [aalto]
       Siirry pääasiaan: [baidu] # followed by '@ info: whatsthis' (removed as clearly not Finnish)
-      Siirry pääsisältöön: [aws, bing, eur-lex, google-search, ibmwatson, ikea, mdn, ms, nsw, ps, systran, translate]
+      Siirry pääsisältöön: [aws, bing, eur-lex, google-search, ibmwatson, ikea, mdn, pontoon.moz, support.moz, ms, nsw, ps, systran, translate]
       Hyppää pääsisältöön: [drupal, ec, flitto, google, itranslate]
       Siirry sisällön.: [promptone]
       Ohita ja siirry pääsisältöön: [uber]
       Siirry pääainesisältöön: [yandex]
     fr: # French
       Sauter sur le contenu principal: [baidu]
-      Passer au contenu principal: [asics, aws, battle, bing, deepl, ebay, flitto, google, ibmwatson, mdn, nsw, papago, ps, qq, reverso, systran, translate, uber, ultipro, yandex, youdao] # youdao: actually fr-t-zh-t-en
+      Passer au contenu principal: [asics, aws, battle, bing, deepl, ebay, flitto, google, ibmwatson, mdn, nsw, papago, pontoon.moz, ps, qq, reverso, systran, translate, uber, ultipro, yandex, youdao] # youdao: actually fr-t-zh-t-en
       Allez au contenu: [asics] # CA
       Passer au contenu principal.: [caiyun]
       Accéder au contenu principal: [ebay]
@@ -260,7 +274,7 @@ translations:
       Aller à contenu principal: [ikea] # BE
       Passez au contenu principal: [itranslate]
       Sautiller au contenu principal: [promptone]
-      Aller au contenu principal: [amazon, amd, apple, drupal, ec, eur-lex, iciba, ikea, reverso, unesco]
+      Aller au contenu principal: [amazon, amd, apple, drupal, ec, eur-lex, iciba, ikea, pontoon.moz, support.moz, reverso, unesco]
       Saut au contenu principal: [worldlingo]
       Accéder au contenu: [mymemory]
       Passer directement au contenu principal: [google-search, ms]
@@ -278,12 +292,13 @@ translations:
     fy: # Western Frisian
       Nei haad ynhâld oerslaan: [baidu]
       Gean nei haadynhâld: [google]
+      Nei haadynhâld: [pontoon.moz, support.moz] # fy-NL
     ga: # Irish
       Léim go príomhábhar: [baidu]
       Scipeáil chuig an bpríomhábhar: [bing, google, itranslate, nsw]
       Chuig an bpríomhábhar: [eur-lex]
       Scipeáil chuig an ábhar is mó: [ibmwatson]
-      Léim go dtí an príomhábhar: [yandex]
+      Léim go dtí an príomhábhar: [pontoon.moz, support.moz, yandex]
     gd: # Scottish Gaelic
       Gearr leum gun phrìomh susbaint: [baidu]
       Air adhart gu prìomh shusbaint: [google]
@@ -291,25 +306,26 @@ translations:
       Salta a contido principal: [apertium, prompsit]
       Saltar ao contido principal: [baidu, google-search, yandex]
       Ir o contido principal: [drupal]
-      Ir ao contido principal: [drupal, google, itranslate, nsw]
+      Ir ao contido principal: [drupal, google, itranslate, nsw, pontoon.moz]
       Pasar ao contido principal: [drupal, ikea]
       Saltar a contido principal: [opentrad]
     gu: # Gujarati
       મુખ્ય સમાવિષ્ટોમાં છોડો: [baidu]
       મુખ્ય સામગ્રી પર અવગણો: [bing]
-      મુખ્ય વિષયવસ્તુ પર જાઓ: [drupal, google, itranslate, yandex]
+      મુખ્ય વિષયવસ્તુ પર જાઓ: [drupal, google, itranslate, pontoon.moz, yandex]
       મુખ્ય કન્ટેન્ટ પર જાઓ: [google-search]
       મુખ્ય સમાવિષ્ટને છોડી દો: [ibmwatson]
     ha: # Hausa
       Ka Shiga zuwa kayan maɓallin: [baidu]
       Tsallake zuwa babban abun cikin: [google]
       Tsallake zuwa babban abun ciki: [aws, itranslate]
+      Tsallaka zuwa babban abin da ke ciki: [support.moz]
     haw: # Hawaiian
       port poiloaʻa moe ema: [baidu]
       E lele i ka ʻikepili nui: [google]
     he: # Hebrew
       לעבור לתוכן העיקרי: [baidu]
-      דילוג לתוכן הראשי: [bing, google-search, translate, uber]
+      דילוג לתוכן הראשי: [bing, google-search, pontoon.moz, translate, uber]
       דלג לתוכן הראשי: [aws, amazon, google, itranslate, ms, nsw, systran]
       דילוג לתוכן העיקרי: [drupal, ibmwatson]
       התוכן העיקרי שסקיפ: [promptone]
@@ -323,6 +339,7 @@ translations:
       सीधे मुख्य सामग्री पर जाएं: [google-search]
       मुख्य सामग्री के लिए छोड़ें: [ibmwatson]
       स्किप को स्किप के लिए स्किप।: [itranslate]
+      छोड़कर मुख्य सामग्री पर बढ़ें: [pontoon.moz, support.moz]
       छोड़ें मुख्य सामग्री: [papago]
       मुख्य सामग्री पर जाएं: [aws, promptone, yandex]
       छोड़ें को मुख्य अंतर्वस्तु: [qq]
@@ -339,11 +356,12 @@ translations:
       Sote ale nan kontni prensipal: [yandex]
     hu: # Hungarian
       Ugrás a fő tartalomhoz: [aws, google-search]
-      Ugrás a fő tartalomra: [baidu, bing, eur-lex, ibmwatson, mdn, nsw, ps, systran, translate, yandex]
+      Ugrás a fő tartalomra: [baidu, bing, eur-lex, ibmwatson, mdn, pontoon.moz, support.moz, nsw, ps, systran, translate, yandex]
       Ugrás a tartalomra: [drupal, ec, google]
       Ugrás a fő oldalra: [ikea]
       Térjünk a lényegre: [itranslate]
       Ugrás a tartalomtörzsre: [ms]
+      Ugrás a főtartalomra: [pontoon.moz]
       Hálózatra ugrik tartalom: [webforditas]
     hy: # Armenian
       Հիմնական պարունակությունը: [baidu]
@@ -351,10 +369,10 @@ translations:
       Գնալ հիմնական բովանդակության: [yandex]
     id: # Indonesian
       Langkah ke isi utama: [baidu]
-      Loncat ke konten utama: [bing, drupal, mdn, translate]
+      Loncat ke konten utama: [bing, drupal, mdn, pontoon.moz, translate]
       Lompat ke isi utama: [drupal]
       Lewati konten utama: [flitto]
-      Lewati ke konten utama: [aws, google, google-search, ibmwatson]
+      Lewati ke konten utama: [aws, google, google-search, ibmwatson, pontoon.moz, support.moz]
       Melewati konten utama: [itranslate]
       Merangkak konten dasar: [papago]
       Melompat ke kandungan utama: [qq]
@@ -365,6 +383,7 @@ translations:
     ig: # Igbo
       Debata na ndịna nkeisi: [baidu]
       Gaa masịrị ọdịnaya: [google, itranslate]
+      Mafere na isi ọdịnaya: [support.moz]
     is: # Icelandic
       Skipa yfir í aðal innihald: [baidu]
       Sleppa í aðalefni: [bing, translate]
@@ -380,10 +399,11 @@ translations:
       Salta ai contenuti principali: [ibmwatson]
       Vai al contenuto: [ikea] # CH
       Saltare al contenuto principale: [itranslate]
+      Vai direttamente al contenuto principale: [pontoon.moz, support.moz]
       Passa a contenuti principali: [ms]
       salto al contenuto principale: [papago]
       Saltare a contenuto principale: [promptone]
-      Vai al contenuto principale: [battle, ikea, mymemory, mdn, reverso, yandex]
+      Vai al contenuto principale: [battle, ikea, mymemory, mdn, pontoon.moz, reverso, yandex]
       Passiamo ora agli elementi principali: [youdao] # actually it-t-zh-t-en
       Salto al soddisfare principale: [worldlingo]
       Vai ai contenuti principali: [google-search]
@@ -393,12 +413,13 @@ translations:
       メインコンテンツにスキップ: [asics, aws, amazon, baidu, flitto, google, nsw, papago, systran]
       メインコンテンツへ移動: [battle]
       メイン コンテンツにスキップ: [bing, google-search, translate]
-      メインコンテンツへスキップ: [deepl]
+      メインコンテンツへスキップ: [deepl, pontoon.moz, support.moz]
       メイン・コンテンツにスキップ: [ibmwatson]
       メインに戻る: [ikea]
       メインコンテンツにスキップします。: [itranslate]
-      メインコンテンツまで移動: [mdn]
+      メインコンテンツまで移動: [mdn, pontoon.moz]
       スキップしてメイン コンテンツへ: [ms]
+      本文へ移動: [pontoon.moz]
       主な内容にスキップしてください: [promptone]
       メイン　コンテンツにスキップ: [reverso]
       メイン コンテンツへスキップ: [uber]
@@ -417,6 +438,7 @@ translations:
       მთავარ შინაარსზე გადასვლა: [aws, google, itranslate, nsw]
       მთავარ კონტენტზე გადასვლა: [google-search]
       მთავარი კონტენტის გამოტოვება: [yandex]
+      პირდაპირ ძირითად შიგთავსზე გადასვლა: [pontoon.moz, support.moz]
       გადასვლა მთავარ შინაარსზე: [mymemory]
     kk: # Kazakh
       Негізгі мазмұнына өту: [baidu]
@@ -450,8 +472,11 @@ translations:
       주요 콘텐츠로 이동: [google-search]
       기본 컨텐츠로 건너뜀: [ibmwatson]
       메인 컨텐츠로 넘어가죠: [itranslate]
+      위로: [pontoon.moz, support.moz]
       주요 콘텐츠로 건너 뛰기: [nsw]
       기본 콘텐츠로 건너뛰기: [aws, papago]
+      메인 콘텐트로 건너 뛰기: [pontoon.moz]
+      본문으로 건너뛰기: [pontoon.moz]
       주요 내용으로 건너띄기: [promptone]
       메인 콘텐츠로 넘어가기: [ps]
       주 콘텐츠로 건너뛰기: [ms, systran]
@@ -493,6 +518,7 @@ translations:
       Alefa mankany amin'ny votoaty fototra: [baidu]
       Azon amin' ny zavatra fototra: [bing]
       Hanketo ny votoatiny lehibe: [google, itranslate]
+      Handingana ho @ tena atiny: [support.moz]
       Hijery ny tena afa-po: [yandex]
     mhr: # Eastern Mari
       Куснаш основного контента: [yandex]
@@ -527,7 +553,7 @@ translations:
     mrj: # Hill Mari / Western Mari
       Ванжаш тӹнг контент: [yandex]
     ms: # Malay
-      Langkau ke kandungan utama: [aws, baidu, bing, drupal, flitto, google, google-search, ibmwatson, ikea, nsw, systran, translate]
+      Langkau ke kandungan utama: [aws, baidu, bing, drupal, flitto, google, google-search, ibmwatson, ikea, pontoon.moz, support.moz, nsw, systran, translate]
       Pergi ke kandungan utama: [itranslate]
       # Melompat ke kandungan utama: [qq] # Same as id; removing from ms as Indonesian is far more populous
       Skip untuk utama kandungan: [yandex]
@@ -540,6 +566,7 @@ translations:
       အဓိကအကြောင်းအရာသို့ သွားမည်: [drupal]
       အဓိက အကြောင်းအရာသို့ ကျော်ရန်: [google-search]
       အဓိကအကြောင်းအရာ Skip: [google, itranslate]
+      အဓိကအကြောင်းအရာသို့သွားပါ: [pontoon.moz]
       အဓိကအကြောင်းအရာ: [yandex]
     ne: # Nepalese
       मुख्य सामग्रीमा फड्काउनुहोस्: [baidu]
@@ -561,7 +588,7 @@ translations:
       Ga door naar de hoofdinhoud: [ikea] # NL
       Overslaan en naar hoofdinhoud gaan: [ikea] # BE
       Sla over naar de hoofdinhoud: [itranslate]
-      Naar hoofdinhoud: [mdn]
+      Naar hoofdinhoud: [mdn, pontoon.moz, support.moz]
       Ga naar de inhoudelijke: [promptone]
       Overslaan en naar de inhoud: [reverso]
       Overslaan naar hoofdinhoud: [ms, systran]
@@ -574,11 +601,11 @@ translations:
       Hopp til hovedinnhold: [aws, drupal, google, ibmwatson, nsw] # Drupal & IBM Watson are nb (Bokmål); no includes nn and nb
       Gå videre til hovedinnholdet: [google-search] # google-search: no, nn
       Hopp tau til hovedinnhold: [gramtrans]
-      Gå til hovedinnholdet: [ikea]
+      Gå til hovedinnholdet: [ikea, pontoon.moz] # pontoon.moz is nb
       Gå til hovedinnhold: [bing, ms, systran, translate] # Bing is nb (Bokmål); no includes nn and nb
       Hopp til hovedinnholdet: [baidu, ps, uber, yandex] # Baidu & Uber are nb (Bokmål); no includes nn and nb
       Sidens hovedinnhold: [mymemory]
-    ny: # Nyanja/Chichewa
+    ny: # Nyanja/Chichewa/Chinyanja
       Pitani ku nkhani zazikuluzikulu: [google, itranslate]
     or: # Odia/Oriya
       ମୂଖ୍ୟ ବିଷୟବସ୍ତୁକୁ ଯାଆନ୍ତୁ: [baidu]
@@ -595,8 +622,8 @@ translations:
       ਮੁੱਖ ਸਮੱਗਰੀ ਨੂੰ ਕਰਨ ਲਈ ਛੱਡੋ: [yandex]
     pl: # Polish
       Przejdź do treści głównej: [asics]
-      Przejdź do głównej zawartości: [aws, baidu, battle, bing, flitto, google, google-search, ms, nsw, reverso, systran, translate, uber]
-      Przejdź do głównej treści: [amazon, deepl, ebay, eur-lex, ibmwatson, itranslate, mdn, yandex]
+      Przejdź do głównej zawartości: [aws, baidu, battle, bing, flitto, google, google-search, pontoon.moz, support.moz, ms, nsw, reverso, systran, translate, uber]
+      Przejdź do głównej treści: [amazon, deepl, ebay, eur-lex, ibmwatson, itranslate, mdn, pontoon.moz, yandex]
       Przejdź do treści: [drupal, ec]
       Pomiń: [ikea]
       Pomiń i przejdź do zawartości głównej: [ps]
@@ -608,8 +635,8 @@ translations:
       اصلی مطالبو ته سر وروړاندې کول: [tetran]
     pt: # Portuguese (Brazil) and Portuguese (Portugal)
       Saltar ao conteúdo principal: [baidu]
-      Pular para o conteúdo principal: [amd, apple, bing, deepl, drupal, mdn, reverso, translate, uber]
-      Ir para o conteúdo principal: [aws, baidu, flitto, google, google-search, ibmwatson, mymemory, nsw, reverso, systran] # baidu is for pt-PT
+      Pular para o conteúdo principal: [amd, apple, bing, deepl, drupal, mdn, pontoon.moz, reverso, translate, uber]
+      Ir para o conteúdo principal: [aws, baidu, flitto, google, google-search, ibmwatson, pontoon.moz, support.moz, mymemory, nsw, reverso, systran] # baidu is for pt-PT
       Pular para conteúdo principal: [amazon, ultipro]
       Ir para conteúdo principal: [asics, ebay, ms]
       Ir ao conteúdo principal: [battle]
@@ -618,7 +645,7 @@ translations:
       Omitir ao conteúdo principal: [promptone]
       Saltar para o Conteúdo Principal: [qq]
       Passar para o conteúdo principal: [drupal, ec, eur-lex, ps, reverso]
-      Saltar para o conteúdo principal: [yandex, youdao] # actually pt-t-zh-t-en
+      Saltar para o conteúdo principal: [support.moz, yandex, youdao] # actually pt-t-zh-t-en
       Faixa clara ao índice principal: [worldlingo]
     ro: # Romanian
       Treci la conținutul principal: [baidu, yandex]
@@ -627,6 +654,7 @@ translations:
       Direct la conținutul principal: [eur-lex]
       Salt la conţinutul principal: [ibmwatson]
       Treci la conţinutul principal: [ikea, itranslate]
+      Sari la conținutul principal: [pontoon.moz, support.moz]
       Treceți la conținutul principal: [aws, google-search, systran]
       Mergi la conținutul principal: [reverso]
       Accesează direct conținutul principal: [uber]
@@ -635,9 +663,10 @@ translations:
       Перейти к основному контенту: [apple, battle, bing, google-search, ikea, ms, translate, yandex]
       Перейти к основному содержанию.: [caiyun]
       Перейти к основному содержанию: [amd, deepl, drupal, flitto, google, mymemory, nsw]
-      Перейти к основному содержимому: [aws, ibmwatson, mdn, mymemory, systran]
+      Перейти к основному содержимому: [aws, ibmwatson, mdn, pontoon.moz, support.moz, mymemory, systran]
       Пропустите основное содержание: [itranslate]
       Пропустить к содержимому по умолчанию: [papago]
+      Перейти к главному содержимому: [pontoon.moz]
       Перейти к основным материалам: [ps]
       переходить к основному содержанию: [reverso]
       Пропустить и перейти к основному содержимому: [uber] # EE, LT, UA
@@ -654,12 +683,13 @@ translations:
       مواد کي ڇڏي ڏيو: [google]
     sh: # Serbo-Croatian (macrolanguage) - sr-Latn (Serbian), hr (Croatian), bs (Bosnian) normally preferred, but too similar
       Skoči na glavni sadržaj: [baidu, drupal, ec] # Bosnian, Croatian, Serbian (Latin)
-      Preskoči na glavni sadržaj: [aws, bing, google-search, ibmwatson, itranslate, ms, ps, systran, translate, uber, yandex] # Bosnian/Croatian (Serbian: Amazon)
+      Preskoči na glavni sadržaj: [aws, bing, google-search, ibmwatson, itranslate, pontoon.moz, support.moz, ms, ps, systran, translate, uber, yandex] # Bosnian/Croatian (Serbian: Amazon)
       Prijelaz na glavni sadržaj: [eur-lex] # Croatian
       Prijeđite na glavni sadržaj: [google] # Bosnian/Croatian
       Pređite na glavni sadržaj: [google-search] # Bosnian
       Vrati se na glavni sadržaj: [ikea] # Serbian
       Preskoči na glavni izbornik: [ikea] # Croatian
+      Preskoči do glavnog sadržaja: [pontoon.moz, support.moz] # Bosnian
       Prijeđi na glavni sadržaj: [nsw] # Croatian
       Idite na glavni sadržaj: [yandex] # Croatian
       Pređi na glavni sadržaj: [bing, google-search, ms, ps, translate] # Serbian (Latin) / sr-ME (google-search, ms)
@@ -672,13 +702,13 @@ translations:
       යන්න ප්රධාන අන්තර්ගතයට යන්න: [yandex]
     sk: # Slovak
       Preskočiť k hlavnému obsahu: [baidu]
-      Preskočiť na hlavný obsah: [aws, bing, google, google-search, ibmwatson, nsw, systran, translate, uber, yandex]
+      Preskočiť na hlavný obsah: [aws, bing, google, google-search, ibmwatson, pontoon.moz, support.moz, nsw, systran, translate, uber, yandex]
       Skočiť na hlavný obsah: [drupal, ec]
       Prejsť na hlavný obsah: [eur-lex, ikea, ms]
       Preskoč na hlavný obsah: [itranslate]
       Prejsť na hlavný obsah: [ps]
     sl: # Slovenian
-      Preskoči na glavno vsebino: [aws, baidu, bing, drupal, eur-lex, ibmwatson, ikea, itranslate, ms, nsw, ps, translate, yandex]
+      Preskoči na glavno vsebino: [aws, baidu, bing, drupal, eur-lex, ibmwatson, ikea, itranslate, pontoon.moz, support.moz, ms, nsw, ps, translate, yandex]
       Preskočite na glavno vsebino: [google]
       Skok na glavno vsebino: [google-search]
     sm: # Samoan
@@ -696,6 +726,7 @@ translations:
       Kalo te përmbajtja kryesore: [aws]
       Kalo tek përmbajtja kryesore: [baidu, google, nsw]
       Kapërce te përmbajtja kryesore: [google-search]
+      Kalo te lënda bazë: [pontoon.moz, support.moz]
       Kalo në përmbajtjen kryesore: [itranslate, systran]
       Kalo tek përmbajtja qendrore: [yandex]
     sr: # Serbian (Cyrillic)
@@ -704,6 +735,7 @@ translations:
       Скочи на садржај: [drupal]
       Прескочи на главни садржај: [ibmwatson, translate]
       Пребаците на главни садржај: [itranslate]
+      Прескочи до главног садржаја: [pontoon.moz, support.moz]
       Иди на главни садржај: [yandex]
     # sr-Latn: # listed under sh (Serbo-Croatian) as Bosnian, Croatian and Serbian (Latin) too similar
     st: # Southern Sotho
@@ -712,9 +744,10 @@ translations:
       Luncat ka eusi utama: [baidu, google, itranslate]
       Skip to eusi utama: [yandex]
     sv: # Swedish
+      Gå till innehållet: [aalto]
       Gå över till huvudinnehållet: [baidu]
       Gå till huvudinnehållet: [bing, ibmwatson, translate]
-      Hoppa till huvudinnehåll: [aws, drupal, ec, flitto, google, ikea, mdn, nsw, yandex]
+      Hoppa till huvudinnehåll: [aws, drupal, ec, flitto, google, ikea, mdn, pontoon.moz, support.moz, nsw, yandex]
       Gå direkt till huvudinnehållet: [eur-lex]
       Fortsätt till huvudinnehållet: [google-search]
       Sjippe till huvudinnehåll: [gramtrans]
@@ -734,7 +767,7 @@ translations:
       முக்கிய உள்ளடக்கத்திற்குச் செல்க: [amazon]
       முக்கிய உள்ளடக்கத்திற்கு விடு: [baidu]
       முக்கிய உள்ளடக்கத்திற்கு ச்செல்ல: [bing, translate]
-      முக்கிய உள்ளடக்கத்திற்கு செல்க: [google, yandex]
+      முக்கிய உள்ளடக்கத்திற்கு செல்க: [google, pontoon.moz, yandex]
       முதன்மை உள்ளடக்கத்திற்குச் செல்: [google-search]
       முக்கிய உள்ளடக்கத்துக்கு துடைக்க: [ibmwatson]
       முக்கிய உள்ளடக்கத்திற்கு தவிர்: [aws, itranslate]
@@ -745,13 +778,14 @@ translations:
       ప్రధాన విషయానికి వెళ్లండి: [amazon, bing]
       ప్రధాన కంటెంట్‌కు దాటవేయి: [google, google-search, itranslate, uber]
       ముఖ్యమైన సారాంశమునకు చేర్చు: [ibmwatson]
+      ప్రధాన కంటెంటుకు వెళ్ళు: [pontoon.moz, support.moz]
       ప్రధాన కు దాటివెయ్యండి: [yandex]
     tg: # Tajik
       Гузариш ба мӯҳтавои асосӣ: [baidu]
       Гузаштан ба мундариҷаи асосӣ: [google, itranslate]
       Гузаштан ба контенту асосӣ: [yandex]
     th: # Thai
-      ข้ามไปยังเนื้อหาหลัก: [aws, baidu, bing, drupal, ebay, google-search, ibmwatson, ikea, papago, ps, systran, translate]
+      ข้ามไปยังเนื้อหาหลัก: [aws, baidu, bing, drupal, ebay, google-search, ibmwatson, ikea, pontoon.moz, support.moz, papago, ps, systran, translate]
       ข้ามไปเนื้อหาหลัก: [battle]
       ข้ามไปที่เนื้อหาหลัก: [flitto, google, ms, nsw]
       ข้ามไปหาเนื้อหาหลัก: [itranslate]
@@ -765,9 +799,9 @@ translations:
       Hiki fakalaka ki he tefitoʻi meʻa: [bing]
     tr: # Turkish
       Ana içeriğe geç: [aws, baidu, flitto, google, google-search, itranslate, nsw]
-      Ana içeriğe atla: [amazon, bing, drupal, ibmwatson, ms, qq, reverso, systran, translate, yandex]
+      Ana içeriğe atla: [amazon, bing, drupal, ibmwatson, pontoon.moz, support.moz, ms, qq, reverso, systran, translate, yandex]
       Ana İçeriğe Geç: [drupal]
-      Ana içeriğe git: [mdn, promptone]
+      Ana içeriğe git: [mdn, pontoon.moz, promptone]
       Ana içeriklere geçiş yap: [ps]
       Ana metne geç: [mymemory]
       Ana içeriğe gidin: [uber]
@@ -780,7 +814,7 @@ translations:
       Валтӥсь bildirmek доры выжиз: [yandex]
     uk: # Ukrainian
       Перейти до головного вмісту: [baidu]
-      Перейти до основного вмісту: [aws, bing, drupal, google, google-search, ibmwatson, mdn, systran, translate, uber]
+      Перейти до основного вмісту: [aws, bing, drupal, google, google-search, ibmwatson, mdn, pontoon.moz, support.moz, systran, translate, uber]
       Передайте информацию: [itranslate]
       Перейти до основного: [ms]
       Перейти до основного змісту: [nsw]
@@ -811,7 +845,7 @@ translations:
       Nhảy đến nội dung: [drupal]
       Chuyển qua nội dung chính: [itranslate]
       Bỏ qua để đến phần nội dung chính: [google-search]
-      Đi đến nội dung chính: [mdn]
+      Đi đến nội dung chính: [mdn, pontoon.moz, support.moz]
       Bỏ qua để tới nội dung chính: [ms]
       Nhảy qua nội dung chính: [papago]
       Nhảy vào nội dung chính.: [qq]
@@ -821,6 +855,7 @@ translations:
     xh: # Xhosa
       Tshintshela kwisiqulathi seefayili esikhulu: [baidu]
       Yiya kumxholo ophambili: [google]
+      Tsibela kwesona siqulatho sikhulu: [pontoon.moz, support.moz]
       Tsibela engundoqo isiqulatho: [yandex]
     yi: # Yiddish
       היט אױף: [baidu]
@@ -830,6 +865,7 @@ translations:
       Yọ sí àkóónú gangan: [baidu]
       Yọ sí àkóónú gangan: [baidu] # these look the same; maybe one has been Unicode-normalised
       Rekọja si akọkọ akoonu: [google, itranslate]
+      Fòó lọsí ojú àkóónú gan: [support.moz]
     yua: # Yucatec Maya
       A puulkaba ichil le contenido noj bejo': [bing, translate]
     # yue: # Cantonese; removed as this phrase is exactly the same as zh-Hant, which is more populous
@@ -839,9 +875,9 @@ translations:
       惊到主要内容: [baidu]
     zh: # Chinese (simplified)
       跳到主要内容: [apple, baidu, bing, deepl, google, google-search, nsw, promptone, ps, qihoo360, qq, translate, ultipro, yandex]
-      跳转到主要内容: [amd, caiyun, drupal, iciba, mdn, mymemory]
+      跳转到主要内容: [amd, caiyun, drupal, iciba, mdn, pontoon.moz, support.moz, mymemory]
       跳至正文: [drupal]
-      跳转至主要内容: [flitto, ibmwatson, youdao]
+      跳转至主要内容: [flitto, ibmwatson, pontoon.moz, youdao]
       跳到主内容: [ikea]
       跳到主体内容。: [itranslate]
       跳至主要内容: [aws, amazon, papago, uber]
@@ -850,7 +886,7 @@ translations:
       跳对主要内容: [worldlingo]
     zh-Hant: # Chinese (traditional)
       移至主內容: [amd, drupal]
-      跳到主要內容: [baidu, battle, drupal, flitto, google, ibmwatson, mdn, ms, nsw, uber]
+      跳到主要內容: [baidu, battle, drupal, flitto, google, ibmwatson, mdn, pontoon.moz, support.moz, ms, nsw, uber]
       跳到主要內容。: [bing, translate]
       到主要內容: [ebay]
       跳到主體內容。: [itranslate]
@@ -860,6 +896,7 @@ translations:
     zu: # Zulu
       Yeqela ekuqukethweni okukhulu: [baidu]
       Yeqela kokuqukethwe okuyinhloko: [google, google-search, itranslate]
+      Yeqa uye kokusemqoka: [support.moz]
   textonly:
     aeb: # Tunisian Arabic
       وقد تسبب الصيد الجائربانخفاض مخزون الأسماك.: [baidu]
@@ -883,6 +920,8 @@ translations:
       Ukufisa muli computer ikalamba: [baidu]
     bho: # Bhojpuri
       शेल के बजाय जउन मनचाही कमाण्ड इस्तेमाल करै के होय: [baidu]
+    # bm: # Bambara
+      # تخطَّ إلى المحتوى الأساسي: [pontoon.moz] # Commented out as same as Arabic
     bo: # Tibetan
       ནང་དོན་གཙོ་བོའི་སྟེང་དུ་སྐྱོད་པ: [drupal]
       ནང་དོན་གཙོ་བོར་ལྡིང་སྐོར་བྱེད་པ།: [drupal]
@@ -892,6 +931,8 @@ translations:
       ኛአኪሊንምዢአዋዊስ: [baidu]
     bi: # Bislama
       Marina le kukmai tru: [baidu]
+    cak: # Kaqchikel, Cakchiquel
+      Tib'iyin pa ri nimiläj rupam: [pontoon.moz]
     chr: # Cherokee
       ᎠᏯᏙᎯᏍᏗ: [baidu]
     cnh: # Hakha Chin
@@ -902,8 +943,11 @@ translations:
       Skòknie do przédny zamkłoscë: [baidu]
     dsb: # Lower Sorbian
       ikiyl ziarku: [baidu]
+      Ku głownemu wopśimjeśeju: [pontoon.moz, support.moz] # Same as hsb, Upper Sorbian
     dv: # Divehi
       މެންމައިންޓްކުރަންވިއްޖެ: [baidu]
+    ee: # Ewe
+      Dzeto enu yi ɖe emenu gbatea gbɔ: [support.moz]
     ff: # Fula, Fulani
       yaljarden toree: [baidu]
     fo: # Faroese
@@ -914,6 +958,7 @@ translations:
       ors ser ixhonlain: [baidu]
     gn: # Guarani
       repiaengucd: [baidu]
+      Eho tetepy tuichavévape: [pontoon.moz, support.moz]
     grc: # Ancient Greek
       κάκιστα δὴ μακρῷ κάτειμι: [baidu]
     gv: # Manx
@@ -922,10 +967,14 @@ translations:
       Ang Misteryoso nga: [baidu]
     hup: # Hupa
       nyotsht ondol: [baidu]
+    hsb: # Upper Sorbian
+      K hłownemu wobsahej: [pontoon.moz]
+      Ku głownemu wopśimjeśeju: [support.moz] # Same as dsb, Lower Sorbian
     inh: # Ingush
       Зони» обун: [baidu]
     ia: # Interlingua
       Salveguardar le contento principal: [baidu]
+      Saltar al contento principal: [pontoon.moz]
     io: # Ido
       Saltez la precipua contento: [baidu]
     iu: # Inuktitut (map to ike, Eastern Canadian Inuktitut?)
@@ -934,7 +983,7 @@ translations:
       मुख्यमस मंज गसिव: [baidu]
     kab: # Kabyle
       Ǧǧemt ɣer talqimt tameqqrant: [baidu]
-      Ddu ɣer ugbur agejdan: [mdn]
+      Ddu ɣer ugbur agejdan: [mdn, pontoon.moz]
     kl: # Kalaallisut
       naganuarussilrne: [baidu]
     kng: # Koongo - part of kg, Kongo (macrolanguage)
@@ -951,6 +1000,7 @@ translations:
       Nnemedwa okugenda mu tterekero: [baidu]
     ln: # Lingala
       hamChinéspastMba: [baidu]
+      Pimbwa na contenu principal: [support.moz]
     ltg: # Latgalian
       Izaruoda, kai jiusim tik viņkai vīnu mienesi kotru dīnu juopīroksta: [baidu]
     mai: # Maithili
@@ -1014,3 +1064,4 @@ translations:
       Passer å mwaisse contnou: [baidu]
     wo: # Wolof
       jóbbaale ko ci néew bu mag: [baidu]
+      Jàll ci ëmbiit lu mag li: [pontoon.moz, support.moz]
