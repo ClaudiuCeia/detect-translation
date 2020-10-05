@@ -59,8 +59,6 @@ const getLangsFromYaml = () => { // eslint-disable-line import/prefer-default-ex
     .every(l => textonlyTranslationsFromYaml[l] || sourceFromYaml[l]);
   if (duplicateTranslations) {
     throw new Error(`Duplicate translations found for langs: ${duplicateTranslations}`);
-  } else {
-    console.log('No duplicate translations :)');
   }
   Object.entries(sourceFromYaml).forEach(addTranslation);
   Object.entries({ ...pageTranslationsFromYaml, ...textonlyTranslationsFromYaml })
@@ -204,8 +202,8 @@ const writeLangIdSubstringMap = () => {
     `// Run \`node ./create-lang-id-strings.js\` to update this file
 
 export default '${
-    outputString.replace(/'/gu, "\\'")
-    }';\n`,
+  outputString.replace(/'/gu, "\\'")
+}';\n`,
   );
 };
 
