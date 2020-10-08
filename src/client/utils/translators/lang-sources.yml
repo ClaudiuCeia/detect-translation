@@ -61,6 +61,7 @@ sources:
     uber: https://www.uber.com/
     ultipro: # Ultimate Software UltiPro; taken from an UltiPro job ad
     unesco: https://en.unesco.org/ # and localised versions
+    zoom: https://zoom.us/
 
 source:
   en: Skip to main content
@@ -178,7 +179,7 @@ translations:
     de: # German
       Zum Inhalt überspringen: [baidu]
       Zum Hauptinhalt springen: [apple, asics, aws, bing, deepl, flitto, google, ibmwatson, iciba, mdn, pontoon.moz, support.moz, nsw, reverso, translate]
-      Zum Hauptinhalt wechseln: [amazon, reverso]
+      Zum Hauptinhalt wechseln: [amazon, reverso, zoom]
       # Zum Hauptinhalt: [battle] # Excluded as too similar to Luxembourgish
       Hauptinhalt anzeigen: [ebay]
       Direkt zum Hauptinhalt: [eur-lex, uber]
@@ -392,7 +393,7 @@ translations:
       Skipta yfir ađalinnihaldiđ: [itranslate]
       Sleppa að aðalefni: [yandex]
     it: # Italian
-      Passa al contenuto principale: [asics, aws, amazon, baidu, deepl, ebay, google, mymemory, ps, systran, uber]
+      Passa al contenuto principale: [asics, aws, amazon, baidu, deepl, ebay, google, mymemory, ps, systran, uber, zoom]
       Passare al contenuto principale: [bing, translate]
       Salta al contenuto principale: [apple, drupal, ec, flitto, nsw, qq, reverso]
       Passa ai contenuti principali: [eur-lex]
@@ -428,6 +429,7 @@ translations:
       主要な内容へのスキップ: [worldlingo]
       プライマリコンテンツにジャンプ: [iciba]
       本文へジャンプ: [mymemory]
+      メインコンテンツまでスキップ: [zoom]
     jv: # Javanese
       Liwati nang kontèn utama: [drupal]
       Liwati nang kontén utama: [drupal]
@@ -467,7 +469,7 @@ translations:
       상단으로 이동: [battle]
       주요 콘텐츠로 건너뛰기: [amd, bing, drupal, translate]
       본문 바로가기: [ebay]
-      주요 내용으로 건너뛰기: [drupal, flitto, ikea]
+      주요 내용으로 건너뛰기: [drupal, flitto, ikea, zoom]
       메인 컨텐츠로 가기: [google, mymemory]
       주요 콘텐츠로 이동: [google-search]
       기본 컨텐츠로 건너뜀: [ibmwatson]
@@ -638,7 +640,7 @@ translations:
       Pular para o conteúdo principal: [amd, apple, bing, deepl, drupal, mdn, pontoon.moz, reverso, translate, uber]
       Ir para o conteúdo principal: [aws, baidu, flitto, google, google-search, ibmwatson, pontoon.moz, support.moz, mymemory, nsw, reverso, systran] # baidu is for pt-PT
       Pular para conteúdo principal: [amazon, ultipro]
-      Ir para conteúdo principal: [asics, ebay, ms]
+      Ir para conteúdo principal: [asics, ebay, ms, zoom]
       Ir ao conteúdo principal: [battle]
       Avançar para o conteúdo principal: [google-search, ikea, ms, ps, uber] # pt-PT
       Pule para o conteúdo principal: [itranslate, papago]
@@ -662,7 +664,7 @@ translations:
       перейти к основному содержанию: [baidu, promptone, qq]
       Перейти к основному контенту: [apple, battle, bing, google-search, ikea, ms, translate, yandex]
       Перейти к основному содержанию.: [caiyun]
-      Перейти к основному содержанию: [amd, deepl, drupal, flitto, google, mymemory, nsw]
+      Перейти к основному содержанию: [amd, deepl, drupal, flitto, google, mymemory, nsw, zoom]
       Перейти к основному содержимому: [aws, ibmwatson, mdn, pontoon.moz, support.moz, mymemory, systran]
       Пропустите основное содержание: [itranslate]
       Пропустить к содержимому по умолчанию: [papago]
@@ -687,6 +689,7 @@ translations:
       Prijelaz na glavni sadržaj: [eur-lex] # Croatian
       Prijeđite na glavni sadržaj: [google] # Bosnian/Croatian
       Pređite na glavni sadržaj: [google-search] # Bosnian
+      Pređi na glavni sadržaj.: [ibmwatson] # Montenegrin
       Vrati se na glavni sadržaj: [ikea] # Serbian
       Preskoči na glavni izbornik: [ikea] # Croatian
       Preskoči do glavnog sadržaja: [pontoon.moz, support.moz] # Bosnian
@@ -852,6 +855,7 @@ translations:
       Bỏ qua nội dung chính: [systran]
       Bỏ vào nội dung chính: [yandex]
       Chuyển sang chủ đề chính: [youdao] # actually vi-t-zh-t-en
+      Bỏ qua và chuyển đến nội dung chính: [zoom]
     xh: # Xhosa
       Tshintshela kwisiqulathi seefayili esikhulu: [baidu]
       Yiya kumxholo ophambili: [google]
@@ -877,7 +881,7 @@ translations:
       跳到主要内容: [apple, baidu, bing, deepl, google, google-search, nsw, promptone, ps, qihoo360, qq, translate, ultipro, yandex]
       跳转到主要内容: [amd, caiyun, drupal, iciba, mdn, pontoon.moz, support.moz, mymemory]
       跳至正文: [drupal]
-      跳转至主要内容: [flitto, ibmwatson, pontoon.moz, youdao]
+      跳转至主要内容: [flitto, ibmwatson, pontoon.moz, youdao, zoom]
       跳到主内容: [ikea]
       跳到主体内容。: [itranslate]
       跳至主要内容: [aws, amazon, papago, uber]
@@ -890,7 +894,7 @@ translations:
       跳到主要內容。: [bing, translate]
       到主要內容: [ebay]
       跳到主體內容。: [itranslate]
-      跳至主要內容: [aws, amazon, papago, ps, uber]
+      跳至主要內容: [aws, amazon, papago, ps, uber, zoom]
       跳至主內容: [google-search, systran]
       跳對主要內容: [worldlingo]
     zu: # Zulu
