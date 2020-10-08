@@ -1,25 +1,29 @@
 import { Services } from "../translationServices";
-import { observe }  from "..";
+import { observe, disconnect } from "..";
+import JSDOMEnvironment from "jest-environment-jsdom";
+declare var jsdom: JSDOMEnvironment["dom"];
 
 describe("Test proxy translations", () => {
-  test("Can detect Google proxy translation", () => {
-    const lang = "ro-ro";
+  afterEach(() => {
+    disconnect();
+  });
+
+  test("Can detect Google proxy translation", done => {
+    const targetLang = "ro-ro";
     const mockProxyCallback = jest.fn((service, lang) => {
-      expect(service).toEqual(Services.GOOGLE);
-      expect(lang).toEqual(lang);
+      try {
+        expect(service).toEqual(Services.GOOGLE);
+        expect(lang).toEqual(targetLang);
+        done();
+      } catch (err) {
+        done(err);
+      }
     });
 
-    document.documentElement.lang = lang;
-    const location = {
-      ...window.location,
-      hostname: "translate.googleusercontent.com"
-    };
-      
-    Object.defineProperty(window, "location", {
-      writable: true,
-      value: location
-    });
-      
-    observe({ onClient: () => {}, onProxy: mockProxyCallback });
+    jsdom.reconfigure({ url: "https://translate.googleusercontent.com/" });
+
+    observe({ onClient: () => { }, onProxy: mockProxyCallback });
+
+    document.documentElement.lang = targetLang;
   });
 });

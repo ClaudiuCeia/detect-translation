@@ -8,8 +8,10 @@ export interface ObserverParams {
   onProxy: Callback;
 }
 
+let mutationObserver: MutationObserver | undefined;
+
 export const observe = ({ onClient, onProxy }: ObserverParams) => {
-  const mutationObserver = new MutationObserver(function() {
+  mutationObserver = new MutationObserver(function () {
     const client = whichClientTranslation();
     if (client) {
       onClient(client, document.documentElement.lang);
@@ -23,7 +25,11 @@ export const observe = ({ onClient, onProxy }: ObserverParams) => {
 
   mutationObserver.observe(document.documentElement, {
     attributes: true,
-    attributeFilter: ["class", "_msttexthash"],
-    childList: false,
+    attributeFilter: ["class", "lang", "_msttexthash"],
   });
+};
+
+export const disconnect = () => {
+  mutationObserver?.disconnect();
+  mutationObserver = undefined;
 };
