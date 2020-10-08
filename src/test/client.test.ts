@@ -1,20 +1,29 @@
 import { Services } from "../translationServices";
-import { observe } from "..";
+import { observe, disconnect } from "..";
 
 describe('Test client translations', () => {
-  test("Can detect Google client translation", () => {
-    const lang = 'ro-ro';
+  afterEach(() => {
+    disconnect();
+  });
+
+  test("Can detect Google client translation", done => {
+    const targetLang = 'ro-ro';
     const mockClientCallback = jest.fn((service, lang) => {
-      expect(service).toEqual(Services.GOOGLE);
-      expect(lang).toEqual(lang);
+      try {
+        expect(service).toEqual(Services.GOOGLE);
+        expect(lang).toEqual(targetLang);
+        done();
+      } catch (err) {
+        done(err);
+      }
     });
-  
+
     document.documentElement.setAttribute("class", "");
     document.documentElement.lang = "en-us";
-  
-    observe({ onClient: mockClientCallback, onProxy: () => {} });
-  
+
+    observe({ onClient: mockClientCallback, onProxy: () => { } });
+
     document.documentElement.setAttribute("class", "translated-ltr");
-    document.documentElement.lang = lang;
+    document.documentElement.lang = targetLang;
   });
-})
+});

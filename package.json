@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "test": "jest --env=jsdom",
+    "test": "jest",
     "prepublish": "tsc",
     "analyze": "source-map-explorer ./dist/*.js{,.map}"
   },
@@ -26,6 +26,8 @@
     "@types/jest": "^26.0.14",
     "husky": "^4.2.3",
     "jest": "^26.5.2",
+    "jest-environment-jsdom": "^26.5.2",
+    "jest-environment-jsdom-global": "^2.0.4",
     "mutationobserver-shim": "^0.3.3",
     "source-map-explorer": "^2.4.2",
     "ts-jest": "^26.4.1",
