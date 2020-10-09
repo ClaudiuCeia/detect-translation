@@ -1,3 +1,3 @@
 // setup-jest.js
 
-import 'mutationobserver-shim';
+import "mutationobserver-shim";

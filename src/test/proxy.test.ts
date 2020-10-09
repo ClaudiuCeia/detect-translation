@@ -1,29 +1,30 @@
 import { Services } from "../translationServices";
 import { observe, disconnect } from "..";
-import JSDOMEnvironment from "jest-environment-jsdom";
-declare var jsdom: JSDOMEnvironment["dom"];
+import { JSDOM } from "jsdom";
+declare const jsdom: JSDOM;
 
 describe("Test proxy translations", () => {
   afterEach(() => {
     disconnect();
   });
 
-  test("Can detect Google proxy translation", done => {
-    const targetLang = "ro-ro";
-    const mockProxyCallback = jest.fn((service, lang) => {
-      try {
-        expect(service).toEqual(Services.GOOGLE);
-        expect(lang).toEqual(targetLang);
-        done();
-      } catch (err) {
-        done(err);
-      }
-    });
+  test("Can detect Google proxy translation", () =>
+    new Promise((resolve, reject) => {
+      const targetLang = "ro-ro";
+      const mockProxyCallback = jest.fn((service, lang) => {
+        try {
+          expect(service).toEqual(Services.GOOGLE);
+          expect(lang).toEqual(targetLang);
+          resolve();
+        } catch (err) {
+          reject(err);
+        }
+      });
 
-    jsdom.reconfigure({ url: "https://translate.googleusercontent.com/" });
+      jsdom.reconfigure({ url: "https://translate.googleusercontent.com/" }); // eslint-disable-line
 
-    observe({ onClient: () => { }, onProxy: mockProxyCallback });
+      observe({ onClient: () => null, onProxy: mockProxyCallback });
 
-    document.documentElement.lang = targetLang;
-  });
+      document.documentElement.lang = targetLang;
+    }));
 });

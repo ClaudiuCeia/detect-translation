@@ -3,5 +3,5 @@ export enum Services {
   BING = "Microsoft",
   BAIDU = "Baidu",
   YANDEX = "Yandex",
-  NAVER = "Naver Papago"
-}; 
+  NAVER = "Naver Papago",
+}

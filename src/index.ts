@@ -10,7 +10,7 @@ export interface ObserverParams {
 
 let mutationObserver: MutationObserver | undefined;
 
-export const observe = ({ onClient, onProxy }: ObserverParams) => {
+export const observe = ({ onClient, onProxy }: ObserverParams): void => {
   mutationObserver = new MutationObserver(function () {
     const client = whichClientTranslation();
     if (client) {
@@ -29,7 +29,7 @@ export const observe = ({ onClient, onProxy }: ObserverParams) => {
   });
 };
 
-export const disconnect = () => {
+export const disconnect = (): void => {
   mutationObserver?.disconnect();
   mutationObserver = undefined;
 };
