@@ -1,35 +1,117 @@
-import { whichClientTranslation } from "./whichClientTranslation";
-import { whichProxyTranslation } from "./whichProxyTranslation";
+import whichClientTranslation from "./whichClientTranslation";
+import whichProxyTranslation from "./whichProxyTranslation";
+import getDocumentLang, { LangIds } from './getDocumentLang';
+import identifyIBMWatson from "./services/identifyIBMWatson";
 import { Services } from "./translationServices";
+import { UNDETERMINED_LANGUAGE } from './constants';
+import skipToMainContentLangIds from '../translations/Skip-to-main-content';
 
-export type Callback = (service: Services, lang: string) => void;
+export type TranslatorType = 'client' | 'proxy' | 'unknown';
+
+export type LangTranslatorInfo = {
+  lang?: string,
+  service?: Services,
+  type?: TranslatorType,
+};
+
+export type Callback = (lang: string, { service, type }?: {
+  service: Services,
+  type: TranslatorType,
+}) => void;
 export interface ObserverParams {
-  onClient: Callback;
-  onProxy: Callback;
+  onTranslation: Callback;
+  sourceLang: string;
+  sourceUrl?: string;
+  textSelector?: string;
+  text?: string;
+  textIsFirstContentfulChild?: boolean;
+  langIds?: LangIds;
+  includeServiceInLangTag?: boolean;
 }
 
-let mutationObserver: MutationObserver | undefined;
+export const observe = ({
+  onTranslation,
+  sourceLang = 'en',
+  sourceUrl,
+  textSelector = '.skip-link',
+  text = 'Skip to main content',
+  textIsFirstContentfulChild = true,
+  langIds = skipToMainContentLangIds,
+  includeServiceInLangTag = true,
+}: ObserverParams): MutationObserver => {
+  let lastObservedLang = sourceLang;
 
-export const observe = ({ onClient, onProxy }: ObserverParams): void => {
-  mutationObserver = new MutationObserver(function () {
-    const client = whichClientTranslation();
-    if (client) {
-      onClient(client, document.documentElement.lang);
+  const observer = () => {
+    let identified: LangTranslatorInfo = getDocumentLang({
+      lang: sourceLang,
+      canary: {
+        selector: textSelector,
+        text,
+        isFirstContentfulChild: textIsFirstContentfulChild,
+        langIds,
+      }
+    });
+
+    if (identified.lang === lastObservedLang) {
+      return;
     }
 
-    const proxy = whichProxyTranslation();
-    if (proxy) {
-      onProxy(proxy, document.documentElement.lang);
-    }
-  });
+    identified = whichProxyTranslation(identified);
 
+    if (identified.type !== 'proxy') {
+      identified = whichClientTranslation(identified);
+    }
+
+    // We check for IBM Watson after checking for client translations,
+    // as the IBM Watson check is brittle as it’s purely based on the filename
+    if (!identified.type) {
+      identified = identifyIBMWatson(identified, sourceUrl);
+    }
+
+    if (!identified.lang || (identified.lang === UNDETERMINED_LANGUAGE)) {
+      return;
+    }
+
+    identified.service ||= Services.UNDETERMINED;
+    identified.type ||= 'unknown';
+
+    if (includeServiceInLangTag) {
+      // https://unicode-org.github.io/cldr/ldml/tr35.html#t_Extension
+      identified.lang = `${identified.lang}-t-${sourceLang}-t0-${identified.service}`;
+    }
+
+    onTranslation(
+      identified.lang,
+      {
+        service: identified.service,
+        type: identified.type,
+      },
+    );
+    lastObservedLang = identified.lang;
+  };
+
+  observer();
+
+  const mutationObserver = new MutationObserver(observer);
   mutationObserver.observe(document.documentElement, {
     attributes: true,
     attributeFilter: ["class", "lang", "_msttexthash"],
   });
-};
+  if (textSelector) {
+    const canaryEl = document.querySelector(textSelector);
+    if (canaryEl) {
+      mutationObserver.observe(
+        canaryEl,
+        // we need to observe any and all changes made to our canary content element
+        {
+          attributes: true,
+          childList: true,
+          characterData: true,
+          subtree: true,
+        },
+      );
+    }
+  }
 
-export const disconnect = (): void => {
-  mutationObserver?.disconnect();
-  mutationObserver = undefined;
+  return mutationObserver;
 };

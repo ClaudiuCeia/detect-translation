@@ -1,30 +1,48 @@
 import { Services } from "../translationServices";
-import { observe, disconnect } from "..";
+import { observe } from "..";
+import JSDOMEnvironment from "jest-environment-jsdom";
+declare const jsdom: JSDOMEnvironment["dom"];
 
 describe("Test client translations", () => {
+  let el: HTMLElement = (null as unknown) as HTMLElement;
+  let observer: MutationObserver | undefined;
+
+  beforeEach(() => {
+    el = document.createElement("div");
+    document.body.appendChild(el);
+  });
+
   afterEach(() => {
-    disconnect();
+    document.body.removeChild(el);
+    observer?.disconnect();
   });
 
   test("Can detect Google client translation", () =>
     new Promise((resolve, reject) => {
-      const targetLang = "ro-ro";
-      const mockClientCallback = jest.fn((service, lang) => {
+      const sourceLang = "en";
+      const targetLang = "ro";
+      const mockClientCallback = jest.fn((lang, { service, type }) => {
         try {
           expect(service).toEqual(Services.GOOGLE);
-          expect(lang).toEqual(targetLang);
+          expect(lang).toEqual(targetLang + '-t-en-t0-google');
+          expect(type).toEqual('client');
           resolve();
         } catch (err) {
           reject(err);
         }
       });
 
+      jsdom.reconfigure({ url: "https://www.example.com/" }); // eslint-disable-line
+
       document.documentElement.setAttribute("class", "");
-      document.documentElement.lang = "en-us";
+      document.documentElement.lang = sourceLang;
 
-      observe({ onClient: mockClientCallback, onProxy: () => null });
+      observer = observe({
+        onTranslation: mockClientCallback,
+        sourceLang,
+      });
 
-      document.documentElement.setAttribute("class", "translated-ltr");
+      el.setAttribute("id", "goog-gt-tt");
       document.documentElement.lang = targetLang;
     }));
 });

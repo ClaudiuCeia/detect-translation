@@ -4,7 +4,7 @@
 import fs from 'fs';
 import { safeLoad } from 'js-yaml';
 import cldr from 'cldr';
-import StringSet from './StringSet';
+import StringSet from './utils/StringSet';
 
 const CANARY_FILENAME = 'Skip-to-main-content';
 
@@ -29,7 +29,7 @@ const getAllLangsByNumSpeakers = (): Array<string> => {
           writingPercent = 100,
         }) => {
           lang = (lang as string).replace(/_/g, '-');
-          if (SERBO_CROATIAN_LANGS.exec(lang as string)) {
+          if (SERBO_CROATIAN_LANGS.test(lang as string)) {
             lang = 'sh'; // We code Serbian, Croatian, Bosnian and Montenegrin as Serbo-Croatian
             // as they are too similar to each other
           }
@@ -191,7 +191,7 @@ const langMapTolangRegexJSString = (stringMap, { or = '|', list = ',\n  ' } = {}
       const langName = cldr.extractLanguageDisplayNames('en')[langCode] as string | undefined;
       const scriptName = cldr.extractScriptDisplayNames('en')[scriptCode] as string | undefined;
       // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      return `${/[-_]/.exec(lang) ? `"${lang}"` : lang
+      return `${/[-_]/.test(lang) ? `"${lang}"` : lang
         }:${langName || scriptName ? ` /* ${(langName || '')
           + (scriptName ? ` (${scriptName})` : '')
           } */` : ''} /${typeof substrs === 'string' ? substrs : [...substrs].join(or)}/`;
@@ -208,13 +208,18 @@ export const buildLangMapToLangRegexJSString = (): string => {
 
 export const writeLangIdSubstringMap = (): void => {
   const output = buildLangMapToLangRegexJSString();
-  const filename = `${__dirname}/../translations/${CANARY_FILENAME}.js`;
+  const filename = `${__dirname}/../translations/${CANARY_FILENAME}.ts`;
 
   fs.writeFileSync(
     filename,
-    `// Run \`node ./create-lang-id-strings.js\` to update this file
+    `// Run \`yarn build\` to update this file
 
-export default ${output};\n`,
+/**
+ * @type {{[lang: string]: RegExp}}
+ */
+const langIds = ${output};
+
+export default langIds;\n`,
   );
 };
 

@@ -7,10 +7,10 @@
   "author": "Claudiu Ceia",
   "license": "MIT",
   "scripts": {
-    "build": "tsc && node ./.bin/create-lang-ids.js",
-    "lint": "eslint ./src ./bin --ext .js,.ts && prettier --write --ignore-unknown .",
-    "test": "jest",
-    "prepublish": "tsc && node ./.bin/create-lang-ids.js",
+    "build": "ts-node ./.bin/create-lang-ids.js && tsc",
+    "lint": "eslint ./src --ext .js,.ts && prettier --write --ignore-unknown .",
+    "test": "ts-node ./.bin/create-lang-ids.js && jest",
+    "prepublish": "ts-node ./.bin/create-lang-ids.js && tsc",
     "analyze": "source-map-explorer ./dist/*.js{,.map}"
   },
   "husky": {
@@ -46,6 +46,7 @@
     "lint-staged": ">=10",
     "mutationobserver-shim": "^0.3.3",
     "prettier": "^2.1.2",
+    "sanitize-html": "^2.1.0",
     "source-map-explorer": "^2.4.2",
     "ts-jest": "^26.4.1",
     "ts-node": "^9.0.0",

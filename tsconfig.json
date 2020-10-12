@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
+    "lib": ["dom", "esnext"],
     "sourceMap": false,
     "outDir": "./dist",
     "moduleResolution": "node",
@@ -25,6 +25,6 @@
     "inlineSourceMap": true,
     "inlineSources": true
   },
-  "exclude": ["node_modules", "./src/**/*.test.ts"],
-  "include": ["./src/**/*.ts"]
+  "exclude": ["node_modules", "src/**/*.test.ts"],
+  "include": ["src/**/*.ts", "translations/**/*.ts"]
 }

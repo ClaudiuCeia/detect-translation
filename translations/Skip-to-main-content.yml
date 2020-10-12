@@ -1,33 +1,9 @@
 # This file records translations into all languages found on the Internet
 # of the source phrase “Skip to main content”.
 
-# Keys:
-#
-#   source - the source phrase, “Skip to main content”
-#   sources - lists the name used to refer to each translation source, along with
-#       metadata such as URL and (for web page translators) the languages that the tool
-#       is capable of translating into. Sources are subdivided into translators, CMSs and
-#       localized web sites (many of them multinational companies and organizations).
-#   translations - translations of the source phrase into each language, along with
-#       the sources where each individual translation was observed. Translations
-#       are subdivided into “page” (languages that we know online translations can
-#       translate pages into) and “textonly” (languages we have translations for, but
-#       which it is not possible to translate web pages into).
+# See README.md for details.
 
-# Note: “Textonly” translations are maintained for two reasons:
-#   - from time to time, new languages are added to online web page translators, and we
-#       can then move these translations into the “page” key
-#   - we include known translations of the source phrase into these languages in the list
-#       of substrings used to find the substrings that can uniquely identify “page”
-#       languages. Including “textonly” translations in this helps to avoid using
-#       any substring which is shared between two “page” and “textonly” languages.
-
-# Resources to look up and understand BCP 47 language codes:
-#
-#   - BCP 47 language subtag lookup: https://r12a.github.io/app-subtags/
-#   - Unicode CLDR Likely Subtags: https://unicode-org.github.io/cldr-staging/charts/38/supplemental/likely_subtags.html
-
-# If you update this file, run `node ./create-lang-id-strings.js` to update ./lang-id-strings.js
+# If you update this file, run `yarn build` to update ./Skip-to-main-content.ts
 
 source:
   en: Skip to main content
@@ -44,13 +20,13 @@ sources:
       baidu: # ❌ no lang attribute
         url: https://fanyi.baidu.com/
         langs: [ar, bg, cs, da, de, el, en, es, et, fi, fr, hu, it, ja, ko, lzh, nl, pl, pt, ro, ru, sl, sv, th, vi, yue, zh, zh-Hant]
-      bing: # ✅ lang attribute on text element
+      bing: # ✅ lang attribute on text element (with some inconsistencies)
         url: https://www.bing.com/translator
         langs: [af, ar, as, bg, bn, bs, ca, ckb, cs, cy, da, de, el, en, es, et, fa, fi, fil, fj, fr, ga, gu, he, hi, hr, ht, hu, id, is, it, ja, kk, kn, ko, ku, lt, lv, mg, mi, ml, mr, ms, mt, mww, nb, nl, or, otq, pa, pl, prs, ps, pt, pt-PT, ro, ru, sk, sl, sm, sr-Cyrl, sr-Latn, sv, sw, ta, te, th, tlh-Latn, tlh-Piqd, to, tr, ty, uk, ur, vi, yua, yue, zh-Hans, zh-Hant]
       caiyun: # ❌ no lang attribute; adds translation alongside original
         url: https://fanyi.caiyunapp.com/
         langs: [zh]
-      google: # ✅ lang attribute on document element
+      google: # ✅ lang attribute on document element (with some legacy subtags)
         url: https://translate.google.com/
         langs: [af, am, ar, az, be, bg, bn, bs, ca, ceb, co, cs, cy, da, de, el, en, en, eo, es, es, et, eu, fa, fi, fr, fy, ga, gd, gl, gu, ha, haw, hi, hmn, hr, ht, hu, hy, id, ig, is, it, iw, ja, jw, ka, kk, km, kn, ko, ku, ky, la, lb, lo, lt, lv, mg, mi, mk, ml, mn, mr, ms, mt, my, my, ne, nl, 'no', ny, or, pa, pl, ps, pt, ro, ru, rw, sd, si, sk, sl, sm, sn, so, sq, sr, st, su, sv, sw, ta, te, tg, th, tk, tl, tr, tt, ug, uk, ur, uz, vi, xh, yi, yo, zh, zh-Hant, zu]
       gramtrans: # ❌ no lang attribute; removes link element (text as child of body!)
@@ -65,7 +41,7 @@ sources:
       papago: # ❌ no lang attribute
         url: https://papago.naver.com/
         langs: [ko]
-      qq: # translates web pages as browser extension
+      qq: # ❌ no lang attribute; translates web pages as browser extension
         url: https://fanyi.qq.com/
         langs: [zh]
       sogou: # ❌ no lang attribute; removed from translations as duplicates bing
@@ -126,6 +102,7 @@ sources:
     shell: https://www.shell.com/
     # pontoon.moz teams (languages list): https://pontoon.mozilla.org/teams/
     pontoon.moz: https://pontoon.mozilla.org/<lang>/all-projects/all-resources/?search=Skip+to+main+content
+    sberbank: https://www.sberbank.ru/
     support.moz: https://support.mozilla.org/
     uber: https://www.uber.com/
     ultipro: # Ultimate Software UltiPro; taken from an UltiPro job ad
@@ -805,7 +782,7 @@ translations:
       Перейти к основному контенту: [alibaba, apple, battle, bing, google-search, ikea, ms, translate, translatedict, webtran2, yandex]
       Перейти к основному содержанию.: [caiyun]
       Перейти к основному содержанию: [amd, deepl, drupal, flitto, google, lingvanex, mymemory, nsw, webtran1, zoom]
-      Перейти к основному содержимому: [aws, ibmwatson, mdn, pontoon.moz, support.moz, mymemory, systran]
+      Перейти к основному содержимому: [aws, ibmwatson, mdn, pontoon.moz, sberbank, support.moz, mymemory, systran]
       Пропустите основное содержание: [itranslate]
       Пропустить основной контент: [kakao]
       Пропустить к содержимому по умолчанию: [papago]
@@ -833,7 +810,7 @@ translations:
       Prijelaz na glavni sadržaj: [eur-lex] # Croatian
       Prijeđite na glavni sadržaj: [google] # Bosnian/Croatian
       Pređite na glavni sadržaj: [google-search] # Bosnian
-      Pređi na glavni sadržaj.: [ibmwatson] # Montenegrin (cnr)
+      Pređi na glavni sadržaj.: [ibmwatson] # Montenegrin (sr-ME or cnr)
       Vrati se na glavni sadržaj: [ikea] # Serbian
       Preskoči na glavni izbornik: [ikea] # Croatian
       Preskočite do glavnog sadržaja: [lingvanex] # Croatian

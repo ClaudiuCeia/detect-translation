@@ -5,7 +5,7 @@
 import fs from 'fs';
 import { safeLoad } from 'js-yaml';
 import { getLangIdSubstrings, buildLangMapToLangRegexJSString } from '../createLangIds';
-import StringSet from '../StringSet';
+import StringSet from '../utils/StringSet';
 
 describe('createLangIds', () => {
   describe('getLangIdSubstrings', () => {
@@ -36,18 +36,18 @@ describe('createLangIds', () => {
       // eslint-disable-next-line @typescript-eslint/no-implied-eval
       const langMap = Function(`return ${buildLangMapToLangRegexJSString()}`)() as { [lang: string]: RegExp };
 
-      const table = Object.entries(pageTranslations as { [lang: string]: { [translation: string]: string[] } }).reduce((allTs, [lang, ts]) => [
+      const translations = Object.entries(pageTranslations as { [lang: string]: { [translation: string]: string[] } }).reduce((allTs, [lang, ts]) => [
         ...allTs,
         ...Object.entries(ts).map(([t, translators]) => [translators.join('/'), lang, t] as [string, string, string]),
       ], [] as [string, string, string][])
         .sort(([, l1], [, l2]) => +(l1 > l2))
         .reduce((table, [translator, lang, translation]: [string, string, string]) => {
-          table.push([lang, translation, translator, lang]);
+          table.push([lang, translation, translator]);
           return table;
-        }, [] as [string, string, string, string][]);
+        }, [] as [string, string, string][]);
 
       // eslint-disable-next-line @typescript-eslint/require-await
-      test.concurrent.each(table)('detects %s: “%s” (%s)', async (lang, translation) => {
+      test.concurrent.each(translations)('detects %s: “%s” (%s)', async (lang, translation) => {
         const [resultLang] = Object.entries(langMap).find(([, regex]) => regex.test(translation)) || [];
 
         expect(resultLang).toEqual(lang);

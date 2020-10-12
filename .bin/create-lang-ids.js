@@ -1,4 +1,4 @@
 /* eslint-disable */
-const { writeLangIdSubstringMap } = require('../dist/createLangIds');
+const { writeLangIdSubstringMap } = require('../src/createLangIds');
 
 writeLangIdSubstringMap();
