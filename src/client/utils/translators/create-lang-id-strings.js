@@ -189,21 +189,22 @@ const getLangIdSubstrings = (langs) => {
   return new Map([...singleLangSubstringIdMap].filter(([l]) => pageTranslationLangs.has(l)));
 };
 
-const stringifyMap = (stringMap, { separator = ':', or = '|', list = ',' } = {}) => [...stringMap]
-  .map(([k, v]) => `${typeof v === 'string' ? v : [...v].join(or)}${separator}${k}`).join(list);
+const langMapTolangRegexJSString = (stringMap, { or = '|', list = ',\n  ' } = {}) => `{
+  ${[...stringMap]
+    .map(([lang, substrs]) => `${lang.includes(/[-_]/) ? `"${lang}"` : lang}: /${typeof substrs === 'string' ? substrs : [...substrs].join(or)}/`).join(list)
+  }
+}`;
 
 const writeLangIdSubstringMap = () => {
   const langs = getLangsFromYaml();
   const idSubstringsMap = getLangIdSubstrings(langs);
-  const outputString = stringifyMap(new Map(idSubstringsMap));
+  const output = langMapTolangRegexJSString(idSubstringsMap);
 
   fs.writeFileSync(
     `${__dirname}/lang-id-strings.js`,
     `// Run \`node ./create-lang-id-strings.js\` to update this file
 
-export default '${
-  outputString.replace(/'/gu, "\\'")
-}';\n`,
+export default ${output};\n`,
   );
 };
 
