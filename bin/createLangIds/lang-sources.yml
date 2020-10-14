@@ -36,7 +36,7 @@ sources:
         langs: [ar, bg, cs, da, de, el, en, es, et, fi, fr, hu, it, ja, ko, lzh, nl, pl, pt, ro, ru, sl, sv, th, vi, yue, zh, zh-Hant]
       bing: # ✅ lang attribute on text element
         url: https://www.bing.com/translator
-        langs: [af, ar, as, bg, bn, bs, ca, cs, cy, da, de, el, en, es, et, fa, fi, fil, fj, fr, ga, gu, he, hi, hr, ht, hu, id, is, it, ja, kk, kmr, kn, ko, ku, lt, lv, mg, mi, ml, mr, ms, mt, mww, nb, nl, or, otq, pa, pl, prs, ps, pt, pt-PT, ro, ru, sk, sl, sm, sr-Cyrl, sr-Latn, sv, sw, ta, te, th, tlh-Latn, tlh-Piqd, to, tr, ty, uk, ur, vi, yua, yue, zh-Hans, zh-Hant]
+        langs: [af, ar, as, bg, bn, bs, ca, ckb, cs, cy, da, de, el, en, es, et, fa, fi, fil, fj, fr, ga, gu, he, hi, hr, ht, hu, id, is, it, ja, kk, kn, ko, ku, lt, lv, mg, mi, ml, mr, ms, mt, mww, nb, nl, or, otq, pa, pl, prs, ps, pt, pt-PT, ro, ru, sk, sl, sm, sr-Cyrl, sr-Latn, sv, sw, ta, te, th, tlh-Latn, tlh-Piqd, to, tr, ty, uk, ur, vi, yua, yue, zh-Hans, zh-Hant]
       caiyun: # ❌ no lang attribute; adds translation alongside original
         url: https://fanyi.caiyunapp.com/
         langs: [zh]
@@ -213,6 +213,9 @@ translations:
       Laktaw ngadto sa main content: [lingvanex]
       Laktaw ngadto sa nag-unang mga sulod: [yandex]
       Laktaw ngadto sa punoan nga sulud: [webtran1]
+    ckb: # Central Kurdish (Arabic script)
+      بازدان بۆ ناوەڕۆکی سەرەکی: [bing] # listed as ku
+      بازبدە بۆ ناوەڕۆکی سەرەکی: [drupal] # listed as ku
     co: # Corsican
       Saltà à u cuntenutu principale: [google]
       Saltare à u cuntenutu principale: [lingvanex]
@@ -536,8 +539,6 @@ translations:
       រំលង​ទៅ​ខ្លឹមសារ​សំខាន់: [google-search]
       រំលងទៅមាតិកាសំខាន់: [itranslate]
       រំលងទៅមាតិកាសំខាន់។: [lingvanex]
-    kmn: # Northern Kurdish
-      Di naveroka sereke de biserkeve: [bing]
     kn: # Kannada
       ಮುಖ್ಯ ವಿಷಯಗಳಿಗೆ ಬದಲಾಯಿಸು: [baidu]
       ಮುಖ್ಯ ವಿಷಯಕ್ಕೆ ಬಿಟ್ಟುಬಿಡು: [bing]
@@ -572,13 +573,11 @@ translations:
       주요 내용으로 이동: [iciba]
     ku: # Kurdish
       Biçe naveroka hovedê: [baidu]
+      Di naveroka sereke de biserkeve: [bing] # listed as kmr: Kurdish (Northern)
       Vegere naveroka sereke: [google]
       Ber bi naveroka sereke ve biçin: [google, webtran1]
       Skip to naveroka sereke: [lingvanex]
       Bireve ana naveroka: [tetran]
-    ku-Arab: # Kurdish (Arabic script)
-      بازدان بۆ ناوەڕۆکی سەرەکی: [bing]
-      بازبدە بۆ ناوەڕۆکی سەرەکی: [drupal]
     ky: # Kyrgyz
       Башка мазмунуна өтүү: [baidu]
       Негизги мазмунга өтүңүз: [google, lingvanex]
