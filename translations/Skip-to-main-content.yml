@@ -1,12 +1,13 @@
-# This file records translations into all languages found on the Internet of the source phrase “Skip to main content”.
+# This file records translations into all languages found on the Internet
+# of the source phrase “Skip to main content”.
 
 # Keys:
 #
+#   source - the source phrase, “Skip to main content”
 #   sources - lists the name used to refer to each translation source, along with
 #       metadata such as URL and (for web page translators) the languages that the tool
 #       is capable of translating into. Sources are subdivided into translators, CMSs and
 #       localized web sites (many of them multinational companies and organizations).
-#   source - the source phrase, “Skip to main content”
 #   translations - translations of the source phrase into each language, along with
 #       the sources where each individual translation was observed. Translations
 #       are subdivided into “page” (languages that we know online translations can
@@ -28,13 +29,16 @@
 
 # If you update this file, run `node ./create-lang-id-strings.js` to update ./lang-id-strings.js
 
+source:
+  en: Skip to main content
+
 sources:
   translators:
     page: # language detection should work for web pages translated with these tools
       # langs property records languages each site can translate WEB PAGES into from English
       apertium: # ❌ no lang attribute
         url: https://apertium.org/
-        langs: [ca, eo, gl, en, es]
+        langs: [ca, eo, gl, en, es] # many other language pairs, but not from English
       apple: # built in to iOS 14 and Safari 14
         langs: [ar, de, en, es, fr, it, ja, ko, pt, ru, zh]
       baidu: # ❌ no lang attribute
@@ -107,6 +111,7 @@ sources:
     battle: https://shop.battle.net/
     ebay: https://www.ebay.com/ # and regional sites
     ec: https://ec.europa.eu/
+    eca: https://www.eca.europa.eu/
     eur-lex: https://eur-lex.europa.eu/
     google-search: https://www.google.com/search?q=%20
     gov.wales: https://gov.wales/
@@ -125,8 +130,6 @@ sources:
     unesco: https://en.unesco.org/ # and localised versions
     zoom: https://zoom.us/
 
-source:
-  en: Skip to main content
 translations:
   page:
     af: # Afrikaans
@@ -178,6 +181,7 @@ translations:
       Преминаване към основното съдържание: [aws, baidu, google-search, ms]
       Прескачане към основното съдържание: [bing, ps, translate, translatedict, webtran2]
       Премини към основното съдържание: [drupal, ec, nsw, webtran1]
+      Прескочи до основното съдържание: [eca]
       Направо към основното съдържание: [eur-lex]
       Преминете към основното съдържание: [google, lingvanex]
       Пропускане към основното съдържание: [ibmwatson]
@@ -227,7 +231,7 @@ translations:
       Saltare à u cuntenutu principale: [lingvanex]
       Saltate à u cuntenutu principale: [webtran1]
     cs: # Czech
-      Přejít na hlavní obsah: [baidu, eur-lex, ikea, nsw, webtran1]
+      Přejít na hlavní obsah: [baidu, eca, eur-lex, ikea, nsw, webtran1]
       Přeskočit na hlavní obsah: [aws, amazon, bing, google, google-search, ibmwatson, lingvanex, pontoon.moz, support.moz, ms, mymemory, ps, systran, translate, translatedict, uber, webtran2, yandex]
       Přeskočit k hlavnímu obsahu: [drupal]
       Přeskočit na hlavní: [flitto]
@@ -244,6 +248,7 @@ translations:
     da: # Danish
       Gå til hovedindholdet: [baidu, eur-lex, ms]
       Gå til hovedindhold: [bing, drupal, ec, google, ikea, lingvanex, translate, translatedict, uber, webtran1, webtran2]
+      Gå direkte til hovedindholdet: [eca]
       Gå videre til hovedindhold: [google-search]
       Sjip til hovedindhold: [gramtrans]
       Spring til hovedindhold: [aws, ibmwatson, nsw, yandex]
@@ -257,7 +262,7 @@ translations:
       Zum Hauptinhalt wechseln: [amazon, reverso, zoom]
       # Zum Hauptinhalt: [battle] # Excluded as too similar to Luxembourgish
       Hauptinhalt anzeigen: [ebay]
-      Direkt zum Hauptinhalt: [eur-lex, uber]
+      Direkt zum Hauptinhalt: [eca, eur-lex, uber]
       Weiter zum Inhalt: [ikea] # AT
       Zum inhalt wechseln: [ikea] # CH
       Zur Hauptseite wechseln: [ikea] # DE
@@ -279,6 +284,7 @@ translations:
     el: # Greek
       Μετάβαση στο κύριο περιεχόμενο: [aws, baidu, bing, eur-lex, google, ibmwatson, lingvanex, mdn, pontoon.moz, support.moz, ms, nsw, promptone, systran, translate, translatedict, uber, webtran1, webtran2, yandex]
       Παράκαμψη προς το κυρίως περιεχόμενο: [drupal, ec]
+      Κατευθείαν στο κύριο περιεχόμενο: [eca]
       Παράβλεψη κύριου περιεχομένου: [google-search]
       Πηδήξτε το κύριο περιεχόμενο: [itranslate]
       Απευθείας μετάβαση στο κύριο περιεχόμενο: [ps]
@@ -296,6 +302,7 @@ translations:
       Saltar al contenido principal: [aws, amazon, battle, bing, deepl, drupal, flitto, google, google-search, kakao, lingvanex, ms, mymemory, nsw, pontoon.moz, qq, reverso, systran, translate, translatedict, uber, ultipro, webtran1, webtran2, yandex, youdao] # youdao actually es-t-zh-t-en; ms: AR, ES, VE
       Saltar al contenido principal.: [caiyun]
       Ir directamente al contenido principal: [ebay, reverso]
+      Ir a página principal: [eca]
       Omitir el contenido principal: [ibmwatson]
       Salta al contenido principal: [iciba, itranslate]
       # Saltar: [ikea] # Commented out as too similar to other Italian/Iberian languages
@@ -309,6 +316,7 @@ translations:
     et: # Estonian
       Ülemine peamisele sisule: [baidu]
       Mine põhisisu juurde: [bing, translate, translatedict, uber, webtran2]
+      Tagasi peamenüüsse: [eca]
       Otse põhisisu juurde: [eur-lex, google, lingvanex, nsw, webtran1]
       Liigu edasi põhisisu juurde: [drupal, ec, google-search]
       Jäta vahele põhisisu: [aws, ibmwatson]
@@ -337,12 +345,13 @@ translations:
       Siirry pääasiaan: [baidu] # followed by '@ info: whatsthis' (removed as clearly not Finnish)
       Siirry pääsisältöön: [aws, bing, eur-lex, google-search, ibmwatson, ikea, mdn, pontoon.moz, support.moz, ms, nsw, ps, systran, translate, translatedict, webtran1, webtran2]
       Hyppää pääsisältöön: [drupal, ec, flitto, google, itranslate, lingvanex]
+      Takaisin pääsivulle: [eca]
       Siirry sisällön.: [promptone]
       Ohita ja siirry pääsisältöön: [uber]
       Siirry pääainesisältöön: [yandex]
     fr: # French
       Sauter sur le contenu principal: [baidu]
-      Passer au contenu principal: [asics, aws, battle, bing, deepl, ebay, flitto, google, ibmwatson, kakao, lingvanex, mdn, nsw, papago, pontoon.moz, ps, qq, reverso, systran, translate, translatedict, uber, ultipro, webtran1, webtran2, yandex, youdao] # youdao: actually fr-t-zh-t-en
+      Passer au contenu principal: [asics, aws, battle, bing, deepl, ebay, eca, flitto, google, ibmwatson, kakao, lingvanex, mdn, nsw, papago, pontoon.moz, ps, qq, reverso, systran, translate, translatedict, uber, ultipro, webtran1, webtran2, yandex, youdao] # youdao: actually fr-t-zh-t-en
       Allez au contenu: [asics] # CA
       Passer au contenu principal.: [caiyun]
       Accéder au contenu principal: [ebay]
@@ -374,6 +383,7 @@ translations:
     ga: # Irish
       Léim go príomhábhar: [baidu]
       Scipeáil chuig an bpríomhábhar: [bing, google, itranslate, lingvanex, nsw, webtran1]
+      Gabh chuig príomh-ábhar: [eca]
       Chuig an bpríomhábhar: [eur-lex]
       Scipeáil chuig an ábhar is mó: [ibmwatson]
       Léim go dtí an príomhábhar: [pontoon.moz, support.moz, yandex]
@@ -438,6 +448,7 @@ translations:
     hu: # Hungarian
       Ugrás a fő tartalomhoz: [aws, google-search]
       Ugrás a fő tartalomra: [baidu, bing, eur-lex, ibmwatson, mdn, pontoon.moz, support.moz, nsw, ps, systran, translate, translatedict, webtran1, webtran2, yandex]
+      Egyenesen a főoldalra: [eca]
       Ugrás a tartalomra: [drupal, ec, google, lingvanex]
       Ugrás a fő oldalra: [ikea]
       Térjünk a lényegre: [itranslate]
@@ -482,7 +493,7 @@ translations:
       Salta al contenuto principale: [apple, drupal, ec, flitto, kakao, nsw, qq, reverso, webtran1]
       Passa ai contenuti principali: [eur-lex]
       Salta ai contenuti principali: [ibmwatson]
-      Vai al contenuto: [ikea] # CH
+      Vai al contenuto: [eca, ikea] # CH
       Saltare al contenuto principale: [itranslate]
       Vai direttamente al contenuto principale: [pontoon.moz, support.moz]
       Passa a contenuti principali: [ms]
@@ -602,12 +613,13 @@ translations:
       ໃຫ້ຂ້າມໄປຫາເນື້ອໃນຕົ້ນຕໍ: [yandex]
     lt: # Lithuanian
       Perkelti prie pagrindinio turinio: [baidu]
-      Pereiti prie pagrindinio turinio: [bing, eur-lex, google, google-search, ibmwatson, lingvanex, ms, nsw, translate, translatedict, uber, webtran1, webtran2]
+      Pereiti prie pagrindinio turinio: [bing, eca, eur-lex, google, google-search, ibmwatson, lingvanex, ms, nsw, translate, translatedict, uber, webtran1, webtran2]
       Pereiti į pagrindinį turinį: [drupal, ec]
       Skipas į pagrindinį turinį: [itranslate]
     lv: # Latvian
       Pāriet uz galveno saturu: [aws, baidu, bing, eur-lex, google, google-search, lingvanex, ms, nsw, systran, translate, translatedict, webtran1, webtran2, yandex]
       Pārlekt uz galveno saturu: [drupal, ec]
+      Izlaist, atpakaļ pie galvenās lapas: [eca]
       Izlaist galveno saturu: [ibmwatson]
       Skip uz galveno saturu: [itranslate]
     lzh: # Classical Chinese
@@ -666,6 +678,7 @@ translations:
     mt: # Maltese
       Għassal għall-kontenut ewlieni: [baidu]
       Aqbeż għall-kontenut ewlieni: [bing, eur-lex, ibmwatson, translate, translatedict, webtran1, webtran2]
+      Mur għall-kontenut prinċipali: [eca]
       Aqbeż għall-kontenut prinċipali: [google, itranslate, nsw, yandex]
       Aqbeż għal kontenut ewlieni: [lingvanex]
     my: # Burmese
@@ -690,6 +703,7 @@ translations:
       Ga naar de hoofdinhoud: [aws, deepl, flitto, nsw, webtran1]
       Ga naar primaire content: [amazon]
       Overslaan en naar de inhoud gaan: [drupal, ec]
+      Sla over en ga naar hoofdinhoud: [eca]
       Direct naar de inhoud: [eur-lex]
       Ga naar hoofdinhoud: [google, lingvanex]
       Naar hoofdcontent: [google-search]
@@ -735,7 +749,7 @@ translations:
     pl: # Polish
       Przejdź do treści głównej: [asics]
       Przejdź do głównej zawartości: [aws, baidu, battle, bing, flitto, google, google-search, lingvanex, pontoon.moz, support.moz, ms, nsw, reverso, systran, translate, translatedict, uber, webtran1, webtran2]
-      Przejdź do głównej treści: [amazon, deepl, ebay, eur-lex, ibmwatson, itranslate, mdn, pontoon.moz, yandex]
+      Przejdź do głównej treści: [amazon, deepl, ebay, eca, eur-lex, ibmwatson, itranslate, mdn, pontoon.moz, yandex]
       Przejdź do treści: [drupal, ec]
       Pomiń: [ikea]
       Pomiń i przejdź do zawartości głównej: [ps]
@@ -752,6 +766,7 @@ translations:
       Pular para conteúdo principal: [amazon, ultipro]
       Ir para conteúdo principal: [asics, ebay, ms, zoom]
       Ir ao conteúdo principal: [battle]
+      Ir para a página principal: [eca]
       Avançar para o conteúdo principal: [google-search, ikea, ms, ps, uber] # pt-PT
       Pule para o conteúdo principal: [itranslate, lingvanex, papago]
       Ignorar o conteúdo principal: [kakao]
@@ -764,6 +779,7 @@ translations:
       Treci la conținutul principal: [baidu, yandex]
       Salt la conținutul principal: [bing, google, lingvanex, ms, nsw, ps, reverso, translate, translatedict, webtran1, webtran2]
       Mergi la conţinutul principal: [drupal, ec]
+      Înapoi la conținutul principal: [eca]
       Direct la conținutul principal: [eur-lex]
       Salt la conţinutul principal: [ibmwatson]
       Treci la conţinutul principal: [ikea, itranslate]
@@ -807,7 +823,7 @@ translations:
       Vrati se na glavni sadržaj: [ikea] # Serbian
       Preskoči na glavni izbornik: [ikea] # Croatian
       Preskočite do glavnog sadržaja: [lingvanex] # Croatian
-      Preskoči do glavnog sadržaja: [pontoon.moz, support.moz] # Bosnian
+      Preskoči do glavnog sadržaja: [eca, pontoon.moz, support.moz] # Bosnian (moz), Croatian (eca)
       Prijeđi na glavni sadržaj: [nsw, webtran1] # Croatian (nsw), Bosnian/Croatian (webtran1)
       Idite na glavni sadržaj: [yandex] # Croatian
       Pređi na glavni sadržaj: [bing, google-search, lingvanex, ms, ps, translate, translatedict] # Serbian (Latin) / sr-ME (google-search, ms) / bs (Lingvanex)
@@ -823,11 +839,12 @@ translations:
       Preskočiť k hlavnému obsahu: [baidu]
       Preskočiť na hlavný obsah: [aws, bing, google, google-search, ibmwatson, lingvanex, pontoon.moz, support.moz, nsw, systran, translate, translatedict, uber, webtran1, webtran2, yandex]
       Skočiť na hlavný obsah: [drupal, ec]
+      Preskočiť do hlavného menu: [eca]
       Prejsť na hlavný obsah: [eur-lex, ikea, ms]
       Preskoč na hlavný obsah: [itranslate]
       Prejsť na hlavný obsah: [ps]
     sl: # Slovenian
-      Preskoči na glavno vsebino: [aws, baidu, bing, drupal, eur-lex, ibmwatson, ikea, itranslate, pontoon.moz, support.moz, ms, nsw, ps, translate, translatedict, webtran1, webtran2, yandex]
+      Preskoči na glavno vsebino: [aws, baidu, bing, drupal, eca, eur-lex, ibmwatson, ikea, itranslate, pontoon.moz, support.moz, ms, nsw, ps, translate, translatedict, webtran1, webtran2, yandex]
       Preskočite na glavno vsebino: [google, lingvanex]
       Skok na glavno vsebino: [google-search]
     sm: # Samoan
@@ -875,6 +892,7 @@ translations:
       Gå över till huvudinnehållet: [baidu]
       Gå till huvudinnehållet: [bing, ibmwatson, translate]
       Hoppa till huvudinnehåll: [aws, drupal, ec, flitto, google, ikea, lingvanex, mdn, pontoon.moz, support.moz, translatedict, nsw, webtran1, webtran2, yandex]
+      Gå direkt till textinnehållet: [eca]
       Gå direkt till huvudinnehållet: [eur-lex]
       Fortsätt till huvudinnehållet: [google-search]
       Sjippe till huvudinnehåll: [gramtrans]
