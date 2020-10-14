@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import { getLangIdSubstrings } from './create-lang-id-strings';
 import StringSet from '../StringSet';
 
