@@ -1,19 +1,14 @@
 /* eslint-disable max-len */
 
 /**
- * @extends {Map<string, string>}
- */
-class SubstringStringMap extends Map { }
-
-/**
  * @extends {Set<string>}
  */
 class StringSet extends Set {
-  substrings({ length: substringLength } = {}) {
+  substrings({ length: substringLength }: { length: number }): Map<string, StringSet> {
     if (!substringLength) {
       throw new Error('StringSet#substrings: must supply substring length');
     }
-    const substrs = new SubstringStringMap();
+    const substrs = new Map<string, StringSet>();
     this.forEach((str) => {
       if (typeof str !== 'string') return;
       const chars = [...str]; // splits into an array of Unicode graphemes
@@ -21,11 +16,11 @@ class StringSet extends Set {
       for (let i = 0; i <= unicodeLength - substringLength; i++) { // eslint-disable-line
         const substr = chars.slice(i, i + substringLength).join('');
         if (!substrs.has(substr)) substrs.set(substr, new StringSet());
-        substrs.get(substr).add(str);
+        (substrs.get(substr) as StringSet).add(str);
       }
     });
     return substrs;
   }
 }
 
-module.exports = StringSet;
+export default StringSet;

@@ -7,10 +7,10 @@
   "author": "Claudiu Ceia",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
-    "lint": "eslint ./src --ext .js,.ts && prettier --write --ignore-unknown .",
+    "build": "tsc && node ./.bin/create-lang-ids.js",
+    "lint": "eslint ./src ./bin --ext .js,.ts && prettier --write --ignore-unknown .",
     "test": "jest",
-    "prepublish": "tsc",
+    "prepublish": "tsc && node ./.bin/create-lang-ids.js",
     "analyze": "source-map-explorer ./dist/*.js{,.map}"
   },
   "husky": {
@@ -19,7 +19,7 @@
     }
   },
   "lint-staged": {
-    "./src/**/*.{js,ts}": [
+    "./{src,bin}/**/*.{js,ts}": [
       "eslint ./src --ext .js,.ts",
       "prettier --write --ignore-unknown"
     ],

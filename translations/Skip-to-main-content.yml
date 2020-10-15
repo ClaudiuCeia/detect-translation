@@ -203,7 +203,8 @@ translations:
       প্রধান কন্টেন্টে ফিরে যান: [support.moz]
       প্রধান বিষয়বস্তুতে যান: [systran]
       বাদ দিয়ে প্রধান বিষয়সূচিতে যান: [uber]
-    # bs: # listed under sh (Serbo-Croatian) as Bosnian, Croatian and Serbian (Latin) too similar
+    # bs: # Bosnian; listed under sh (Serbo-Croatian) as Bosnian, Croatian, Montenegrin
+    # and Serbian (Latin) too similar
     ca: # Catalan
       Skip A contingut principal: [opentrad]
       Skip a contingut major: [apertium, prompsit]
@@ -226,6 +227,8 @@ translations:
     ckb: # Central Kurdish (Arabic script)
       بازدان بۆ ناوەڕۆکی سەرەکی: [bing] # listed as ku
       بازبدە بۆ ناوەڕۆکی سەرەکی: [drupal] # listed as ku
+    # cnr: # Montenegrin; sr-ME better per CLDR Likely Subtags; listed under sh
+    # (Serbo-Croatian) as Bosnian, Croatian, Montenegrin and Serbian (Latin) too similar
     co: # Corsican
       Saltà à u cuntenutu principale: [google]
       Saltare à u cuntenutu principale: [lingvanex]
@@ -440,7 +443,8 @@ translations:
     hmn: # Hmong (use hmn instead of mww)
       Hla mus rau cov ntsiab lus tseem ceeb: [baidu, google, itranslate, lingvanex, webtran1]
       Hla mus rau cov ntsiab lus: [bing, translate, translatedict]
-    # hr: # listed under sh (Serbo-Croatian) as Bosnian, Croatian and Serbian (Latin) too similar
+    # hr: # Croatian; listed under sh (Serbo-Croatian) as Bosnian, Croatian, Montenegrin
+    # and Serbian (Latin) too similar
     ht: # Haitian Creole
       Sote kontni prensipal: [bing, translate, translatedict]
       Ale nan kontni prensipal la: [google, itranslate, lingvanex, nsw, webtran1]
@@ -629,7 +633,7 @@ translations:
       Azon amin' ny zavatra fototra: [bing]
       Hanketo ny votoatiny lehibe: [google, itranslate]
       Hanketo ny votoaty lehibe: [Lingvanex]
-      Handingana ho @ tena atiny: [support.moz]
+      Handingana ho tena atiny: [support.moz] # There was a @ symbol here (“Handingana ho @ tena atiny”) - removed for better matches
       Mandehana mankany amin'ny atiny lehibe: [webtran1]
       Azon ny votoatiny ambony: [webtran2]
       Hijery ny tena afa-po: [yandex]
@@ -819,7 +823,7 @@ translations:
       Prijelaz na glavni sadržaj: [eur-lex] # Croatian
       Prijeđite na glavni sadržaj: [google] # Bosnian/Croatian
       Pređite na glavni sadržaj: [google-search] # Bosnian
-      Pređi na glavni sadržaj.: [ibmwatson] # Montenegrin
+      Pređi na glavni sadržaj.: [ibmwatson] # Montenegrin (cnr)
       Vrati se na glavni sadržaj: [ikea] # Serbian
       Preskoči na glavni izbornik: [ikea] # Croatian
       Preskočite do glavnog sadržaja: [lingvanex] # Croatian
@@ -879,7 +883,8 @@ translations:
       Пребаците на главни садржај: [itranslate]
       Прескочи до главног садржаја: [pontoon.moz, support.moz]
       Иди на главни садржај: [yandex]
-    # sr-Latn: # listed under sh (Serbo-Croatian) as Bosnian, Croatian and Serbian (Latin) too similar
+    # sr-Latn: # Serbian (Latin script); listed under sh (Serbo-Croatian) as Bosnian,
+    # Croatian, Montenegrin and Serbian (Latin) too similar
     st: # Sotho / Southern Sotho
       Fetela ho litaba tsa sehlooho: [google, itranslate, webtran1]
       Tšoaea ho litaba tsa sehlooho: [lingvanex]

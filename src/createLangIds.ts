@@ -1,92 +1,85 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable max-len */
-const fs = require('fs');
-const { safeLoad } = require('js-yaml');
-const cldr = require('cldr');
-const StringSet = require('../StringSet');
+import fs from 'fs';
+import { safeLoad } from 'js-yaml';
+import cldr from 'cldr';
+import StringSet from './StringSet';
 
+const CANARY_FILENAME = 'Skip-to-main-content';
+
+const SERBO_CROATIAN_LANGS = /^(sr-Latn|hr|bs|cnr)\b/;
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const {
   source: sourceFromYaml,
   translations: {
     page: pageTranslationsFromYaml,
     textonly: textonlyTranslationsFromYaml,
   },
-} = safeLoad(fs.readFileSync(`${__dirname}/lang-sources.yml`));
+} = safeLoad(fs.readFileSync(`${__dirname}/../translations/${CANARY_FILENAME}.yml`));
 
-/**
- * @extends Array
- */
-class OrderedLangArray extends Array { } // eslint-disable-line no-unused-vars
-
-/**
- * @returns {OrderedLangArray}
- */
-const getAllLangsByNumSpeakers = () => Object.values(
-  // efficiently extract ordered values from sparse array
-  [
-    ...Object.values(cldr.extractTerritoryInfo())
+const getAllLangsByNumSpeakers = (): Array<string> => {
+  const langPopMap = (
+    Object.values(cldr.extractTerritoryInfo() as Record<string, Record<string, unknown>>)
       .reduce((result, { literacyPercent = 100, population, languages }) => {
-        languages.forEach(({ id: lang, populationPercent = 100, writingPercent = 100 }) => {
-          lang = lang.replace(/_/g, '-');
-          let langPop = result.get(lang) || 0;
+        (languages as Array<Record<string, unknown>>).forEach(({
+          id: lang,
+          populationPercent = 100,
+          writingPercent = 100,
+        }) => {
+          lang = (lang as string).replace(/_/g, '-');
+          if (SERBO_CROATIAN_LANGS.exec(lang as string)) {
+            lang = 'sh'; // We code Serbian, Croatian, Bosnian and Montenegrin as Serbo-Croatian
+            // as they are too similar to each other
+          }
+          let langPop = (result.get(lang) || 0) as number;
           langPop += Math.floor(
-            population
-            * populationPercent * literacyPercent * writingPercent
+            population as number
+            * <number>populationPercent * <number>literacyPercent * <number>writingPercent
             / 1000000, // divide the percentages by 100 each (100 * 100 * 100)
           );
           result.set(lang, langPop);
         });
         return result;
-      }, new Map()),
-  ].reduce((arr, [l, p]) => {
-    arr[p] = l;
-    return arr;
-  }, [])
-    .reverse(),
-);
+      }, new Map())
+  ) as Map<string, number>;
+  const result = [...langPopMap].sort(([, p1], [, p2]) => p2 - p1).map(([l]) => l);
+  return result;
+};
 
-/**
- * @extends {Map<string, string[]>}
- */
-class LangTranslationsMap extends Map { }
+const allLangsByNumSpeakers = getAllLangsByNumSpeakers();
 
-const getLangsFromYaml = () => { // eslint-disable-line import/prefer-default-export
-  const langs = new LangTranslationsMap();
+export const getLangsFromYaml = (): Map<string, StringSet> => {
+  const langs = new Map<string, StringSet>();
   const addTranslation = ([l, t]) => {
     if (!langs.has(l)) langs.set(l, new StringSet());
-    langs.get(l).add(t);
+    langs.get(l)?.add(t);
   };
   const duplicateTranslations = Object.keys(pageTranslationsFromYaml)
     .every(l => textonlyTranslationsFromYaml[l] || sourceFromYaml[l]);
   if (duplicateTranslations) {
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     throw new Error(`Duplicate translations found for langs: ${duplicateTranslations}`);
   }
   Object.entries(sourceFromYaml).forEach(addTranslation);
   Object.entries({ ...pageTranslationsFromYaml, ...textonlyTranslationsFromYaml })
-    .forEach(([l, ts]) => Object.keys(ts).forEach(t => addTranslation([l, t])));
+    .forEach(([l, ts]) => Object.keys(ts as Record<string, string[]>).forEach(t => addTranslation([l, t])));
 
-  /** @type {LangTranslationsMap} */ const langsOrderedByNumSpeakers = getAllLangsByNumSpeakers()
+  const langsOrderedByNumSpeakers: Map<string, StringSet> = allLangsByNumSpeakers
     .reduce((newLs, l) => {
       if (langs.has(l)) {
-        newLs.set(l, langs.get(l));
+        newLs.set(l, langs.get(l) as StringSet);
       }
       return newLs;
-    }, new LangTranslationsMap());
-  /** @type {LangTranslationsMap} */ const langsWithUnknownSpeakers = [...langs]
+    }, new Map<string, StringSet>());
+  const langsWithUnknownSpeakers = [...langs]
     .filter(([l]) => !langsOrderedByNumSpeakers.has(l));
 
-  return new LangTranslationsMap([...langsOrderedByNumSpeakers, ...langsWithUnknownSpeakers]);
+  return new Map<string, StringSet>([...langsOrderedByNumSpeakers, ...langsWithUnknownSpeakers]);
 };
 
-/**
- * @extends {Map<string, Set<string>>}
- */
-class SubstringLanguagesMap extends Map { }
-
-/**
- * @param {LangTranslationsMap} langs
- * @returns {Map<string, string | string[]>}
- */
-const getLangIdSubstrings = (langs) => {
+export const getLangIdSubstrings = (langs: Map<string, StringSet>): Map<string, StringSet> => {
   /*
    * starting with short susbtrings,
    * create a Map { substrings => languages [Map] { lang => translations [Set] { <string> } } }
@@ -96,8 +89,8 @@ const getLangIdSubstrings = (langs) => {
    */
 
   const MAX_SUBSTRING_LEN = 100;
-  const substringsMap = new SubstringLanguagesMap();
-  const langsRemaining = new Map([...langs]);
+  const substringsMap = new Map<string, Map<string, StringSet>>();
+  const langsRemaining: Map<string, StringSet> = new Map([...langs]);
   const allLangs = getLangsFromYaml(); // create another copy of the original so we can check against it later
 
   const translationsMultipleLangsMap = new Map(
@@ -109,11 +102,11 @@ const getLangIdSubstrings = (langs) => {
         });
         return tsMulLangs;
       }, new Map()),
-    ].filter(([t, ls]) => ls.size > 1), // eslint-disable-line no-unused-vars
+    ].filter(([, ls]) => ls.size > 1),
   );
   const langsWithSharedTranslations = [...translationsMultipleLangsMap]
-    .reduce((result, [t, ls]) => { // eslint-disable-line no-unused-vars
-      [...ls].forEach(l => result.add(l));
+    .reduce((result, [, ls]) => {
+      [...ls as StringSet].forEach(l => result.add(l));
       return result;
     }, new StringSet());
 
@@ -124,18 +117,15 @@ const getLangIdSubstrings = (langs) => {
     // map plain substrings
     langs.forEach((ts, lang) => ts.substrings({ length: n }).forEach((tSet, substr) => {
       if (!substringsMap.has(substr)) substringsMap.set(substr, new Map());
-      substringsMap.get(substr).set(lang, tSet);
+      substringsMap.get(substr)?.set(lang, tSet);
     }));
   }
 
   /**
    * Remove languages from a list of lang->translations if the list already contains
    * another language that shares duplicate translations with a language
-   *
-   * @param {string[]} nondups
-   * @param {[string, Set<string>]}
    */
-  const ignoreDuplicateTranslations = (nondups, [l, ts]) => {
+  const ignoreDuplicateTranslations = (nondups: Array<[string, StringSet]>, [l, ts]: [string, StringSet]) => {
     if (
       !langsWithSharedTranslations.has(l)
       || !nondups.find(
@@ -149,7 +139,7 @@ const getLangIdSubstrings = (langs) => {
     return nondups;
   };
 
-  const mostPromisingSubstrings = new SubstringLanguagesMap([...substringsMap].sort(
+  const mostPromisingSubstrings = new Map<string, Map<string, StringSet>>([...substringsMap].sort(
     ([ss1, lTm1], [ss2, lTm2]) => ( // ss == substring, lTm == languageTranslationMap
       ss1.length !== ss2.length || lTm1.size !== lTm2.size
         // sort short substrings and substrings with few language matches before others
@@ -168,51 +158,66 @@ const getLangIdSubstrings = (langs) => {
         langsRemaining.get(l)
       ) {
         if (!langIds.has(l)) langIds.set(l, new StringSet());
-        if ([...langsRemaining.get(l)].find(t => ts.has(t))) {
-          const lTs = [...allLangs.get(l)];
-          if (lTs.every(t => t.includes(ss)) && langIds.get(l).size !== 0) {
+        if ([...langsRemaining.get(l) as StringSet].find(t => ts.has(t))) {
+          const lTs = [...allLangs.get(l) as StringSet];
+          if (lTs.every(t => t.includes(ss)) && langIds.get(l)?.size !== 0) {
             langIds.set(l, new StringSet([ss]));
           } else {
-            langIds.get(l).add(ss);
+            langIds.get(l)?.add(ss);
           }
-          [...ts].forEach(t => langsRemaining.get(l).delete(t));
-          if (langsRemaining.get(l).size === 0) {
+          [...ts].forEach(t => langsRemaining.get(l)?.delete(t));
+          if (langsRemaining.get(l)?.size === 0) {
             langsRemaining.delete(l);
           }
         }
       }
     }
     return langIds;
-  }, new Map());
+  }, new Map<string, StringSet>());
 
   const pageTranslationLangs = new Set(Object.keys(pageTranslationsFromYaml));
   return new Map([...singleLangSubstringIdMap].filter(([l]) => pageTranslationLangs.has(l)));
 };
 
 const langMapTolangRegexJSString = (stringMap, { or = '|', list = ',\n  ' } = {}) => `{
-  ${[...stringMap]
-    .map(([lang, substrs]) => `${lang.includes(/[-_]/) ? `"${lang}"` : lang}: /${typeof substrs === 'string' ? substrs : [...substrs].join(or)}/`).join(list)
+  ${[...stringMap as Map<string, Set<string>>]
+    .sort(([l1], [l2]) => {
+      const albns = allLangsByNumSpeakers;
+      return (albns.includes(l1) ? albns.indexOf(l1) : Infinity)
+        - (albns.includes(l2) ? albns.indexOf(l2) : Infinity);
+    })
+    .map(([lang, substrs]) => {
+      const [langCode, scriptCode] = lang.split(/[-_]/) as [string, string | undefined];
+      const langName = cldr.extractLanguageDisplayNames('en')[langCode] as string | undefined;
+      const scriptName = cldr.extractScriptDisplayNames('en')[scriptCode] as string | undefined;
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+      return `${/[-_]/.exec(lang) ? `"${lang}"` : lang
+        }:${langName || scriptName ? ` /* ${(langName || '')
+          + (scriptName ? ` (${scriptName})` : '')
+          } */` : ''} /${typeof substrs === 'string' ? substrs : [...substrs].join(or)}/`;
+    }).join(list)
   }
 }`;
 
-const writeLangIdSubstringMap = () => {
+export const buildLangMapToLangRegexJSString = (): string => {
   const langs = getLangsFromYaml();
   const idSubstringsMap = getLangIdSubstrings(langs);
   const output = langMapTolangRegexJSString(idSubstringsMap);
+  return output;
+}
+
+export const writeLangIdSubstringMap = (): void => {
+  const output = buildLangMapToLangRegexJSString();
+  const filename = `${__dirname}/../translations/${CANARY_FILENAME}.js`;
 
   fs.writeFileSync(
-    `${__dirname}/lang-id-strings.js`,
+    filename,
     `// Run \`node ./create-lang-id-strings.js\` to update this file
 
 export default ${output};\n`,
   );
 };
 
-writeLangIdSubstringMap();
-
-module.exports = {
-  getLangsFromYaml,
-  getLangIdSubstrings,
-  writeLangIdSubstringMap,
-  translationsFromYaml: pageTranslationsFromYaml,
+export default {
+  translationsFromYaml: pageTranslationsFromYaml as Record<string, string[]>,
 };
