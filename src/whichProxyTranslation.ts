@@ -11,7 +11,7 @@ const PROXIES_HOSTNAMES: { [key in Services]?: Array<HostnamePattern> } = {
   [Services.GOOGLE]: ["translate.googleusercontent.com", /^translate\.google\./],
   [Services.GRAMTRANS]: ["gramtrans.com"],
   [Services.LINGVANEX]: ["backenster.com", "lingvanex.com"],
-  [Services.PAPAGO]: ["papago.naver.net"],
+  [Services.NAVER]: ["papago.naver.net"],
   [Services.SOGOU]: ["translate.sogoucdn.com"],
   [Services.WORLDLINGO]: ["www.worldlingo.com"],
   [Services.YANDEX]: ["z5h64q92x9.net", /^translate\.yandex\./],

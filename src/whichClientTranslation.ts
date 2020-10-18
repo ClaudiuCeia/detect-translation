@@ -8,7 +8,7 @@ const SERVICES_SELECTORS: { [key in Services]?: string } = {
   [Services.MICROSOFT]: "[_msthash],[_msttexthash]",
   [Services.GOOGLE]: '[href^="https://translate.googleapis.com"],#goog-gt-tt,.goog-te-spinner-pos',
   // TODO: Add Huawei Browser
-  [Services.QQ]: "#qbTrans-pageTrans-dialog,[class^=qbTrans-pageTrans-dialog]",
+  [Services.TENCENT]: "#qbTrans-pageTrans-dialog,[class^=qbTrans-pageTrans-dialog]",
   [Services.SOGOU]: '[class^="sg-trans"]',
   // TODO: Add UC Browser
   // TODO: Add Xiaomi Browser
