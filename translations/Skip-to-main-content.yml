@@ -81,6 +81,7 @@ sources:
         url: http://fanyi.youdao.com/
         langs: [zh]
     textonly:
+      alibaba: https://translate.alibaba.com/
       aws: https://ai-service-demos.go-aws.com/translate # based on https://aws.amazon.com/translate/
       deepl: https://www.deepl.com/translator
       euskadi_g: http://www.itzultzailea.euskadi.net/traductor/portalExterno/text.do
@@ -149,7 +150,7 @@ translations:
       القفز إلى المحتوى الرئيسي: [baidu]
       التخطي إلى المحتوى الرئيسي: [bing, google-search, reverso, translate, translatedict, webtran2]
       تخطي إلى المحتوى الرئيسي: [aws, amazon, flitto, kakao, ms, nsw, pontoon.moz, ps, systran, webtran1]
-      الانتقال إلى المحتوى الرئيسي: [drupal]
+      الانتقال إلى المحتوى الرئيسي: [alibaba, drupal]
       تخطى إلى المحتوى الرئيسي: [google, ikea] # ikea: EG, QA, BH
       التخطي للمحتويات الرئيسية: [ibmwatson]
       انتقل إلى المحتوي الرئيسي: [ikea] # AE, KW, SA, JO, MA
@@ -301,6 +302,7 @@ translations:
       Transsaltu al ĉefa enhavo: [gramtrans]
       Iri rekte al ĉefa enhavo: [yandex]
     es: # Spanish
+      Salte al contenido principal: [alibaba]
       Skip A contenido principal: [apertium, opentrad, prompsit]
       Saltar para ir al contenido principal: [asics]
       Omitir e ir al contenido principal: [amazon]
@@ -358,7 +360,7 @@ translations:
       Siirry pääainesisältöön: [yandex]
     fr: # French
       Sauter sur le contenu principal: [baidu]
-      Passer au contenu principal: [asics, aws, battle, bing, deepl, ebay, eca, flitto, google, ibmwatson, kakao, lingvanex, mdn, nsw, papago, pontoon.moz, ps, qq, reverso, shell, systran, translate, translatedict, uber, ultipro, webtran1, webtran2, yandex, youdao] # youdao: actually fr-t-zh-t-en
+      Passer au contenu principal: [alibaba, asics, aws, battle, bing, deepl, ebay, eca, flitto, google, ibmwatson, kakao, lingvanex, mdn, nsw, papago, pontoon.moz, ps, qq, reverso, shell, systran, translate, translatedict, uber, ultipro, webtran1, webtran2, yandex, youdao] # youdao: actually fr-t-zh-t-en
       Allez au contenu: [asics] # CA
       Passer au contenu principal.: [caiyun]
       Accéder au contenu principal: [ebay]
@@ -469,6 +471,7 @@ translations:
       Անցեք հիմնական բովանդակությանը: [lingvanex]
       Գնալ հիմնական բովանդակության: [yandex]
     id: # Indonesian
+      Skip ke isi utama: [alibaba]
       Langkah ke isi utama: [baidu]
       Loncat ke konten utama: [bing, drupal, mdn, pontoon.moz, shell, translate]
       Lompat ke isi utama: [drupal]
@@ -782,7 +785,7 @@ translations:
       Ignorar o conteúdo principal: [kakao]
       Omitir ao conteúdo principal: [promptone]
       Saltar para o Conteúdo Principal: [qq]
-      Passar para o conteúdo principal: [drupal, ec, eur-lex, ps, reverso]
+      Passar para o conteúdo principal: [alibaba, drupal, ec, eur-lex, ps, reverso]
       Saltar para o conteúdo principal: [support.moz, yandex, youdao] # actually pt-t-zh-t-en
       Faixa clara ao índice principal: [worldlingo]
     ro: # Romanian
@@ -799,7 +802,7 @@ translations:
       Accesează direct conținutul principal: [uber]
     ru: # Russian
       перейти к основному содержанию: [baidu, promptone, qq]
-      Перейти к основному контенту: [apple, battle, bing, google-search, ikea, ms, translate, translatedict, webtran2, yandex]
+      Перейти к основному контенту: [alibaba, apple, battle, bing, google-search, ikea, ms, translate, translatedict, webtran2, yandex]
       Перейти к основному содержанию.: [caiyun]
       Перейти к основному содержанию: [amd, deepl, drupal, flitto, google, lingvanex, mymemory, nsw, webtran1, zoom]
       Перейти к основному содержимому: [aws, ibmwatson, mdn, pontoon.moz, support.moz, mymemory, systran]
@@ -947,7 +950,7 @@ translations:
       Ба мундариҷаи асосӣ гузаред: [webtran1]
       Гузаштан ба контенту асосӣ: [yandex]
     th: # Thai
-      ข้ามไปยังเนื้อหาหลัก: [aws, baidu, bing, drupal, ebay, google-search, ibmwatson, ikea, kakao, pontoon.moz, support.moz, papago, ps, shell, systran, translate, translatedict, webtran2]
+      ข้ามไปยังเนื้อหาหลัก: [alibaba, aws, baidu, bing, drupal, ebay, google-search, ibmwatson, ikea, kakao, pontoon.moz, support.moz, papago, ps, shell, systran, translate, translatedict, webtran2]
       ข้ามไปเนื้อหาหลัก: [battle]
       ข้ามไปที่เนื้อหาหลัก: [flitto, google, lingvanex, ms, nsw, webtran1]
       ข้ามไปหาเนื้อหาหลัก: [itranslate]
@@ -961,7 +964,7 @@ translations:
       Hiki fakalaka ki he tefitoʻi meʻa: [bing]
     tr: # Turkish
       Ana içeriğe geç: [aws, baidu, flitto, google, google-search, itranslate, nsw, webtran1]
-      Ana içeriğe atla: [amazon, bing, drupal, ibmwatson, kakao, lingvanex, pontoon.moz, support.moz, ms, qq, reverso, systran, translate, translatedict, webtran2, yandex]
+      Ana içeriğe atla: [alibaba, amazon, bing, drupal, ibmwatson, kakao, lingvanex, pontoon.moz, support.moz, ms, qq, reverso, systran, translate, translatedict, webtran2, yandex]
       Ana İçeriğe Geç: [drupal]
       Ana içeriğe git: [mdn, pontoon.moz, promptone, shell]
       Ana içeriklere geçiş yap: [ps]
@@ -1002,6 +1005,7 @@ translations:
     uz-Cyrl: # Uzbek (Cyrillic)
       Асосий таркибга ўтиш: [yandex]
     vi: # Vietnamese
+      Bỏ qua để nội dung chính: [alibaba]
       Bỏ qua nội dung chính: [baidu, google, ibmwatson, kakao, lingvanex]
       Bỏ qua đến nội dung chính: [bing, translate]
       Chuyển đến nội dung chính: [aws, flitto, nsw, translatedict, webtran1, webtran2]
@@ -1041,7 +1045,7 @@ translations:
     yue-Hans: # Cantonese (simplified)
       惊到主要内容: [baidu]
     zh: # Chinese (simplified)
-      跳到主要内容: [apple, baidu, bing, deepl, google, google-search, nsw, promptone, ps, qihoo360, qq, translate, translatedict, ultipro, webtran1, webtran2, yandex]
+      跳到主要内容: [alibaba, apple, baidu, bing, deepl, google, google-search, nsw, promptone, ps, qihoo360, qq, translate, translatedict, ultipro, webtran1, webtran2, yandex]
       跳转到主要内容: [amd, caiyun, drupal, iciba, mdn, pontoon.moz, support.moz, mymemory]
       跳至正文: [drupal]
       跳转至主要内容: [flitto, ibmwatson, pontoon.moz, youdao, zoom]
