@@ -1,6 +1,6 @@
-import { LangTranslatorInfo } from '.';
-import normalizeLangTag from './normalizeLangTag';
-import { UNDETERMINED_LANGUAGE } from './constants';
+import { LangTranslatorInfo } from ".";
+import normalizeLangTag from "./normalizeLangTag";
+import { UNDETERMINED_LANGUAGE } from "./constants";
 
 export type LangIds = { [lang: string]: RegExp };
 
@@ -16,28 +16,34 @@ export type SourceDocumentMetadata = {
 
 // TODO: detect QQ Browser’s side-by-side comparison (it leaves the original untouched, and adds Chinese)
 
-const getDocumentLang = (source: SourceDocumentMetadata): LangTranslatorInfo => {
+const getDocumentLang = (
+  source: SourceDocumentMetadata
+): LangTranslatorInfo => {
   const doc = document.documentElement;
-  const canary: { el: HTMLElement | null | undefined, text?: string } = {
-    el: (
-      source?.canary?.selector && document.querySelector(source.canary.selector)
-    ) as HTMLElement | null | undefined,
+  const canary: { el: HTMLElement | null | undefined; text?: string } = {
+    el: (source?.canary?.selector &&
+      document.querySelector(source.canary.selector)) as
+      | HTMLElement
+      | null
+      | undefined,
   };
   if (doc.lang !== source.lang) {
     return {
       lang: normalizeLangTag(doc.lang),
     };
   }
-  if (canary.el?.lang && (canary.el.lang !== source.lang)) {
+  if (canary.el?.lang && canary.el.lang !== source.lang) {
     return {
       lang: normalizeLangTag(canary.el.lang),
     };
   }
-  canary.text = canary.el?.innerText.trim() || (
+  canary.text =
+    canary.el?.innerText.trim() ||
     // for any agent that replaces invisible links with a (translated) text node - such as Gramtrans
-    (source.canary?.isFirstContentfulChild ?? true) &&
-    (document.body.firstChild instanceof Text && document.body.firstChild.textContent?.trim())
-  ) || '';
+    ((source.canary?.isFirstContentfulChild ?? true) &&
+      document.body.firstChild instanceof Text &&
+      document.body.firstChild.textContent?.trim()) ||
+    "";
   if (canary.text === source.canary?.text) {
     return {
       lang: normalizeLangTag(source.lang),
@@ -66,7 +72,7 @@ const identifyLangFromCanaryText = (() => {
   return (text: string, langIds: LangIds | undefined): string => {
     if (!langIds) return UNDETERMINED_LANGUAGE;
 
-    if ((_text === text) && (_langIds === langIds) && result) {
+    if (_text === text && _langIds === langIds && result) {
       return result;
     }
 

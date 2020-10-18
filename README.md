@@ -27,7 +27,7 @@ observe({
     // type will be 'proxy', 'client' or 'unknown'
     console.log(`${type} translation using ${service}, language ${lang}`);
   },
-  sourceLang: 'en',
+  sourceLang: "en",
 });
 ```
 
@@ -44,10 +44,12 @@ By default, we use a hidden “Skip to main content” link, which is a common w
 If you don’t already have a skip link on your pages, it’s easy to add. It’s helpful if it’s the first element on the page:
 
 ```html
-<html lang="en"> <!-- or your page’s language, if not English -->
+<html lang="en">
+  <!-- or your page’s language, if not English -->
   <body>
     <a class="skip-link" href="#main-content">
-      Skip to main content <!-- or the same phrase in your page’s language -->
+      Skip to main content
+      <!-- or the same phrase in your page’s language -->
     </a>
     <nav>
       <!-- Add your navigation links here -->
@@ -71,13 +73,13 @@ observe({
     // type will be 'proxy', 'client' or 'unknown'
     console.log(`${type} translation using ${service}, language ${lang}`);
   },
-  sourceLang: 'en', // or your page’s language, if different
-  sourceUrl: 'https://www.mywebsite.com/path/to/page.html',
+  sourceLang: "en", // or your page’s language, if different
+  sourceUrl: "https://www.mywebsite.com/path/to/page.html",
 
   // no need to specify these if your skip link has a class of “.skip-link” and text
   // “Skip to main content”
-  textSelector: '.skip-link', // a valid CSS selector passed to document.querySelector
-  text: 'Skip to main content', // or the text in your page’s language
+  textSelector: ".skip-link", // a valid CSS selector passed to document.querySelector
+  text: "Skip to main content", // or the text in your page’s language
 });
 ```
 
@@ -90,6 +92,7 @@ observe({
 ### Popular translators
 
 <!-- TODO: Add Apple (Safari/iOS 14) here -->
+
 - [Baidu translate](https://fanyi.baidu.com/)
 - [Google Translate](https://translate.google.com/)
 - [Microsoft/Bing Translate](https://www.bing.com/translator/)

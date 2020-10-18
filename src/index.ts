@@ -1,23 +1,29 @@
 import whichClientTranslation from "./whichClientTranslation";
 import whichProxyTranslation from "./whichProxyTranslation";
-import getDocumentLang, { LangIds } from './getDocumentLang';
+import getDocumentLang, { LangIds } from "./getDocumentLang";
 import identifyIBMWatson from "./services/identifyIBMWatson";
 import { Services } from "./translationServices";
-import { UNDETERMINED_LANGUAGE } from './constants';
-import skipToMainContentLangIds from '../translations/Skip-to-main-content';
+import { UNDETERMINED_LANGUAGE } from "./constants";
+import skipToMainContentLangIds from "../translations/Skip-to-main-content";
 
-export type TranslatorType = 'client' | 'proxy' | 'unknown';
+export type TranslatorType = "client" | "proxy" | "unknown";
 
 export type LangTranslatorInfo = {
-  lang?: string,
-  service?: Services,
-  type?: TranslatorType,
+  lang?: string;
+  service?: Services;
+  type?: TranslatorType;
 };
 
-export type Callback = (lang: string, { service, type }?: {
-  service: Services,
-  type: TranslatorType,
-}) => void;
+export type Callback = (
+  lang: string,
+  {
+    service,
+    type,
+  }?: {
+    service: Services;
+    type: TranslatorType;
+  }
+) => void;
 export interface ObserverParams {
   onTranslation: Callback;
   sourceLang: string;
@@ -31,10 +37,10 @@ export interface ObserverParams {
 
 export const observe = ({
   onTranslation,
-  sourceLang = 'en',
+  sourceLang = "en",
   sourceUrl,
-  textSelector = '.skip-link',
-  text = 'Skip to main content',
+  textSelector = ".skip-link",
+  text = "Skip to main content",
   textIsFirstContentfulChild = true,
   langIds = skipToMainContentLangIds,
   includeServiceInLangTag = true,
@@ -49,7 +55,7 @@ export const observe = ({
         text,
         isFirstContentfulChild: textIsFirstContentfulChild,
         langIds,
-      }
+      },
     });
 
     if (identified.lang === lastObservedLang) {
@@ -58,7 +64,7 @@ export const observe = ({
 
     identified = whichProxyTranslation(identified);
 
-    if (identified.type !== 'proxy') {
+    if (identified.type !== "proxy") {
       identified = whichClientTranslation(identified);
     }
 
@@ -68,25 +74,22 @@ export const observe = ({
       identified = identifyIBMWatson(identified, sourceUrl);
     }
 
-    if (!identified.lang || (identified.lang === UNDETERMINED_LANGUAGE)) {
+    if (!identified.lang || identified.lang === UNDETERMINED_LANGUAGE) {
       return;
     }
 
     identified.service ||= Services.UNDETERMINED;
-    identified.type ||= 'unknown';
+    identified.type ||= "unknown";
 
     if (includeServiceInLangTag) {
       // https://unicode-org.github.io/cldr/ldml/tr35.html#t_Extension
       identified.lang = `${identified.lang}-t-${sourceLang}-t0-${identified.service}`;
     }
 
-    onTranslation(
-      identified.lang,
-      {
-        service: identified.service,
-        type: identified.type,
-      },
-    );
+    onTranslation(identified.lang, {
+      service: identified.service,
+      type: identified.type,
+    });
     lastObservedLang = identified.lang;
   };
 
@@ -108,7 +111,7 @@ export const observe = ({
           childList: true,
           characterData: true,
           subtree: true,
-        },
+        }
       );
     }
   }

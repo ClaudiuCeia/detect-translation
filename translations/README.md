@@ -25,14 +25,14 @@ of the source phrase “Skip to main content”.
 
 “Textonly” translations are maintained for two reasons:
 
-  - from time to time, new languages are added to online web page translators, and we
-      can then move these translations into the “page” key
-  - we include known translations of the source phrase into these languages in the list
-      of substrings used to find the substrings that can uniquely identify “page”
-      languages. Including “textonly” translations in this helps to avoid using
-      any substring which is shared between two “page” and “textonly” languages.
+- from time to time, new languages are added to online web page translators, and we
+  can then move these translations into the “page” key
+- we include known translations of the source phrase into these languages in the list
+  of substrings used to find the substrings that can uniquely identify “page”
+  languages. Including “textonly” translations in this helps to avoid using
+  any substring which is shared between two “page” and “textonly” languages.
 
 Resources to look up and understand BCP 47 language codes:
 
-  - BCP 47 language subtag lookup: https://r12a.github.io/app-subtags/
-  - Unicode CLDR Likely Subtags: https://unicode-org.github.io/cldr-staging/charts/38/supplemental/likely_subtags.html
+- BCP 47 language subtag lookup: https://r12a.github.io/app-subtags/
+- Unicode CLDR Likely Subtags: https://unicode-org.github.io/cldr-staging/charts/38/supplemental/likely_subtags.html

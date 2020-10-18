@@ -9,7 +9,7 @@ describe("Test proxy translations", () => {
 
   beforeEach(() => {
     el = document.createElement("a");
-    el.classList.add('skip-link');
+    el.classList.add("skip-link");
     document.body.appendChild(el);
   });
 
@@ -25,8 +25,8 @@ describe("Test proxy translations", () => {
       const mockTranslationCallback = jest.fn((lang, { service, type }) => {
         try {
           expect(service).toEqual(Services.GOOGLE);
-          expect(lang).toEqual(targetLang + '-t-en-t0-google');
-          expect(type).toEqual('proxy');
+          expect(lang).toEqual(targetLang + "-t-en-t0-google");
+          expect(type).toEqual("proxy");
           resolve();
         } catch (err) {
           reject(err);
@@ -51,8 +51,8 @@ describe("Test proxy translations", () => {
       const mockTranslationCallback = jest.fn((lang, { service, type }) => {
         try {
           expect(service).toEqual(Services.BAIDU);
-          expect(lang).toEqual(targetLang + '-t-en-t0-baidu');
-          expect(type).toEqual('proxy');
+          expect(lang).toEqual(targetLang + "-t-en-t0-baidu");
+          expect(type).toEqual("proxy");
           resolve();
         } catch (err) {
           reject(err);
@@ -67,6 +67,6 @@ describe("Test proxy translations", () => {
         sourceLang,
       });
 
-      el.innerText = 'Salt la conținutul principal';
+      el.innerText = "Salt la conținutul principal";
     }));
 });

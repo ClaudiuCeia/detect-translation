@@ -1,10 +1,10 @@
 // setup-jest.js
-import sanitizeHtml from 'sanitize-html';
+import sanitizeHtml from "sanitize-html";
 import "mutationobserver-shim";
 
 // Monkey-patch jsdom to make it support innerText
 // see https://github.com/jsdom/jsdom/issues/1245#issuecomment-470192636
-Object.defineProperty(global.Element.prototype, 'innerText', {
+Object.defineProperty(global.Element.prototype, "innerText", {
   get() {
     return sanitizeHtml(this.textContent, {
       allowedTags: [], // remove all tags and return text content only

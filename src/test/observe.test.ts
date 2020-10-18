@@ -20,13 +20,16 @@ describe("Observe", () => {
 
     observer = observe({
       onTranslation: mockTranslationCallback,
-      sourceLang: 'en',
+      sourceLang: "en",
     });
 
     // don’t change the DOM after setting up the observer
 
     await sleep(1);
 
-    expect(mockTranslationCallback).toHaveBeenCalledWith("fr-t-en-t0-google", { service: "google", type: "proxy" });
+    expect(mockTranslationCallback).toHaveBeenCalledWith("fr-t-en-t0-google", {
+      service: "google",
+      type: "proxy",
+    });
   });
 });

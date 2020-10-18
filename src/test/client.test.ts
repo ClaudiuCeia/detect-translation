@@ -24,8 +24,8 @@ describe("Test client translations", () => {
       const mockClientCallback = jest.fn((lang, { service, type }) => {
         try {
           expect(service).toEqual(Services.GOOGLE);
-          expect(lang).toEqual(targetLang + '-t-en-t0-google');
-          expect(type).toEqual('client');
+          expect(lang).toEqual(targetLang + "-t-en-t0-google");
+          expect(type).toEqual("client");
           resolve();
         } catch (err) {
           reject(err);

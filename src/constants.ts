@@ -1,1 +1,1 @@
-export const UNDETERMINED_LANGUAGE = 'und';
+export const UNDETERMINED_LANGUAGE = "und";
