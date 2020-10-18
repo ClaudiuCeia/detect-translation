@@ -32,7 +32,7 @@ export interface ObserverParams {
   text?: string;
   textIsFirstContentfulChild?: boolean;
   langIds?: LangIds;
-  includeServiceInLangTag?: boolean;
+  includeTranslatorInLangTag?: boolean;
 }
 
 export const observe = ({
@@ -43,7 +43,7 @@ export const observe = ({
   text = "Skip to main content",
   textIsFirstContentfulChild = true,
   langIds = skipToMainContentLangIds,
-  includeServiceInLangTag = true,
+  includeTranslatorInLangTag = false,
 }: ObserverParams): MutationObserver => {
   let lastObservedLang = sourceLang;
 
@@ -81,7 +81,7 @@ export const observe = ({
     identified.service ||= Services.UNDETERMINED;
     identified.type ||= "unknown";
 
-    if (includeServiceInLangTag) {
+    if (includeTranslatorInLangTag) {
       // https://unicode-org.github.io/cldr/ldml/tr35.html#t_Extension
       identified.lang = `${identified.lang}-t-${sourceLang}-t0-${identified.service}`;
     }

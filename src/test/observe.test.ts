@@ -27,7 +27,7 @@ describe("Observe", () => {
 
     await sleep(1);
 
-    expect(mockTranslationCallback).toHaveBeenCalledWith("fr-t-en-t0-google", {
+    expect(mockTranslationCallback).toHaveBeenCalledWith("fr", {
       service: "google",
       type: "proxy",
     });

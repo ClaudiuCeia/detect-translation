@@ -25,7 +25,7 @@ describe("Test proxy translations", () => {
       const mockTranslationCallback = jest.fn((lang, { service, type }) => {
         try {
           expect(service).toEqual(Services.GOOGLE);
-          expect(lang).toEqual(targetLang + "-t-en-t0-google");
+          expect(lang).toEqual(targetLang);
           expect(type).toEqual("proxy");
           resolve();
         } catch (err) {
@@ -51,7 +51,7 @@ describe("Test proxy translations", () => {
       const mockTranslationCallback = jest.fn((lang, { service, type }) => {
         try {
           expect(service).toEqual(Services.BAIDU);
-          expect(lang).toEqual(targetLang + "-t-en-t0-baidu");
+          expect(lang).toEqual(targetLang);
           expect(type).toEqual("proxy");
           resolve();
         } catch (err) {
