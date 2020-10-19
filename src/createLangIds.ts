@@ -269,11 +269,9 @@ export const writeLangIdSubstringMap = (): void => {
   fs.writeFileSync(
     filename,
     `// Run \`yarn build\` to update this file
+import { LangIds } from '../src/getDocumentLang';
 
-/**
- * @type {{[lang: string]: RegExp}}
- */
-const langIds = ${output};
+const langIds: LangIds = ${output};
 
 export default langIds;\n`
   );
