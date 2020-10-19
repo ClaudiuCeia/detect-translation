@@ -67,13 +67,13 @@ const identifyLangFromCanaryText = (() => {
   let _text: string;
   let _langIds: LangIds;
   let _langIdsArr: Array<[string, RegExp]>;
-  let result: string;
+  let _result: string;
 
   return (text: string, langIds: LangIds | undefined): string => {
     if (!langIds) return UNDETERMINED_LANGUAGE;
 
-    if (_text === text && _langIds === langIds && result) {
-      return result;
+    if (_text === text && _langIds === langIds && _result) {
+      return _result;
     }
 
     // cache the result, so for a given string and langIds, we compute it only once
@@ -82,7 +82,10 @@ const identifyLangFromCanaryText = (() => {
     _text = text;
 
     const [lang] = _langIdsArr.find(([, re]) => re.test(text)) || [];
-    return lang || UNDETERMINED_LANGUAGE;
+
+    _result = lang || UNDETERMINED_LANGUAGE;
+
+    return _result;
   };
 })();
 

@@ -25,7 +25,8 @@ const identifyIBMWatson = (
       decodeURI(sourceUrl)
         .replace(/:/g, " ")
         .replace(/\//g, "_")
-        .replace(/\./g, "\\.") +
+        .replace(/\./g, "\\.")
+        .replace(/\\/g, "\\\\") +
         // actual language names are between 4 and 21 chars; we’re coding 3-21 to account for
         // possible shorter language names (e.g. Ewe) - longer ones are unlikely.
         "_[ \\(\\)A-Za-z]{3,21}\\.html"
