@@ -4,6 +4,9 @@ import { Services } from "../translationServices";
 let expectedRegex: RegExp | undefined;
 let _sourceUrl: string;
 
+const CONTROL_CODE_ENQ = "\x05";
+const MATCH_ALL_CONTROL_CODE_ENQ = /\x05/g; // eslint-disable-line no-control-regex
+
 const identifyIBMWatson = (
   identified: LangTranslatorInfo,
   sourceUrl?: string
@@ -23,10 +26,11 @@ const identifyIBMWatson = (
     // file:///Users/name/Downloads/https%20__www.domain.com_path_pagename_Chinese%20(Simplified).html
     expectedRegex = new RegExp(
       decodeURI(sourceUrl)
+        .replace(/\\/g, CONTROL_CODE_ENQ) // replace \ with a placeholder ENQ character
         .replace(/:/g, " ")
         .replace(/\//g, "_")
         .replace(/\./g, "\\.")
-        .replace(/\\/g, "\\\\") +
+        .replace(MATCH_ALL_CONTROL_CODE_ENQ, "\\\\") + // put \ back and escape them
         // actual language names are between 4 and 21 chars; we’re coding 3-21 to account for
         // possible shorter language names (e.g. Ewe) - longer ones are unlikely.
         "_[ \\(\\)A-Za-z]{3,21}\\.html"
