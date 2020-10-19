@@ -24,17 +24,7 @@ const identifyIBMWatson = (
     // https __www.domain.com_path_pagename_Chinese (Simplified).html
     // so location.href is something like
     // file:///Users/name/Downloads/https%20__www.domain.com_path_pagename_Chinese%20(Simplified).html
-    expectedRegex = new RegExp(
-      decodeURI(sourceUrl)
-        .replace(/\\/g, CONTROL_CODE_ENQ) // replace \ with a placeholder ENQ character
-        .replace(/:/g, " ")
-        .replace(/\//g, "_")
-        .replace(/\./g, "\\.")
-        .replace(MATCH_ALL_CONTROL_CODE_ENQ, "\\\\") + // put \ back and escape them
-        // actual language names are between 4 and 21 chars; we’re coding 3-21 to account for
-        // possible shorter language names (e.g. Ewe) - longer ones are unlikely.
-        "_[ \\(\\)A-Za-z]{3,21}\\.html"
-    );
+    expectedRegex = watsonUrlRegex(sourceUrl);
     _sourceUrl = sourceUrl;
   }
 
@@ -44,9 +34,22 @@ const identifyIBMWatson = (
 
   return {
     ...identified,
-    service: isIBMWatson ? Services.WATSON : identified.service,
+    service: isIBMWatson ? Services.IBM : identified.service,
     type: isIBMWatson ? "proxy" : identified.type,
   };
 };
+
+export const watsonUrlRegex = (sourceUrl: string): RegExp =>
+  new RegExp(
+    decodeURI(sourceUrl)
+      .replace(/\\/g, CONTROL_CODE_ENQ) // replace \ with a placeholder ENQ character
+      .replace(/:/g, " ")
+      .replace(/\//g, "_")
+      .replace(/\./g, "\\.")
+      .replace(MATCH_ALL_CONTROL_CODE_ENQ, "\\\\") + // put \ back and escape them
+      // actual language names are between 4 and 21 chars; we’re coding 3-21 to account for
+      // possible shorter language names (e.g. Ewe) - longer ones are unlikely.
+      "_[ \\(\\)A-Za-z]{3,21}\\.html"
+  );
 
 export default identifyIBMWatson;

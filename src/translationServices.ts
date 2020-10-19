@@ -11,8 +11,8 @@ export enum Services {
   TENCENT = "tencent",
   SOGOU = "sogou",
   UNDETERMINED = "und",
-  WATSON = "watson",
-  WORLDLINGO = "wldlingo",
+  IBM = "ibm",
+  WORLDLINGO = "worldlng",
   YANDEX = "yandex",
   YOUDAO = "youdao",
 }
