@@ -19,9 +19,9 @@ export type Callback = (
   {
     service,
     type,
-  }?: {
-    service?: Services;
-    type?: TranslatorType;
+  }: {
+    service: Services;
+    type: TranslatorType;
   }
 ) => void;
 export interface ObserverParams {
