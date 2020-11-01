@@ -1,11 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable max-len */
+/* eslint-disable */
 import fs from "fs";
 import { safeLoad } from "js-yaml";
 import cldr from "cldr";
 import StringSet from "./utils/StringSet";
 
+const SRC = `${__dirname}/../src`;
 const CANARY_FILENAME = "Skip-to-main-content";
 
 const SERBO_CROATIAN_LANGS = /^(sr-Latn|hr|bs|cnr)\b/;
@@ -17,9 +16,7 @@ const {
     page: pageTranslationsFromYaml,
     textonly: textonlyTranslationsFromYaml,
   },
-} = safeLoad(
-  fs.readFileSync(`${__dirname}/../translations/${CANARY_FILENAME}.yml`)
-);
+} = safeLoad(fs.readFileSync(`${SRC}/translations/${CANARY_FILENAME}.yml`));
 
 const getAllLangsByNumSpeakers = (): Array<string> => {
   const langPopMap = Object.values(
@@ -264,12 +261,12 @@ export const buildLangMapToLangRegexJSString = (): string => {
 
 export const writeLangIdSubstringMap = (): void => {
   const output = buildLangMapToLangRegexJSString();
-  const filename = `${__dirname}/../translations/${CANARY_FILENAME}.ts`;
+  const filename = `${SRC}/translations/${CANARY_FILENAME}.ts`;
 
   fs.writeFileSync(
     filename,
     `// Run \`yarn build\` to update this file
-import { LangIds } from '../src/getDocumentLang';
+import { LangIds } from '../getDocumentLang';
 
 const langIds: LangIds = ${output};
 

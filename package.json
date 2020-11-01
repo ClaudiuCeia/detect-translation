@@ -7,11 +7,12 @@
   "author": "Claudiu Ceia",
   "license": "MIT",
   "scripts": {
-    "build": "ts-node ./.bin/create-lang-ids.js && tsc",
+    "build": "rimraf dist && yarn run write-lang-ids && tsc",
     "lint": "eslint ./src --ext .js,.ts && prettier --write --ignore-unknown .",
-    "test": "ts-node ./.bin/create-lang-ids.js && jest",
-    "prepublish": "ts-node ./.bin/create-lang-ids.js && tsc",
-    "analyze": "source-map-explorer ./dist/*.js{,.map}"
+    "test": "yarn run write-lang-ids && jest",
+    "prepublish": "yarn run write-lang-ids && tsc",
+    "analyze": "source-map-explorer ./dist/*.js{,.map}",
+    "write-lang-ids": "ts-node ./.bin/writeLangIds.ts"
   },
   "husky": {
     "hooks": {
@@ -19,8 +20,8 @@
     }
   },
   "lint-staged": {
-    "./{src,bin}/**/*.{js,ts}": [
-      "eslint ./src --ext .js,.ts",
+    "./{src,.bin}/**/*.{js,ts}": [
+      "eslint ./src ./.bin --ext .js,.ts",
       "prettier --write --ignore-unknown"
     ],
     "./*.{js,ts}": "prettier --write --ignore-unknown"
@@ -46,6 +47,7 @@
     "lint-staged": ">=10",
     "mutationobserver-shim": "^0.3.3",
     "prettier": "^2.1.2",
+    "rimraf": "^3.0.2",
     "sanitize-html": "^2.1.0",
     "source-map-explorer": "^2.4.2",
     "ts-jest": "^26.4.1",

@@ -6,8 +6,8 @@ declare const jsdom: JSDOM;
 
 describe("identifyIBMWatson", () => {
   it("should identify IBM Watson for an expected filename", () => {
+    // eslint-disable-next-line
     jsdom.reconfigure({
-      // eslint-disable-line
       url:
         "file:///Users/name/Downloads/https%20__www.domain.com_path_pagename_Chinese%20(Simplified).html",
     });

@@ -21,7 +21,7 @@ class StringSet extends Set {
         // eslint-disable-line
         const substr = chars.slice(i, i + substringLength).join("");
         if (!substrs.has(substr)) substrs.set(substr, new StringSet());
-        (substrs.get(substr) as StringSet).add(str);
+        (substrs.get(substr) as StringSet).add(str); // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion
       }
     });
     return substrs;

@@ -4,7 +4,7 @@ import getDocumentLang, { LangIds } from "./getDocumentLang";
 import identifyIBMWatson from "./services/identifyIBMWatson";
 import { Services } from "./translationServices";
 import { UNDETERMINED_LANGUAGE } from "./constants";
-import skipToMainContentLangIds from "../translations/Skip-to-main-content";
+import skipToMainContentLangIds from "./translations/Skip-to-main-content";
 
 export type TranslatorType = "client" | "proxy" | "unknown";
 

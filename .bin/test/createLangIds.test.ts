@@ -44,7 +44,7 @@ describe("createLangIds", () => {
         translations: { page: pageTranslations },
       } = safeLoad(
         fs.readFileSync(
-          `${__dirname}/../../translations/Skip-to-main-content.yml`
+          `${__dirname}/../../src/translations/Skip-to-main-content.yml`
         )
       );
 

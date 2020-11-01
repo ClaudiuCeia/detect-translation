@@ -1,5 +1,5 @@
 import getDocumentLang from "../getDocumentLang";
-import skipToMainContentLangIds from "../../translations/Skip-to-main-content";
+import skipToMainContentLangIds from "../translations/Skip-to-main-content";
 
 describe("getDocumentLang", () => {
   let el: HTMLElement = (null as unknown) as HTMLElement;
