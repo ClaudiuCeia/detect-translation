@@ -66,7 +66,7 @@ const getDocumentLang = (
 const identifyLangFromCanaryText = (() => {
   let _text: string;
   let _langIds: LangIds;
-  let _langIdsArr: Array<[string, RegExp]>;
+  let _langIdsEntries: Array<[string, RegExp]>;
   let _result: string;
 
   return (text: string, langIds: LangIds | undefined): string => {
@@ -77,11 +77,13 @@ const identifyLangFromCanaryText = (() => {
     }
 
     // cache the result, so for a given string and langIds, we compute it only once
-    _langIds = langIds;
-    _langIdsArr = Object.entries(langIds);
+    if (_langIds !== langIds) {
+      _langIds = langIds;
+      _langIdsEntries = Object.entries(langIds);
+    }
     _text = text;
 
-    const [lang] = _langIdsArr.find(([, re]) => re.test(text)) || [];
+    const [lang] = _langIdsEntries.find(([, re]) => re.test(text)) || [];
 
     _result = lang || UNDETERMINED_LANGUAGE;
 
