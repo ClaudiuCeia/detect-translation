@@ -79,7 +79,7 @@ export const observe = ({
     }
 
     identified.service ||= Services.UNDETERMINED;
-    identified.type ||= "unknown"; // lgtm [js/implicit-operand-conversion]
+    identified.type ||= "unknown";
 
     if (includeTranslatorInLangTag) {
       // https://unicode-org.github.io/cldr/ldml/tr35.html#t_Extension
