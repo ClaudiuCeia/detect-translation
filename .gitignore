@@ -1,5 +1,5 @@
 node_modules/
-dist/
+pkg/
 src/translations/*.ts
 *.tgz
 yarn-error.log

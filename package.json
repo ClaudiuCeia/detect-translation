@@ -2,17 +2,80 @@
   "name": "detect-translation",
   "version": "0.1.0",
   "description": "Trigger code when people translate your website",
+  "keywords": [
+    "translation",
+    "detect",
+    "detector",
+    "language",
+    "baidu fanyi",
+    "bing translate",
+    "google translate",
+    "microsoft translator",
+    "yandex translate",
+    "naver papago"
+  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "Claudiu Ceia",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf dist && yarn run write-lang-ids && tsc",
+    "build": "rimraf pkg dist && yarn run write-lang-ids && pika build",
     "lint": "eslint ./src --ext .js,.ts && prettier --write --ignore-unknown .",
     "test": "yarn run write-lang-ids && jest",
-    "prepublish": "yarn run write-lang-ids && tsc",
-    "analyze": "source-map-explorer ./dist/*.js{,.map}",
+    "prepublish": "yarn lint && yarn build && yarn run package-check --cwd pkg",
+    "analyze": "source-map-explorer ./pkg/dist-src/*.js{,.map}",
     "write-lang-ids": "ts-node ./.bin/writeLangIds.ts"
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-ts-standard-pkg",
+        {
+          "exclude": [
+            "src/**/*.test.ts"
+          ]
+        }
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "@pika/plugin-bundle-web",
+        {
+          "targets": {
+            "esmodules": true
+          },
+          "loose": true,
+          "minify": {
+            "compress": {
+              "passes": 3,
+              "module": true
+            }
+          }
+        }
+      ],
+      [
+        "pika-plugin-legacy-browser",
+        {
+          "name": "DetectTranslation",
+          "format": "umd",
+          "minify": true
+        }
+      ],
+      [
+        "pika-plugin-package.json",
+        {
+          "*exports": {
+            ".": {
+              "browser": "./dist-browser/index.min.js",
+              "umd": "./dist-browser/index.min.js",
+              "import": "./dist-web/index.bundled.js",
+              "require": "./dist-browser/index.min.js"
+            }
+          }
+        }
+      ]
+    ]
   },
   "husky": {
     "hooks": {
@@ -32,6 +95,11 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@pika/pack": "^0.5.0",
+    "@pika/plugin-build-web": "^0.9.2",
+    "@pika/plugin-bundle-web": "^0.9.2",
+    "@pika/plugin-ts-standard-pkg": "^0.9.2",
+    "@skypack/package-check": "^0.2.2",
     "@types/jest": "^26.0.14",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
@@ -46,6 +114,8 @@
     "js-yaml": "^3.14.0",
     "lint-staged": ">=10",
     "mutationobserver-shim": "^0.3.3",
+    "pika-plugin-legacy-browser": "^2.0.0",
+    "pika-plugin-package.json": "^1.0.2",
     "prettier": "^2.1.2",
     "rimraf": "^3.0.2",
     "sanitize-html": "^2.1.0",

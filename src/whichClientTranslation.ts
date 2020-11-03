@@ -26,7 +26,7 @@ const whichClientTranslation = (
     ) as [Services, string] | undefined) || [];
 
   return {
-    ...identified,
+    lang: identified.lang,
     service: service || identified.service,
     type: service ? "client" : identified.type,
   };
