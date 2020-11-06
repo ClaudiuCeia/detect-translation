@@ -7,11 +7,12 @@
   "author": "Claudiu Ceia",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "rimraf dist && yarn run write-lang-ids && tsc",
     "lint": "eslint ./src --ext .js,.ts && prettier --write --ignore-unknown .",
-    "test": "jest",
-    "prepublish": "tsc",
-    "analyze": "source-map-explorer ./dist/*.js{,.map}"
+    "test": "yarn run write-lang-ids && jest",
+    "prepublish": "yarn run write-lang-ids && tsc",
+    "analyze": "source-map-explorer ./dist/*.js{,.map}",
+    "write-lang-ids": "ts-node ./.bin/writeLangIds.ts"
   },
   "husky": {
     "hooks": {
@@ -19,8 +20,8 @@
     }
   },
   "lint-staged": {
-    "./src/**/*.{js,ts}": [
-      "eslint ./src --ext .js,.ts",
+    "./{src,.bin}/**/*.{js,ts}": [
+      "eslint ./src ./.bin --ext .js,.ts",
       "prettier --write --ignore-unknown"
     ],
     "./*.{js,ts}": "prettier --write --ignore-unknown"
@@ -34,6 +35,7 @@
     "@types/jest": "^26.0.14",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
+    "cldr": "^5.7.0",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-jest": "^24.1.0",
@@ -41,9 +43,12 @@
     "jest": "^26.5.2",
     "jest-environment-jsdom": "^26.5.2",
     "jest-environment-jsdom-global": "^2.0.4",
+    "js-yaml": "^3.14.0",
     "lint-staged": ">=10",
     "mutationobserver-shim": "^0.3.3",
     "prettier": "^2.1.2",
+    "rimraf": "^3.0.2",
+    "sanitize-html": "^2.1.0",
     "source-map-explorer": "^2.4.2",
     "ts-jest": "^26.4.1",
     "ts-node": "^9.0.0",

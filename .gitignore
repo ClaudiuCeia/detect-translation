@@ -1,5 +1,6 @@
 node_modules/
 dist/
+src/translations/*.ts
 *.tgz
 yarn-error.log
 .eslintcache
