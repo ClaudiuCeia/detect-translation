@@ -18,7 +18,7 @@ describe("Test proxy translations", () => {
     observer?.disconnect();
   });
 
-  test("Can detect Google proxy translation", () =>
+  test("Can detect Google proxy translation", (): Promise<void> =>
     new Promise((resolve, reject) => {
       const sourceLang = "en";
       const targetLang = "ro";
@@ -44,7 +44,7 @@ describe("Test proxy translations", () => {
       document.documentElement.lang = targetLang;
     }));
 
-  test("Can detect Baidu proxy translation", () =>
+  test("Can detect Baidu proxy translation", (): Promise<void> =>
     new Promise((resolve, reject) => {
       const sourceLang = "en";
       const targetLang = "ro";
