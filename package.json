@@ -19,13 +19,13 @@
   "author": "Claudiu Ceia",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf pkg dist && yarn run write-lang-ids && pika build",
+    "build": "rimraf pkg dist && pika build",
     "lint": "eslint ./src --ext .js,.ts && prettier --write --ignore-unknown .",
-    "test": "yarn run write-lang-ids && jest",
+    "test": "yarn langids && jest",
     "postinstall": "husky install",
-    "prepublish": "yarn lint && yarn build && yarn run package-check --cwd pkg",
+    "prepublish": "yarn langids && yarn lint && yarn build && yarn package-check --cwd pkg",
     "analyze": "source-map-explorer ./pkg/dist-src/*.js{,.map}",
-    "write-lang-ids": "ts-node ./.bin/writeLangIds.ts",
+    "langids": "ts-node ./.bin/writeLangIds.ts",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
   },
