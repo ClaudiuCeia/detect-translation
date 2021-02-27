@@ -37,7 +37,7 @@ const whichProxyTranslation = (
   ) || []) as [Services, Array<HostnamePattern>];
 
   return {
-    ...identified,
+    lang: identified.lang,
     service: service || identified.service,
     type: service ? "proxy" : identified.type,
   };

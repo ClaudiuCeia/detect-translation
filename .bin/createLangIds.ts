@@ -1,6 +1,6 @@
 /* eslint-disable */
 import fs from "fs";
-import { safeLoad } from "js-yaml";
+import { load } from "js-yaml";
 import cldr from "cldr";
 import StringSet from "./utils/StringSet";
 
@@ -16,7 +16,7 @@ const {
     page: pageTranslationsFromYaml,
     textonly: textonlyTranslationsFromYaml,
   },
-} = safeLoad(fs.readFileSync(`${SRC}/translations/${CANARY_FILENAME}.yml`));
+} = load(fs.readFileSync(`${SRC}/translations/${CANARY_FILENAME}.yml`));
 
 const getAllLangsByNumSpeakers = (): Array<string> => {
   const langPopMap = Object.values(

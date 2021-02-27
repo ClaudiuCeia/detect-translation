@@ -17,7 +17,7 @@ describe("Test client translations", () => {
     observer?.disconnect();
   });
 
-  test("Can detect Google client translation", () =>
+  test("Can detect Google client translation", (): Promise<void> =>
     new Promise((resolve, reject) => {
       const sourceLang = "en";
       const targetLang = "ro";

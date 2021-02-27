@@ -33,7 +33,7 @@ const identifyIBMWatson = (
   const isIBMWatson = !!(expectedRegex as RegExp).test(filename);
 
   return {
-    ...identified,
+    lang: identified.lang,
     service: isIBMWatson ? Services.IBM : identified.service,
     type: isIBMWatson ? "proxy" : identified.type,
   };

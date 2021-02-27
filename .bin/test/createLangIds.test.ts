@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import fs from "fs";
-import { safeLoad } from "js-yaml";
+import { load } from "js-yaml";
 import {
   getLangIdSubstrings,
   buildLangMapToLangRegexJSString,
@@ -42,7 +42,7 @@ describe("createLangIds", () => {
     describe("should build regexes that match every translation to its language", () => {
       const {
         translations: { page: pageTranslations },
-      } = safeLoad(
+      } = load(
         fs.readFileSync(
           `${__dirname}/../../src/translations/Skip-to-main-content.yml`
         )
