@@ -75,15 +75,13 @@ export const getLangsFromYaml = (): Map<string, StringSet> => {
     )
   );
 
-  const langsOrderedByNumSpeakers: Map<
-    string,
-    StringSet
-  > = allLangsByNumSpeakers.reduce((newLs, l) => {
-    if (langs.has(l)) {
-      newLs.set(l, langs.get(l) as StringSet);
-    }
-    return newLs;
-  }, new Map<string, StringSet>());
+  const langsOrderedByNumSpeakers: Map<string, StringSet> =
+    allLangsByNumSpeakers.reduce((newLs, l) => {
+      if (langs.has(l)) {
+        newLs.set(l, langs.get(l) as StringSet);
+      }
+      return newLs;
+    }, new Map<string, StringSet>());
   const langsWithUnknownSpeakers = [...langs].filter(
     ([l]) => !langsOrderedByNumSpeakers.has(l)
   );
@@ -165,18 +163,19 @@ export const getLangIdSubstrings = (
   };
 
   const mostPromisingSubstrings = new Map<string, Map<string, StringSet>>(
-    [...substringsMap].sort((
-      [ss1, lTm1],
-      [ss2, lTm2] // ss == substring, lTm == languageTranslationMap
-    ) =>
-      ss1.length !== ss2.length || lTm1.size !== lTm2.size
-        ? // sort short substrings and substrings with few language matches before others
-          ss1.length +
-          [...lTm1].reduce(ignoreDuplicateTranslations, []).length -
-          (ss2.length +
-            [...lTm2].reduce(ignoreDuplicateTranslations, []).length)
-        : // if we can’t distinguish that way, sort substrings that match many translations first
-          [...lTm2][0][1].size - [...lTm1][0][1].size
+    [...substringsMap].sort(
+      (
+        [ss1, lTm1],
+        [ss2, lTm2] // ss == substring, lTm == languageTranslationMap
+      ) =>
+        ss1.length !== ss2.length || lTm1.size !== lTm2.size
+          ? // sort short substrings and substrings with few language matches before others
+            ss1.length +
+            [...lTm1].reduce(ignoreDuplicateTranslations, []).length -
+            (ss2.length +
+              [...lTm2].reduce(ignoreDuplicateTranslations, []).length)
+          : // if we can’t distinguish that way, sort substrings that match many translations first
+            [...lTm2][0][1].size - [...lTm1][0][1].size
     )
   );
 

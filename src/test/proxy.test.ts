@@ -26,7 +26,7 @@ describe("Test proxy translations", () => {
         try {
           expect(service).toEqual(Services.GOOGLE);
           expect(lang).toEqual(targetLang);
-          expect(type).toEqual("proxy");
+          expect(type).toBe("proxy");
           resolve();
         } catch (err) {
           reject(err);
@@ -52,7 +52,7 @@ describe("Test proxy translations", () => {
         try {
           expect(service).toEqual(Services.BAIDU);
           expect(lang).toEqual(targetLang);
-          expect(type).toEqual("proxy");
+          expect(type).toBe("proxy");
           resolve();
         } catch (err) {
           reject(err);

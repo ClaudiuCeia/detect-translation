@@ -32,9 +32,9 @@ describe("createLangIds", () => {
 
       const result = getLangIdSubstrings(langs);
 
-      expect(result.size).toEqual(2);
-      expect(result.get("gl")?.has("d")).toEqual(true);
-      expect(result.get("fr")?.has("u")).toEqual(true);
+      expect(result.size).toBe(2);
+      expect(result.get("gl")?.has("d")).toBe(true);
+      expect(result.get("fr")?.has("u")).toBe(true);
     });
   });
 

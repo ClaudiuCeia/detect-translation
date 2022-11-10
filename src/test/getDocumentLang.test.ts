@@ -2,7 +2,7 @@ import getDocumentLang from "../getDocumentLang";
 import skipToMainContentLangIds from "../translations/Skip-to-main-content";
 
 describe("getDocumentLang", () => {
-  let el: HTMLElement = (null as unknown) as HTMLElement;
+  let el: HTMLElement = null as unknown as HTMLElement;
 
   beforeEach(() => {
     document.documentElement.lang = "en";
@@ -20,7 +20,7 @@ describe("getDocumentLang", () => {
 
     const { lang: result } = getDocumentLang({ lang: "en" });
 
-    expect(result).toEqual("pl");
+    expect(result).toBe("pl");
   });
 
   it("should identify the language from the text element", () => {
@@ -33,7 +33,7 @@ describe("getDocumentLang", () => {
       },
     });
 
-    expect(result).toEqual("ru");
+    expect(result).toBe("ru");
   });
 
   it("should identify the language from the text content", () => {
@@ -48,7 +48,7 @@ describe("getDocumentLang", () => {
       },
     });
 
-    expect(result).toEqual("fr");
+    expect(result).toBe("fr");
   });
 
   it("should normalise the language tag", () => {
@@ -56,6 +56,6 @@ describe("getDocumentLang", () => {
 
     const { lang: result } = getDocumentLang({ lang: "en" });
 
-    expect(result).toEqual("he");
+    expect(result).toBe("he");
   });
 });

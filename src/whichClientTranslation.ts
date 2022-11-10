@@ -22,7 +22,7 @@ const whichClientTranslation = (
 ): LangTranslatorInfo => {
   const [service] =
     (Object.entries(SERVICES_SELECTORS).find(([, selector]) =>
-      document.querySelector(selector as string)
+      document.querySelector(selector)
     ) as [Services, string] | undefined) || [];
 
   return {

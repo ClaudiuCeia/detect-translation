@@ -31,7 +31,7 @@ const whichProxyTranslation = (
   const { hostname } = location;
 
   const [service] = (Object.entries(PROXIES_HOSTNAMES).find(([, hostnames]) =>
-    (hostnames as Array<HostnamePattern>).find((match) =>
+    hostnames.find((match) =>
       match instanceof RegExp ? match.test(hostname) : match === hostname
     )
   ) || []) as [Services, Array<HostnamePattern>];

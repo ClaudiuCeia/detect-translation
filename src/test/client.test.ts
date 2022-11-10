@@ -4,7 +4,7 @@ import JSDOMEnvironment from "jest-environment-jsdom";
 declare const jsdom: JSDOMEnvironment["dom"];
 
 describe("Test client translations", () => {
-  let el: HTMLElement = (null as unknown) as HTMLElement;
+  let el: HTMLElement = null as unknown as HTMLElement;
   let observer: MutationObserver | undefined;
 
   beforeEach(() => {
@@ -25,14 +25,14 @@ describe("Test client translations", () => {
         try {
           expect(service).toEqual(Services.GOOGLE);
           expect(lang).toEqual(targetLang);
-          expect(type).toEqual("client");
+          expect(type).toBe("client");
           resolve();
         } catch (err) {
           reject(err);
         }
       });
 
-      jsdom.reconfigure({ url: "https://www.example.com/" }); // eslint-disable-line
+      jsdom!.reconfigure({ url: "https://www.example.com/" }); // eslint-disable-line
 
       document.documentElement.setAttribute("class", "");
       document.documentElement.lang = sourceLang;
