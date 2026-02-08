@@ -1,5 +1,7 @@
 module.exports = {
-  preset: "ts-jest",
-  testEnvironment: "jest-environment-jsdom-global",
+  testEnvironment: "<rootDir>/jest.environment.jsdom.js",
   setupFilesAfterEnv: ["<rootDir>/setup-jest.ts"],
+  transform: {
+    "^.+\\.(t|j)sx?$": ["@swc/jest"],
+  },
 };

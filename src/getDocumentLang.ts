@@ -17,7 +17,7 @@ export type SourceDocumentMetadata = {
 // TODO: detect QQ Browser’s side-by-side comparison (it leaves the original untouched, and adds Chinese)
 
 const getDocumentLang = (
-  source: SourceDocumentMetadata
+  source: SourceDocumentMetadata,
 ): LangTranslatorInfo => {
   const doc = document.documentElement;
   const canary: { el: HTMLElement | null | undefined; text?: string } = {

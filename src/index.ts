@@ -22,7 +22,7 @@ export type Callback = (
   }: {
     service: Services;
     type: TranslatorType;
-  }
+  },
 ) => void;
 export interface ObserverParams {
   onTranslation: Callback;
@@ -111,7 +111,7 @@ export const observe = ({
           childList: true,
           characterData: true,
           subtree: true,
-        }
+        },
       );
     }
   }

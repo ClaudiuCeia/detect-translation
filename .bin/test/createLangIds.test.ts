@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import fs from "fs";
 import { load } from "js-yaml";
 import {
@@ -44,53 +40,51 @@ describe("createLangIds", () => {
         translations: { page: pageTranslations },
       } = load(
         fs.readFileSync(
-          `${__dirname}/../../src/translations/Skip-to-main-content.yml`
-        )
+          `${__dirname}/../../src/translations/Skip-to-main-content.yml`,
+        ),
       );
 
-      // eslint-disable-next-line @typescript-eslint/no-implied-eval
       const langMap = Function(
-        `return ${buildLangMapToLangRegexJSString()}`
+        `return ${buildLangMapToLangRegexJSString()}`,
       )() as { [lang: string]: RegExp };
 
       const translations = Object.entries(
         pageTranslations as {
           [lang: string]: { [translation: string]: string[] };
-        }
+        },
       )
         .reduce(
           (allTs, [lang, ts]) => [
             ...allTs,
             ...Object.entries(ts).map(
               ([t, translators]) =>
-                [translators.join("/"), lang, t] as [string, string, string]
+                [translators.join("/"), lang, t] as [string, string, string],
             ),
           ],
-          [] as [string, string, string][]
+          [] as [string, string, string][],
         )
         .sort(([, l1], [, l2]) => +(l1 > l2))
         .reduce(
           (
             table,
-            [translator, lang, translation]: [string, string, string]
+            [translator, lang, translation]: [string, string, string],
           ) => {
             table.push([lang, translation, translator]);
             return table;
           },
-          [] as [string, string, string][]
+          [] as [string, string, string][],
         );
 
       test.concurrent.each(translations)(
         "detects %s: “%s” (%s)",
-        // eslint-disable-next-line @typescript-eslint/require-await
-        async (lang, translation) => {
+        (lang, translation) => {
           const [resultLang] =
             Object.entries(langMap).find(([, regex]) =>
-              regex.test(translation)
+              regex.test(translation),
             ) || [];
 
           expect(resultLang).toEqual(lang);
-        }
+        },
       );
     });
   });

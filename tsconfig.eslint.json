@@ -1,4 +1,8 @@
 {
-  "include": ["./**/*.test.ts", "./.bin/**/*.ts"],
-  "exclude": ["*.js", "*.ts"]
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["node", "jest"]
+  },
+  "include": ["src/**/*.ts", ".bin/**/*.ts", "setup-jest.ts", "tsup.config.ts"],
+  "exclude": ["dist", "dist-browser", "node_modules"]
 }

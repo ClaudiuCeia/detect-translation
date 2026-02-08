@@ -3,9 +3,9 @@
     "target": "es2020",
     "module": "esnext",
     "lib": ["dom", "esnext"],
-    "sourceMap": false,
+    "sourceMap": true,
+    "declarationMap": true,
     "importHelpers": false,
-    "outDir": "./dist",
     "moduleResolution": "node",
     "removeComments": true,
     "noImplicitAny": false,
@@ -22,14 +22,9 @@
     "experimentalDecorators": true,
     "baseUrl": ".",
     "declaration": true,
-    "inlineSourceMap": true,
-    "inlineSources": true
+    "inlineSourceMap": false,
+    "inlineSources": false
   },
   "exclude": ["node_modules", "./src/**/*.test.ts"],
-  "include": ["./src/**/*.ts"],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "commonjs"
-    }
-  }
+  "include": ["./src/**/*.ts"]
 }

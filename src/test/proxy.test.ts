@@ -29,11 +29,11 @@ describe("Test proxy translations", () => {
           expect(type).toBe("proxy");
           resolve();
         } catch (err) {
-          reject(err);
+          reject(err instanceof Error ? err : new Error(String(err)));
         }
       });
 
-      jsdom.reconfigure({ url: "https://translate.googleusercontent.com/" }); // eslint-disable-line
+      jsdom.reconfigure({ url: "https://translate.googleusercontent.com/" });
       document.documentElement.lang = sourceLang;
 
       observer = observe({
@@ -55,11 +55,11 @@ describe("Test proxy translations", () => {
           expect(type).toBe("proxy");
           resolve();
         } catch (err) {
-          reject(err);
+          reject(err instanceof Error ? err : new Error(String(err)));
         }
       });
 
-      jsdom.reconfigure({ url: "http://translate.baiducontent.com/" }); // eslint-disable-line
+      jsdom.reconfigure({ url: "http://translate.baiducontent.com/" });
       document.documentElement.lang = sourceLang;
 
       observer = observe({

@@ -31,7 +31,7 @@ const NORMALISE_LANG_MAPPING = {
 const normaliseLangCode = (lang: string): string => {
   const [normalisedTag, nonstd] =
     Object.entries(NORMALISE_LANG_MAPPING).find(([, nonstd]) =>
-      nonstd.test(lang)
+      nonstd.test(lang),
     ) || [];
 
   return normalisedTag ? lang.replace(nonstd as RegExp, normalisedTag) : lang;

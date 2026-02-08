@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-
 /**
  * @extends {Set<string>}
  */
@@ -18,10 +16,9 @@ class StringSet extends Set {
       const chars = [...str]; // splits into an array of Unicode graphemes
       const unicodeLength = chars.length; // (str.length would not count chars above U+FFFF properly)
       for (let i = 0; i <= unicodeLength - substringLength; i++) {
-        // eslint-disable-line
         const substr = chars.slice(i, i + substringLength).join("");
         if (!substrs.has(substr)) substrs.set(substr, new StringSet());
-        (substrs.get(substr) as StringSet).add(str); // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion
+        (substrs.get(substr) as StringSet).add(str);
       }
     });
     return substrs;

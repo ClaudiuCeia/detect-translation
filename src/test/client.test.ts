@@ -28,11 +28,11 @@ describe("Test client translations", () => {
           expect(type).toBe("client");
           resolve();
         } catch (err) {
-          reject(err);
+          reject(err instanceof Error ? err : new Error(String(err)));
         }
       });
 
-      jsdom!.reconfigure({ url: "https://www.example.com/" }); // eslint-disable-line
+      jsdom!.reconfigure({ url: "https://www.example.com/" });
 
       document.documentElement.setAttribute("class", "");
       document.documentElement.lang = sourceLang;

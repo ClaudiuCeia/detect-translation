@@ -14,7 +14,7 @@ describe("Observe", () => {
   test("should check for translations on startup", async () => {
     const mockTranslationCallback = jest.fn();
 
-    jsdom.reconfigure({ url: "https://translate.googleusercontent.com/" }); // eslint-disable-line
+    jsdom.reconfigure({ url: "https://translate.googleusercontent.com/" });
 
     document.documentElement.lang = "fr";
 

@@ -7,9 +7,12 @@ let _sourceUrl: string;
 const CONTROL_CODE_ENQ = "\x05";
 const MATCH_ALL_CONTROL_CODE_ENQ = /\x05/g; // eslint-disable-line no-control-regex
 
+const escapeRegExp = (value: string): string =>
+  value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
 const identifyIBMWatson = (
   identified: LangTranslatorInfo,
-  sourceUrl?: string
+  sourceUrl?: string,
 ): LangTranslatorInfo => {
   const { hostname, pathname } = location;
 
@@ -28,7 +31,14 @@ const identifyIBMWatson = (
     _sourceUrl = sourceUrl;
   }
 
-  const filename = decodeURIComponent(pathname.split(/\\|\//).reverse()[0]);
+  const rawFilename = pathname.split(/\\|\//).reverse()[0];
+  const filename = (() => {
+    try {
+      return decodeURIComponent(rawFilename);
+    } catch {
+      return rawFilename;
+    }
+  })();
 
   const isIBMWatson = !!(expectedRegex as RegExp).test(filename);
 
@@ -41,15 +51,22 @@ const identifyIBMWatson = (
 
 export const watsonUrlRegex = (sourceUrl: string): RegExp =>
   new RegExp(
-    decodeURI(sourceUrl)
-      .replace(/\\/g, CONTROL_CODE_ENQ) // replace \ with a placeholder ENQ character
-      .replace(/:/g, " ")
-      .replace(/\//g, "_")
-      .replace(/\./g, "\\.")
-      .replace(MATCH_ALL_CONTROL_CODE_ENQ, "\\\\") + // put \ back and escape them
+    escapeRegExp(
+      (() => {
+        try {
+          return decodeURI(sourceUrl);
+        } catch {
+          return sourceUrl;
+        }
+      })()
+        .replace(/\\/g, CONTROL_CODE_ENQ) // replace \ with a placeholder ENQ character
+        .replace(/:/g, " ")
+        .replace(/\//g, "_")
+        .replace(MATCH_ALL_CONTROL_CODE_ENQ, "\\\\"), // put \ back
+    ) +
       // actual language names are between 4 and 21 chars; we’re coding 3-21 to account for
       // possible shorter language names (e.g. Ewe) - longer ones are unlikely.
-      "_[ \\(\\)A-Za-z]{3,21}\\.html"
+      "_[ \\(\\)A-Za-z]{3,21}\\.html",
   );
 
 export default identifyIBMWatson;

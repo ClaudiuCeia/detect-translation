@@ -1,6 +1,10 @@
 node_modules/
 pkg/
+dist/
+dist-browser/
+.agents/
 src/translations/*.ts
 *.tgz
 yarn-error.log
+pnpm-debug.log
 .eslintcache

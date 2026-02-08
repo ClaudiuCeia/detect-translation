@@ -3,7 +3,6 @@
 This package detects when a page is translated on the client (using, for example, Google Translate in Chrome) or via a proxy (like using translate.google.com directly).
 
 [![npm version](https://badge.fury.io/js/detect-translation.svg)](https://badge.fury.io/js/detect-translation)
-[![Build Status](https://travis-ci.org/ClaudiuCeia/detect-translation.svg?branch=master)](https://travis-ci.org/ClaudiuCeia/detect-translation)
 
 ## Supported translators
 
@@ -34,10 +33,10 @@ This package detects when a page is translated on the client (using, for example
 ## Installation
 
 ```
-yarn add detect-translation
+pnpm add detect-translation
 ```
 
-_You can use npm if you prefer_
+_You can use npm or yarn if you prefer_
 
 The package was written in Typescript, so no need to install types separately.
 

@@ -26,14 +26,14 @@ const PROXIES_HOSTNAMES: { [key in Services]?: Array<HostnamePattern> } = {
 };
 
 const whichProxyTranslation = (
-  identified: LangTranslatorInfo
+  identified: LangTranslatorInfo,
 ): LangTranslatorInfo => {
   const { hostname } = location;
 
   const [service] = (Object.entries(PROXIES_HOSTNAMES).find(([, hostnames]) =>
     hostnames.find((match) =>
-      match instanceof RegExp ? match.test(hostname) : match === hostname
-    )
+      match instanceof RegExp ? match.test(hostname) : match === hostname,
+    ),
   ) || []) as [Services, Array<HostnamePattern>];
 
   return {
