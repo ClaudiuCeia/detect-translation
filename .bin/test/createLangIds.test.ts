@@ -1,8 +1,8 @@
-import fs from "fs";
+import fs from "node:fs";
 import { load } from "js-yaml";
 import {
-  getLangIdSubstrings,
   buildLangMapToLangRegexJSString,
+  getLangIdSubstrings,
 } from "../createLangIds";
 import StringSet from "../utils/StringSet";
 
@@ -54,13 +54,12 @@ describe("createLangIds", () => {
         },
       )
         .reduce(
-          (allTs, [lang, ts]) => [
-            ...allTs,
-            ...Object.entries(ts).map(
-              ([t, translators]) =>
-                [translators.join("/"), lang, t] as [string, string, string],
-            ),
-          ],
+          (allTs, [lang, ts]) => {
+            Object.entries(ts).forEach(([t, translators]) => {
+              allTs.push([translators.join("/"), lang, t]);
+            });
+            return allTs;
+          },
           [] as [string, string, string][],
         )
         .sort(([, l1], [, l2]) => +(l1 > l2))
@@ -75,17 +74,16 @@ describe("createLangIds", () => {
           [] as [string, string, string][],
         );
 
-      test.concurrent.each(translations)(
-        "detects %s: “%s” (%s)",
-        (lang, translation) => {
-          const [resultLang] =
-            Object.entries(langMap).find(([, regex]) =>
-              regex.test(translation),
-            ) || [];
+      test.concurrent.each(
+        translations,
+      )("detects %s: “%s” (%s)", (lang, translation) => {
+        const [resultLang] =
+          Object.entries(langMap).find(([, regex]) =>
+            regex.test(translation),
+          ) || [];
 
-          expect(resultLang).toEqual(lang);
-        },
-      );
+        expect(resultLang).toEqual(lang);
+      });
     });
   });
 });

@@ -1,6 +1,7 @@
-import { Services } from "../translationServices";
+import type JSDOMEnvironment from "jest-environment-jsdom";
 import { observe } from "..";
-import JSDOMEnvironment from "jest-environment-jsdom";
+import { Services } from "../translationServices";
+
 declare const jsdom: JSDOMEnvironment["dom"];
 
 describe("Test client translations", () => {
@@ -32,7 +33,7 @@ describe("Test client translations", () => {
         }
       });
 
-      jsdom!.reconfigure({ url: "https://www.example.com/" });
+      jsdom.reconfigure({ url: "https://www.example.com/" });
 
       document.documentElement.setAttribute("class", "");
       document.documentElement.lang = sourceLang;

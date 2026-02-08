@@ -1,6 +1,7 @@
-import { Services } from "../translationServices";
+import type { JSDOM } from "jsdom";
 import { observe } from "..";
-import { JSDOM } from "jsdom";
+import { Services } from "../translationServices";
+
 declare const jsdom: JSDOM;
 
 describe("Test proxy translations", () => {

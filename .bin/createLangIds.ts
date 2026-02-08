@@ -1,7 +1,8 @@
 /* eslint-disable */
-import fs from "fs";
-import { load } from "js-yaml";
+
+import fs from "node:fs";
 import cldr from "cldr";
+import { load } from "js-yaml";
 import StringSet from "./utils/StringSet";
 
 const SRC = `${__dirname}/../src`;
@@ -67,11 +68,11 @@ export const getLangsFromYaml = (): Map<string, StringSet> => {
   Object.entries({
     ...pageTranslationsFromYaml,
     ...textonlyTranslationsFromYaml,
-  }).forEach(([l, ts]) =>
-    Object.keys(ts as Record<string, string[]>).forEach((t) =>
-      addTranslation([l, t]),
-    ),
-  );
+  }).forEach(([l, ts]) => {
+    Object.keys(ts as Record<string, string[]>).forEach((t) => {
+      addTranslation([l, t]);
+    });
+  });
 
   const langsOrderedByNumSpeakers: Map<string, StringSet> =
     allLangsByNumSpeakers.reduce((newLs, l) => {
@@ -119,7 +120,9 @@ export const getLangIdSubstrings = (
   );
   const langsWithSharedTranslations = [...translationsMultipleLangsMap].reduce(
     (result, [, ls]) => {
-      [...(ls as StringSet)].forEach((l) => result.add(l));
+      [...(ls as StringSet)].forEach((l) => {
+        result.add(l);
+      });
       return result;
     },
     new StringSet(),
@@ -130,12 +133,12 @@ export const getLangIdSubstrings = (
   // n == substring length
   for (let n = 1; n <= MAX_SUBSTRING_LEN; n++) {
     // map plain substrings
-    langs.forEach((ts, lang) =>
+    langs.forEach((ts, lang) => {
       ts.substrings({ length: n }).forEach((tSet, substr) => {
         if (!substringsMap.has(substr)) substringsMap.set(substr, new Map());
         substringsMap.get(substr)?.set(lang, tSet);
-      }),
-    );
+      });
+    });
   }
 
   /**
@@ -195,7 +198,9 @@ export const getLangIdSubstrings = (
             } else {
               langIds.get(l)?.add(ss);
             }
-            [...ts].forEach((t) => langsRemaining.get(l)?.delete(t));
+            [...ts].forEach((t) => {
+              langsRemaining.get(l)?.delete(t);
+            });
             if (langsRemaining.get(l)?.size === 0) {
               langsRemaining.delete(l);
             }

@@ -1,5 +1,6 @@
+import type { JSDOM } from "jsdom";
 import { observe } from "..";
-import { JSDOM } from "jsdom";
+
 declare const jsdom: JSDOM;
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));

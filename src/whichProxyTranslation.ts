@@ -1,4 +1,4 @@
-import { LangTranslatorInfo } from ".";
+import type { LangTranslatorInfo } from ".";
 import { Services } from "./translationServices";
 
 type HostnamePattern = string | RegExp;

@@ -1,6 +1,6 @@
-import { LangTranslatorInfo } from ".";
-import normalizeLangTag from "./normalizeLangTag";
+import type { LangTranslatorInfo } from ".";
 import { UNDETERMINED_LANGUAGE } from "./constants";
+import normalizeLangTag from "./normalizeLangTag";
 
 export type LangIds = { [lang: string]: RegExp };
 

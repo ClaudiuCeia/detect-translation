@@ -1,10 +1,10 @@
-import whichClientTranslation from "./whichClientTranslation";
-import whichProxyTranslation from "./whichProxyTranslation";
-import getDocumentLang, { LangIds } from "./getDocumentLang";
+import { UNDETERMINED_LANGUAGE } from "./constants";
+import getDocumentLang, { type LangIds } from "./getDocumentLang";
 import identifyIBMWatson from "./services/identifyIBMWatson";
 import { Services } from "./translationServices";
-import { UNDETERMINED_LANGUAGE } from "./constants";
 import skipToMainContentLangIds from "./translations/Skip-to-main-content";
+import whichClientTranslation from "./whichClientTranslation";
+import whichProxyTranslation from "./whichProxyTranslation";
 
 export type TranslatorType = "client" | "proxy" | "unknown";
 

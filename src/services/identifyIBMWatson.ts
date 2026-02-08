@@ -1,11 +1,11 @@
-import { LangTranslatorInfo } from "..";
+import type { LangTranslatorInfo } from "..";
 import { Services } from "../translationServices";
 
 let expectedRegex: RegExp | undefined;
 let _sourceUrl: string;
 
 const CONTROL_CODE_ENQ = "\x05";
-const MATCH_ALL_CONTROL_CODE_ENQ = /\x05/g; // eslint-disable-line no-control-regex
+const MATCH_ALL_CONTROL_CODE_ENQ = new RegExp(CONTROL_CODE_ENQ, "g");
 
 const escapeRegExp = (value: string): string =>
   value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");

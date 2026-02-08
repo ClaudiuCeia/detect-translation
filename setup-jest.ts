@@ -1,9 +1,10 @@
 // setup-jest.js
-import sanitizeHtml from "sanitize-html";
+
 import {
   TextDecoder as UtilTextDecoder,
   TextEncoder as UtilTextEncoder,
-} from "util";
+} from "node:util";
+import sanitizeHtml from "sanitize-html";
 
 // Monkey-patch jsdom to make it support innerText
 // see https://github.com/jsdom/jsdom/issues/1245#issuecomment-470192636
