@@ -36,6 +36,12 @@ jobs:
       - name: Sanity Checks
         run: pnpm run prepublish
 
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps chromium firefox webkit
+
+      - name: E2E
+        run: pnpm run e2e:all
+
       - name: Publish To Npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -66,4 +72,3 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           body_path: RELEASE_NOTES.md
-

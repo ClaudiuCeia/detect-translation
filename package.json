@@ -57,10 +57,14 @@
     "lint": "biome check .",
     "format": "biome format --write .",
     "test": "pnpm run langids && jest",
+    "e2e:only": "playwright test --project=chromium",
+    "e2e:all": "playwright test",
+    "e2e": "pnpm run build && pnpm run e2e:only",
     "typecheck": "tsc -p tsconfig.json --noEmit",
+    "typecheck:e2e": "tsc -p tsconfig.e2e.json --noEmit",
     "knip": "knip",
     "security:audit": "pnpm audit --audit-level high",
-    "prepublish": "pnpm test && pnpm run lint && pnpm run typecheck && pnpm run knip && pnpm run build && pnpm run package-check && pnpm run security:audit",
+    "prepublish": "pnpm test && pnpm run lint && pnpm run typecheck && pnpm run typecheck:e2e && pnpm run knip && pnpm run build && pnpm run package-check && pnpm run security:audit",
     "prepare": "husky",
     "langids": "tsx ./.bin/writeLangIds.ts",
     "package-check": "publint"
@@ -78,6 +82,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.14",
+    "@playwright/test": "^1.58.2",
     "@swc/core": "^1.15.11",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

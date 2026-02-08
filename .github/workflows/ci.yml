@@ -29,3 +29,9 @@ jobs:
 
       - name: Verify
         run: pnpm run prepublish
+
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps chromium firefox webkit
+
+      - name: E2E
+        run: pnpm run e2e:all

@@ -5,6 +5,8 @@ dist-browser/
 .agents/
 coverage/
 .nyc_output/
+test-results/
+playwright-report/
 src/translations/*.ts
 *.tgz
 yarn-error.log

@@ -21,11 +21,9 @@ const getDocumentLang = (
 ): LangTranslatorInfo => {
   const doc = document.documentElement;
   const canary: { el: HTMLElement | null | undefined; text?: string } = {
-    el: (source?.canary?.selector &&
-      document.querySelector(source.canary.selector)) as
-      | HTMLElement
-      | null
-      | undefined,
+    el: source?.canary?.selector
+      ? (document.querySelector(source.canary.selector) as HTMLElement | null)
+      : undefined,
   };
   if (doc.lang !== source.lang) {
     return {

@@ -1,5 +1,12 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts", ".bin/**/*.ts", "setup-jest.ts", "tsup.config.ts"],
+  "include": [
+    "src/**/*.ts",
+    ".bin/**/*.ts",
+    "e2e/**/*.ts",
+    "setup-jest.ts",
+    "tsup.config.ts",
+    "playwright.config.ts"
+  ],
   "exclude": ["dist", "dist-browser", "node_modules"]
 }

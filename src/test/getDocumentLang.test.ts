@@ -58,4 +58,17 @@ describe("getDocumentLang", () => {
 
     expect(result).toBe("he");
   });
+
+  it("should not throw when canary selector is an empty string", () => {
+    document.documentElement.lang = "en";
+
+    expect(() =>
+      getDocumentLang({
+        lang: "en",
+        canary: {
+          selector: "",
+        },
+      }),
+    ).not.toThrow();
+  });
 });
