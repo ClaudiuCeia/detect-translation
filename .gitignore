@@ -3,6 +3,8 @@ pkg/
 dist/
 dist-browser/
 .agents/
+coverage/
+.nyc_output/
 src/translations/*.ts
 *.tgz
 yarn-error.log
