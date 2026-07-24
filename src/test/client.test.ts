@@ -4,6 +4,8 @@ import { Services } from "../translationServices";
 
 declare const jsdom: JSDOMEnvironment["dom"];
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 describe("Test client translations", () => {
   let el: HTMLElement = null as unknown as HTMLElement;
   let observer: MutationObserver | undefined;
@@ -46,4 +48,39 @@ describe("Test client translations", () => {
       el.setAttribute("id", "goog-gt-tt");
       document.documentElement.lang = targetLang;
     }));
+
+  test("updates translation metadata when a client marker appears", async () => {
+    const mockClientCallback = jest.fn();
+
+    jsdom.reconfigure({ url: "https://www.example.com/" });
+    document.documentElement.lang = "en";
+    observer = observe({
+      onTranslation: mockClientCallback,
+      sourceLang: "en",
+      textSelector: "",
+    });
+
+    document.documentElement.lang = "ro";
+    await sleep(1);
+
+    expect(mockClientCallback).toHaveBeenCalledTimes(1);
+    expect(mockClientCallback).toHaveBeenLastCalledWith("ro", {
+      service: Services.UNDETERMINED,
+      type: "unknown",
+    });
+
+    el.id = "goog-gt-tt";
+    await sleep(1);
+
+    expect(mockClientCallback).toHaveBeenCalledTimes(2);
+    expect(mockClientCallback).toHaveBeenLastCalledWith("ro", {
+      service: Services.GOOGLE,
+      type: "client",
+    });
+
+    document.documentElement.className = "unrelated-change";
+    await sleep(1);
+
+    expect(mockClientCallback).toHaveBeenCalledTimes(2);
+  });
 });

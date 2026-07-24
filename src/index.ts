@@ -47,7 +47,12 @@ export const observe = ({
   includeTranslatorInLangTag = false,
 }: ObserverParams): MutationObserver => {
   const normalizedSourceLang = normalizeLangTag(sourceLang);
-  let lastObservedLang = normalizedSourceLang;
+  const sourceObservation = {
+    lang: normalizedSourceLang,
+    service: Services.UNDETERMINED,
+    type: "unknown" as TranslatorType,
+  };
+  let lastObservation = sourceObservation;
 
   const observer = () => {
     let identified: LangTranslatorInfo = getDocumentLang({
@@ -60,9 +65,15 @@ export const observe = ({
       },
     });
 
-    if (identified.lang === lastObservedLang) {
+    if (!identified.lang || identified.lang === UNDETERMINED_LANGUAGE) {
       return;
     }
+
+    if (identified.lang === normalizedSourceLang) {
+      lastObservation = sourceObservation;
+      return;
+    }
+    const detectedLang = identified.lang;
 
     identified = whichProxyTranslation(identified);
 
@@ -76,23 +87,37 @@ export const observe = ({
       identified = identifyIBMWatson(identified, sourceUrl);
     }
 
-    if (!identified.lang || identified.lang === UNDETERMINED_LANGUAGE) {
-      return;
-    }
-
-    const detectedLang = identified.lang;
     identified.service ||= Services.UNDETERMINED;
     identified.type ||= "unknown";
 
-    if (includeTranslatorInLangTag) {
-      // https://unicode-org.github.io/cldr/ldml/tr35.html#t_Extension
-      identified.lang = `${identified.lang}-t-${normalizedSourceLang}-t0-${identified.service}`;
-    }
-
-    lastObservedLang = detectedLang;
-    onTranslation(identified.lang, {
+    const observation = {
+      lang: detectedLang,
       service: identified.service,
       type: identified.type,
+    };
+    if (
+      observation.lang === lastObservation.lang &&
+      observation.service === lastObservation.service &&
+      observation.type === lastObservation.type
+    ) {
+      return;
+    }
+    if (
+      observation.lang === lastObservation.lang &&
+      lastObservation.service !== Services.UNDETERMINED &&
+      observation.service === Services.UNDETERMINED
+    ) {
+      return;
+    }
+
+    lastObservation = observation;
+    const callbackLang = includeTranslatorInLangTag
+      ? // https://unicode-org.github.io/cldr/ldml/tr35.html#t_Extension
+        `${observation.lang}-t-${normalizedSourceLang}-t0-${observation.service}`
+      : observation.lang;
+    onTranslation(callbackLang, {
+      service: observation.service,
+      type: observation.type,
     });
   };
 
@@ -101,7 +126,16 @@ export const observe = ({
   const mutationObserver = new MutationObserver(observer);
   mutationObserver.observe(document.documentElement, {
     attributes: true,
-    attributeFilter: ["class", "lang", "_msttexthash"],
+    attributeFilter: [
+      "class",
+      "href",
+      "id",
+      "lang",
+      "_msthash",
+      "_msttexthash",
+    ],
+    childList: true,
+    subtree: true,
   });
   if (textSelector) {
     const canaryEl = document.querySelector(textSelector);
