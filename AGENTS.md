@@ -9,12 +9,12 @@
   - `src/translations/Skip-to-main-content.yml`: Source-of-truth.
   - `src/translations/*.ts`: Generated artifacts (gitignored).
 - `src/test/`: Jest tests (`*.test.ts`) running in JSDOM.
-- `.bin/`: Dev scripts (not shipped), including language-id generation.
+- `.bin/`: Dev scripts and Jest tests (not shipped), including language-id generation.
 - `.github/workflows/`: CI (`ci.yml`) and tag-driven releases (`release.yml`).
 
 ## Build, Test, And Dev Commands
 
-This repo uses `pnpm` (see `package.json#packageManager`) and CI runs on Node 24.
+This repo uses `pnpm` (see `package.json#packageManager`) and Node 24 (see `.node-version`).
 
 - `pnpm install`: Install dependencies.
 - `pnpm test`: Regenerates lang ids (`pnpm run langids`) then runs Jest.
@@ -24,17 +24,20 @@ This repo uses `pnpm` (see `package.json#packageManager`) and CI runs on Node 24
 - `pnpm run knip`: Unused files/deps checks.
 - `pnpm run build`: Build ESM/CJS/browser bundles via `esbuild` and declarations via TypeScript.
 - `pnpm run verify`: Main local gate (tests + lint + typecheck + knip + build + publint + audit).
+- `pnpm run e2e`: Build and run Playwright in Chromium.
+- `pnpm run build && pnpm run e2e:all`: Run Playwright in Chromium, Firefox, and WebKit. Install them first with `pnpm exec playwright install chromium firefox webkit`.
 
 ## Coding Style & Naming
 
 - Formatting/linting: Biome (`biome.json`) with 2-space indentation, 80-char line width, and double quotes.
 - TypeScript: Prefer explicit types for public APIs; keep browser/DOM access guarded for testability.
-- Files: `camelCase.ts` for modules; tests in `src/test/*.test.ts`.
+- Files: `camelCase.ts` for modules; tests in `src/test/*.test.ts` and `.bin/test/*.test.ts`.
 
 ## Testing Guidelines
 
 - Framework: Jest with a custom JSDOM environment (exposes global `jsdom` for `jsdom.reconfigure({ url })`).
 - Add/adjust tests when changing detection heuristics or public types.
+- Run `pnpm run e2e:all` after browser-observer or packaged-bundle changes; `verify` does not include Playwright.
 - Expect `coverage/` to be generated locally (gitignored).
 
 ## Commit & Pull Request Guidelines

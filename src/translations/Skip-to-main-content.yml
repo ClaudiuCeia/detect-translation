@@ -32,7 +32,7 @@ sources:
       gramtrans: # ❌ no lang attribute; removes link element (text as child of body!)
         url: https://gramtrans.com/
         langs: [da, de, en, eo, 'no', sv]
-      ibmwatson: # ❌ no lang attribute
+      ibmwatson: # ❌ no lang attribute; legacy downloaded-page output (demo retired)
         url: https://www.ibm.com/watson/services/language-translator/#demo
         langs: [ar, bn, bs, bg, ca, cnr, cs, cy, da, de, el, en, es, et, fi, fr, ga, gu, he, hi, hr, hu, id, it, ja, ko, lt, lv, ms, ml, mt, nb, ne, nl, pl, pt, ro, ru, si, sk, sl, sr, sv, ta, te, th, tr, uk, ur, vi, zh, zh-Hant]
       lingvanex: # ❌ no lang attribute

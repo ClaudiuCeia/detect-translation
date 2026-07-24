@@ -35,4 +35,4 @@ of the source phrase “Skip to main content”.
 Resources to look up and understand BCP 47 language codes:
 
 - BCP 47 language subtag lookup: https://r12a.github.io/app-subtags/
-- Unicode CLDR Likely Subtags: https://unicode-org.github.io/cldr-staging/charts/38/supplemental/likely_subtags.html
+- Unicode CLDR Likely Subtags: https://www.unicode.org/cldr/charts/latest/supplemental/likely_subtags.html

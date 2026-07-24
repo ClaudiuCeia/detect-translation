@@ -32,7 +32,7 @@ This package detects when a page is translated on the client (using, for example
 - [Apertium](https://apertium.org/)
 - [Caiyun](https://fanyi.caiyunapp.com/)
 - [Gramtrans](https://gramtrans.com/)
-- [IBM Watson](https://www.ibm.com/watson/services/language-translator/#demo)
+- IBM Watson Language Translator (legacy downloaded-page detection)
 - [Lingvanex](https://lingvanex.com/chinese-english-translation/)
 - [Worldlingo](http://www.worldlingo.com/en/products/instant_website_translator.html)
 
@@ -93,6 +93,37 @@ Use the exported `Services` enum when comparing services. Its exact runtime valu
 Ensure the script that calls `observe` runs after your HTML content is in the DOM.
 
 `lang` is based on the `<html>` [`lang` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) (set by the translation service when possible), or identified heuristically if you provide a “Skip to main content” link (see below).
+
+### Options and lifecycle
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `onTranslation` | Required | Called with the target language and translator metadata. |
+| `sourceLang` | `"en"` | Original page language. Locale underscores are accepted and normalized. |
+| `sourceUrl` | None | Original page URL, used only to recognize legacy IBM Watson downloaded-page filenames. |
+| `textSelector` | `".skip-link"` | Canary selector. Set to `""` to disable canary detection. |
+| `text` | `"Skip to main content"` | Canary text before translation. |
+| `textIsFirstContentfulChild` | `true` | Allows the first contentful body text node as a fallback for translators that replace the canary element. |
+| `langIds` | Bundled map | Target-language regular expressions for translated canary text. |
+| `includeTranslatorInLangTag` | `false` | Includes translator metadata in the returned BCP 47 transformed-content extension. |
+
+`observe()` scans synchronously on startup, so `onTranslation` can run before
+`observe()` returns when the page is already translated. Later duplicate
+observations are suppressed. Returning to the source language resets that
+deduplication state without invoking the callback, and undetermined language
+observations are not reported.
+
+The return value is a `MutationObserver`. Disconnect it when the page or
+component no longer needs translation detection:
+
+```ts
+const observer = observe({
+  onTranslation: (lang) => console.log(lang),
+});
+
+// During teardown:
+observer.disconnect();
+```
 
 ## Browser usage (no bundler)
 
@@ -155,6 +186,7 @@ observe({
     console.log(`${type} translation using ${service}, language ${lang}`);
   },
   sourceLang: "en", // or your page’s language, if different
+  // Only needed for legacy IBM Watson downloaded-page detection:
   sourceUrl: "https://www.mywebsite.com/path/to/page.html",
 
   // no need to specify these if your skip link has a class of “.skip-link” and text
@@ -222,7 +254,7 @@ It’s quite possible to use another phrase to identify translated content langu
 
 ## Development
 
-This repository uses `pnpm`.
+This repository uses Node 24 (see `.node-version`) and `pnpm`.
 
 Common commands:
 
@@ -233,7 +265,12 @@ pnpm run lint        # biome
 pnpm run knip        # dead-code / unused deps
 pnpm run build
 pnpm run verify      # the main verification gate (tests + lint + typecheck + knip + build + checks)
+pnpm exec playwright install chromium firefox webkit
+pnpm run e2e          # builds, then runs Chromium
+pnpm run build && pnpm run e2e:all  # runs Chromium, Firefox, and WebKit
 ```
+
+`verify` does not run Playwright; use `e2e:all` for the complete browser gate.
 
 ### Releases
 
