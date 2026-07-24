@@ -107,6 +107,10 @@ Ensure the script that calls `observe` runs after your HTML content is in the DO
 | `langIds` | Bundled map | Target-language regular expressions for translated canary text. |
 | `includeTranslatorInLangTag` | `false` | Includes translator metadata in the returned BCP 47 transformed-content extension. |
 
+Regional variants with the same effective language and script as `sourceLang`
+are treated as source content. Script changes such as `zh` (Simplified Chinese
+by default) to `zh-Hant` are still reported as translations.
+
 `observe()` scans synchronously on startup, so `onTranslation` can run before
 `observe()` returns when the page is already translated. Later duplicate
 observations are suppressed. Returning to the source language resets that

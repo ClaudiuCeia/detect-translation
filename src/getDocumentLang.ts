@@ -30,6 +30,21 @@ const getFirstContentfulText = (): string => {
     : "";
 };
 
+const hasSameLanguageAndScript = (first: string, second: string): boolean => {
+  if (first === second) return true;
+
+  try {
+    const firstLocale = new Intl.Locale(first).maximize();
+    const secondLocale = new Intl.Locale(second).maximize();
+    return (
+      firstLocale.language === secondLocale.language &&
+      firstLocale.script === secondLocale.script
+    );
+  } catch {
+    return false;
+  }
+};
+
 // TODO: detect QQ Browser’s side-by-side comparison (it leaves the original untouched, and adds Chinese)
 
 const getDocumentLang = (
@@ -46,7 +61,7 @@ const getDocumentLang = (
   if (
     documentLang &&
     documentLang !== UNDETERMINED_LANGUAGE &&
-    documentLang !== sourceLang &&
+    !hasSameLanguageAndScript(documentLang, sourceLang) &&
     documentLang !== "ku"
   ) {
     return {
@@ -57,7 +72,7 @@ const getDocumentLang = (
   if (
     canaryLang &&
     canaryLang !== UNDETERMINED_LANGUAGE &&
-    canaryLang !== sourceLang
+    !hasSameLanguageAndScript(canaryLang, sourceLang)
   ) {
     return {
       lang: canaryLang,

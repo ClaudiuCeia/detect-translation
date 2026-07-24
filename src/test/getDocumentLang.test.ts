@@ -92,6 +92,29 @@ describe("getDocumentLang", () => {
     expect(result).toBe("en-US");
   });
 
+  it("should not treat a regional source variant as a translation", () => {
+    document.documentElement.lang = "en-US";
+    el.innerText = "Skip to main content";
+
+    const { lang: result } = getDocumentLang({
+      lang: "en",
+      canary: {
+        selector: ".skip-link",
+        text: "Skip to main content",
+      },
+    });
+
+    expect(result).toBe("en");
+  });
+
+  it("should distinguish target scripts within the same language", () => {
+    document.documentElement.lang = "zh-Hant";
+
+    const { lang: result } = getDocumentLang({ lang: "zh" });
+
+    expect(result).toBe("zh-Hant");
+  });
+
   it("should return canonically cased target language tags", () => {
     document.documentElement.lang = "ZH-hans-cn";
 
