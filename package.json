@@ -33,6 +33,11 @@
   "jsdelivr": "dist-browser/index.min.js",
   "author": "Claudiu Ceia",
   "license": "MIT",
+  "sideEffects": false,
+  "homepage": "https://github.com/ClaudiuCeia/detect-translation#readme",
+  "bugs": {
+    "url": "https://github.com/ClaudiuCeia/detect-translation/issues"
+  },
   "type": "commonjs",
   "packageManager": "pnpm@11.17.0",
   "files": [

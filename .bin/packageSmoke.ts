@@ -176,6 +176,15 @@ const main = async (): Promise<void> => {
     const manifest = JSON.parse(
       await readFile(path.join(installedPackage, "package.json"), "utf8"),
     );
+    assert.equal(manifest.sideEffects, false);
+    assert.equal(
+      manifest.homepage,
+      "https://github.com/ClaudiuCeia/detect-translation#readme",
+    );
+    assert.equal(
+      manifest.bugs?.url,
+      "https://github.com/ClaudiuCeia/detect-translation/issues",
+    );
     assert.equal(manifest.unpkg, "dist-browser/index.min.js");
     assert.equal(manifest.jsdelivr, "dist-browser/index.min.js");
 
