@@ -55,9 +55,7 @@ jobs:
         run: pnpm run e2e:all
 
       - name: Publish To Npm
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpm publish --access public --no-git-checks --provenance
+        run: npm publish --access public --provenance
 
       - name: Generate Changelog
         shell: bash
