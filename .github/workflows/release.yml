@@ -5,20 +5,28 @@ on:
     tags:
       - "v*.*.*"
 
-permissions:
-  contents: write
-  id-token: write
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions: {}
 
 jobs:
-  release:
+  package:
+    name: Verify And Package
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     env:
       HUSKY: 0
+    outputs:
+      name: ${{ steps.metadata.outputs.name }}
+      version: ${{ steps.metadata.outputs.version }}
+      tarball: ${{ steps.metadata.outputs.tarball }}
+      sha256: ${{ steps.checksum.outputs.sha256 }}
 
     steps:
       - uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
 
       - uses: pnpm/action-setup@v6
         with:
@@ -28,25 +36,94 @@ jobs:
         with:
           node-version: 24
           cache: pnpm
-          registry-url: "https://registry.npmjs.org"
 
       - name: Install
         run: pnpm install --frozen-lockfile
 
       - name: Verify Tag Matches Package Version
+        id: metadata
         shell: bash
         run: |
           set -euo pipefail
+          PACKAGE_NAME="$(node -p "require('./package.json').name")"
           PACKAGE_VERSION="$(node -p "require('./package.json').version")"
-          TAG_VERSION="${GITHUB_REF_NAME#v}"
 
-          if [ "${TAG_VERSION}" != "${PACKAGE_VERSION}" ]; then
-            echo "::error::Tag version ${TAG_VERSION} does not match package version ${PACKAGE_VERSION}"
+          if [ "${GITHUB_REF_NAME}" != "v${PACKAGE_VERSION}" ]; then
+            echo "::error::Tag ${GITHUB_REF_NAME} does not match package version ${PACKAGE_VERSION}"
             exit 1
           fi
 
-      - name: Sanity Checks
+          {
+            echo "name=${PACKAGE_NAME}"
+            echo "version=${PACKAGE_VERSION}"
+            echo "tarball=${PACKAGE_NAME}-${PACKAGE_VERSION}.tgz"
+          } >> "${GITHUB_OUTPUT}"
+
+      - name: Full Verification
         run: pnpm run prepublish
+
+      - name: Create Release Tarball
+        id: checksum
+        shell: bash
+        env:
+          TARBALL: ${{ steps.metadata.outputs.tarball }}
+        run: |
+          set -euo pipefail
+          pnpm pack --out "${TARBALL}"
+          test -s "${TARBALL}"
+          SHA256="$(sha256sum "${TARBALL}")"
+          echo "sha256=${SHA256%% *}" >> "${GITHUB_OUTPUT}"
+
+      - name: Upload Release Tarball
+        uses: actions/upload-artifact@v7
+        with:
+          name: npm-package
+          path: ${{ steps.metadata.outputs.tarball }}
+          if-no-files-found: error
+          retention-days: 14
+
+  e2e:
+    name: Playwright E2E
+    needs: package
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      HUSKY: 0
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 11.17.0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Download Release Tarball
+        uses: actions/download-artifact@v8
+        with:
+          name: npm-package
+
+      - name: Verify And Extract Packaged Build
+        shell: bash
+        env:
+          SHA256: ${{ needs.package.outputs.sha256 }}
+          TARBALL: ${{ needs.package.outputs.tarball }}
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' "${SHA256}" "${TARBALL}" | sha256sum --check --strict
+          rm -rf dist dist-browser
+          tar -xzf "${TARBALL}" --strip-components=1
+          test -s dist/index.cjs
+          test -s dist/index.mjs
+          test -s dist-browser/index.min.js
 
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps chromium firefox webkit
@@ -54,15 +131,119 @@ jobs:
       - name: E2E
         run: pnpm run e2e:all
 
-      - name: Publish To Npm
-        run: npm publish --access public --provenance
+  publish:
+    name: Publish To Npm
+    needs: [package, e2e]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Download Release Tarball
+        uses: actions/download-artifact@v8
+        with:
+          name: npm-package
+
+      - name: Verify Release Tarball
+        shell: bash
+        env:
+          SHA256: ${{ needs.package.outputs.sha256 }}
+          TARBALL: ${{ needs.package.outputs.tarball }}
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' "${SHA256}" "${TARBALL}" | sha256sum --check --strict
+
+      - name: Check Published Version
+        id: registry
+        env:
+          PACKAGE_NAME: ${{ needs.package.outputs.name }}
+          PACKAGE_VERSION: ${{ needs.package.outputs.version }}
+          TARBALL: ${{ needs.package.outputs.tarball }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { createHash } from "node:crypto";
+          import { appendFile, readFile } from "node:fs/promises";
+
+          const { GITHUB_OUTPUT, PACKAGE_NAME, PACKAGE_VERSION, TARBALL } =
+            process.env;
+          const url =
+            "https://registry.npmjs.org/" +
+            `${encodeURIComponent(PACKAGE_NAME)}/` +
+            encodeURIComponent(PACKAGE_VERSION);
+          const response = await fetch(url, {
+            headers: { accept: "application/json" },
+          });
+
+          if (response.status === 404) {
+            await appendFile(GITHUB_OUTPUT, "exists=false\n");
+            process.exit(0);
+          }
+          if (!response.ok) {
+            throw new Error(`npm registry returned HTTP ${response.status}`);
+          }
+
+          const metadata = await response.json();
+          const bytes = await readFile(TARBALL);
+          const localIntegrity =
+            "sha512-" + createHash("sha512").update(bytes).digest("base64");
+
+          if (metadata?.dist?.integrity !== localIntegrity) {
+            throw new Error(
+              `${PACKAGE_NAME}@${PACKAGE_VERSION} already exists with different contents`,
+            );
+          }
+
+          await appendFile(GITHUB_OUTPUT, "exists=true\n");
+          console.log(
+            `${PACKAGE_NAME}@${PACKAGE_VERSION} already exists; skipping publish`,
+          );
+          NODE
+
+      - name: Publish Release Tarball
+        if: steps.registry.outputs.exists != 'true'
+        env:
+          TARBALL: ${{ needs.package.outputs.tarball }}
+        run: npm publish "./${TARBALL}" --access public --provenance
+
+  github-release:
+    name: Create GitHub Release
+    needs: [package, publish]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Download Release Tarball
+        uses: actions/download-artifact@v8
+        with:
+          name: npm-package
+
+      - name: Verify Release Tarball
+        shell: bash
+        env:
+          SHA256: ${{ needs.package.outputs.sha256 }}
+          TARBALL: ${{ needs.package.outputs.tarball }}
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' "${SHA256}" "${TARBALL}" | sha256sum --check --strict
 
       - name: Generate Changelog
         shell: bash
         run: |
           set -euo pipefail
           TAG="${GITHUB_REF_NAME}"
-          PREV_TAG="$(git tag --sort=-v:refname | grep -E '^v' | grep -v "^${TAG}$" | head -n 1 || true)"
+          PREV_TAG="$(git describe --tags --abbrev=0 --match 'v*.*.*' "${TAG}^" 2>/dev/null || true)"
 
           {
             echo "## ${TAG}"
@@ -76,9 +257,13 @@ jobs:
               echo
               git log "${TAG}" --pretty=format:'- %s (%h)'
             fi
+            echo
           } > RELEASE_NOTES.md
 
-      - name: Create GitHub Release
+      - name: Create Or Update GitHub Release
         uses: softprops/action-gh-release@v3
         with:
           body_path: RELEASE_NOTES.md
+          files: ${{ needs.package.outputs.tarball }}
+          fail_on_unmatched_files: true
+          overwrite_files: true
