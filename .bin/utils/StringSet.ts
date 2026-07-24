@@ -13,7 +13,7 @@ class StringSet extends Set {
     const substrs = new Map<string, StringSet>();
     this.forEach((str) => {
       if (typeof str !== "string") return;
-      const chars = [...str]; // splits into an array of Unicode graphemes
+      const chars = [...str]; // Split into Unicode code points rather than UTF-16 code units.
       const unicodeLength = chars.length; // (str.length would not count chars above U+FFFF properly)
       for (let i = 0; i <= unicodeLength - substringLength; i++) {
         const substr = chars.slice(i, i + substringLength).join("");

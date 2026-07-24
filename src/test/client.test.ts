@@ -1,5 +1,6 @@
 import type JSDOMEnvironment from "jest-environment-jsdom";
 import { observe, Services } from "..";
+import whichClientTranslation from "../whichClientTranslation";
 
 declare const jsdom: NonNullable<JSDOMEnvironment["dom"]>;
 
@@ -17,6 +18,22 @@ describe("Test client translations", () => {
   afterEach(() => {
     document.body.removeChild(el);
     observer?.disconnect();
+  });
+
+  test.each([
+    [Services.MICROSOFT, '<span _msthash="1"></span>'],
+    [Services.GOOGLE, '<span id="goog-gt-tt"></span>'],
+    [Services.TENCENT, '<span id="qbTrans-pageTrans-dialog"></span>'],
+    [Services.SOGOU, '<span class="sg-translated"></span>'],
+    [Services.YANDEX, "<ya-tr-span></ya-tr-span>"],
+  ])("detects the %s client marker", (service, marker) => {
+    el.innerHTML = marker;
+
+    expect(whichClientTranslation({ lang: "fr" })).toEqual({
+      lang: "fr",
+      service,
+      type: "client",
+    });
   });
 
   test("Can detect Google client translation", (): Promise<void> =>

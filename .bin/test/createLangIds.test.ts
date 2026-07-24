@@ -4,6 +4,8 @@ import {
   buildLangMapToLangRegexJSString,
   getLangIdSubstrings,
   type TranslationMap,
+  validateTranslationSources,
+  validateUniqueSourceLangs,
   validateUniqueTranslationLangs,
 } from "../createLangIds";
 import StringSet from "../utils/StringSet";
@@ -31,6 +33,35 @@ describe("createLangIds", () => {
     });
   });
 
+  describe("validateTranslationSources", () => {
+    it("accepts registered translation sources", () => {
+      expect(() =>
+        validateTranslationSources(new Set(["google"]), {
+          fr: { "Passer au contenu principal": ["google"] },
+        }),
+      ).not.toThrow();
+    });
+
+    it("reports unknown translation sources", () => {
+      expect(() =>
+        validateTranslationSources(new Set(["google"]), {
+          fr: { "Passer au contenu principal": ["unknown", "Google"] },
+        }),
+      ).toThrow("Unknown translation sources: Google, unknown");
+    });
+  });
+
+  describe("validateUniqueSourceLangs", () => {
+    it("reports duplicate languages for each source", () => {
+      expect(() =>
+        validateUniqueSourceLangs({
+          google: { langs: ["en", "fr", "en"] },
+          yandex: { langs: ["de", "de"] },
+        }),
+      ).toThrow("Duplicate source languages: google: en; yandex: de");
+    });
+  });
+
   describe("getLangIdSubstrings", () => {
     it("should return a map of languages to unique substrings", () => {
       const langs = new Map([
@@ -53,8 +84,12 @@ describe("createLangIds", () => {
       const result = getLangIdSubstrings(langs);
 
       expect(result.size).toBe(2);
-      expect(result.get("gl")?.has("d")).toBe(true);
-      expect(result.get("fr")?.has("u")).toBe(true);
+      for (const [lang, translations] of langs) {
+        const identifiers = result.get(lang);
+        expect(identifiers?.size).toBeGreaterThan(0);
+        const regex = new RegExp([...(identifiers as StringSet)].join("|"));
+        expect([...translations].every((text) => regex.test(text))).toBe(true);
+      }
     });
   });
 
@@ -103,7 +138,7 @@ describe("createLangIds", () => {
         (lang, translation) => {
           const [resultLang] =
             Object.entries(langMap).find(([, regex]) =>
-              regex.test(translation),
+              regex.test(translation.normalize("NFC")),
             ) || [];
 
           expect(resultLang).toEqual(lang);

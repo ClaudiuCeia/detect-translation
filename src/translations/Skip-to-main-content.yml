@@ -28,7 +28,7 @@ sources:
         langs: [zh]
       google: # ✅ lang attribute on document element (with some legacy subtags)
         url: https://translate.google.com/
-        langs: [af, am, ar, az, be, bg, bn, bs, ca, ceb, co, cs, cy, da, de, el, en, en, eo, es, es, et, eu, fa, fi, fr, fy, ga, gd, gl, gu, ha, haw, hi, hmn, hr, ht, hu, hy, id, ig, is, it, iw, ja, jw, ka, kk, km, kn, ko, ku, ky, la, lb, lo, lt, lv, mg, mi, mk, ml, mn, mr, ms, mt, my, my, ne, nl, 'no', ny, or, pa, pl, ps, pt, ro, ru, rw, sd, si, sk, sl, sm, sn, so, sq, sr, st, su, sv, sw, ta, te, tg, th, tk, tl, tr, tt, ug, uk, ur, uz, vi, xh, yi, yo, zh, zh-Hant, zu]
+        langs: [af, am, ar, az, be, bg, bn, bs, ca, ceb, co, cs, cy, da, de, el, en, eo, es, et, eu, fa, fi, fr, fy, ga, gd, gl, gu, ha, haw, hi, hmn, hr, ht, hu, hy, id, ig, is, it, iw, ja, jw, ka, kk, km, kn, ko, ku, ky, la, lb, lo, lt, lv, mg, mi, mk, ml, mn, mr, ms, mt, my, ne, nl, 'no', ny, or, pa, pl, ps, pt, ro, ru, rw, sd, si, sk, sl, sm, sn, so, sq, sr, st, su, sv, sw, ta, te, tg, th, tk, tl, tr, tt, ug, uk, ur, uz, vi, xh, yi, yo, zh, zh-Hant, zu]
       gramtrans: # ❌ no lang attribute; removes link element (text as child of body!)
         url: https://gramtrans.com/
         langs: [da, de, en, eo, 'no', sv]
@@ -75,6 +75,7 @@ sources:
       systran: https://translate.systran.net/
       tetran: http://tetran.ru/ # mostly duplicates bing; unique for Kurdish and Pashto
       translate: https://www.translate.com/ # duplicates bing in most cases (but not sr)
+      translatedict: https://www.translatedict.com/
       webforditas: http://www.webforditas.hu/
       webtran1: https://www.webtran.eu/ # primary translator
       webtran2: https://www.webtran.eu/ # Alternative online translator
@@ -617,7 +618,7 @@ translations:
       Alefa mankany amin'ny votoaty fototra: [baidu]
       Azon amin' ny zavatra fototra: [bing]
       Hanketo ny votoatiny lehibe: [google, itranslate]
-      Hanketo ny votoaty lehibe: [Lingvanex]
+      Hanketo ny votoaty lehibe: [lingvanex]
       Handingana ho tena atiny: [support.moz] # There was a @ symbol here (“Handingana ho @ tena atiny”) - removed for better matches
       Mandehana mankany amin'ny atiny lehibe: [webtran1]
       Azon ny votoatiny ambony: [webtran2]
@@ -644,7 +645,7 @@ translations:
       പ്രധാന ഉള്ളടക്കം ഉപേക്ഷിക്കുക Name: [ibmwatson]
     mn: # Mongolian
       Үндсэн агуулга руу шилжих: [google, itranslate]
-      Үндсэн агуулга руу шууд шилжих: [google-translate]
+      Үндсэн агуулга руу шууд шилжих: [google]
       Үндсэн агуулгыг алгасах: [lingvanex]
       Үндсэн агуулга руу алгасах: [webtran1]
       Үндсэн агуулга руу очих: [yandex]

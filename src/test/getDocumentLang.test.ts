@@ -175,6 +175,21 @@ describe("getDocumentLang", () => {
     }
   });
 
+  it("should normalize canonically equivalent canary text", () => {
+    document.documentElement.lang = "";
+    el.innerText = "Cafe\u0301";
+
+    const { lang: result } = getDocumentLang({
+      lang: "en",
+      canary: {
+        selector: ".skip-link",
+        langIds: { fr: /Café/ },
+      },
+    });
+
+    expect(result).toBe("fr");
+  });
+
   it("should not throw when canary selector is an empty string", () => {
     document.documentElement.lang = "en";
 

@@ -12,6 +12,14 @@ export type TranslationMap = Record<string, Record<string, Array<string>>>;
 
 type TranslationData = {
   source: Record<string, string>;
+  sources: {
+    translators: {
+      page: Record<string, { langs?: string[]; url?: string }>;
+      textonly: Record<string, string>;
+    };
+    cms: Record<string, string>;
+    sites: Record<string, string>;
+  };
   translations: {
     page: TranslationMap;
     textonly: TranslationMap;
@@ -20,6 +28,7 @@ type TranslationData = {
 
 const {
   source: sourceFromYaml,
+  sources: sourcesFromYaml,
   translations: {
     page: pageTranslationsFromYaml,
     textonly: textonlyTranslationsFromYaml,
@@ -53,7 +62,7 @@ const getAllLangsByNumSpeakers = (): Array<string> => {
     return result;
   }, new Map()) as Map<string, number>;
   const result = [...langPopMap]
-    .sort(([, p1], [, p2]) => p2 - p1)
+    .sort(([l1, p1], [l2, p2]) => p2 - p1 || l1.localeCompare(l2))
     .map(([l]) => l);
   return result;
 };
@@ -80,17 +89,71 @@ export const validateUniqueTranslationLangs = (
   }
 };
 
+export const validateTranslationSources = (
+  validSources: Set<string>,
+  ...translationGroups: TranslationMap[]
+): void => {
+  const unknownSources = new Set<string>();
+
+  translationGroups.forEach((translations) => {
+    Object.values(translations).forEach((languageTranslations) => {
+      Object.values(languageTranslations).forEach((translationSources) => {
+        translationSources.forEach((source) => {
+          if (!validSources.has(source)) unknownSources.add(source);
+        });
+      });
+    });
+  });
+
+  if (unknownSources.size > 0) {
+    throw new Error(
+      `Unknown translation sources: ${[...unknownSources].sort().join(", ")}`,
+    );
+  }
+};
+
+export const validateUniqueSourceLangs = (
+  pageSources: Record<string, { langs?: string[] }>,
+): void => {
+  const invalidSources = Object.entries(pageSources).flatMap(
+    ([source, { langs = [] }]) => {
+      const duplicates = [
+        ...new Set(langs.filter((lang, i) => langs.indexOf(lang) !== i)),
+      ];
+      return duplicates.length > 0
+        ? [`${source}: ${duplicates.sort().join(", ")}`]
+        : [];
+    },
+  );
+
+  if (invalidSources.length > 0) {
+    throw new Error(`Duplicate source languages: ${invalidSources.join("; ")}`);
+  }
+};
+
 export const getLangsFromYaml = (): Map<string, StringSet> => {
   const langs = new Map<string, StringSet>();
-  const addTranslation = ([l, t]) => {
+  const addTranslation = ([l, t]: [string, string]) => {
     if (!langs.has(l)) langs.set(l, new StringSet());
-    langs.get(l)?.add(t);
+    langs.get(l)?.add(t.normalize("NFC"));
   };
   validateUniqueTranslationLangs(
     sourceFromYaml,
     pageTranslationsFromYaml,
     textonlyTranslationsFromYaml,
   );
+  const validSources = new Set([
+    ...Object.keys(sourcesFromYaml.translators.page),
+    ...Object.keys(sourcesFromYaml.translators.textonly),
+    ...Object.keys(sourcesFromYaml.cms),
+    ...Object.keys(sourcesFromYaml.sites),
+  ]);
+  validateTranslationSources(
+    validSources,
+    pageTranslationsFromYaml,
+    textonlyTranslationsFromYaml,
+  );
+  validateUniqueSourceLangs(sourcesFromYaml.translators.page);
   Object.entries(sourceFromYaml).forEach(addTranslation);
   Object.entries({
     ...pageTranslationsFromYaml,
@@ -194,15 +257,22 @@ export const getLangIdSubstrings = (
       (
         [ss1, lTm1],
         [ss2, lTm2], // ss == substring, lTm == languageTranslationMap
-      ) =>
-        ss1.length !== ss2.length || lTm1.size !== lTm2.size
-          ? // sort short substrings and substrings with few language matches before others
+      ) => {
+        if (ss1.length !== ss2.length || lTm1.size !== lTm2.size) {
+          // Sort short substrings and substrings with few language matches first.
+          return (
             ss1.length +
             [...lTm1].reduce(ignoreDuplicateTranslations, []).length -
             (ss2.length +
               [...lTm2].reduce(ignoreDuplicateTranslations, []).length)
-          : // if we can’t distinguish that way, sort substrings that match many translations first
-            [...lTm2][0][1].size - [...lTm1][0][1].size,
+          );
+        }
+
+        // Otherwise prefer matches covering many translations, then sort stably.
+        return (
+          [...lTm2][0][1].size - [...lTm1][0][1].size || ss1.localeCompare(ss2)
+        );
+      },
     ),
   );
 
@@ -255,10 +325,9 @@ const langMapToLangRegexJSString = (
   ${[...stringMap]
     .sort(([l1], [l2]) => {
       const albns = allLangsByNumSpeakers;
-      return (
-        (albns.includes(l1) ? albns.indexOf(l1) : Infinity) -
-        (albns.includes(l2) ? albns.indexOf(l2) : Infinity)
-      );
+      const l1Index = albns.includes(l1) ? albns.indexOf(l1) : Infinity;
+      const l2Index = albns.includes(l2) ? albns.indexOf(l2) : Infinity;
+      return l1Index === l2Index ? l1.localeCompare(l2) : l1Index - l2Index;
     })
     .map(([lang, substrs]) => {
       const [langCode, scriptCode] = lang.split(/[-_]/) as [

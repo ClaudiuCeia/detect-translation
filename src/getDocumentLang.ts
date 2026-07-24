@@ -106,7 +106,9 @@ const identifyLangFromCanaryText = (() => {
   return (text: string, langIds: LangIds | undefined): string => {
     if (!langIds) return UNDETERMINED_LANGUAGE;
 
-    if (_text === text && _langIds === langIds && _result) {
+    const normalizedText = text.normalize("NFC");
+
+    if (_text === normalizedText && _langIds === langIds && _result) {
       return _result;
     }
 
@@ -115,9 +117,10 @@ const identifyLangFromCanaryText = (() => {
       _langIds = langIds;
       _langIdsEntries = Object.entries(langIds);
     }
-    _text = text;
+    _text = normalizedText;
 
-    const [lang] = _langIdsEntries.find(([, re]) => re.test(text)) || [];
+    const [lang] =
+      _langIdsEntries.find(([, re]) => re.test(normalizedText)) || [];
 
     _result = lang || UNDETERMINED_LANGUAGE;
 
