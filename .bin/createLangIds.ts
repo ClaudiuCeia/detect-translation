@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import fs from "node:fs";
 import cldr from "cldr";
 import { load } from "js-yaml";
