@@ -98,6 +98,8 @@ Ensure the script that calls `observe` runs after your HTML content is in the DO
 
 This package also ships a browser bundle that exposes a global `DetectTranslation` (useful for CDN usage).
 
+All distributed JavaScript targets ES2020 and supports browsers that implement the ES2020 language standard.
+
 ```html
 <script src="https://unpkg.com/detect-translation@latest/dist-browser/index.min.js"></script>
 <script>

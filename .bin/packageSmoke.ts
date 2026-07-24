@@ -158,7 +158,7 @@ const main = async (): Promise<void> => {
 
     assert(
       Object.keys(browserBuild.metafile.inputs).some((input) =>
-        input.replaceAll(path.sep, "/").endsWith("/dist/index.mjs"),
+        input.split(path.sep).join("/").endsWith("/dist/index.mjs"),
       ),
       "browser bundling did not resolve the ESM entrypoint",
     );

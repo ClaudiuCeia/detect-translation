@@ -43,7 +43,7 @@
     "build": "rimraf dist dist-browser && pnpm run build:module && pnpm run build:types && pnpm run build:browser",
     "build:module": "esbuild src/index.ts --bundle --platform=node --target=es2020 --sourcemap --format=esm --outfile=dist/index.mjs && esbuild src/index.ts --bundle --platform=node --target=es2020 --sourcemap --format=cjs --outfile=dist/index.cjs",
     "build:types": "tsc -p tsconfig.build.json && node -e \"const fs=require('node:fs');fs.copyFileSync('dist/index.d.ts','dist/index.d.cts');fs.writeFileSync('dist/index.d.mts','export * from \\\"./index.cjs\\\";\\n')\"",
-    "build:browser": "esbuild src/index.ts --bundle --format=iife --global-name=DetectTranslation --minify --sourcemap --outfile=dist-browser/index.min.js",
+    "build:browser": "esbuild src/index.ts --bundle --format=iife --global-name=DetectTranslation --target=es2020 --minify --sourcemap --outfile=dist-browser/index.min.js",
     "lint": "biome check .",
     "format": "biome format --write .",
     "test": "pnpm run langids && jest",
