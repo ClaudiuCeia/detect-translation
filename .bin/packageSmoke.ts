@@ -1,7 +1,6 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
-import { createRequire } from "node:module";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { runInNewContext } from "node:vm";
@@ -141,9 +140,7 @@ const main = async (): Promise<void> => {
       }),
     );
 
-    const localRequire = createRequire(path.join(root, "package.json"));
-    const tsc = localRequire.resolve("typescript/bin/tsc");
-    run(process.execPath, [tsc, "--project", temp], temp);
+    run(command("tsc"), ["--project", temp], temp);
 
     const browserBuild = await build({
       stdin: {

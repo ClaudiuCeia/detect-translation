@@ -5,7 +5,6 @@
     ".bin/**/*.ts",
     "e2e/**/*.ts",
     "setup-jest.ts",
-    "tsup.config.ts",
     "playwright.config.ts"
   ],
   "exclude": ["dist", "dist-browser", "node_modules"]

@@ -14,7 +14,7 @@
 
 ## Build, Test, And Dev Commands
 
-This repo uses `pnpm` (see `package.json#packageManager`) and CI runs on Node 22.
+This repo uses `pnpm` (see `package.json#packageManager`) and CI runs on Node 24.
 
 - `pnpm install`: Install dependencies.
 - `pnpm test`: Regenerates lang ids (`pnpm run langids`) then runs Jest.
@@ -22,7 +22,7 @@ This repo uses `pnpm` (see `package.json#packageManager`) and CI runs on Node 22
 - `pnpm run format`: Auto-format with Biome.
 - `pnpm run typecheck`: `tsc --noEmit`.
 - `pnpm run knip`: Unused files/deps checks.
-- `pnpm run build`: Build ESM/CJS via `tsup` plus the browser bundle via `esbuild`.
+- `pnpm run build`: Build ESM/CJS/browser bundles via `esbuild` and declarations via TypeScript.
 - `pnpm run prepublish`: Main local gate (tests + lint + typecheck + knip + build + publint + audit).
 
 ## Coding Style & Naming
