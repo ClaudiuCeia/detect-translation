@@ -51,22 +51,23 @@ const identifyIBMWatson = (
 
 export const watsonUrlRegex = (sourceUrl: string): RegExp =>
   new RegExp(
-    escapeRegExp(
-      (() => {
-        try {
-          return decodeURI(sourceUrl);
-        } catch {
-          return sourceUrl;
-        }
-      })()
-        .replace(/\\/g, CONTROL_CODE_ENQ) // replace \ with a placeholder ENQ character
-        .replace(/:/g, " ")
-        .replace(/\//g, "_")
-        .replace(MATCH_ALL_CONTROL_CODE_ENQ, "\\\\"), // put \ back
-    ) +
+    "^" +
+      escapeRegExp(
+        (() => {
+          try {
+            return decodeURI(sourceUrl);
+          } catch {
+            return sourceUrl;
+          }
+        })()
+          .replace(/\\/g, CONTROL_CODE_ENQ) // replace \ with a placeholder ENQ character
+          .replace(/:/g, " ")
+          .replace(/\//g, "_")
+          .replace(MATCH_ALL_CONTROL_CODE_ENQ, "\\\\"), // put \ back
+      ) +
       // actual language names are between 4 and 21 chars; we’re coding 3-21 to account for
       // possible shorter language names (e.g. Ewe) - longer ones are unlikely.
-      "_[ \\(\\)A-Za-z]{3,21}\\.html",
+      "_[ \\(\\)A-Za-z]{3,21}\\.html$",
   );
 
 export default identifyIBMWatson;

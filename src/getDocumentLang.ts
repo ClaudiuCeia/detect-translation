@@ -14,6 +14,22 @@ type SourceDocumentMetadata = {
   };
 };
 
+const getElementText = (element?: Element | null): string =>
+  (element instanceof HTMLElement
+    ? element.innerText
+    : element?.textContent
+  )?.trim() || "";
+
+const getFirstContentfulText = (): string => {
+  const firstContentfulChild = [...(document.body?.childNodes || [])].find(
+    (node) => node.textContent?.trim(),
+  );
+
+  return firstContentfulChild instanceof Text
+    ? firstContentfulChild.textContent?.trim() || ""
+    : "";
+};
+
 // TODO: detect QQ Browser’s side-by-side comparison (it leaves the original untouched, and adds Chinese)
 
 const getDocumentLang = (
@@ -22,21 +38,22 @@ const getDocumentLang = (
   const doc = document.documentElement;
   const sourceLang = normalizeLangTag(source.lang);
   const documentLang = normalizeLangTag(doc.lang);
-  const canary: { el: HTMLElement | null | undefined; text?: string } = {
+  const canary: { el: Element | null | undefined; text?: string } = {
     el: source?.canary?.selector
-      ? (document.querySelector(source.canary.selector) as HTMLElement | null)
+      ? document.querySelector(source.canary.selector)
       : undefined,
   };
   if (
     documentLang &&
     documentLang !== UNDETERMINED_LANGUAGE &&
-    documentLang !== sourceLang
+    documentLang !== sourceLang &&
+    documentLang !== "ku"
   ) {
     return {
       lang: documentLang,
     };
   }
-  const canaryLang = normalizeLangTag(canary.el?.lang || "");
+  const canaryLang = normalizeLangTag(canary.el?.getAttribute("lang") || "");
   if (
     canaryLang &&
     canaryLang !== UNDETERMINED_LANGUAGE &&
@@ -47,12 +64,20 @@ const getDocumentLang = (
     };
   }
   canary.text =
-    canary.el?.innerText.trim() ||
+    getElementText(canary.el) ||
     // for any agent that replaces invisible links with a (translated) text node - such as Gramtrans
     ((source.canary?.isFirstContentfulChild ?? true) &&
-      document.body.firstChild instanceof Text &&
-      document.body.firstChild.textContent?.trim()) ||
+      getFirstContentfulText()) ||
     "";
+  if (documentLang === "ku" && documentLang !== sourceLang) {
+    return {
+      lang:
+        identifyLangFromCanaryText(canary.text, source.canary?.langIds) ===
+        "ckb"
+          ? "ckb"
+          : documentLang,
+    };
+  }
   if (canary.text === source.canary?.text) {
     return {
       lang: sourceLang,

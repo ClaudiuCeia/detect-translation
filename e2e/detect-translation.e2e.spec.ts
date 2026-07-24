@@ -18,7 +18,7 @@ type DetectTranslationObserverParams = {
     lang: string,
     info: { service: string; type: string },
   ) => void;
-  sourceLang: string;
+  sourceLang?: string;
   sourceUrl?: string;
   textSelector?: string;
 };
@@ -68,6 +68,49 @@ test("client translation: detects Google client translation via marker element +
     lang: "ro",
     service: "google",
     type: "client",
+  });
+});
+
+test("canary translation: observes a late canary text-node update", async ({
+  page,
+}) => {
+  await page.setContent(
+    `<!doctype html><html lang="en"><body><main>hello</main></body></html>`,
+  );
+  await page.addScriptTag({ path: bundlePath });
+
+  await page.evaluate(() => {
+    const w = window as unknown as DetectTranslationWindow;
+    w.__events = [];
+    w.DetectTranslation.observe({
+      onTranslation: (lang: string, info: { service: string; type: string }) =>
+        w.__events.push({ lang, ...info }),
+      sourceLang: "en",
+    });
+
+    const canary = document.createElement("a");
+    canary.className = "skip-link";
+    canary.hidden = true;
+    canary.append("Skip to main content");
+    document.body.prepend(canary);
+  });
+  await page.evaluate(() => {
+    const canary = document.querySelector(".skip-link");
+    if (!canary?.firstChild) throw new Error("Missing canary text node");
+    canary.firstChild.nodeValue = "Passer au contenu principal";
+  });
+
+  await page.waitForFunction(
+    () => (window as unknown as DetectTranslationWindow).__events.length > 0,
+  );
+  const event = await page.evaluate(
+    () => (window as unknown as DetectTranslationWindow).__events[0],
+  );
+
+  expect(event).toMatchObject({
+    lang: "fr",
+    service: "und",
+    type: "unknown",
   });
 });
 

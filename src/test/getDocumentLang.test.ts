@@ -100,6 +100,81 @@ describe("getDocumentLang", () => {
     expect(result).toBe("zh-Hans-CN");
   });
 
+  it("should normalize underscore-separated language tags", () => {
+    document.documentElement.lang = "en_US";
+    el.innerText = "Skip to main content";
+
+    const { lang: result } = getDocumentLang({
+      lang: "en-US",
+      canary: {
+        selector: ".skip-link",
+        text: "Skip to main content",
+      },
+    });
+
+    expect(result).toBe("en-US");
+  });
+
+  it("should distinguish Central Kurdish from an ambiguous document tag", () => {
+    document.documentElement.lang = "ku";
+    el.innerText = "بازدان بۆ ناوەڕۆکی سەرەکی";
+
+    const { lang: result } = getDocumentLang({
+      lang: "en",
+      canary: {
+        selector: ".skip-link",
+        langIds: skipToMainContentLangIds,
+      },
+    });
+
+    expect(result).toBe("ckb");
+  });
+
+  it("should use a translated first contentful text node", () => {
+    document.documentElement.lang = "";
+    const whitespace = document.createTextNode("\n  ");
+    const translated = document.createTextNode("Passer au contenu principal");
+    document.body.insertBefore(whitespace, el);
+    document.body.insertBefore(translated, el);
+
+    try {
+      const { lang: result } = getDocumentLang({
+        lang: "en",
+        canary: {
+          selector: ".missing",
+          langIds: skipToMainContentLangIds,
+        },
+      });
+
+      expect(result).toBe("fr");
+    } finally {
+      whitespace.remove();
+      translated.remove();
+    }
+  });
+
+  it("should read canary text from non-HTML elements", () => {
+    document.documentElement.lang = "";
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.classList.add("svg-skip-link");
+    svg.textContent = "Passer au contenu principal";
+    document.body.appendChild(svg);
+
+    try {
+      const { lang: result } = getDocumentLang({
+        lang: "en",
+        canary: {
+          selector: ".svg-skip-link",
+          langIds: skipToMainContentLangIds,
+        },
+      });
+
+      expect(result).toBe("fr");
+    } finally {
+      svg.remove();
+    }
+  });
+
   it("should not throw when canary selector is an empty string", () => {
     document.documentElement.lang = "en";
 

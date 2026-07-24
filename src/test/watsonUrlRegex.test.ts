@@ -16,6 +16,12 @@ describe("watsonUrlRegex", () => {
     expect(regex.test(`${expectedPrefix}_Chinese (Simplified).html`)).toBe(
       true,
     );
+    expect(
+      regex.test(`prefix-${expectedPrefix}_Chinese (Simplified).html`),
+    ).toBe(false);
+    expect(regex.test(`${expectedPrefix}_Chinese (Simplified).html.bak`)).toBe(
+      false,
+    );
   });
 
   it("does not throw for malformed URIs", () => {

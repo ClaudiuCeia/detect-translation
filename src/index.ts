@@ -30,7 +30,7 @@ export type Callback = (
 ) => void;
 export interface ObserverParams {
   onTranslation: Callback;
-  sourceLang: string;
+  sourceLang?: string;
   sourceUrl?: string;
   textSelector?: string;
   text?: string;
@@ -57,7 +57,7 @@ export const observe = ({
   };
   let lastObservation = sourceObservation;
 
-  const observer = () => {
+  const detectTranslation = () => {
     let identified: LangTranslatorInfo = getDocumentLang({
       lang: normalizedSourceLang,
       canary: {
@@ -124,9 +124,26 @@ export const observe = ({
     });
   };
 
-  observer();
+  let observedCanary: Element | null = null;
+  const observeCanary = (): void => {
+    if (!textSelector) return;
 
-  const mutationObserver = new MutationObserver(observer);
+    const canaryEl = document.querySelector(textSelector);
+    if (!canaryEl || canaryEl === observedCanary) return;
+
+    observedCanary = canaryEl;
+    mutationObserver.observe(canaryEl, {
+      attributes: true,
+      childList: true,
+      characterData: true,
+      subtree: true,
+    });
+  };
+
+  const mutationObserver = new MutationObserver(() => {
+    observeCanary();
+    detectTranslation();
+  });
   mutationObserver.observe(document.documentElement, {
     attributes: true,
     attributeFilter: [
@@ -140,20 +157,12 @@ export const observe = ({
     childList: true,
     subtree: true,
   });
-  if (textSelector) {
-    const canaryEl = document.querySelector(textSelector);
-    if (canaryEl) {
-      mutationObserver.observe(
-        canaryEl,
-        // we need to observe any and all changes made to our canary content element
-        {
-          attributes: true,
-          childList: true,
-          characterData: true,
-          subtree: true,
-        },
-      );
-    }
+  try {
+    observeCanary();
+    detectTranslation();
+  } catch (error) {
+    mutationObserver.disconnect();
+    throw error;
   }
 
   return mutationObserver;

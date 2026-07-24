@@ -36,7 +36,7 @@ const normaliseLangCode = (lang: string): string => {
     ) || [];
   const mappedLang = normalisedTag
     ? trimmedLang.replace(nonstd as RegExp, normalisedTag)
-    : trimmedLang;
+    : trimmedLang.replace(/_/g, "-");
 
   try {
     return Intl.getCanonicalLocales(mappedLang)[0] || mappedLang;
