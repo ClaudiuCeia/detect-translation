@@ -7,7 +7,7 @@ This package detects when a page is translated on the client (using, for example
 ## What You Get
 
 - Detects translation type: `client`, `proxy`, or `unknown`
-- Detects translation service: `google`, `bing`, `yandex`, `baidu`, etc
+- Detects translation service: `google`, `msft`, `yandex`, `baidu`, etc
 - Reports the target language via the document `<html lang="...">` attribute (plus heuristics for services that don’t set it reliably)
 
 ## Supported translators
@@ -51,18 +51,44 @@ The package is written in TypeScript and ships its own types.
 ## Getting started
 
 ```ts
-import { observe } from "detect-translation";
+import { observe, Services } from "detect-translation";
 
 observe({
   onTranslation: (lang, { service, type }) => {
     // type: "proxy" | "client" | "unknown"
-    // service: e.g. "google", "bing", "yandex", "baidu" (see Services enum)
+    // Compare service values through the exported Services enum.
+    if (service === Services.MICROSOFT) {
+      console.log("Translated by Microsoft/Bing");
+    }
     // lang: a BCP 47-ish language tag (e.g. "zh", "fr", "ru", "de", "hi", "es", "pt")
     console.log(`${type} translation using ${service}, language ${lang}`);
   },
   sourceLang: "en",
 });
 ```
+
+### Translation service values
+
+Use the exported `Services` enum when comparing services. Its exact runtime values are:
+
+| Enum member | Value |
+| --- | --- |
+| `Services.APERTIUM` | `"apertium"` |
+| `Services.APPLE` | `"apple"` |
+| `Services.BAIDU` | `"baidu"` |
+| `Services.MICROSOFT` | `"msft"` |
+| `Services.CAIYUN` | `"caiyun"` |
+| `Services.GOOGLE` | `"google"` |
+| `Services.GRAMTRANS` | `"gramtran"` |
+| `Services.LINGVANEX` | `"lingvnex"` |
+| `Services.NAVER` | `"naver"` |
+| `Services.TENCENT` | `"tencent"` |
+| `Services.SOGOU` | `"sogou"` |
+| `Services.UNDETERMINED` | `"und"` |
+| `Services.IBM` | `"ibm"` |
+| `Services.WORLDLINGO` | `"worldlng"` |
+| `Services.YANDEX` | `"yandex"` |
+| `Services.YOUDAO` | `"youdao"` |
 
 Ensure the script that calls `observe` runs after your HTML content is in the DOM.
 
@@ -138,6 +164,27 @@ observe({
 
 `textSelector` and `text` default to `".skip-link"` and `"Skip to main content"`, respectively.
 
+### Use custom language identifiers
+
+The exported `LangIds` type maps target language tags to regular expressions that identify translated canary text:
+
+```ts
+import { observe, type LangIds } from "detect-translation";
+
+const langIds: LangIds = {
+  de: /Zum Hauptinhalt/,
+  fr: /contenu principal/,
+};
+
+observe({
+  sourceLang: "en",
+  langIds,
+  onTranslation: (lang) => console.log(lang),
+});
+```
+
+A supplied `langIds` map replaces the default map, and the first matching entry wins. Avoid global (`g`) or sticky (`y`) expressions because repeated `RegExp.test()` calls with those flags are stateful.
+
 ### Include the translation details in your language tags
 
 `detect-translation` can embed details of the translator in the language tags it passes to your callback, using the standard Transformed Content extension. For example, your callback can receive a language tag like `zh-t-en-t0-baidu` (using the BCP 47 T extension to indicate content in Chinese, translated from English by Baidu). This could be useful for analytics.
@@ -145,13 +192,13 @@ observe({
 To enable this feature, just set `includeTranslatorInLangTag` to `true` in the options you pass to `observe`:
 
 ```ts
-import { observe } from "detect-translation";
+import { observe, Services } from "detect-translation";
 
 observe({
   onTranslation: (lang, { service, type }) => {
     // lang will be the BCP 47 code, for example zh, fr, ru, de, hi, es, pt etc
     // type will be 'proxy', 'client' or 'unknown'
-    // service will be for example, 'google', 'bing', 'yandex', 'baidu' etc
+    // service will be for example, Services.GOOGLE or Services.MICROSOFT
     console.log(`${type} translation using ${service}, language ${lang}`);
   },
   sourceLang: "en",

@@ -9,6 +9,9 @@ import { build } from "esbuild";
 
 type PackageApi = {
   observe?: unknown;
+  Services?: {
+    GOOGLE?: unknown;
+  };
 };
 
 const root = process.cwd();
@@ -51,8 +54,9 @@ const main = async (): Promise<void> => {
         "--input-type=module",
         "--eval",
         `
-          import { observe } from "detect-translation";
+          import { observe, Services } from "detect-translation";
           if (typeof observe !== "function") process.exit(1);
+          if (Services.GOOGLE !== "google") process.exit(1);
         `,
       ],
       temp,
@@ -62,8 +66,9 @@ const main = async (): Promise<void> => {
       [
         "--eval",
         `
-          const { observe } = require("detect-translation");
+          const { observe, Services } = require("detect-translation");
           if (typeof observe !== "function") process.exit(1);
+          if (Services.GOOGLE !== "google") process.exit(1);
         `,
       ],
       temp,
@@ -72,11 +77,22 @@ const main = async (): Promise<void> => {
     await writeFile(
       path.join(temp, "consumer.mts"),
       `
-        import { observe, type ObserverParams } from "detect-translation";
+        import {
+          observe,
+          Services,
+          type LangIds,
+          type ObserverParams,
+        } from "detect-translation";
+
+        const langIds: LangIds = { fr: /contenu principal/ };
 
         const params: ObserverParams = {
+          langIds,
           sourceLang: "en",
-          onTranslation: () => {},
+          onTranslation: (_lang, { service }) => {
+            const detectedService: Services = service;
+            void detectedService;
+          },
         };
 
         const observer: MutationObserver = observe(params);
@@ -87,14 +103,26 @@ const main = async (): Promise<void> => {
       path.join(temp, "consumer.cts"),
       `
         import detectTranslation = require("detect-translation");
-        import type { ObserverParams } from "detect-translation";
+        import type {
+          LangIds,
+          ObserverParams,
+          Services,
+        } from "detect-translation";
+
+        const langIds: LangIds = { fr: /contenu principal/ };
 
         const params: ObserverParams = {
+          langIds,
           sourceLang: "en",
-          onTranslation: () => {},
+          onTranslation: (_lang, { service }) => {
+            const detectedService: Services = service;
+            void detectedService;
+          },
         };
 
         const observer: MutationObserver = detectTranslation.observe(params);
+        const google = detectTranslation.Services.GOOGLE;
+        void google;
         observer.disconnect();
       `,
     );
@@ -119,7 +147,7 @@ const main = async (): Promise<void> => {
 
     const browserBuild = await build({
       stdin: {
-        contents: 'export { observe } from "detect-translation";',
+        contents: 'export { observe, Services } from "detect-translation";',
         resolveDir: temp,
       },
       bundle: true,
@@ -141,6 +169,7 @@ const main = async (): Promise<void> => {
     const browserContext: { Consumer?: PackageApi } = {};
     runInNewContext(browserBuild.outputFiles[0].text, browserContext);
     assert.equal(typeof browserContext.Consumer?.observe, "function");
+    assert.equal(browserContext.Consumer?.Services?.GOOGLE, "google");
 
     const installedPackage = path.join(
       temp,
@@ -160,6 +189,7 @@ const main = async (): Promise<void> => {
     const cdnContext: { DetectTranslation?: PackageApi } = {};
     runInNewContext(cdnBundle, cdnContext);
     assert.equal(typeof cdnContext.DetectTranslation?.observe, "function");
+    assert.equal(cdnContext.DetectTranslation?.Services?.GOOGLE, "google");
 
     console.log("Package smoke checks passed.");
   } finally {

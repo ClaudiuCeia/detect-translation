@@ -1,6 +1,5 @@
 import type JSDOMEnvironment from "jest-environment-jsdom";
-import { observe } from "..";
-import { Services } from "../translationServices";
+import { observe, Services } from "..";
 
 declare const jsdom: JSDOMEnvironment["dom"];
 

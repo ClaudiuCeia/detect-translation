@@ -7,6 +7,9 @@ import skipToMainContentLangIds from "./translations/Skip-to-main-content";
 import whichClientTranslation from "./whichClientTranslation";
 import whichProxyTranslation from "./whichProxyTranslation";
 
+export type { LangIds };
+export { Services };
+
 export type TranslatorType = "client" | "proxy" | "unknown";
 
 export type LangTranslatorInfo = {
