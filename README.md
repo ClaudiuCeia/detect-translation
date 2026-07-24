@@ -232,7 +232,7 @@ pnpm test
 pnpm run lint        # biome
 pnpm run knip        # dead-code / unused deps
 pnpm run build
-pnpm run prepublish  # the main verification gate (tests + lint + typecheck + knip + build + checks)
+pnpm run verify      # the main verification gate (tests + lint + typecheck + knip + build + checks)
 ```
 
 ### Releases

@@ -23,7 +23,7 @@ This repo uses `pnpm` (see `package.json#packageManager`) and CI runs on Node 24
 - `pnpm run typecheck`: `tsc --noEmit`.
 - `pnpm run knip`: Unused files/deps checks.
 - `pnpm run build`: Build ESM/CJS/browser bundles via `esbuild` and declarations via TypeScript.
-- `pnpm run prepublish`: Main local gate (tests + lint + typecheck + knip + build + publint + audit).
+- `pnpm run verify`: Main local gate (tests + lint + typecheck + knip + build + publint + audit).
 
 ## Coding Style & Naming
 
@@ -41,7 +41,7 @@ This repo uses `pnpm` (see `package.json#packageManager`) and CI runs on Node 24
 
 - Commits follow Conventional Commits in practice: `fix: ...`, `docs: ...`, `chore(scope): ...` (see `git log`).
 - Husky runs `pnpm test`, `pnpm run lint`, and `pnpm run knip` on `pre-commit` (CI sets `HUSKY=0`).
-- PRs should include: a clear description, rationale for heuristic changes, and tests. Run `pnpm run prepublish` before opening/updating a PR.
+- PRs should include: a clear description, rationale for heuristic changes, and tests. Run `pnpm run verify` before opening/updating a PR.
 
 ## Notes
 

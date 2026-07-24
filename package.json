@@ -54,7 +54,7 @@
     "knip": "knip",
     "package-smoke": "pnpm run build && tsx ./.bin/packageSmoke.ts",
     "security:audit": "pnpm audit --audit-level high",
-    "prepublish": "pnpm test && pnpm run lint && pnpm run typecheck && pnpm run knip && pnpm run package-smoke && pnpm run package-check && pnpm run security:audit",
+    "verify": "pnpm test && pnpm run lint && pnpm run typecheck && pnpm run knip && pnpm run package-smoke && pnpm run package-check && pnpm run security:audit",
     "prepare": "husky",
     "langids": "tsx ./.bin/writeLangIds.ts",
     "package-check": "publint"

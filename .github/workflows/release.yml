@@ -60,7 +60,7 @@ jobs:
           } >> "${GITHUB_OUTPUT}"
 
       - name: Full Verification
-        run: pnpm run prepublish
+        run: pnpm run verify
 
       - name: Create Release Tarball
         id: checksum
