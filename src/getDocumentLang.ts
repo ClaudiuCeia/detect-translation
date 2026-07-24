@@ -20,19 +20,30 @@ const getDocumentLang = (
   source: SourceDocumentMetadata,
 ): LangTranslatorInfo => {
   const doc = document.documentElement;
+  const sourceLang = normalizeLangTag(source.lang);
+  const documentLang = normalizeLangTag(doc.lang);
   const canary: { el: HTMLElement | null | undefined; text?: string } = {
     el: source?.canary?.selector
       ? (document.querySelector(source.canary.selector) as HTMLElement | null)
       : undefined,
   };
-  if (doc.lang !== source.lang) {
+  if (
+    documentLang &&
+    documentLang !== UNDETERMINED_LANGUAGE &&
+    documentLang !== sourceLang
+  ) {
     return {
-      lang: normalizeLangTag(doc.lang),
+      lang: documentLang,
     };
   }
-  if (canary.el?.lang && canary.el.lang !== source.lang) {
+  const canaryLang = normalizeLangTag(canary.el?.lang || "");
+  if (
+    canaryLang &&
+    canaryLang !== UNDETERMINED_LANGUAGE &&
+    canaryLang !== sourceLang
+  ) {
     return {
-      lang: normalizeLangTag(canary.el.lang),
+      lang: canaryLang,
     };
   }
   canary.text =
@@ -44,7 +55,7 @@ const getDocumentLang = (
     "";
   if (canary.text === source.canary?.text) {
     return {
-      lang: normalizeLangTag(source.lang),
+      lang: sourceLang,
     };
   }
   if (!canary.text) {

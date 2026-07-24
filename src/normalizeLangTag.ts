@@ -6,20 +6,20 @@
 // in the Philippines), but not 'tly' or 'tly-AZ' (Talysh language as spoken in Azerbaijan).
 
 const NORMALISE_LANG_MAPPING = {
-  bs: /^bs-Latn\b/, // Bosnian (Sogou)
-  "ca-valencia": /^cat_valencia\b/, // Catalan (Valencia) (Apertium)
-  "en-US": /^eng\/us$/, // English (US) (Gramtrans)
-  "en-GB": /^eng\/uk$/, // English (UK) (Gramtrans)
-  he: /^iw\b/, // Hebrew (Google)
+  bs: /^bs-Latn\b/i, // Bosnian (Sogou)
+  "ca-valencia": /^cat_valencia\b/i, // Catalan (Valencia) (Apertium)
+  "en-US": /^eng\/us$/i, // English (US) (Gramtrans)
+  "en-GB": /^eng\/uk$/i, // English (UK) (Gramtrans)
+  he: /^iw\b/i, // Hebrew (Google)
   // note: if a service IDs something as ku (Kurdish - but Northern Kurdish in Latin script
   // by default as per CLDR Likely Subtags), we need to check against the lang IDs as it
   // might actually be ckb (Central Kurdish, written in Arabic script)
-  ku: /^kmr\b/, // Kurdish (Northern) (Bing) - the default for macrolanguage subtag ku
-  hmn: /^mww\b/, // Hmong Daw; hmn is the inclusive code for Hmong (Bing/Sogou)
-  fil: /^tl\b/, // Filipino (fil is more correct for the official language of the Philippines)
-  "kk-Latn": /^kazlat\b/, // Kazakh (Latin) (Yandex)
-  sr: /^sr-Cyrl\b/, // Serbian (Cyrillic is the default in Serbia)
-  "uz-Cyrl": /^usbcyr\b/, // Uzbek (Cyrillic) (Yandex)
+  ku: /^kmr\b/i, // Kurdish (Northern) (Bing) - the default for macrolanguage subtag ku
+  hmn: /^mww\b/i, // Hmong Daw; hmn is the inclusive code for Hmong (Bing/Sogou)
+  fil: /^tl\b/i, // Filipino (fil is more correct for the official language of the Philippines)
+  "kk-Latn": /^kazlat\b/i, // Kazakh (Latin) (Yandex)
+  sr: /^sr-Cyrl\b/i, // Serbian (Cyrillic is the default in Serbia)
+  "uz-Cyrl": /^usbcyr\b/i, // Uzbek (Cyrillic) (Yandex)
 };
 
 /**
@@ -29,12 +29,20 @@ const NORMALISE_LANG_MAPPING = {
  * @returns {string} normalised language code
  */
 const normaliseLangCode = (lang: string): string => {
+  const trimmedLang = lang.trim();
   const [normalisedTag, nonstd] =
     Object.entries(NORMALISE_LANG_MAPPING).find(([, nonstd]) =>
-      nonstd.test(lang),
+      nonstd.test(trimmedLang),
     ) || [];
+  const mappedLang = normalisedTag
+    ? trimmedLang.replace(nonstd as RegExp, normalisedTag)
+    : trimmedLang;
 
-  return normalisedTag ? lang.replace(nonstd as RegExp, normalisedTag) : lang;
+  try {
+    return Intl.getCanonicalLocales(mappedLang)[0] || mappedLang;
+  } catch {
+    return mappedLang;
+  }
 };
 
 export default normaliseLangCode;

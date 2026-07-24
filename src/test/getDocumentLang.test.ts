@@ -51,12 +51,53 @@ describe("getDocumentLang", () => {
     expect(result).toBe("fr");
   });
 
-  it("should normalise the language tag", () => {
-    document.documentElement.lang = "iw";
+  it.each(["iw", "IW"])("should normalise the language tag %s", (lang) => {
+    document.documentElement.lang = lang;
 
     const { lang: result } = getDocumentLang({ lang: "en" });
 
     expect(result).toBe("he");
+  });
+
+  it.each(["", "und"])(
+    "should use the canary when the document language is %p",
+    (lang) => {
+      document.documentElement.lang = lang;
+      el.innerText = "Passer au contenu principal";
+
+      const { lang: result } = getDocumentLang({
+        lang: "en",
+        canary: {
+          selector: ".skip-link",
+          langIds: skipToMainContentLangIds,
+        },
+      });
+
+      expect(result).toBe("fr");
+    },
+  );
+
+  it("should compare language tags canonically", () => {
+    document.documentElement.lang = "EN-us";
+    el.innerText = "Skip to main content";
+
+    const { lang: result } = getDocumentLang({
+      lang: "en-US",
+      canary: {
+        selector: ".skip-link",
+        text: "Skip to main content",
+      },
+    });
+
+    expect(result).toBe("en-US");
+  });
+
+  it("should return canonically cased target language tags", () => {
+    document.documentElement.lang = "ZH-hans-cn";
+
+    const { lang: result } = getDocumentLang({ lang: "en" });
+
+    expect(result).toBe("zh-Hans-CN");
   });
 
   it("should not throw when canary selector is an empty string", () => {

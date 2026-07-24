@@ -56,4 +56,22 @@ describe("Observe", () => {
       type: "unknown",
     });
   });
+
+  test("does not report casing-only language changes", async () => {
+    const mockTranslationCallback = jest.fn();
+
+    jsdom.reconfigure({ url: "https://www.example.com/" });
+    document.documentElement.lang = "en-US";
+
+    observer = observe({
+      onTranslation: mockTranslationCallback,
+      sourceLang: "en-US",
+      textSelector: "",
+    });
+
+    document.documentElement.lang = "EN-us";
+    await sleep(1);
+
+    expect(mockTranslationCallback).not.toHaveBeenCalled();
+  });
 });

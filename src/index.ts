@@ -1,5 +1,6 @@
 import { UNDETERMINED_LANGUAGE } from "./constants";
 import getDocumentLang, { type LangIds } from "./getDocumentLang";
+import normalizeLangTag from "./normalizeLangTag";
 import identifyIBMWatson from "./services/identifyIBMWatson";
 import { Services } from "./translationServices";
 import skipToMainContentLangIds from "./translations/Skip-to-main-content";
@@ -45,11 +46,12 @@ export const observe = ({
   langIds = skipToMainContentLangIds,
   includeTranslatorInLangTag = false,
 }: ObserverParams): MutationObserver => {
-  let lastObservedLang = sourceLang;
+  const normalizedSourceLang = normalizeLangTag(sourceLang);
+  let lastObservedLang = normalizedSourceLang;
 
   const observer = () => {
     let identified: LangTranslatorInfo = getDocumentLang({
-      lang: sourceLang,
+      lang: normalizedSourceLang,
       canary: {
         selector: textSelector,
         text,
@@ -84,7 +86,7 @@ export const observe = ({
 
     if (includeTranslatorInLangTag) {
       // https://unicode-org.github.io/cldr/ldml/tr35.html#t_Extension
-      identified.lang = `${identified.lang}-t-${sourceLang}-t0-${identified.service}`;
+      identified.lang = `${identified.lang}-t-${normalizedSourceLang}-t0-${identified.service}`;
     }
 
     lastObservedLang = detectedLang;
