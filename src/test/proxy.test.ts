@@ -1,8 +1,8 @@
-import type { JSDOM } from "jsdom";
+import type JSDOMEnvironment from "jest-environment-jsdom";
 import { observe } from "..";
 import { Services } from "../translationServices";
 
-declare const jsdom: JSDOM;
+declare const jsdom: NonNullable<JSDOMEnvironment["dom"]>;
 
 describe("Test proxy translations", () => {
   let el: HTMLElement;

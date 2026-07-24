@@ -1,8 +1,8 @@
-import type { JSDOM } from "jsdom";
+import type JSDOMEnvironment from "jest-environment-jsdom";
 import identifyIBMWatson from "../services/identifyIBMWatson";
 import { Services } from "../translationServices";
 
-declare const jsdom: JSDOM;
+declare const jsdom: NonNullable<JSDOMEnvironment["dom"]>;
 
 describe("identifyIBMWatson", () => {
   test("returns unchanged when hostname is present (not file://)", () => {
