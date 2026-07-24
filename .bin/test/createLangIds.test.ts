@@ -3,6 +3,7 @@ import { load } from "js-yaml";
 import {
   buildLangMapToLangRegexJSString,
   getLangIdSubstrings,
+  type TranslationMap,
   validateUniqueTranslationLangs,
 } from "../createLangIds";
 import StringSet from "../utils/StringSet";
@@ -64,8 +65,9 @@ describe("createLangIds", () => {
       } = load(
         fs.readFileSync(
           `${__dirname}/../../src/translations/Skip-to-main-content.yml`,
+          "utf8",
         ),
-      );
+      ) as { translations: { page: TranslationMap } };
 
       const langMap = Function(
         `return ${buildLangMapToLangRegexJSString()}`,
@@ -74,11 +76,7 @@ describe("createLangIds", () => {
       expect(langMap.ru.test("ю.")).toBe(true);
       expect(langMap.ru.test("юx")).toBe(false);
 
-      const translations = Object.entries(
-        pageTranslations as {
-          [lang: string]: { [translation: string]: string[] };
-        },
-      )
+      const translations = Object.entries(pageTranslations)
         .reduce(
           (allTs, [lang, ts]) => {
             Object.entries(ts).forEach(([t, translators]) => {

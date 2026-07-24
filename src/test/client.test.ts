@@ -1,7 +1,7 @@
 import type JSDOMEnvironment from "jest-environment-jsdom";
 import { observe, Services } from "..";
 
-declare const jsdom: JSDOMEnvironment["dom"];
+declare const jsdom: NonNullable<JSDOMEnvironment["dom"]>;
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 

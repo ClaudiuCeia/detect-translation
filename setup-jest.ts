@@ -1,9 +1,3 @@
-// setup-jest.js
-
-import {
-  TextDecoder as UtilTextDecoder,
-  TextEncoder as UtilTextEncoder,
-} from "node:util";
 import sanitizeHtml from "sanitize-html";
 
 // Monkey-patch jsdom to make it support innerText
@@ -20,8 +14,3 @@ Object.defineProperty(Element.prototype, "innerText", {
   },
   configurable: true, // make it so that it doesn't blow chunks on re-running tests with things like --watch
 });
-
-// Monkey-patch jsdom to support TextEncoder/TextDecoder
-// Node.js provides these globals; older jsdom/test setups may not.
-globalThis.TextEncoder ??= UtilTextEncoder;
-globalThis.TextDecoder ??= UtilTextDecoder;

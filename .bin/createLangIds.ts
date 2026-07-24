@@ -10,13 +10,25 @@ const CANARY_FILENAME = "Skip-to-main-content";
 
 const SERBO_CROATIAN_LANGS = /^(sr-Latn|hr|bs|cnr)\b/;
 
+export type TranslationMap = Record<string, Record<string, Array<string>>>;
+
+type TranslationData = {
+  source: Record<string, string>;
+  translations: {
+    page: TranslationMap;
+    textonly: TranslationMap;
+  };
+};
+
 const {
   source: sourceFromYaml,
   translations: {
     page: pageTranslationsFromYaml,
     textonly: textonlyTranslationsFromYaml,
   },
-} = load(fs.readFileSync(`${SRC}/translations/${CANARY_FILENAME}.yml`));
+} = load(
+  fs.readFileSync(`${SRC}/translations/${CANARY_FILENAME}.yml`, "utf8"),
+) as TranslationData;
 
 const getAllLangsByNumSpeakers = (): Array<string> => {
   const langPopMap = Object.values(
@@ -298,8 +310,4 @@ const langIds: LangIds = ${output};
 
 export default langIds;\n`,
   );
-};
-
-export default {
-  translationsFromYaml: pageTranslationsFromYaml as Record<string, string[]>,
 };

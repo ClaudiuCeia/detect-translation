@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "noEmit": true,
-    "types": ["node"]
-  },
-  "include": [".bin/packageSmoke.ts", "e2e/**/*.ts", "playwright.config.ts"],
-  "exclude": ["node_modules"]
-}
