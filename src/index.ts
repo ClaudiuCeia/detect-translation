@@ -78,6 +78,7 @@ export const observe = ({
       return;
     }
 
+    const detectedLang = identified.lang;
     identified.service ||= Services.UNDETERMINED;
     identified.type ||= "unknown";
 
@@ -86,11 +87,11 @@ export const observe = ({
       identified.lang = `${identified.lang}-t-${sourceLang}-t0-${identified.service}`;
     }
 
+    lastObservedLang = detectedLang;
     onTranslation(identified.lang, {
       service: identified.service,
       type: identified.type,
     });
-    lastObservedLang = identified.lang;
   };
 
   observer();
