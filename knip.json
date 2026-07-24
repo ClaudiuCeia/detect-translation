@@ -1,7 +1,4 @@
 {
   "$schema": "https://unpkg.com/knip@latest/schema.json",
-  "entry": [".bin/createLangIds.ts"],
-  "project": ["tsconfig.knip.json"],
-  "ignore": ["dist/**", "dist-browser/**", "pkg/**", "src/translations/*.ts"],
-  "ignoreDependencies": []
+  "entry": [".bin/createLangIds.ts"]
 }

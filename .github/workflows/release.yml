@@ -16,22 +16,34 @@ jobs:
       HUSKY: 0
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         with:
-          version: 10.22.0
+          version: 11.17.0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: 24
           cache: pnpm
           registry-url: "https://registry.npmjs.org"
 
       - name: Install
         run: pnpm install --frozen-lockfile
+
+      - name: Verify Tag Matches Package Version
+        shell: bash
+        run: |
+          set -euo pipefail
+          PACKAGE_VERSION="$(node -p "require('./package.json').version")"
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+
+          if [ "${TAG_VERSION}" != "${PACKAGE_VERSION}" ]; then
+            echo "::error::Tag version ${TAG_VERSION} does not match package version ${PACKAGE_VERSION}"
+            exit 1
+          fi
 
       - name: Sanity Checks
         run: pnpm run prepublish
@@ -69,6 +81,6 @@ jobs:
           } > RELEASE_NOTES.md
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           body_path: RELEASE_NOTES.md

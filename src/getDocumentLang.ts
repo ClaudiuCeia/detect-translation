@@ -4,7 +4,7 @@ import normalizeLangTag from "./normalizeLangTag";
 
 export type LangIds = { [lang: string]: RegExp };
 
-export type SourceDocumentMetadata = {
+type SourceDocumentMetadata = {
   lang: string;
   canary?: {
     selector?: string;

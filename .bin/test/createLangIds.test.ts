@@ -74,16 +74,17 @@ describe("createLangIds", () => {
           [] as [string, string, string][],
         );
 
-      test.concurrent.each(
-        translations,
-      )("detects %s: “%s” (%s)", (lang, translation) => {
-        const [resultLang] =
-          Object.entries(langMap).find(([, regex]) =>
-            regex.test(translation),
-          ) || [];
+      test.concurrent.each(translations)(
+        "detects %s: “%s” (%s)",
+        (lang, translation) => {
+          const [resultLang] =
+            Object.entries(langMap).find(([, regex]) =>
+              regex.test(translation),
+            ) || [];
 
-        expect(resultLang).toEqual(lang);
-      });
+          expect(resultLang).toEqual(lang);
+        },
+      );
     });
   });
 });
