@@ -3,7 +3,7 @@
 
 # See README.md for details.
 
-# If you update this file, run `yarn build` to update ./Skip-to-main-content.ts
+# If you update this file, run `pnpm run langids` to update ./Skip-to-main-content.ts
 
 source:
   en: Skip to main content

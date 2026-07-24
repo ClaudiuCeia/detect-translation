@@ -50,20 +50,37 @@ const getAllLangsByNumSpeakers = (): Array<string> => {
 
 const allLangsByNumSpeakers = getAllLangsByNumSpeakers();
 
+export const validateUniqueTranslationLangs = (
+  ...translationGroups: Array<Record<string, unknown>>
+): void => {
+  const seen = new Set<string>();
+  const duplicates = new Set<string>();
+
+  translationGroups.forEach((translations) => {
+    Object.keys(translations).forEach((lang) => {
+      if (seen.has(lang)) duplicates.add(lang);
+      seen.add(lang);
+    });
+  });
+
+  if (duplicates.size > 0) {
+    throw new Error(
+      `Duplicate translations found for langs: ${[...duplicates].join(", ")}`,
+    );
+  }
+};
+
 export const getLangsFromYaml = (): Map<string, StringSet> => {
   const langs = new Map<string, StringSet>();
   const addTranslation = ([l, t]) => {
     if (!langs.has(l)) langs.set(l, new StringSet());
     langs.get(l)?.add(t);
   };
-  const duplicateTranslations = Object.keys(pageTranslationsFromYaml).every(
-    (l) => textonlyTranslationsFromYaml[l] || sourceFromYaml[l],
+  validateUniqueTranslationLangs(
+    sourceFromYaml,
+    pageTranslationsFromYaml,
+    textonlyTranslationsFromYaml,
   );
-  if (duplicateTranslations) {
-    throw new Error(
-      `Duplicate translations found for langs: ${duplicateTranslations}`,
-    );
-  }
   Object.entries(sourceFromYaml).forEach(addTranslation);
   Object.entries({
     ...pageTranslationsFromYaml,
@@ -218,11 +235,14 @@ export const getLangIdSubstrings = (
   );
 };
 
-const langMapTolangRegexJSString = (
-  stringMap,
+const escapeRegexLiteral = (value: string): string =>
+  value.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&");
+
+const langMapToLangRegexJSString = (
+  stringMap: Map<string, Set<string> | string>,
   { or = "|", list = ",\n  " } = {},
 ) => `{
-  ${[...(stringMap as Map<string, Set<string>>)]
+  ${[...stringMap]
     .sort(([l1], [l2]) => {
       const albns = allLangsByNumSpeakers;
       return (
@@ -247,15 +267,21 @@ const langMapTolangRegexJSString = (
               (langName || "") + (scriptName ? ` (${scriptName})` : "")
             } */`
           : ""
-      } /${typeof substrs === "string" ? substrs : [...substrs].join(or)}/`;
+      } /${
+        typeof substrs === "string"
+          ? escapeRegexLiteral(substrs)
+          : [...substrs].map(escapeRegexLiteral).join(or)
+      }/`;
     })
     .join(list)}
 }`;
 
-export const buildLangMapToLangRegexJSString = (): string => {
-  const langs = getLangsFromYaml();
-  const idSubstringsMap = getLangIdSubstrings(langs);
-  const output = langMapTolangRegexJSString(idSubstringsMap);
+export const buildLangMapToLangRegexJSString = (
+  stringMap?: Map<string, Set<string> | string>,
+): string => {
+  const output = langMapToLangRegexJSString(
+    stringMap || getLangIdSubstrings(getLangsFromYaml()),
+  );
   return output;
 };
 

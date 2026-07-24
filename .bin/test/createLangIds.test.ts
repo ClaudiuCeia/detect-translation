@@ -3,10 +3,33 @@ import { load } from "js-yaml";
 import {
   buildLangMapToLangRegexJSString,
   getLangIdSubstrings,
+  validateUniqueTranslationLangs,
 } from "../createLangIds";
 import StringSet from "../utils/StringSet";
 
 describe("createLangIds", () => {
+  describe("validateUniqueTranslationLangs", () => {
+    it("accepts unique languages", () => {
+      expect(() =>
+        validateUniqueTranslationLangs(
+          { en: "Skip to main content" },
+          { fr: {} },
+          { de: {} },
+        ),
+      ).not.toThrow();
+    });
+
+    it("reports every duplicated language", () => {
+      expect(() =>
+        validateUniqueTranslationLangs(
+          { en: "Skip to main content", fr: "Contenu principal" },
+          { en: {} },
+          { fr: {} },
+        ),
+      ).toThrow("Duplicate translations found for langs: en, fr");
+    });
+  });
+
   describe("getLangIdSubstrings", () => {
     it("should return a map of languages to unique substrings", () => {
       const langs = new Map([
@@ -48,6 +71,9 @@ describe("createLangIds", () => {
         `return ${buildLangMapToLangRegexJSString()}`,
       )() as { [lang: string]: RegExp };
 
+      expect(langMap.ru.test("ю.")).toBe(true);
+      expect(langMap.ru.test("юx")).toBe(false);
+
       const translations = Object.entries(
         pageTranslations as {
           [lang: string]: { [translation: string]: string[] };
@@ -85,6 +111,18 @@ describe("createLangIds", () => {
           expect(resultLang).toEqual(lang);
         },
       );
+    });
+
+    it("escapes regex metacharacters", () => {
+      const literal = ".*+?^$" + "{}()|[]\\/";
+      const langMap = Function(
+        `return ${buildLangMapToLangRegexJSString(
+          new Map([["en", new Set([literal])]]),
+        )}`,
+      )() as { [lang: string]: RegExp };
+
+      expect(langMap.en.test(literal)).toBe(true);
+      expect(langMap.en.test("unrelated text")).toBe(false);
     });
   });
 });
