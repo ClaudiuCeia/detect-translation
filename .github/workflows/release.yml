@@ -26,13 +26,16 @@ jobs:
       sha256: ${{ steps.checksum.outputs.sha256 }}
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
 
-      - uses: pnpm/action-setup@v6
+      - uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6
         with:
           version: 11.17.0
 
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: 24
           cache: pnpm
@@ -48,8 +51,18 @@ jobs:
           PACKAGE_NAME="$(node -p "require('./package.json').name")"
           PACKAGE_VERSION="$(node -p "require('./package.json').version")"
 
+          if [[ ! "${PACKAGE_VERSION}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Only stable semantic versions can be released"
+            exit 1
+          fi
+
           if [ "${GITHUB_REF_NAME}" != "v${PACKAGE_VERSION}" ]; then
             echo "::error::Tag ${GITHUB_REF_NAME} does not match package version ${PACKAGE_VERSION}"
+            exit 1
+          fi
+
+          if ! git merge-base --is-ancestor "${GITHUB_SHA}" "origin/main"; then
+            echo "::error::Release commit is not on the main branch"
             exit 1
           fi
 
@@ -75,7 +88,7 @@ jobs:
           echo "sha256=${SHA256%% *}" >> "${GITHUB_OUTPUT}"
 
       - name: Upload Release Tarball
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: npm-package
           path: ${{ steps.metadata.outputs.tarball }}
@@ -92,13 +105,15 @@ jobs:
       HUSKY: 0
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
 
-      - uses: pnpm/action-setup@v6
+      - uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6
         with:
           version: 11.17.0
 
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: 24
           cache: pnpm
@@ -107,7 +122,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Download Release Tarball
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           name: npm-package
 
@@ -140,13 +155,13 @@ jobs:
       id-token: write
 
     steps:
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: 24
           registry-url: "https://registry.npmjs.org"
 
       - name: Download Release Tarball
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           name: npm-package
 
@@ -219,13 +234,13 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
           persist-credentials: false
 
       - name: Download Release Tarball
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           name: npm-package
 
@@ -261,7 +276,7 @@ jobs:
           } > RELEASE_NOTES.md
 
       - name: Create Or Update GitHub Release
-        uses: softprops/action-gh-release@v3
+        uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3
         with:
           body_path: RELEASE_NOTES.md
           files: ${{ needs.package.outputs.tarball }}
