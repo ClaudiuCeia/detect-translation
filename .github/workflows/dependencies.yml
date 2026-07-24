@@ -1,0 +1,79 @@
+name: Dependency Updates
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 7 * * 1"
+
+concurrency:
+  group: dependency-updates
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  pnpm:
+    name: Update pnpm Dependencies
+    runs-on: ubuntu-latest
+    env:
+      HUSKY: 0
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 11.17.0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Update Dependencies
+        # Keep declarations aligned with the Node.js major used by CI.
+        run: pnpm update --latest "!@types/node"
+
+      - name: Detect Changes
+        id: updates
+        shell: bash
+        run: |
+          if git diff --quiet -- package.json pnpm-lock.yaml; then
+            echo "changed=false" >> "${GITHUB_OUTPUT}"
+          else
+            echo "changed=true" >> "${GITHUB_OUTPUT}"
+          fi
+
+      - name: Verify
+        if: steps.updates.outputs.changed == 'true'
+        run: pnpm run verify
+
+      - name: Install Playwright Browsers
+        if: steps.updates.outputs.changed == 'true'
+        run: pnpm exec playwright install --with-deps chromium firefox webkit
+
+      - name: E2E
+        if: steps.updates.outputs.changed == 'true'
+        run: pnpm run e2e:all
+
+      - name: Create Pull Request
+        if: steps.updates.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          add-paths: |
+            package.json
+            pnpm-lock.yaml
+          branch: automated/pnpm-dependencies
+          commit-message: "chore(deps): update dependencies"
+          delete-branch: true
+          title: "chore(deps): update dependencies"
+          body: |
+            Weekly grouped dependency updates generated with pnpm.
+
+            The full verification suite and cross-browser E2E tests passed
+            before this pull request was created.
