@@ -70,22 +70,22 @@
     "url": "git+ssh://git@github.com/ClaudiuCeia/detect-translation.git"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.11",
-    "@playwright/test": "^1.62.1",
-    "@swc/core": "^1.16.1",
+    "@biomejs/biome": "^2.5.13",
+    "@playwright/test": "^1.63.0",
+    "@swc/core": "^1.16.2",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.13.3",
     "cldr": "^8.0.0",
     "esbuild": "^0.28.2",
     "husky": "^9.1.7",
-    "jest": "^30.5.0",
-    "jest-environment-jsdom": "^30.5.0",
-    "js-yaml": "5.4.1",
-    "knip": "^6.33.0",
+    "jest": "^30.5.1",
+    "jest-environment-jsdom": "^30.5.1",
+    "js-yaml": "5.4.2",
+    "knip": "^6.35.1",
     "publint": "^0.3.24",
     "rimraf": "^6.1.3",
-    "tsx": "^4.23.12",
+    "tsx": "^4.23.13",
     "typescript": "^7.0.2"
   }
 }
